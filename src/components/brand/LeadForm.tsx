@@ -19,8 +19,8 @@ const schema = z.object({
     .min(7, { message: "Indique um telemóvel válido." })
     .max(30, { message: "Telemóvel demasiado longo." })
     .regex(/^[+\d\s().-]+$/, { message: "Use apenas números e símbolos válidos." }),
-  client_type: z.enum(["residencial", "empresarial"], {
-    required_error: "Selecione o tipo de cliente.",
+  client_type: z.enum(["residencial", "empresarial"]).refine((v) => !!v, {
+    message: "Selecione o tipo de cliente.",
   }),
 });
 

@@ -15,7 +15,7 @@ interface SolutionCardProps {
   products: Product[];
   ctaLabel: string;
   ctaHref?: string;
-  onCtaClick?: () => void;
+  onCtaClick?: (e?: React.MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
 }
 
