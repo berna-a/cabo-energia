@@ -1,17 +1,13 @@
-import { Sun, MessageCircle, Mail } from "lucide-react";
+import { MessageCircle, Mail } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/constants";
+import logoCor from "@/assets/logo-cor.png";
 
 export function Footer() {
   return (
     <footer id="contacto" className="border-t border-border bg-white">
       <div className="container flex flex-col gap-10 py-14 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col gap-3 max-w-sm">
-          <div className="flex items-center gap-2 font-display text-lg font-semibold text-ink">
-            <span className="flex size-8 items-center justify-center rounded-pill bg-brand-green text-white">
-              <Sun className="size-4" />
-            </span>
-            CABO <span className="text-brand-green">ENERGIA</span>
-          </div>
+          <img src={logoCor} alt="CABO ENERGIA" className="h-12 w-auto" />
           <p className="text-sm text-ink-soft">
             Energia solar para casas e negócios em Cabo Verde. Stock local,
             processo claro, acompanhamento incluído.
