@@ -43,22 +43,28 @@ export function Navbar() {
         {/* Center: pill nav */}
         <nav
           className={cn(
-            "hidden md:flex items-center gap-1 rounded-pill px-2 py-1.5 transition-colors",
+            "hidden md:flex items-center gap-1 rounded-pill transition-colors",
             scrolled
               ? "bg-surface-muted border border-border"
-              : "bg-white/10 border border-white/20 backdrop-blur-md"
+              : "border border-white/25 backdrop-blur-md"
           )}
+          style={
+            scrolled
+              ? { padding: "6px 8px" }
+              : { padding: "6px 8px", background: "rgba(255,255,255,0.15)" }
+          }
         >
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               className={cn(
-                "inline-flex items-center gap-1 rounded-pill px-4 py-2 text-sm font-medium transition-colors",
+                "inline-flex items-center gap-1 rounded-pill text-sm font-medium transition-colors",
                 scrolled
                   ? "text-ink hover:bg-white"
                   : "text-white hover:bg-white/15"
               )}
+              style={{ padding: "8px 16px" }}
             >
               {l.label}
               {l.hasMenu && <ChevronDown className="size-3.5 opacity-70" />}
