@@ -35,20 +35,21 @@ export function HeroSection() {
         {/* Bottom-anchored two-column layout */}
         <div className="absolute inset-x-6 bottom-14 flex flex-col gap-10 md:inset-x-12 md:flex-row md:items-end md:justify-between md:gap-12">
           {/* Left: headline */}
-          <div style={{ maxWidth: "600px" }}>
+          <div className="max-w-[85%] lg:max-w-[55%]">
             <h1
-              className="font-extrabold text-white whitespace-normal lg:whitespace-nowrap"
+              className="font-extrabold text-white"
               style={{
                 fontSize: "clamp(3.5rem, 6vw, 5.5rem)",
                 lineHeight: 0.92,
                 fontWeight: 800,
                 letterSpacing: "-0.03em",
+                whiteSpace: "normal",
+                wordBreak: "normal",
                 fontFamily:
                   "'Inter', system-ui, -apple-system, sans-serif",
               }}
             >
-              <span className="lg:inline">Cabo Verde</span>{" "}
-              <span className="lg:inline">não pode parar.</span>
+              Cabo Verde não pode parar.
             </h1>
           </div>
 
