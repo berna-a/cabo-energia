@@ -35,14 +35,14 @@ export function HeroSection() {
         {/* Bottom-anchored two-column layout */}
         <div className="absolute inset-x-6 bottom-14 flex flex-col gap-10 md:inset-x-12 md:flex-row md:items-end md:justify-between md:gap-12">
           {/* Left: subtext + headline */}
-          <div className="md:max-w-[14ch]">
+          <div style={{ maxWidth: "600px" }}>
             <p className="mb-5 text-sm text-white/85 md:text-base">
               Soluções solares completas, stock local e processo claro.
             </p>
             <h1
-              className="font-extrabold text-white"
+              className="font-extrabold text-white whitespace-normal lg:whitespace-nowrap"
               style={{
-                fontSize: "clamp(4rem, 9vw, 7rem)",
+                fontSize: "clamp(3.5rem, 6vw, 5.5rem)",
                 lineHeight: 0.92,
                 fontWeight: 800,
                 letterSpacing: "-0.03em",
@@ -50,7 +50,8 @@ export function HeroSection() {
                   "'Inter', system-ui, -apple-system, sans-serif",
               }}
             >
-              Cabo Verde<br />não pode parar.
+              <span className="lg:inline">Cabo Verde</span>{" "}
+              <span className="lg:inline">não pode parar.</span>
             </h1>
           </div>
 
