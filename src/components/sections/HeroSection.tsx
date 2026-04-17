@@ -1,10 +1,10 @@
 import { MessageCircle } from "lucide-react";
-import { ImagePlaceholder } from "@/components/brand/ImagePlaceholder";
 import { PillButton } from "@/components/brand/PillButton";
 import { TrustBadge } from "@/components/brand/TrustBadge";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { WHATSAPP_URL } from "@/lib/constants";
+import heroImage from "@/assets/hero-living.jpg";
 
 const trustPills = [
   "Stock em Cabo Verde",
@@ -18,10 +18,22 @@ export function HeroSection() {
 
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden text-white">
-      {/* TODO: substituir ImagePlaceholder por fotografia real escura
-          de painéis solares em telhado caboverdiano. */}
-      <ImagePlaceholder className="absolute inset-0 -z-20" />
-      <div className="absolute inset-0 -z-10 hero-gradient" />
+      <img
+        src={heroImage}
+        alt="Família em casa com painéis solares visíveis na propriedade vizinha"
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        loading="eager"
+        fetchPriority="high"
+      />
+      {/* Overlay reforçado à esquerda para legibilidade do headline branco */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(100deg, hsl(var(--brand-green-deep) / 0.85) 0%, hsl(var(--brand-green-deep) / 0.55) 45%, hsl(var(--brand-green-deep) / 0.2) 100%)",
+        }}
+      />
 
       <div className="container flex min-h-[100svh] flex-col justify-between pt-28 pb-10 md:pt-32 md:pb-14">
         <div ref={ref} className="reveal flex max-w-[680px] flex-col gap-7 pt-8 md:pt-16">
