@@ -7,7 +7,7 @@ export function Footer() {
     <footer id="contacto" className="border-t border-border bg-white">
       <div className="container flex flex-col gap-10 py-14 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col gap-3 max-w-sm">
-          <img src={logoCor} alt="CABO ENERGIA" className="h-12 w-auto" />
+          <img src={logoCor} alt="CABO ENERGIA" className="h-16 w-auto object-contain" />
           <p className="text-sm text-ink-soft">
             Energia solar para casas e negócios em Cabo Verde. Stock local,
             processo claro, acompanhamento incluído.
