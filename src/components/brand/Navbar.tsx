@@ -36,7 +36,7 @@ export function Navbar() {
           <img
             src={scrolled ? logoCor : logoBranco}
             alt="CABO ENERGIA"
-            className="h-9 w-auto md:h-10 transition-opacity"
+            className="h-14 w-auto md:h-16 transition-opacity"
           />
         </a>
 
