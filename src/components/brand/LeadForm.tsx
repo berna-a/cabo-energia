@@ -28,9 +28,10 @@ type FormValues = z.infer<typeof schema>;
 
 interface LeadFormProps {
   defaultClientType?: "residencial" | "empresarial";
+  source?: string;
 }
 
-export function LeadForm({ defaultClientType }: LeadFormProps) {
+export function LeadForm({ defaultClientType, source = "website_homepage" }: LeadFormProps) {
   const [submitted, setSubmitted] = React.useState(false);
   const [submitError, setSubmitError] = React.useState<string | null>(null);
 
@@ -53,7 +54,7 @@ export function LeadForm({ defaultClientType }: LeadFormProps) {
       if (!isSupabaseConfigured() || !supabase) {
         // Permite testar a UI sem credenciais. Marcar como sucesso visual.
         // eslint-disable-next-line no-console
-        console.warn("[LeadForm] Supabase não configurado — submissão simulada.", values);
+        console.warn("[LeadForm] Supabase não configurado — submissão simulada.", { ...values, source });
         setSubmitted(true);
         return;
       }
@@ -62,7 +63,7 @@ export function LeadForm({ defaultClientType }: LeadFormProps) {
         name: values.name,
         phone: values.phone,
         client_type: values.client_type,
-        source: "website_homepage",
+        source,
         status: "new_lead",
       });
 

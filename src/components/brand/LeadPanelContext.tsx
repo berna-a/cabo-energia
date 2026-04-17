@@ -5,7 +5,7 @@ import { LeadForm } from "./LeadForm";
 type ClientType = "residencial" | "empresarial" | undefined;
 
 interface LeadPanelContextValue {
-  openLeadPanel: (defaults?: { clientType?: ClientType }) => void;
+  openLeadPanel: (defaults?: { clientType?: ClientType; source?: string }) => void;
   closeLeadPanel: () => void;
 }
 
@@ -14,10 +14,12 @@ const LeadPanelContext = React.createContext<LeadPanelContextValue | null>(null)
 export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
   const [defaultClientType, setDefaultClientType] = React.useState<ClientType>(undefined);
+  const [source, setSource] = React.useState<string>("website_homepage");
 
   const openLeadPanel = React.useCallback(
-    (defaults?: { clientType?: ClientType }) => {
+    (defaults?: { clientType?: ClientType; source?: string }) => {
       setDefaultClientType(defaults?.clientType);
+      setSource(defaults?.source ?? "website_homepage");
       setOpen(true);
     },
     []
@@ -34,7 +36,7 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
         title="Pedir Estudo de Poupança"
         description="Preencha os seus dados. Contactamos em até 24 horas — sem compromisso."
       >
-        <LeadForm defaultClientType={defaultClientType} />
+        <LeadForm defaultClientType={defaultClientType} source={source} />
       </SlideOverPanel>
     </LeadPanelContext.Provider>
   );
