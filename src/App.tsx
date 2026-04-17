@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LeadPanelProvider } from "@/components/brand/LeadPanelContext";
 import Index from "./pages/Index.tsx";
+import Residencial from "./pages/Residencial.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App = () => (
         <LeadPanelProvider>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/residencial" element={<Residencial />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
