@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
 import { useLeadPanel } from "./LeadPanelContext";
+import logoBranco from "@/assets/logo-branco.png";
+import logoCor from "@/assets/logo-cor.png";
 
 const links = [
   { label: "Soluções", href: "#solucoes" },
@@ -31,22 +32,12 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center justify-between md:h-20">
-        <a
-          href="#"
-          className={cn(
-            "flex items-center gap-2 font-display text-lg font-semibold tracking-tight transition-colors",
-            scrolled ? "text-ink" : "text-white"
-          )}
-        >
-          <span
-            className={cn(
-              "flex size-8 items-center justify-center rounded-pill transition-colors",
-              scrolled ? "bg-brand-green text-white" : "bg-white/15 text-brand-yellow backdrop-blur"
-            )}
-          >
-            <Sun className="size-4" />
-          </span>
-          CABO <span className="text-brand-yellow">ENERGIA</span>
+        <a href="#" aria-label="CABO ENERGIA" className="flex items-center">
+          <img
+            src={scrolled ? logoCor : logoBranco}
+            alt="CABO ENERGIA"
+            className="h-9 w-auto md:h-10 transition-opacity"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
