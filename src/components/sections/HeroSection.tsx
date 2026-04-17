@@ -25,30 +25,41 @@ export function HeroSection() {
         loading="eager"
         fetchPriority="high"
       />
-      {/* Overlay reforçado à esquerda para legibilidade do headline branco */}
+      {/* Soft bottom-weighted overlay so the photo breathes in the upper half */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(100deg, hsl(var(--brand-green-deep) / 0.85) 0%, hsl(var(--brand-green-deep) / 0.55) 45%, hsl(var(--brand-green-deep) / 0.2) 100%)",
+            "linear-gradient(to top, hsl(var(--brand-green-deep) / 0.75) 0%, hsl(var(--brand-green-deep) / 0.15) 60%, hsl(var(--brand-green-deep) / 0.05) 100%)",
         }}
       />
 
-      <div className="container flex min-h-[100svh] flex-col justify-between pt-28 pb-10 md:pt-32 md:pb-14">
-        <div ref={ref} className="reveal flex max-w-[680px] flex-col gap-7 pt-8 md:pt-16">
-          <TrustBadge tone="light">Energia Solar em Cabo Verde</TrustBadge>
+      <div ref={ref} className="reveal relative min-h-[100svh]">
+        {/* Headline — bottom-left */}
+        <h1
+          className="absolute left-6 right-6 bottom-40 text-white font-extrabold md:left-12 md:right-auto md:bottom-28 md:max-w-[14ch]"
+          style={{
+            fontSize: "clamp(3.5rem, 8vw, 6rem)",
+            lineHeight: 0.95,
+            fontWeight: 800,
+            letterSpacing: "-0.035em",
+          }}
+        >
+          Cabo Verde<br />não pode parar.
+        </h1>
 
-          <h1 className="text-display text-white">
-            Cabo Verde<br />não pode parar.
-          </h1>
-
-          <p className="text-body-lg max-w-[520px] text-white/85">
+        {/* CTAs — bottom-right on desktop, stacked under headline on mobile */}
+        <div className="absolute left-6 right-6 bottom-20 flex flex-col gap-3 md:left-auto md:right-12 md:bottom-28 md:items-end md:max-w-[420px]">
+          <p className="hidden md:block text-right text-white/85 text-body-lg">
             A CABO ENERGIA protege a sua casa e o seu negócio com soluções
             solares completas, stock local e processo claro.
           </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <p className="md:hidden text-white/85 text-body-lg">
+            A CABO ENERGIA protege a sua casa e o seu negócio com soluções
+            solares completas.
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row md:flex-row md:justify-end">
             <PillButton size="lg" variant="primary" onClick={() => openLeadPanel()}>
               Pedir Estudo de Poupança
             </PillButton>
@@ -61,7 +72,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5 pt-12 md:gap-3">
+        {/* Trust pills — full-width centered just above the fold */}
+        <div className="absolute inset-x-0 bottom-6 flex flex-wrap items-center justify-center gap-2.5 px-6 md:gap-3">
           {trustPills.map((p) => (
             <TrustBadge key={p} tone="light">
               {p}
