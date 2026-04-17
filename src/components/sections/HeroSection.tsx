@@ -34,11 +34,8 @@ export function HeroSection() {
       >
         {/* Bottom-anchored two-column layout */}
         <div className="absolute inset-x-6 bottom-14 flex flex-col gap-10 md:inset-x-12 md:flex-row md:items-end md:justify-between md:gap-12">
-          {/* Left: subtext + headline */}
+          {/* Left: headline */}
           <div style={{ maxWidth: "600px" }}>
-            <p className="mb-5 text-sm text-white/85 md:text-base">
-              Soluções solares completas, stock local e processo claro.
-            </p>
             <h1
               className="font-extrabold text-white whitespace-normal lg:whitespace-nowrap"
               style={{
