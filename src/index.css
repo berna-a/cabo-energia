@@ -96,15 +96,15 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-feature-settings: 'ss01', 'cv11';
-  }
-  h1, h2, h3, h4 {
-    font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
-    font-feature-settings: 'ss01';
-    letter-spacing: -0.02em;
-  }
+  @apply bg-background text-foreground antialiased;
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-feature-settings: 'ss01';
+}
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 }
 
 @layer utilities {
