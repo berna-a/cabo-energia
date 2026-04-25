@@ -1,11 +1,22 @@
+import * as React from "react";
+import { Zap } from "lucide-react";
 import { PillButton } from "@/components/brand/PillButton";
-import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import heroImage from "@/assets/hero-bg.png";
 
 export function HeroSection() {
-  const { openLeadPanel } = useLeadPanel();
   const ref = useRevealOnScroll<HTMLDivElement>();
+  const [igniting, setIgniting] = React.useState(false);
+
+  const handleIgnite = () => {
+    if (igniting) return;
+    setIgniting(true);
+    window.setTimeout(() => {
+      const el = document.getElementById("simulador");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 520);
+    window.setTimeout(() => setIgniting(false), 1100);
+  };
 
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden text-white">
@@ -72,8 +83,27 @@ export function HeroSection() {
 
           {/* Direita: CTA */}
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
-            <PillButton size="lg" variant="white" onClick={() => openLeadPanel()}>
-              Pedir Estudo de Poupança
+            <PillButton
+              size="lg"
+              variant="power"
+              onClick={handleIgnite}
+              data-ignite={igniting ? "true" : undefined}
+              aria-label="Ligar Cabo — começar a sua simulação"
+              className="group"
+            >
+              <span
+                aria-hidden
+                className={
+                  "pointer-events-none absolute inset-y-0 left-0 w-1/3 " +
+                  "bg-[linear-gradient(110deg,transparent,hsl(var(--brand-yellow)/0.6),transparent)] " +
+                  "opacity-0 " +
+                  (igniting
+                    ? "animate-spark-sweep "
+                    : "group-hover:opacity-100 group-hover:animate-spark-sweep")
+                }
+              />
+              <Zap className="relative z-10 transition-transform duration-300 group-hover:-rotate-12" />
+              <span className="relative z-10">Ligar Cabo</span>
             </PillButton>
           </div>
 

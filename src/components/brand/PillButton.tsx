@@ -20,6 +20,16 @@ const pillVariants = cva(
           "bg-transparent text-brand-green border border-brand-green/30 hover:bg-brand-green hover:text-white",
         "solid-green":
           "bg-brand-green text-white hover:bg-brand-green-deep",
+        power:
+          "relative overflow-hidden text-white tracking-wide " +
+          "bg-[linear-gradient(110deg,hsl(var(--brand-green-deep))_0%,hsl(var(--brand-green))_45%,hsl(var(--brand-yellow))_55%,hsl(var(--brand-yellow-deep))_100%)] " +
+          "bg-[length:220%_100%] bg-[position:100%_50%] " +
+          "shadow-[0_10px_28px_-12px_hsl(var(--brand-green-deep)/0.55)] " +
+          "transition-[background-position,box-shadow,transform] duration-500 ease-out " +
+          "hover:bg-[position:0%_50%] hover:text-brand-green-deep " +
+          "hover:shadow-[0_0_0_4px_hsl(var(--brand-yellow)/0.18),0_18px_42px_-14px_hsl(var(--brand-yellow)/0.55)] " +
+          "active:scale-[0.98] " +
+          "data-[ignite=true]:animate-ignite data-[ignite=true]:text-brand-green-deep",
       },
       size: {
         md: "h-11 px-5 text-sm",
