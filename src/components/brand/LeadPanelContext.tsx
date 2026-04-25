@@ -33,7 +33,7 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
       <SlideOverPanel
         open={open}
         onOpenChange={setOpen}
-        title="Pedir Estudo de Poupança"
+        title="Ligar Cabo"
         description="Preencha os seus dados. Contactamos em até 24 horas — sem compromisso."
       >
         <LeadForm defaultClientType={defaultClientType} source={source} />

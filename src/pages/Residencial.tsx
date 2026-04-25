@@ -115,7 +115,7 @@ const Residencial = () => {
                     openLeadPanel({ clientType: "residencial", source: SOURCE })
                   }
                 >
-                  Pedir Estudo de Poupança
+                  Ligar Cabo
                 </PillButton>
                 <PillButton size="lg" variant="outline-light" asChild>
                   <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
@@ -291,7 +291,7 @@ const Residencial = () => {
                   openLeadPanel({ clientType: "residencial", source: SOURCE })
                 }
               >
-                Pedir Estudo de Poupança
+                Ligar Cabo
               </PillButton>
               <PillButton size="lg" variant="outline-light" asChild>
                 <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
