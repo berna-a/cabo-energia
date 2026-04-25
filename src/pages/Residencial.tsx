@@ -1,8 +1,8 @@
 import { MessageCircle, Sun, Battery, Wrench, Cable, Layers, HardHat, Zap, ShieldCheck, PiggyBank } from "lucide-react";
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
-import { ImagePlaceholder } from "@/components/brand/ImagePlaceholder";
 import { PillButton } from "@/components/brand/PillButton";
+import heroResidencial from "@/assets/hero-residencial.png";
 import { TrustBadge } from "@/components/brand/TrustBadge";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { StatCard } from "@/components/brand/StatCard";
@@ -72,7 +72,13 @@ const Residencial = () => {
       <main>
         {/* HERO */}
         <section className="relative isolate overflow-hidden text-white" style={{ height: "70vh", minHeight: 560 }}>
-          <ImagePlaceholder className="absolute inset-0 -z-20 h-full w-full" />
+          <img
+            src={heroResidencial}
+            alt="Casa em Cabo Verde com painéis solares ao pôr do sol"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+            loading="eager"
+            fetchPriority="high"
+          />
           <div
             aria-hidden
             className="absolute inset-0 -z-10"
