@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Zap } from "lucide-react";
 import { PillButton } from "@/components/brand/PillButton";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import heroImage from "@/assets/hero-bg.png";
+import caboWordmark from "@/assets/cabo-wordmark.png";
 
 export function HeroSection() {
   const ref = useRevealOnScroll<HTMLDivElement>();
@@ -102,9 +102,14 @@ export function HeroSection() {
                     : "group-hover:opacity-100 group-hover:animate-spark-sweep")
                 }
               />
-              <Zap className="relative z-10 transition-transform duration-300 group-hover:-rotate-12" />
-              <span className="relative z-10">
-                Ligar Cab<span className="text-brand-yellow group-hover:text-brand-green-deep transition-colors duration-300">O</span>
+              <span className="relative z-10 inline-flex items-baseline leading-none">
+                <span>LIGAR</span>
+                <img
+                  src={caboWordmark}
+                  alt="CABO"
+                  className="ml-0.5 inline-block h-[0.85em] w-auto translate-y-[0.08em] select-none"
+                  draggable={false}
+                />
               </span>
             </PillButton>
           </div>
