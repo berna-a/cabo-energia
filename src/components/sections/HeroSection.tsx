@@ -3,7 +3,7 @@ import { PillButton } from "@/components/brand/PillButton";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { WHATSAPP_URL } from "@/lib/constants";
-import heroImage from "@/assets/hero-living.jpg";
+import heroImage from "@/assets/hero-residencial.png";
 
 export function HeroSection() {
   const { openLeadPanel } = useLeadPanel();
