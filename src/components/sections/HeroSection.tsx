@@ -53,7 +53,7 @@ export function HeroSection() {
               style={{
                 fontSize: "clamp(3.2rem, 7.5vw, 6.5rem)",
                 lineHeight: 0.91,
-                fontWeight: 900,
+                fontWeight: 600,
                 letterSpacing: "-0.02em",
                 textTransform: "uppercase",
               }}
