@@ -28,28 +28,34 @@ export function Navbar() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-all duration-300",
-        scrolled
-          ? "bg-white/85 backdrop-blur-md border-b border-border"
-          : "bg-transparent shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35)]"
+        scrolled ? "bg-white/85 backdrop-blur-md border-b border-border" : "bg-transparent"
       )}
     >
-      <div className="container flex h-20 items-center justify-between md:h-24">
+      <div
+        className={cn(
+          "container flex items-center justify-between transition-all duration-300",
+          scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
+        )}
+      >
         {/* Left: logo */}
         <Link to="/" aria-label="CABO ENERGIA" className="flex items-center shrink-0">
           <img
             src={scrolled ? logoCor : logoBranco}
             alt="CABO ENERGIA"
-            className="h-14 w-auto md:h-16 transition-opacity"
+            className={cn(
+              "w-auto transition-all duration-300",
+              scrolled ? "h-11 md:h-12" : "h-14 md:h-16"
+            )}
           />
         </Link>
 
         {/* Center: pill nav */}
         <nav
           className={cn(
-            "hidden md:flex items-center gap-1 rounded-pill transition-colors",
+            "hidden md:flex items-center gap-1 rounded-pill transition-all duration-300",
             scrolled
               ? "bg-surface-muted border border-border"
-              : "border border-white/25 backdrop-blur-md"
+              : "border border-white/25 backdrop-blur-md shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]"
           )}
           style={
             scrolled
