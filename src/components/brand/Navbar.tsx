@@ -43,8 +43,8 @@ export function Navbar() {
             src={scrolled ? logoCor : logoBranco}
             alt="CABO ENERGIA"
             className={cn(
-              "w-auto transition-all duration-300",
-              scrolled ? "h-6 md:h-7" : "h-[31px] md:h-[36px]"
+              "block w-auto transition-all duration-300",
+              scrolled ? "h-6 md:h-7" : "h-[26px] md:h-[31px]"
             )}
           />
         </Link>
