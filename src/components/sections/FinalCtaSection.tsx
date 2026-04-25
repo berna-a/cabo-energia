@@ -23,7 +23,7 @@ export function FinalCtaSection() {
         </p>
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <PillButton size="lg" variant="primary" onClick={() => openLeadPanel()}>
-            Pedir Estudo de Poupança
+            Ligar Cabo
           </PillButton>
           <PillButton size="lg" variant="ghost-dark" asChild>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">

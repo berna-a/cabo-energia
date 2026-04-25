@@ -59,7 +59,7 @@ export function PainSection() {
               onClick={() => openLeadPanel()}
               className="self-start"
             >
-              Pedir Estudo de Poupança
+              Ligar Cabo
             </PillButton>
           </StatCard>
         </div>

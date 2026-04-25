@@ -145,7 +145,7 @@ export function Navbar() {
             className="shrink-0"
             tabIndex={scrolled ? 0 : -1}
           >
-            Pedir Estudo
+            Ligar Cabo
           </PillButton>
         </div>
       </div>

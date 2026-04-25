@@ -76,7 +76,7 @@ export function KitCard({
           openLeadPanel({ clientType: "residencial", source })
         }
       >
-        Pedir Estudo de Poupança
+        Ligar Cabo
       </PillButton>
     </div>
   );
