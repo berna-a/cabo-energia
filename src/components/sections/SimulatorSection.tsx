@@ -131,13 +131,17 @@ export function SimulatorSection() {
       />
 
       <div ref={ref} className="reveal container relative flex flex-col gap-12">
-        <SectionHeader
-          tone="light"
-          badgeTone="yellow"
-          overline="Simulador de poupança"
-          headline="Descubra quanto pode poupar."
-          subhead="Em menos de 1 minuto, veja uma estimativa para a sua casa ou negócio."
-        />
+        <div className="flex flex-col gap-5">
+          <SectionHeader
+            tone="light"
+            badgeTone="yellow"
+            overline="Simulador de poupança"
+            headline="Descubra quanto pode poupar."
+          />
+          <p className="max-w-2xl text-body-lg text-white/70">
+            Em menos de 1 minuto, veja uma estimativa para a sua casa ou negócio.
+          </p>
+        </div>
 
         <div className="grid gap-6 lg:grid-cols-[1.05fr_1fr]">
           {/* COLUNA ESQUERDA — Simulador */}
