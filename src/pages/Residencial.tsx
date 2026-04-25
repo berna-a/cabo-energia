@@ -72,7 +72,13 @@ const Residencial = () => {
       <main>
         {/* HERO */}
         <section className="relative isolate overflow-hidden text-white" style={{ height: "70vh", minHeight: 560 }}>
-          <ImagePlaceholder className="absolute inset-0 -z-20 h-full w-full" />
+          <img
+            src={heroResidencial}
+            alt="Casa em Cabo Verde com painéis solares ao pôr do sol"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+            loading="eager"
+            fetchPriority="high"
+          />
           <div
             aria-hidden
             className="absolute inset-0 -z-10"
