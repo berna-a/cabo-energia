@@ -128,15 +128,26 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Right: CTA */}
-        <PillButton
-          size="md"
-          variant="white"
-          onClick={() => openLeadPanel()}
-          className="shrink-0"
+        {/* Right: CTA — only visible when scrolled (white navbar) */}
+        <div
+          className={cn(
+            "transition-all duration-300",
+            scrolled
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-1 pointer-events-none"
+          )}
+          aria-hidden={!scrolled}
         >
-          Pedir Estudo
-        </PillButton>
+          <PillButton
+            size="md"
+            variant="primary"
+            onClick={() => openLeadPanel()}
+            className="shrink-0"
+            tabIndex={scrolled ? 0 : -1}
+          >
+            Pedir Estudo
+          </PillButton>
+        </div>
       </div>
     </header>
   );
