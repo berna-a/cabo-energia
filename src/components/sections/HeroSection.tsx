@@ -1,8 +1,6 @@
-import { MessageCircle } from "lucide-react";
 import { PillButton } from "@/components/brand/PillButton";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
-import { WHATSAPP_URL } from "@/lib/constants";
 import heroImage from "@/assets/hero-bg.png";
 
 export function HeroSection() {
@@ -20,13 +18,13 @@ export function HeroSection() {
         fetchPriority="high"
       />
 
-      {/* Overlay */}
+      {/* Overlay — radial elliptical fade from bottom-left */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.08) 100%)",
+            "radial-gradient(ellipse 110% 130% at 0% 100%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.1) 80%, rgba(0,0,0,0) 100%)",
         }}
       />
 
@@ -72,16 +70,10 @@ export function HeroSection() {
             </p>
           </div>
 
-          {/* Direita: CTAs */}
+          {/* Direita: CTA */}
           <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
             <PillButton size="lg" variant="white" onClick={() => openLeadPanel()}>
               Pedir Estudo de Poupança
-            </PillButton>
-            <PillButton size="lg" variant="outline-light" asChild>
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                <MessageCircle className="h-4 w-4" />
-                Falar no WhatsApp
-              </a>
             </PillButton>
           </div>
 
