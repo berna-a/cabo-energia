@@ -102,9 +102,14 @@ export function HeroSection() {
                     : "group-hover:opacity-100 group-hover:animate-spark-sweep")
                 }
               />
-              <Zap className="relative z-10 transition-transform duration-300 group-hover:-rotate-12" />
-              <span className="relative z-10">
-                Ligar Cab<span className="text-brand-yellow group-hover:text-brand-green-deep transition-colors duration-300">O</span>
+              <span className="relative z-10 inline-flex items-baseline leading-none">
+                <span>LIGAR</span>
+                <img
+                  src={caboWordmark}
+                  alt="CABO"
+                  className="ml-0.5 inline-block h-[0.85em] w-auto translate-y-[0.08em] select-none"
+                  draggable={false}
+                />
               </span>
             </PillButton>
           </div>
