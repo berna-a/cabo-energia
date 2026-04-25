@@ -42,9 +42,10 @@ export function Navbar() {
           <img
             src={scrolled ? logoCor : logoBranco}
             alt="CABO ENERGIA"
-            className="w-auto transition-all duration-300"
-            style={{ height: scrolled ? undefined : "2.34rem" }}
-            // colored: 24/28px (h-6 md:h-7); white: +30% ≈ 31/36px
+            className={cn(
+              "w-auto transition-all duration-300",
+              scrolled ? "h-6 md:h-7" : "h-[31px] md:h-[36px]"
+            )}
           />
         </Link>
 
