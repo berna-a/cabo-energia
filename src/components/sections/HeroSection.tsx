@@ -103,7 +103,9 @@ export function HeroSection() {
                 }
               />
               <Zap className="relative z-10 transition-transform duration-300 group-hover:-rotate-12" />
-              <span className="relative z-10">Ligar Cabo</span>
+              <span className="relative z-10">
+                Ligar Cab<span className="text-brand-yellow group-hover:text-brand-green-deep transition-colors duration-300">O</span>
+              </span>
             </PillButton>
           </div>
 
