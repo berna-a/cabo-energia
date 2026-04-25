@@ -1,15 +1,7 @@
 import * as React from "react";
 import { SlideOverPanel } from "./SlideOverPanel";
 import { LeadForm } from "./LeadForm";
-
-type ClientType = "residencial" | "empresarial" | undefined;
-
-interface LeadPanelContextValue {
-  openLeadPanel: (defaults?: { clientType?: ClientType; source?: string }) => void;
-  closeLeadPanel: () => void;
-}
-
-const LeadPanelContext = React.createContext<LeadPanelContextValue | null>(null);
+import { LeadPanelContext, type ClientType } from "./leadPanelContextValue";
 
 export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
@@ -42,8 +34,4 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useLeadPanel() {
-  const ctx = React.useContext(LeadPanelContext);
-  if (!ctx) throw new Error("useLeadPanel deve ser usado dentro de LeadPanelProvider");
-  return ctx;
-}
+export { useLeadPanel } from "./useLeadPanel";
