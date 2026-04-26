@@ -84,32 +84,34 @@ export function HeroSection() {
 
             {/* Direita: CTA */}
             <div className="relative flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
-              {/* Soft animated glow halo behind CTA */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-brand-yellow/40 blur-3xl animate-glow-pulse"
-              />
-              <PillButton
-                size="lg"
-                variant="power"
-                onClick={handleIgnite}
-                data-ignite={igniting ? "true" : undefined}
-                aria-label="Ligar Cabo — começar a sua simulação"
-                className="group"
-              >
-                <span
+              <div className="relative inline-flex">
+                {/* Glow that hugs the CTA contour */}
+                <div
                   aria-hidden
-                  className={
-                    "pointer-events-none absolute inset-y-0 left-0 w-1/3 " +
-                    "bg-[linear-gradient(110deg,transparent,hsl(var(--brand-yellow)/0.6),transparent)] " +
-                    "opacity-0 " +
-                    (igniting
-                      ? "animate-spark-sweep "
-                      : "group-hover:opacity-100 group-hover:animate-spark-sweep")
-                  }
+                  className="pointer-events-none absolute inset-0 -z-10 rounded-pill animate-glow-pulse"
                 />
-              <LigarCaboLabel />
-              </PillButton>
+                <PillButton
+                  size="lg"
+                  variant="power"
+                  onClick={handleIgnite}
+                  data-ignite={igniting ? "true" : undefined}
+                  aria-label="Ligar Cabo — começar a sua simulação"
+                  className="group"
+                >
+                  <span
+                    aria-hidden
+                    className={
+                      "pointer-events-none absolute inset-y-0 left-0 w-1/3 " +
+                      "bg-[linear-gradient(110deg,transparent,hsl(var(--brand-yellow)/0.6),transparent)] " +
+                      "opacity-0 " +
+                      (igniting
+                        ? "animate-spark-sweep "
+                        : "group-hover:opacity-100 group-hover:animate-spark-sweep")
+                    }
+                  />
+                  <LigarCaboLabel />
+                </PillButton>
+              </div>
             </div>
 
           </div>
