@@ -71,13 +71,13 @@ export function KitCard({
 
       <PillButton
         size="lg"
-        variant={highlighted ? "primary" : "solid-green"}
+        variant="power"
         className="w-full"
         onClick={() =>
           openLeadPanel({ clientType: "residencial", source })
         }
       >
-        Ligar Cabo
+        <LigarCaboLabel />
       </PillButton>
     </div>
   );
