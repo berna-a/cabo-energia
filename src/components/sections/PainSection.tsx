@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { StatCard } from "@/components/brand/StatCard";
 import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
