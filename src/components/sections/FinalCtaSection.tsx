@@ -1,5 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { WHATSAPP_URL } from "@/lib/constants";
