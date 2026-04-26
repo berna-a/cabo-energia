@@ -8,7 +8,7 @@ interface LigarCaboLabelProps {
 export function LigarCaboLabel({ className }: LigarCaboLabelProps) {
   return (
     <span className={cn("relative z-10 inline-flex items-baseline leading-none", className)}>
-      <span>LIGAR</span>
+      <span className="text-white">LIGAR</span>
       <img
         src={caboWordmark}
         alt="CABO"
