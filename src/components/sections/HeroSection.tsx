@@ -77,8 +77,8 @@ export function HeroSection() {
                 className="mt-5 max-w-md leading-relaxed text-white/70"
                 style={{ fontSize: "1rem", fontWeight: 400 }}
               >
-                Soluções completas para casas e negócios — stock local,
-                instalação profissional, suporte incluído.
+                Painéis e backup chave-na-mão para casas e negócios em todas as ilhas.
+                Nunca mais ficar às escuras.
               </p>
             </div>
 
