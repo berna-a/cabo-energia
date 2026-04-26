@@ -1,8 +1,8 @@
 import * as React from "react";
 import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import heroImage from "@/assets/hero-bg.png";
-import caboWordmark from "@/assets/cabo-wordmark.png";
 
 export function HeroSection() {
   const ref = useRevealOnScroll<HTMLDivElement>();
