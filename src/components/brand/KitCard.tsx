@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
+import { LigarCaboLabel } from "./LigarCaboLabel";
 import { useLeadPanel } from "./LeadPanelContext";
 
 interface KitCardProps {
