@@ -41,79 +41,81 @@ export function HeroSection() {
 
       <div
         ref={ref}
-        className="reveal relative min-h-[100svh] px-6 pb-14 md:px-12 md:pb-16"
+        className="reveal relative min-h-[100svh]"
       >
-        <div className="absolute inset-x-6 bottom-14 flex flex-col gap-8 md:inset-x-12 md:bottom-16 md:flex-row md:items-end md:justify-between">
+        <div className="container relative min-h-[100svh] px-6 pb-14 md:px-6 md:pb-16">
+          <div className="absolute inset-x-6 bottom-14 flex flex-col gap-8 md:inset-x-6 md:bottom-16 md:flex-row md:items-end md:justify-between">
 
-          {/* Esquerda: badge + headline + subtítulo */}
-          <div className="max-w-[90%] md:max-w-[62%]">
+            {/* Esquerda: badge + headline + subtítulo */}
+            <div className="max-w-[90%] md:max-w-[62%]">
 
-            {/* Badge */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
-              <span className="text-overline text-white/80">
-                Energia Solar · Cabo Verde
-              </span>
+              {/* Badge */}
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+                <span className="text-overline text-white/80">
+                  Energia Solar · Cabo Verde
+                </span>
+              </div>
+
+              {/* Headline — duas linhas, Montserrat Black 900, all caps */}
+              <h1
+                className="font-display text-white"
+                style={{
+                  fontSize: "clamp(3.2rem, 7.5vw, 6.5rem)",
+                  lineHeight: 0.91,
+                  fontWeight: 600,
+                  letterSpacing: "-0.02em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Cabo Verde<br />
+                Sempre Ligado.
+              </h1>
+
+              {/* Subtítulo */}
+              <p
+                className="mt-5 max-w-md leading-relaxed text-white/70"
+                style={{ fontSize: "1rem", fontWeight: 400 }}
+              >
+                Soluções completas para casas e negócios — stock local,
+                instalação profissional, suporte incluído.
+              </p>
             </div>
 
-            {/* Headline — duas linhas, Montserrat Black 900, all caps */}
-            <h1
-              className="font-display text-white"
-              style={{
-                fontSize: "clamp(3.2rem, 7.5vw, 6.5rem)",
-                lineHeight: 0.91,
-                fontWeight: 600,
-                letterSpacing: "-0.02em",
-                textTransform: "uppercase",
-              }}
-            >
-              Cabo Verde<br />
-              Sempre Ligado.
-            </h1>
-
-            {/* Subtítulo */}
-            <p
-              className="mt-5 max-w-md leading-relaxed text-white/70"
-              style={{ fontSize: "1rem", fontWeight: 400 }}
-            >
-              Soluções completas para casas e negócios — stock local,
-              instalação profissional, suporte incluído.
-            </p>
-          </div>
-
-          {/* Direita: CTA */}
-          <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
-            <PillButton
-              size="lg"
-              variant="power"
-              onClick={handleIgnite}
-              data-ignite={igniting ? "true" : undefined}
-              aria-label="Ligar Cabo — começar a sua simulação"
-              className="group"
-            >
-              <span
-                aria-hidden
-                className={
-                  "pointer-events-none absolute inset-y-0 left-0 w-1/3 " +
-                  "bg-[linear-gradient(110deg,transparent,hsl(var(--brand-yellow)/0.6),transparent)] " +
-                  "opacity-0 " +
-                  (igniting
-                    ? "animate-spark-sweep "
-                    : "group-hover:opacity-100 group-hover:animate-spark-sweep")
-                }
-              />
-              <span className="relative z-10 inline-flex items-baseline leading-none">
-                <span>LIGAR</span>
-                <img
-                  src={caboWordmark}
-                  alt="CABO"
-                  className="ml-0.5 inline-block h-[0.85em] w-auto translate-y-[0.08em] select-none"
-                  draggable={false}
+            {/* Direita: CTA */}
+            <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
+              <PillButton
+                size="lg"
+                variant="power"
+                onClick={handleIgnite}
+                data-ignite={igniting ? "true" : undefined}
+                aria-label="Ligar Cabo — começar a sua simulação"
+                className="group"
+              >
+                <span
+                  aria-hidden
+                  className={
+                    "pointer-events-none absolute inset-y-0 left-0 w-1/3 " +
+                    "bg-[linear-gradient(110deg,transparent,hsl(var(--brand-yellow)/0.6),transparent)] " +
+                    "opacity-0 " +
+                    (igniting
+                      ? "animate-spark-sweep "
+                      : "group-hover:opacity-100 group-hover:animate-spark-sweep")
+                  }
                 />
-              </span>
-            </PillButton>
-          </div>
+                <span className="relative z-10 inline-flex items-baseline leading-none">
+                  <span>LIGAR</span>
+                  <img
+                    src={caboWordmark}
+                    alt="CABO"
+                    className="ml-0.5 inline-block h-[0.85em] w-auto translate-y-[0.08em] select-none"
+                    draggable={false}
+                  />
+                </span>
+              </PillButton>
+            </div>
 
+          </div>
         </div>
       </div>
     </section>
