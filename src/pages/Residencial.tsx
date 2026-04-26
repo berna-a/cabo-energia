@@ -2,6 +2,7 @@ import { MessageCircle, Sun, Battery, Wrench, Cable, Layers, HardHat, Zap, Shiel
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
 import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import heroResidencial from "@/assets/hero-residencial.png";
 import { TrustBadge } from "@/components/brand/TrustBadge";
 import { SectionHeader } from "@/components/brand/SectionHeader";
