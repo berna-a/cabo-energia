@@ -111,12 +111,12 @@ const Residencial = () => {
               <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row">
                 <PillButton
                   size="lg"
-                  variant="white"
+                  variant="power"
                   onClick={() =>
                     openLeadPanel({ clientType: "residencial", source: SOURCE })
                   }
                 >
-                  Ligar Cabo
+                  <LigarCaboLabel />
                 </PillButton>
                 <PillButton size="lg" variant="outline-light" asChild>
                   <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
