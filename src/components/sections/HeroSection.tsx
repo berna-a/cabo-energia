@@ -84,10 +84,10 @@ export function HeroSection() {
 
             {/* Direita: CTA */}
             <div className="relative flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
-              {/* Soft glow halo behind CTA */}
+              {/* Soft yellow glow halo behind CTA (always visible at rest) */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute -inset-8 -z-10 rounded-full bg-brand-yellow/30 blur-3xl opacity-70"
+                className="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-brand-yellow/50 blur-3xl"
               />
               <PillButton
                 size="lg"
