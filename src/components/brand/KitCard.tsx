@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
+import { LigarCaboLabel } from "./LigarCaboLabel";
 import { useLeadPanel } from "./LeadPanelContext";
 
 interface KitCardProps {
@@ -70,13 +71,13 @@ export function KitCard({
 
       <PillButton
         size="lg"
-        variant={highlighted ? "primary" : "solid-green"}
+        variant="power"
         className="w-full"
         onClick={() =>
           openLeadPanel({ clientType: "residencial", source })
         }
       >
-        Ligar Cabo
+        <LigarCaboLabel />
       </PillButton>
     </div>
   );

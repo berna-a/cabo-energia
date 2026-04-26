@@ -2,6 +2,7 @@ import { MessageCircle, Sun, Battery, Wrench, Cable, Layers, HardHat, Zap, Shiel
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
 import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import heroResidencial from "@/assets/hero-residencial.png";
 import { TrustBadge } from "@/components/brand/TrustBadge";
 import { SectionHeader } from "@/components/brand/SectionHeader";
@@ -110,12 +111,12 @@ const Residencial = () => {
               <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row">
                 <PillButton
                   size="lg"
-                  variant="white"
+                  variant="power"
                   onClick={() =>
                     openLeadPanel({ clientType: "residencial", source: SOURCE })
                   }
                 >
-                  Ligar Cabo
+                  <LigarCaboLabel />
                 </PillButton>
                 <PillButton size="lg" variant="outline-light" asChild>
                   <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
@@ -286,12 +287,12 @@ const Residencial = () => {
             <div className="flex flex-col gap-3 sm:flex-row">
               <PillButton
                 size="lg"
-                variant="primary"
+                variant="power"
                 onClick={() =>
                   openLeadPanel({ clientType: "residencial", source: SOURCE })
                 }
               >
-                Ligar Cabo
+                <LigarCaboLabel />
               </PillButton>
               <PillButton size="lg" variant="outline-light" asChild>
                 <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">

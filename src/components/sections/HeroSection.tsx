@@ -1,8 +1,8 @@
 import * as React from "react";
 import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import heroImage from "@/assets/hero-bg.png";
-import caboWordmark from "@/assets/cabo-wordmark.png";
 
 export function HeroSection() {
   const ref = useRevealOnScroll<HTMLDivElement>();
@@ -103,15 +103,7 @@ export function HeroSection() {
                       : "group-hover:opacity-100 group-hover:animate-spark-sweep")
                   }
                 />
-                <span className="relative z-10 inline-flex items-baseline leading-none">
-                  <span>LIGAR</span>
-                  <img
-                    src={caboWordmark}
-                    alt="CABO"
-                    className="ml-0.5 inline-block h-[0.85em] w-auto translate-y-[0.08em] select-none"
-                    draggable={false}
-                  />
-                </span>
+              <LigarCaboLabel />
               </PillButton>
             </div>
 
