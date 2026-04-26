@@ -17,16 +17,12 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <LeadPanelProvider>
-          <div className="min-h-screen w-full bg-brand-green-deep">
-            <div className="mx-auto w-full max-w-[1920px] bg-background shadow-2xl">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/residencial" element={<Residencial />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
-          </div>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/residencial" element={<Residencial />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </LeadPanelProvider>
       </BrowserRouter>
     </TooltipProvider>
