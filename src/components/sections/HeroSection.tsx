@@ -24,7 +24,7 @@ export function HeroSection() {
       <img
         src={heroImage}
         alt="Família em casa com painéis solares"
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
         loading="eager"
         fetchPriority="high"
       />
@@ -77,8 +77,8 @@ export function HeroSection() {
                 className="mt-5 max-w-md leading-relaxed text-white/70"
                 style={{ fontSize: "1rem", fontWeight: 400 }}
               >
-                Soluções completas para casas e negócios — stock local,
-                instalação profissional, suporte incluído.
+                Painéis e backup chave-na-mão para casas e negócios em todas as ilhas.
+                Nunca mais ficar às escuras.
               </p>
             </div>
 
