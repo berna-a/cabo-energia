@@ -128,11 +128,11 @@ export default {
         "glow-pulse": {
           "0%, 100%": {
             opacity: "0.55",
-            boxShadow: "0 0 12px 2px hsl(var(--brand-yellow) / 0.55), 0 0 28px 6px hsl(var(--brand-yellow) / 0.35)",
+            boxShadow: "0 0 12px 2px hsl(var(--brand-yellow) / 0.275), 0 0 28px 6px hsl(var(--brand-yellow) / 0.175)",
           },
           "50%": {
             opacity: "1",
-            boxShadow: "0 0 18px 4px hsl(var(--brand-yellow) / 0.85), 0 0 44px 10px hsl(var(--brand-yellow) / 0.5)",
+            boxShadow: "0 0 18px 4px hsl(var(--brand-yellow) / 0.425), 0 0 44px 10px hsl(var(--brand-yellow) / 0.25)",
           },
         },
       },
