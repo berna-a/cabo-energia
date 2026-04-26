@@ -33,7 +33,7 @@ export function Navbar() {
     >
       <div
         className={cn(
-          "mx-auto flex w-full max-w-[1280px] items-center justify-between px-6 transition-all duration-300",
+          "container relative flex items-center justify-between transition-all duration-300",
           scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
         )}
       >
