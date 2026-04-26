@@ -55,12 +55,12 @@ export function PainSection() {
               A solução existe. E está disponível agora.
             </p>
             <PillButton
-              variant="primary"
+              variant="power"
               size="md"
               onClick={() => openLeadPanel()}
               className="self-start"
             >
-              Ligar Cabo
+              <LigarCaboLabel />
             </PillButton>
           </StatCard>
         </div>
