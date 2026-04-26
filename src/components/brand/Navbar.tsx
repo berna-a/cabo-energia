@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
+import { LigarCaboLabel } from "./LigarCaboLabel";
 import { useLeadPanel } from "./LeadPanelContext";
 import logoBranco from "@/assets/logo-branco.png";
 import logoCor from "@/assets/logo-cor.png";
