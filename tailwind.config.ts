@@ -125,6 +125,10 @@ export default {
           "60%":  { opacity: "1" },
           "100%": { opacity: "0.85" },
         },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.45", transform: "scale(1)" },
+          "50%":      { opacity: "0.85", transform: "scale(1.12)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -134,6 +138,7 @@ export default {
         ignite: "ignite 900ms cubic-bezier(0.22, 1, 0.36, 1)",
         "spark-sweep": "spark-sweep 900ms cubic-bezier(0.22, 1, 0.36, 1)",
         "lights-on": "lights-on 600ms ease-out forwards",
+        "glow-pulse": "glow-pulse 3.2s ease-in-out infinite",
       },
     },
   },
