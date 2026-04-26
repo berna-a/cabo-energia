@@ -52,7 +52,7 @@ export function Navbar() {
         {/* Center: pill nav */}
         <nav
           className={cn(
-            "hidden md:flex items-center gap-1 rounded-pill transition-all duration-300",
+            "absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex items-center gap-1 rounded-pill transition-all duration-300",
             scrolled
               ? "bg-surface-muted border border-border"
               : "border border-white/25 backdrop-blur-md shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]"
