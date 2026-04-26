@@ -9,7 +9,11 @@ export default {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "1280px",
+        sm: "100%",
+        md: "100%",
+        lg: "1120px",
+        xl: "1200px",
+        "2xl": "1200px",
       },
     },
     extend: {
