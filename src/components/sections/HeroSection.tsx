@@ -61,7 +61,7 @@ export function HeroSection() {
               <h1
                 className="font-display text-white"
                 style={{
-                  fontSize: "clamp(2.82rem, 6vw, 5.2rem)",
+                  fontSize: "clamp(3.24rem, 6vw, 5.2rem)",
                   lineHeight: 1.05,
                   fontWeight: 600,
                   letterSpacing: "0.02em",
