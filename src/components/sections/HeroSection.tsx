@@ -84,11 +84,7 @@ export function HeroSection() {
             {/* Direita: CTA */}
             <div className="relative flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
               <div className="relative inline-flex">
-                {/* Glow that hugs the CTA contour */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 -z-10 rounded-pill animate-glow-pulse"
-                />
+
                 <PillButton
                   size="lg"
                   variant="power"
