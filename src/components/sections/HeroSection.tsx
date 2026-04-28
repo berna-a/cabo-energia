@@ -53,7 +53,7 @@ export function HeroSection() {
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                 <span className="text-overline text-white/80">
-                  Energia Solar · Cabo Verde
+                  Energia à prova de apagões
                 </span>
               </div>
 
@@ -78,7 +78,6 @@ export function HeroSection() {
                 style={{ fontSize: "1rem", fontWeight: 400 }}
               >
                 Painéis e backup chave-na-mão para casas e negócios em todas as ilhas.
-                Nunca mais ficar às escuras.
               </p>
             </div>
 
