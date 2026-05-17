@@ -1,8 +1,8 @@
 const items = [
-  "Stock em Cabo Verde",
-  "Contacto em 24 horas",
-  "Processo 100% claro",
+  "Instalação chave-na-mão",
   "Logística inter-ilhas",
+  "Parceiro certificado Sunwaytech",
+  "Serviço pós-instalação incluído",
 ];
 
 export function Marquee() {
