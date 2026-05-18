@@ -1234,6 +1234,7 @@ function NavRow({ children }: { children: React.ReactNode }) {
         display: "flex",
         gap: 8,
         alignItems: "center",
+        justifyContent: "center",
         marginTop: 24,
       }}
     >
