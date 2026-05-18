@@ -1,6 +1,7 @@
 import { MessageCircle, Mail } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/constants";
 import logoCor from "@/assets/logo-cor.png";
+import ardoLogo from "@/assets/ardo-logo.svg";
 
 export function Footer() {
   return (
