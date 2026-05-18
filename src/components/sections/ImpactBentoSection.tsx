@@ -188,14 +188,14 @@ export function ImpactBentoSection() {
               >
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-8">
                   <h3
-                    style={{ color: DARK, fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
+                    style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
                   >
                     A sua casa, a sua própria rede.
                   </h3>
                   <p
                     style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0, maxWidth: 460 }}
                   >
-                    Produza a sua energia e faça parte do futuro sustentável das nossas ilhas.
+                    Produza a sua energia e faça parte do futuro sustentável de Cabo Verde
                   </p>
                 </div>
               </div>
