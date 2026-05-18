@@ -51,7 +51,7 @@ const plans: Plan[] = [
   },
 ];
 
-function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
+function PlanCard({ plan }: { plan: Plan }) {
   return (
     <article
       className="flex h-full flex-col rounded-2xl p-7"
