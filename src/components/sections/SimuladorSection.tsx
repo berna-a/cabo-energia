@@ -736,8 +736,8 @@ function Step3({
         }}
       />
       <div style={{ textAlign: "right" }}>
-        <div style={{ fontWeight: 700, fontSize: 28, color: "white" }}>{fmt(fatura)} CVE</div>
-        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>por mês</div>
+        <div style={{ fontWeight: 400, fontSize: 28, color: "white" }}>{fmt(fatura)} CVE</div>
+        <div style={{ fontWeight: 700, fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>por mês</div>
       </div>
 
       {seg === "casa" && (
