@@ -190,47 +190,104 @@ const Residencial = () => {
           </div>
         </section>
 
-        {/* SECTION 2: TWO KITS */}
-        <section className="bg-surface-muted py-20 md:py-28">
+        {/* SECTION 2: PLANOS RESIDENCIAIS */}
+        <section className="bg-white py-20 md:py-28" style={{ fontFamily: "Montserrat, sans-serif" }}>
           <div ref={kitsRef} className="reveal container flex flex-col gap-14">
-            <SectionHeader
-              align="center"
-              overline="As nossas soluções"
-              headline="Escolha o nível de proteção certo para a sua casa."
-              className="mx-auto"
-            />
+            <h2
+              className="font-bold tracking-tight max-w-3xl"
+              style={{ color: "#0D2B1F", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", lineHeight: 1.1 }}
+            >
+              Escolha o nível de proteção para a sua casa
+            </h2>
 
-            <div className="grid gap-8 md:grid-cols-2 md:gap-6 lg:gap-8">
-              <KitCard
-                name="Casa Basic"
-                tagline="O essencial para reduzir a fatura e garantir energia básica."
-                specs={[
-                  "6 painéis 585Wp",
-                  "Inversor híbrido 5kW",
-                  "Bateria lítio 5,12 kWh",
-                  "Produção: 14,9 kWh/dia",
-                ]}
-                monthlySavings="Poupança: ~10.000 CVE/mês"
-                promoPrice="469.926 CVE"
-                originalPrice="503.736 CVE"
-                source={SOURCE}
-              />
-              <KitCard
-                name="Casa Plus"
-                tagline="Proteção total para uma casa com mais consumo e mais autonomia."
-                specs={[
-                  "12 painéis 585Wp",
-                  "2 inversores 5kW",
-                  "2 baterias 5,12 kWh",
-                  "Produção: 29,8 kWh/dia",
-                ]}
-                monthlySavings="Poupança: ~20.000 CVE/mês"
-                promoPrice="772.028 CVE"
-                originalPrice="931.471 CVE"
-                badge="Mais escolhido"
-                highlighted
-                source={SOURCE}
-              />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Casa Tranquila",
+                  badge: "Proteção",
+                  badgeGold: false,
+                  m1: { value: "3k – 5k CVE", label: "Poupança" },
+                  m2: { value: "5.12 kWh", label: "Backup" },
+                  price: "240.000 CVE",
+                  filled: false,
+                },
+                {
+                  name: "Casa Autonomia",
+                  badge: "Popular",
+                  badgeGold: true,
+                  m1: { value: "6k – 8k CVE", label: "Poupança" },
+                  m2: { value: "Até 80%", label: "Redução" },
+                  price: "510.000 CVE",
+                  filled: true,
+                },
+                {
+                  name: "Casa Plena",
+                  badge: "Independência",
+                  badgeGold: false,
+                  m1: { value: "10k – 15k CVE", label: "Poupança" },
+                  m2: { value: "10.24 kWh", label: "Autonomia" },
+                  price: "730.000 CVE",
+                  filled: false,
+                },
+              ].map((plan) => (
+                <article
+                  key={plan.name}
+                  className="rounded-2xl bg-slate-50 p-8 flex flex-col gap-6"
+                  style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
+                >
+                  <div>
+                    <span
+                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                      style={
+                        plan.badgeGold
+                          ? { background: "#F5C842", color: "#0D2B1F" }
+                          : { background: "#fff", color: "#0D2B1F", border: "1px solid rgba(0,0,0,0.06)" }
+                      }
+                    >
+                      {plan.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-bold whitespace-nowrap" style={{ color: "#0D2B1F" }}>
+                    {plan.name}
+                  </h3>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    {[plan.m1, plan.m2].map((m) => (
+                      <div
+                        key={m.label}
+                        className="rounded-xl bg-white p-4 flex flex-col gap-1"
+                        style={{ border: "1px solid rgba(0,0,0,0.05)" }}
+                      >
+                        <span className="font-bold leading-tight" style={{ color: "#0D2B1F", fontSize: "clamp(1rem, 1.4vw, 1.25rem)" }}>
+                          {m.value}
+                        </span>
+                        <span className="text-xs text-slate-500">{m.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div
+                    className="font-extrabold tracking-tight"
+                    style={{ color: "#0D2B1F", fontSize: "clamp(1.75rem, 2.6vw, 2.25rem)" }}
+                  >
+                    {plan.price}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => openLeadPanel({ clientType: "residencial", source: SOURCE })}
+                    className="mt-auto w-full rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors"
+                    style={
+                      plan.filled
+                        ? { background: "#0D2B1F", color: "#fff" }
+                        : { background: "transparent", color: "#0D2B1F", border: "1.5px solid #0D2B1F" }
+                    }
+                  >
+                    LIGAR CABO
+                  </button>
+                </article>
+              ))}
             </div>
           </div>
         </section>
