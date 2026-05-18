@@ -43,9 +43,22 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="ARDO"
-              className="inline-flex items-center ml-0.5 -mt-[2px] hover:opacity-70 transition-opacity"
+              className="group inline-flex items-center ml-0.5 -mt-[2px]"
             >
-              <img src={ardoLogo} alt="ARDO" className="h-[4em] w-auto inline-block" />
+              <span
+                aria-hidden
+                className="inline-block h-[4.4em] w-[4.4em] bg-[#1B3A6B] group-hover:bg-[#1A56DB] transition-colors"
+                style={{
+                  WebkitMaskImage: `url(${ardoLogo})`,
+                  maskImage: `url(${ardoLogo})`,
+                  WebkitMaskRepeat: "no-repeat",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center",
+                  maskPosition: "center",
+                  WebkitMaskSize: "contain",
+                  maskSize: "contain",
+                }}
+              />
             </a>
           </span>
           <span>Cabo Verde · 238</span>
