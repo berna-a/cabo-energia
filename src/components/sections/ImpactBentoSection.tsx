@@ -225,6 +225,62 @@ export function ImpactBentoSection() {
           </article>
         </div>
       </div>
+      <style>{`
+        .impacto-card > *:not(span[aria-hidden]) {
+          position: relative;
+          z-index: 2;
+        }
+        .impacto-card::before {
+          content: '';
+          position: absolute;
+          top: -120%;
+          left: -120%;
+          width: 340%;
+          height: 340%;
+          background: linear-gradient(
+            128deg,
+            transparent 0%,
+            transparent 28%,
+            rgba(255, 222, 140, 0.03) 36%,
+            rgba(255, 230, 155, 0.10) 43%,
+            rgba(255, 235, 160, 0.20) 48%,
+            rgba(255, 238, 168, 0.26) 50%,
+            rgba(255, 235, 160, 0.20) 52%,
+            rgba(255, 230, 155, 0.10) 57%,
+            rgba(255, 222, 140, 0.03) 64%,
+            transparent 72%,
+            transparent 100%
+          );
+          animation: solarSweep 16s ease-in-out infinite alternate;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .impacto-card::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 230, 140, 0.75) 0%,
+            rgba(255, 235, 160, 0.55) 20%,
+            rgba(255, 240, 180, 0.30) 45%,
+            rgba(255, 255, 255, 0.10) 70%,
+            transparent 100%
+          );
+          z-index: 3;
+          pointer-events: none;
+        }
+        @keyframes solarSweep {
+          0%   { transform: translate(-12%, -10%); opacity: 0.5; }
+          25%  { opacity: 0.9; }
+          50%  { opacity: 1; }
+          75%  { opacity: 0.85; }
+          100% { transform: translate(12%, 10%); opacity: 0.6; }
+        }
+      `}</style>
     </section>
   );
 }
