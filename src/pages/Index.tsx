@@ -19,7 +19,7 @@ const Index = () => {
         <SimuladorSection />
         <PainSection />
         <SolutionsSection />
-        <HowItWorksSection />
+        
         <TrustSection />
         <FinalCtaSection />
       </main>
