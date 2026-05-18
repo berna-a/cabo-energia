@@ -716,7 +716,7 @@ function Step3({
           marginBottom: 20,
         }}
       >
-        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.45)" }}>Poupança estimada / mês</span>
+        <span style={{ fontSize: 12, color: "#ffffff" }}>Poupança estimada / mês</span>
         <span style={{ color: YELLOW, fontWeight: 700, fontSize: 24 }}>
           {hasProfile ? `${fmt(previewSavings)} CVE` : "—"}
         </span>
@@ -1221,7 +1221,7 @@ function StepHeader({ title, hint }: { title: string; hint?: string }) {
   return (
     <>
       <h3 style={{ fontSize: 22, fontWeight: 700, color: "white", margin: "0 0 6px" }}>{title}</h3>
-      <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", margin: "0 0 28px" }}>{hint}</p>
+      <p style={{ fontSize: 13, color: "#ffffff", margin: "0 0 28px" }}>{hint}</p>
     </>
   );
 }
