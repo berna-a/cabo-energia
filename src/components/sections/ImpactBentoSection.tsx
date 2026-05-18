@@ -295,6 +295,12 @@ export function ImpactBentoSection() {
           pointer-events: none;
           z-index: 1;
         }
+        .impacto-card--static::before {
+          animation: none;
+        }
+        .impacto-card--slow::before {
+          animation-duration: 80s;
+        }
         .impacto-card::after {
           content: '';
           position: absolute;
