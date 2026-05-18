@@ -205,8 +205,8 @@ export function ImpactBentoSection() {
                     letterSpacing: "-0.04em",
                   }}
                 >
-                  <span style={{ display: "block", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 700, letterSpacing: "0.02em", marginBottom: 4 }}>
-                    Poupe até
+                  <span style={{ display: "block", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 700, letterSpacing: "0.02em", marginBottom: 4, color: "#ffffff" }}>
+                    POUPE ATÉ
                   </span>
                   <span style={{ fontSize: "clamp(44px, 6.5vw, 72px)" }}>80%</span>
                 </div>
