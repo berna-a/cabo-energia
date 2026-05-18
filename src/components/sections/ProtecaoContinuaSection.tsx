@@ -148,7 +148,7 @@ export function ProtecaoContinuaSection() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {plans.map((p) => (
-            <PlanCard key={p.name} plan={p} onCta={() => openLeadPanel()} />
+            <PlanCard key={p.name} plan={p} />
           ))}
         </div>
       </div>
