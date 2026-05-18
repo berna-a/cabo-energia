@@ -145,7 +145,7 @@ const CASA_PROFILES: Profile[] = [
 ];
 
 const NEG_PROFILES: Profile[] = [
-  { id: "com", name: "Comércio / Escritório", sub: "Operação básica", Icon: Briefcase, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
+  { id: "com", name: "Comércio / Escritório", sub: "Operação simples", Icon: Briefcase, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
   { id: "res", name: "Restaurante / Clínica", sub: "Operação intensiva", Icon: UtensilsCrossed, color: "#EF4444", bg: "rgba(239,68,68,0.12)" },
   { id: "hot", name: "Hotel / Operação maior", sub: "Alta dependência energética", Icon: BedDouble, color: "#F59E0B", bg: "rgba(245,158,11,0.12)" },
   { id: "ind", name: "Indústria / Grande empresa", sub: "Consumo crítico", Icon: Factory, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)" },
@@ -1013,7 +1013,7 @@ function Step5({
         <span style={{ fontSize: 12, color: "rgba(255,255,255,0.70)" }}>{PACKAGES[currentPkg].name}</span>
       </div>
 
-      <StepHeader title="Os seus dados" hint="Para Kevin poder ligar." />
+      <StepHeader title="Os seus dados" />
 
       <Field label="Nome">
         <input
@@ -1075,9 +1075,9 @@ function Step5({
         </div>
       </Field>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12 }}>
         <ShieldCheck size={14} color="#4CAF82" />
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)" }}>
+        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)", textAlign: "center" }}>
           Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
         </span>
       </div>
@@ -1217,7 +1217,7 @@ function Step6({
 
 /* ----------------------------- SHARED PIECES ------------------------------- */
 
-function StepHeader({ title, hint }: { title: string; hint: string }) {
+function StepHeader({ title, hint }: { title: string; hint?: string }) {
   return (
     <>
       <h3 style={{ fontSize: 22, fontWeight: 700, color: "white", margin: "0 0 6px" }}>{title}</h3>
