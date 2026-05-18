@@ -7,10 +7,10 @@ const DARK = "#0D2B1F";
 const MUTED = "rgba(255,255,255,0.75)";
 
 const glassPanel: React.CSSProperties = {
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.10)",
-  backdropFilter: "blur(2px) saturate(120%)",
-  WebkitBackdropFilter: "blur(2px) saturate(120%)",
+  background: "rgba(255,255,255,0.02)",
+  border: "1px solid rgba(255,255,255,0.07)",
+  backdropFilter: "blur(1px) saturate(110%)",
+  WebkitBackdropFilter: "blur(1px) saturate(110%)",
   boxShadow: "none",
 };
 
