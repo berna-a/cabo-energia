@@ -323,12 +323,6 @@ export function ImpactBentoSection() {
           75%  { opacity: 0.85; }
           100% { transform: translate(12%, 10%); opacity: 0.6; }
         }
-        @keyframes lunarSweep {
-          0%   { transform: translate(-10%, -8%); opacity: 0.55; }
-          40%  { opacity: 1; }
-          60%  { opacity: 0.85; }
-          100% { transform: translate(10%, 8%); opacity: 0.65; }
-        }
       `}</style>
     </section>
   );
