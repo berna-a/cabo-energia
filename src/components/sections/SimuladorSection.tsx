@@ -1075,9 +1075,9 @@ function Step5({
         </div>
       </Field>
 
-      <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12 }}>
         <ShieldCheck size={14} color="#4CAF82" />
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)" }}>
+        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)", textAlign: "center" }}>
           Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
         </span>
       </div>
