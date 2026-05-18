@@ -1217,7 +1217,7 @@ function Step6({
 
 /* ----------------------------- SHARED PIECES ------------------------------- */
 
-function StepHeader({ title, hint }: { title: string; hint: string }) {
+function StepHeader({ title, hint }: { title: string; hint?: string }) {
   return (
     <>
       <h3 style={{ fontSize: 22, fontWeight: 700, color: "white", margin: "0 0 6px" }}>{title}</h3>
