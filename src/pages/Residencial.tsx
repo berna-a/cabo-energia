@@ -123,49 +123,70 @@ const Residencial = () => {
           </div>
         </section>
 
-        {/* SECTION 1: WHY SOLAR NOW */}
-        <section className="bg-white py-20 md:py-28">
-          <div ref={whyRef} className="reveal container grid gap-14 lg:grid-cols-2 lg:items-center">
-            <div className="flex flex-col gap-6">
-              <TrustBadge tone="dark">Porquê agora</TrustBadge>
-              <h2 className="text-headline text-ink">
-                A rede falha. A sua fatura sobe. A solução existe.
-              </h2>
-              <p className="text-body-lg text-ink-soft">
-                Em Cabo Verde, os cortes de energia afetam a qualidade de vida de
-                milhares de famílias todos os meses. Um sistema solar residencial
-                protege a sua casa, reduz a fatura e dá-lhe controlo sobre a sua
-                energia.
+        {/* SECTION 1: BENTO GRID — WHY NOW */}
+        <section className="bg-white py-20 md:py-28" style={{ fontFamily: "Montserrat, sans-serif" }}>
+          <div
+            ref={whyRef}
+            className="reveal container grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {/* Card 1 — Proteção */}
+            <article
+              className="rounded-2xl bg-slate-50 p-8 md:col-span-1 flex flex-col gap-5"
+              style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
+            >
+              <div
+                className="flex size-12 items-center justify-center rounded-xl bg-white"
+                style={{ border: "1px solid rgba(0,0,0,0.05)" }}
+              >
+                <Zap className="size-5" style={{ color: "#0D2B1F" }} />
+              </div>
+              <h3 className="text-xl font-bold leading-tight" style={{ color: "#0D2B1F" }}>
+                A rede falha. A sua rotina não.
+              </h3>
+              <p className="text-sm leading-relaxed text-slate-500">
+                Transição automática para a bateria em milissegundos. Conforto contínuo e zero aparelhos queimados.
               </p>
-            </div>
+            </article>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <StatCard
-                icon={<PiggyBank className="size-5" />}
-                title="Até 20.000 CVE/mês"
+            {/* Card 2 — Financeiro */}
+            <article
+              className="rounded-2xl bg-slate-50 p-8 md:col-span-1 flex flex-col justify-between gap-6"
+              style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
+            >
+              <div className="flex flex-col gap-2">
+                <span
+                  className="font-extrabold leading-[0.95] tracking-tight"
+                  style={{ color: "#0D2B1F", fontSize: "clamp(2.5rem, 4.5vw, 3.75rem)" }}
+                >
+                  6k – 8k CVE
+                </span>
+                <span className="text-sm font-medium text-slate-600">
+                  Poupança média mensal estimada
+                </span>
+              </div>
+              <p className="text-xs leading-relaxed text-slate-500">
+                Cálculo real e defensável para uma moradia típica cabo-verdiana.
+              </p>
+            </article>
+
+            {/* Card 3 — Chave na mão */}
+            <article
+              className="rounded-2xl bg-slate-50 p-8 md:col-span-1 flex flex-col gap-5"
+              style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
+            >
+              <div
+                className="flex size-12 items-center justify-center rounded-xl bg-white"
+                style={{ border: "1px solid rgba(0,0,0,0.05)" }}
               >
-                Poupança média estimada na fatura de eletricidade.
-              </StatCard>
-              <StatCard
-                icon={<Battery className="size-5" />}
-                title="Energia durante apagões"
-              >
-                A bateria mantém a sua casa a funcionar quando a rede falha.
-              </StatCard>
-              <StatCard
-                icon={<Wrench className="size-5" />}
-                title="Instalação chave-na-mão"
-              >
-                Tratamos de tudo: dimensionamento, materiais e montagem.
-              </StatCard>
-              <StatCard
-                variant="dark"
-                icon={<ShieldCheck className="size-5" />}
-                title="Garantia ativa"
-              >
-                Equipamentos com garantia de substituição imediata.
-              </StatCard>
-            </div>
+                <ShieldCheck className="size-5" style={{ color: "#0D2B1F" }} />
+              </div>
+              <h3 className="text-xl font-bold leading-tight" style={{ color: "#0D2B1F" }}>
+                Engenharia & Suporte.
+              </h3>
+              <p className="text-sm leading-relaxed text-slate-500">
+                Tratamos de tudo: dimensionamento rigoroso, instalação certificada e garantia de substituição.
+              </p>
+            </article>
           </div>
         </section>
 
