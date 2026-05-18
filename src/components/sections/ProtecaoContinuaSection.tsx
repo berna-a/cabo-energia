@@ -74,40 +74,41 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
         {plan.badge}
       </span>
 
-      <div
-        className="mt-6"
-        style={{
-          color: DARK,
-          fontFamily: FONT,
-          fontWeight: 800,
-          fontSize: "clamp(36px, 4.2vw, 52px)",
-          lineHeight: 1,
-          letterSpacing: "-0.03em",
-        }}
-      >
-        {plan.price}
-      </div>
-      <div
-        className="mt-2"
-        style={{ color: MUTED, fontSize: 12, letterSpacing: "0.02em" }}
-      >
-        por mês · faturado anualmente
-      </div>
-
       <h3
         className="mt-6"
         style={{
           color: DARK,
           fontFamily: FONT,
           fontWeight: 700,
-          fontSize: 22,
-          lineHeight: 1.15,
-          letterSpacing: "-0.01em",
+          fontSize: "clamp(26px, 2.8vw, 34px)",
+          lineHeight: 1.1,
+          letterSpacing: "-0.02em",
           margin: 0,
+          whiteSpace: "nowrap",
         }}
       >
         {plan.name}
       </h3>
+
+      <div
+        className="mt-5"
+        style={{
+          color: DARK,
+          fontFamily: FONT,
+          fontWeight: 800,
+          fontSize: "clamp(22px, 2.2vw, 28px)",
+          lineHeight: 1,
+          letterSpacing: "-0.02em",
+        }}
+      >
+        {plan.price}
+      </div>
+      <div
+        className="mt-1.5"
+        style={{ color: MUTED, fontSize: 12, letterSpacing: "0.02em" }}
+      >
+        por mês · faturado anualmente
+      </div>
 
       <ul className="mt-5 space-y-2.5">
         {plan.features.map((f) => (
