@@ -16,6 +16,16 @@ const glassPanel: React.CSSProperties = {
   boxShadow: "none",
 };
 
+const glassPanelNight: React.CSSProperties = {
+  background: "rgba(10, 20, 40, 0.07)",
+  backdropFilter: "none",
+  WebkitBackdropFilter: "none",
+  border: "1px solid rgba(255, 255, 255, 0.15)",
+  position: "relative",
+  overflow: "hidden",
+  boxShadow: "none",
+};
+
 const LeftCatchLight = () => (
   <span
     aria-hidden
@@ -27,6 +37,23 @@ const LeftCatchLight = () => (
       height: "100%",
       background:
         "linear-gradient(180deg, rgba(255,228,135,0.60) 0%, rgba(255,228,135,0.25) 30%, rgba(255,228,135,0.08) 60%, transparent 100%)",
+      zIndex: 3,
+      pointerEvents: "none",
+    }}
+  />
+);
+
+const LeftCatchLightLunar = () => (
+  <span
+    aria-hidden
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: 1,
+      height: "100%",
+      background:
+        "linear-gradient(180deg, rgba(210,228,255,0.55) 0%, rgba(210,228,255,0.20) 25%, rgba(210,228,255,0.06) 55%, transparent 100%)",
       zIndex: 3,
       pointerEvents: "none",
     }}
@@ -94,10 +121,10 @@ export function ImpactBentoSection() {
             />
             <div className="relative z-10 flex h-full w-full items-center p-6 md:p-10">
               <div
-                className="impacto-card flex w-full md:w-1/2 flex-col rounded-2xl p-6 md:p-7"
-                style={glassPanel}
+                className="impacto-card-night flex w-full md:w-1/2 flex-col rounded-2xl p-6 md:p-7"
+                style={glassPanelNight}
               >
-                <LeftCatchLight />
+                <LeftCatchLightLunar />
                 <h3
                   style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
@@ -223,7 +250,8 @@ export function ImpactBentoSection() {
         </div>
       </div>
       <style>{`
-        .impacto-card > *:not(span[aria-hidden]) {
+        .impacto-card > *:not(span[aria-hidden]),
+        .impacto-card-night > *:not(span[aria-hidden]) {
           position: relative;
           z-index: 2;
         }
@@ -270,12 +298,61 @@ export function ImpactBentoSection() {
           z-index: 3;
           pointer-events: none;
         }
+        .impacto-card-night::before {
+          content: '';
+          position: absolute;
+          top: -120%;
+          left: -120%;
+          width: 340%;
+          height: 340%;
+          background: linear-gradient(
+            135deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(200, 218, 255, 0.02) 38%,
+            rgba(210, 225, 255, 0.08) 44%,
+            rgba(215, 230, 255, 0.14) 48%,
+            rgba(218, 232, 255, 0.18) 50%,
+            rgba(215, 230, 255, 0.14) 52%,
+            rgba(210, 225, 255, 0.08) 56%,
+            rgba(200, 218, 255, 0.02) 62%,
+            transparent 70%,
+            transparent 100%
+          );
+          animation: lunarSweep 22s ease-in-out infinite alternate;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .impacto-card-night::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            rgba(210, 228, 255, 0.60) 0%,
+            rgba(215, 230, 255, 0.40) 18%,
+            rgba(220, 235, 255, 0.20) 40%,
+            rgba(255, 255, 255, 0.06) 65%,
+            transparent 100%
+          );
+          z-index: 3;
+          pointer-events: none;
+        }
         @keyframes solarSweep {
           0%   { transform: translate(-12%, -10%); opacity: 0.5; }
           25%  { opacity: 0.9; }
           50%  { opacity: 1; }
           75%  { opacity: 0.85; }
           100% { transform: translate(12%, 10%); opacity: 0.6; }
+        }
+        @keyframes lunarSweep {
+          0%   { transform: translate(-10%, -8%); opacity: 0.55; }
+          40%  { opacity: 1; }
+          60%  { opacity: 0.85; }
+          100% { transform: translate(10%, 8%); opacity: 0.65; }
         }
       `}</style>
     </section>
