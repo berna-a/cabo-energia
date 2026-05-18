@@ -138,12 +138,14 @@ export function ImpactBentoSection() {
                     color: "#F5C842",
                     fontFamily: FONT,
                     fontWeight: 900,
-                    fontSize: "clamp(44px, 6.5vw, 72px)",
                     lineHeight: 1,
                     letterSpacing: "-0.04em",
                   }}
                 >
-                  Até 80%
+                  <span style={{ display: "block", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 700, letterSpacing: "0.02em", marginBottom: 4 }}>
+                    Poupe até
+                  </span>
+                  <span style={{ fontSize: "clamp(44px, 6.5vw, 72px)" }}>80%</span>
                 </div>
                 <h4
                   className="mt-3"
@@ -151,12 +153,6 @@ export function ImpactBentoSection() {
                 >
                   Deixe que o sol pague a conta.
                 </h4>
-                <p
-                  className="mt-2"
-                  style={{ color: MUTED, fontSize: 13, lineHeight: 1.5, margin: 0 }}
-                >
-                  Reduza drasticamente a sua fatura mensal.
-                </p>
               </div>
             </div>
           </article>
