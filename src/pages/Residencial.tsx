@@ -118,12 +118,6 @@ const Residencial = () => {
                 >
                   <LigarCaboLabel />
                 </PillButton>
-                <PillButton size="lg" variant="outline-light" asChild>
-                  <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                    <MessageCircle />
-                    Falar no WhatsApp
-                  </a>
-                </PillButton>
               </div>
             </div>
           </div>
