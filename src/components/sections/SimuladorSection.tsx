@@ -403,7 +403,7 @@ export default function SimuladorSection() {
         <div
           className="sim-card"
           style={{
-            background: "rgba(255,255,255,0.04)",
+            background: DARK,
             border: "1px solid rgba(255,255,255,0.08)",
             borderRadius: 24,
             padding: "36px 32px",
