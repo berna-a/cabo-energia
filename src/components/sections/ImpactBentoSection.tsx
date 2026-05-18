@@ -203,9 +203,10 @@ export function ImpactBentoSection() {
             />
             <div className="relative z-10 flex h-full w-full items-end p-6 md:p-8">
               <div
-                className="w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
+                className="impacto-card w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
                 style={glassPanel}
               >
+                <LeftCatchLight />
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-8">
                   <h3
                     style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
