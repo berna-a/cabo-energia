@@ -7,12 +7,34 @@ const DARK = "#0D2B1F";
 const MUTED = "rgba(255,255,255,0.75)";
 
 const glassPanel: React.CSSProperties = {
-  background: "rgba(255,255,255,0.02)",
-  border: "1px solid rgba(255,255,255,0.07)",
-  backdropFilter: "blur(1px) saturate(110%)",
-  WebkitBackdropFilter: "blur(1px) saturate(110%)",
+  background: "rgba(13, 43, 31, 0.06)",
+  backdropFilter: "none",
+  WebkitBackdropFilter: "none",
+  borderTop: "1px solid rgba(255, 220, 130, 0.20)",
+  borderLeft: "1px solid rgba(255, 220, 130, 0.14)",
+  borderRight: "1px solid rgba(255, 255, 255, 0.05)",
+  borderBottom: "1px solid rgba(255, 255, 255, 0.04)",
+  position: "relative",
+  overflow: "hidden",
   boxShadow: "none",
 };
+
+const LeftCatchLight = () => (
+  <span
+    aria-hidden
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: 1,
+      height: "100%",
+      background:
+        "linear-gradient(180deg, rgba(255,228,135,0.60) 0%, rgba(255,228,135,0.25) 30%, rgba(255,228,135,0.08) 60%, transparent 100%)",
+      zIndex: 3,
+      pointerEvents: "none",
+    }}
+  />
+);
 
 export function ImpactBentoSection() {
   return (
