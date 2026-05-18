@@ -18,6 +18,7 @@ const Index = () => {
         <SimuladorSection />
         <ImpactBentoSection />
         <SolucoesSection />
+        <ImpactoDiaSection />
         <FinalCtaSection />
       </main>
       <Footer />
