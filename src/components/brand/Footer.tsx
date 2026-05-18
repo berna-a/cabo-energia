@@ -36,16 +36,16 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="container flex flex-col items-start justify-between gap-2 py-5 text-xs text-ink-muted md:flex-row md:items-center">
-          <span className="inline-flex items-center gap-1">
-            © {new Date().getFullYear()} CABO ENERGIA. Todos os direitos reservados. Website by{" "}
+          <span className="inline-flex items-center">
+            © {new Date().getFullYear()} CABO ENERGIA. Todos os direitos reservados. Website by
             <a
               href="https://ardo.media"
               target="_blank"
               rel="noreferrer"
               aria-label="ARDO"
-              className="inline-flex items-center hover:opacity-70 transition-opacity"
+              className="inline-flex items-center -ml-1 -mt-[2px] hover:opacity-70 transition-opacity"
             >
-              <img src={ardoLogo} alt="ARDO" className="h-[5em] w-auto inline-block" />
+              <img src={ardoLogo} alt="ARDO" className="h-[3.33em] w-auto inline-block" />
             </a>
           </span>
           <span>Cabo Verde · 238</span>
