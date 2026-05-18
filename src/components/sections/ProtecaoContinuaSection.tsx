@@ -119,11 +119,6 @@ function PlanCard({ plan }: { plan: Plan }) {
         ))}
       </ul>
 
-      <div className="mt-auto pt-8">
-        <PillButton size="md" variant="power" onClick={onCta} className="w-full">
-          <LigarCaboLabel />
-        </PillButton>
-      </div>
     </article>
   );
 }
