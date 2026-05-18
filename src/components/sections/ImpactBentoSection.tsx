@@ -191,7 +191,8 @@ export function ImpactBentoSection() {
                   <p
                     style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0, maxWidth: 460 }}
                   >
-                    Produza a sua energia e faça parte do futuro sustentável de Cabo Verde
+                    Produza a sua energia e faça parte<br />
+                    do futuro sustentável de Cabo Verde
                   </p>
                 </div>
               </div>
