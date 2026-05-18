@@ -7,12 +7,34 @@ const DARK = "#0D2B1F";
 const MUTED = "rgba(255,255,255,0.75)";
 
 const glassPanel: React.CSSProperties = {
-  background: "rgba(255,255,255,0.02)",
-  border: "1px solid rgba(255,255,255,0.07)",
-  backdropFilter: "blur(1px) saturate(110%)",
-  WebkitBackdropFilter: "blur(1px) saturate(110%)",
+  background: "rgba(13, 43, 31, 0.06)",
+  backdropFilter: "none",
+  WebkitBackdropFilter: "none",
+  borderTop: "1px solid rgba(255, 220, 130, 0.20)",
+  borderLeft: "1px solid rgba(255, 220, 130, 0.14)",
+  borderRight: "1px solid rgba(255, 255, 255, 0.05)",
+  borderBottom: "1px solid rgba(255, 255, 255, 0.04)",
+  position: "relative",
+  overflow: "hidden",
   boxShadow: "none",
 };
+
+const LeftCatchLight = () => (
+  <span
+    aria-hidden
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: 1,
+      height: "100%",
+      background:
+        "linear-gradient(180deg, rgba(255,228,135,0.60) 0%, rgba(255,228,135,0.25) 30%, rgba(255,228,135,0.08) 60%, transparent 100%)",
+      zIndex: 3,
+      pointerEvents: "none",
+    }}
+  />
+);
 
 export function ImpactBentoSection() {
   return (
@@ -75,9 +97,10 @@ export function ImpactBentoSection() {
             />
             <div className="relative z-10 flex h-full w-full items-center p-6 md:p-10">
               <div
-                className="flex w-full md:w-1/2 flex-col rounded-2xl p-6 md:p-7"
+                className="impacto-card flex w-full md:w-1/2 flex-col rounded-2xl p-6 md:p-7"
                 style={glassPanel}
               >
+                <LeftCatchLight />
                 <h3
                   style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
@@ -130,9 +153,10 @@ export function ImpactBentoSection() {
             />
             <div className="relative z-10 flex h-full items-center justify-center p-6">
               <div
-                className="rounded-3xl p-6 text-center"
+                className="impacto-card rounded-3xl p-6 text-center"
                 style={{ ...glassPanel, maxWidth: 280 }}
               >
+                <LeftCatchLight />
                 <div
                   style={{
                     color: "#F5C842",
@@ -179,9 +203,10 @@ export function ImpactBentoSection() {
             />
             <div className="relative z-10 flex h-full w-full items-end p-6 md:p-8">
               <div
-                className="w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
+                className="impacto-card w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
                 style={glassPanel}
               >
+                <LeftCatchLight />
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-8">
                   <h3
                     style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
@@ -200,6 +225,62 @@ export function ImpactBentoSection() {
           </article>
         </div>
       </div>
+      <style>{`
+        .impacto-card > *:not(span[aria-hidden]) {
+          position: relative;
+          z-index: 2;
+        }
+        .impacto-card::before {
+          content: '';
+          position: absolute;
+          top: -120%;
+          left: -120%;
+          width: 340%;
+          height: 340%;
+          background: linear-gradient(
+            128deg,
+            transparent 0%,
+            transparent 28%,
+            rgba(255, 222, 140, 0.03) 36%,
+            rgba(255, 230, 155, 0.10) 43%,
+            rgba(255, 235, 160, 0.20) 48%,
+            rgba(255, 238, 168, 0.26) 50%,
+            rgba(255, 235, 160, 0.20) 52%,
+            rgba(255, 230, 155, 0.10) 57%,
+            rgba(255, 222, 140, 0.03) 64%,
+            transparent 72%,
+            transparent 100%
+          );
+          animation: solarSweep 16s ease-in-out infinite alternate;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .impacto-card::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 230, 140, 0.75) 0%,
+            rgba(255, 235, 160, 0.55) 20%,
+            rgba(255, 240, 180, 0.30) 45%,
+            rgba(255, 255, 255, 0.10) 70%,
+            transparent 100%
+          );
+          z-index: 3;
+          pointer-events: none;
+        }
+        @keyframes solarSweep {
+          0%   { transform: translate(-12%, -10%); opacity: 0.5; }
+          25%  { opacity: 0.9; }
+          50%  { opacity: 1; }
+          75%  { opacity: 0.85; }
+          100% { transform: translate(12%, 10%); opacity: 0.6; }
+        }
+      `}</style>
     </section>
   );
 }
