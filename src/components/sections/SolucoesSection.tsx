@@ -1,212 +1,196 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
-const MUTED = "#5b6b64";
+const MUTED = "#6b7280";
 const YELLOW = "#F5C842";
 
 type Plan = {
-  tag: string;
-  tagHighlight?: boolean;
+  badge: string;
+  badgeHighlight?: boolean;
   name: string;
-  hook: string;
   metrics: { value: string; label: string }[];
   price: string;
-  cta: string;
   primaryCta?: boolean;
-  specs: string;
 };
 
-const particularPlans: Plan[] = [
+const residencial: Plan[] = [
   {
-    tag: "Proteção Essencial",
+    badge: "Proteção",
     name: "Casa Tranquila",
-    hook: "Energia contínua para apartamentos.",
     metrics: [
-      { value: "3.000 a 5.000 CVE", label: "/ mês poupados" },
-      { value: "5,12 kWh", label: "de bateria para apagões" },
+      { value: "3k – 5k CVE", label: "Poupança" },
+      { value: "5,12 kWh", label: "Backup" },
     ],
     price: "240.000 CVE",
-    cta: "Pedir Estudo Gratuito",
-    specs:
-      "Inversor Híbrido 2,5kW Sunwaytech · Bateria LFP 5,12kWh · Instalação chave-na-mão incluída · Sistema sem painéis solares.",
   },
   {
-    tag: "O Mais Escolhido",
-    tagHighlight: true,
+    badge: "Popular",
+    badgeHighlight: true,
     name: "Casa Autonomia",
-    hook: "O sol paga a sua conta de luz.",
     metrics: [
-      { value: "6.000 a 8.000 CVE", label: "/ mês poupados" },
-      { value: "Até 80%", label: "de redução na fatura" },
+      { value: "6k – 8k CVE", label: "Poupança" },
+      { value: "Até 80%", label: "Redução" },
     ],
     price: "510.000 CVE",
-    cta: "Pedir Estudo Gratuito",
     primaryCta: true,
-    specs:
-      "6× Painéis Solares 585Wp Sunwaytech · Inversor Híbrido 5kW · Bateria LFP 5,12kWh · Estrutura e instalação incluídas.",
   },
   {
-    tag: "Independência Total",
+    badge: "Independência",
     name: "Casa Plena",
-    hook: "A sua casa, a sua própria rede.",
     metrics: [
-      { value: "10.000 a 15.000 CVE", label: "/ mês poupados" },
-      { value: "10,24 kWh", label: "autonomia dia e noite" },
+      { value: "10k – 15k CVE", label: "Poupança" },
+      { value: "10,24 kWh", label: "Autonomia" },
     ],
     price: "730.000 CVE",
-    cta: "Pedir Estudo Gratuito",
-    specs:
-      "8× Painéis Solares 585Wp Sunwaytech · Inversor Híbrido 6kW · 2× Baterias LFP 5,12kWh (10,24kWh total) · Suporta expansão de bateria.",
   },
 ];
 
-const empresaPlans: Plan[] = [
+const negocio: Plan[] = [
   {
-    tag: "Proteção + Eficiência",
+    badge: "Eficiência",
     name: "Negócio Essencial",
-    hook: "O seu negócio não para. A sua fatura baixa.",
     metrics: [
-      { value: "25.000 a 40.000 CVE", label: "/ mês poupados" },
-      { value: "15,36 kWh", label: "proteção para sistemas críticos" },
+      { value: "25k – 40k CVE", label: "Poupança" },
+      { value: "15,36 kWh", label: "Proteção" },
     ],
     price: "1.350.000 CVE",
-    cta: "Pedir Plano de Backup",
     primaryCta: true,
-    specs:
-      "12× Painéis Solares 585Wp Sunwaytech · 2× Inversores Híbridos Trifásicos 4kW · 1× Bateria HV 15,36kWh + BMS · Projeto elétrico e licenciamento incluídos.",
   },
   {
-    tag: "Imunidade Energética",
-    tagHighlight: true,
+    badge: "Imunidade",
     name: "Negócio Pleno",
-    hook: "Diga aos seus clientes: aqui nunca paramos.",
     metrics: [
-      { value: "Sob Orçamento", label: "retorno sob medida" },
-      { value: "Selo Oficial", label: '"Rede de Negócios Protegidos" para a montra' },
+      { value: "À Medida", label: "Retorno" },
+      { value: "Selo Oficial", label: "Rede Protegida" },
     ],
-    price: "Sob Consulta (Após levantamento)",
-    cta: "Falar com um Consultor",
-    specs:
-      "Engenharia e dimensionamento personalizado · Configuração escalável de alta capacidade com inversores trifásicos HV (10-50kW) e baterias modulares conforme o perfil do negócio.",
+    price: "Sob Orçamento",
+    primaryCta: true,
   },
 ];
 
-function PlanCard({ plan }: { plan: Plan }) {
-  const [open, setOpen] = useState(false);
+function PlanCard({ plan, onCta }: { plan: Plan; onCta: (name: string) => void }) {
   return (
     <article
       className="flex h-full flex-col rounded-3xl p-7 transition-shadow hover:shadow-md"
       style={{
-        background: "#f8fafc",
+        background: "#ffffff",
         border: "1px solid rgba(0,0,0,0.05)",
-        boxShadow: "0 2px 12px -4px rgba(15,23,42,0.06)",
+        boxShadow: "0 2px 14px -6px rgba(15,23,42,0.08)",
       }}
     >
       <span
         className="inline-block self-start rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
         style={
-          plan.tagHighlight
+          plan.badgeHighlight
             ? { background: YELLOW, color: DARK }
             : { background: "rgba(13,43,31,0.06)", color: DARK }
         }
       >
-        {plan.tag}
+        {plan.badge}
       </span>
 
       <h3
         className="mt-5"
-        style={{ color: DARK, fontFamily: FONT, fontWeight: 700, fontSize: 26, lineHeight: 1.15, margin: 0 }}
+        style={{
+          color: DARK,
+          fontFamily: FONT,
+          fontWeight: 700,
+          fontSize: 24,
+          lineHeight: 1.15,
+          margin: 0,
+          letterSpacing: "-0.01em",
+        }}
       >
         {plan.name}
       </h3>
-      <p className="mt-2" style={{ color: MUTED, fontSize: 14, lineHeight: 1.5, margin: 0 }}>
-        {plan.hook}
-      </p>
 
-      <div className="mt-6 space-y-4">
+      <div className="mt-6 grid grid-cols-2 gap-3">
         {plan.metrics.map((m) => (
-          <div key={m.value}>
+          <div
+            key={m.label}
+            className="rounded-xl p-4"
+            style={{ background: "#f8fafc" }}
+          >
             <div
               style={{
                 color: DARK,
                 fontFamily: FONT,
                 fontWeight: 800,
-                fontSize: "clamp(20px, 2vw, 24px)",
+                fontSize: "clamp(16px, 1.6vw, 20px)",
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
               }}
             >
               {m.value}
             </div>
-            <div style={{ color: MUTED, fontSize: 12, marginTop: 2 }}>{m.label}</div>
+            <div
+              style={{
+                color: MUTED,
+                fontSize: 11,
+                marginTop: 6,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+              }}
+            >
+              {m.label}
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-auto pt-7">
+      <div className="mt-auto pt-8">
         <div
-          className="pt-5"
-          style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
+          style={{
+            color: DARK,
+            fontFamily: FONT,
+            fontWeight: 800,
+            fontSize: 26,
+            letterSpacing: "-0.02em",
+          }}
         >
-          <div style={{ color: MUTED, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-            A partir de
-          </div>
-          <div
-            className="mt-1"
-            style={{ color: DARK, fontFamily: FONT, fontWeight: 800, fontSize: 22, letterSpacing: "-0.02em" }}
-          >
-            {plan.price}
-          </div>
+          {plan.price}
         </div>
 
         <button
-          className="mt-5 w-full rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+          onClick={() => onCta(plan.name)}
+          className="mt-5 w-full rounded-full px-5 py-3.5 text-[13px] font-semibold tracking-[0.08em] transition-transform hover:-translate-y-0.5"
           style={
             plan.primaryCta
               ? { background: DARK, color: "#ffffff" }
               : { background: "transparent", color: DARK, border: `1px solid ${DARK}` }
           }
         >
-          {plan.cta}
+          LIGAR CABO
         </button>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="mt-4 flex w-full items-center justify-between text-[12px] font-medium"
-          style={{ color: MUTED }}
-          aria-expanded={open}
-        >
-          <span>Ver especificações técnicas</span>
-          <ChevronDown
-            size={14}
-            style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 200ms" }}
-          />
-        </button>
-        <div
-          style={{
-            maxHeight: open ? 240 : 0,
-            overflow: "hidden",
-            transition: "max-height 300ms ease",
-          }}
-        >
-          <p
-            className="mt-3"
-            style={{ color: MUTED, fontSize: 12, lineHeight: 1.6, margin: 0 }}
-          >
-            {plan.specs}
-          </p>
-        </div>
       </div>
     </article>
   );
 }
 
 export function SolucoesSection() {
-  const [tab, setTab] = useState<"particular" | "empresa">("particular");
-  const plans = tab === "particular" ? particularPlans : empresaPlans;
+  const [tab, setTab] = useState<"residencial" | "negocio">("residencial");
+  const [open, setOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  const plans = tab === "residencial" ? residencial : negocio;
+
+  const handleCta = (name: string) => {
+    setSelectedPlan(name);
+    setOpen(true);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setOpen(false);
+  };
 
   return (
     <section
@@ -239,6 +223,7 @@ export function SolucoesSection() {
               fontSize: "clamp(28px, 4vw, 44px)",
               lineHeight: 1.1,
               margin: 0,
+              letterSpacing: "-0.02em",
             }}
           >
             Escolha o pacote certo para si
@@ -251,15 +236,15 @@ export function SolucoesSection() {
             style={{ background: "rgba(13,43,31,0.06)" }}
           >
             {([
-              { id: "particular", label: "Particular (Casa)" },
-              { id: "empresa", label: "Empresa (Negócio)" },
+              { id: "residencial", label: "Residencial" },
+              { id: "negocio", label: "Negócio" },
             ] as const).map((t) => {
               const active = tab === t.id;
               return (
                 <button
                   key={t.id}
                   onClick={() => setTab(t.id)}
-                  className="rounded-full px-5 py-2.5 text-sm font-semibold transition-all"
+                  className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
                   style={{
                     background: active ? DARK : "transparent",
                     color: active ? "#ffffff" : DARK,
@@ -275,15 +260,57 @@ export function SolucoesSection() {
         <div
           key={tab}
           className={`grid grid-cols-1 gap-6 ${
-            tab === "particular" ? "md:grid-cols-3" : "md:grid-cols-2"
+            tab === "residencial" ? "md:grid-cols-3" : "md:grid-cols-2"
           }`}
           style={{ animation: "fadeUp 300ms ease both" }}
         >
           {plans.map((p) => (
-            <PlanCard key={p.name} plan={p} />
+            <PlanCard key={p.name} plan={p} onCta={handleCta} />
           ))}
         </div>
       </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="sm:max-w-md" style={{ fontFamily: FONT }}>
+          <DialogHeader>
+            <DialogTitle style={{ color: DARK, fontWeight: 700 }}>
+              Ligar Cabo — {selectedPlan}
+            </DialogTitle>
+            <DialogDescription>
+              Deixe os seus dados e entramos em contacto em menos de 24h.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmit} className="mt-2 space-y-3">
+            <input
+              required
+              type="text"
+              placeholder="Nome"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-[color:var(--dark)]"
+              style={{ borderColor: "rgba(0,0,0,0.12)" }}
+            />
+            <input
+              required
+              type="tel"
+              placeholder="Telemóvel"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none"
+              style={{ borderColor: "rgba(0,0,0,0.12)" }}
+            />
+            <input
+              type="email"
+              placeholder="Email (opcional)"
+              className="w-full rounded-xl border px-4 py-3 text-sm outline-none"
+              style={{ borderColor: "rgba(0,0,0,0.12)" }}
+            />
+            <button
+              type="submit"
+              className="mt-2 w-full rounded-full px-5 py-3.5 text-[13px] font-semibold tracking-[0.08em] text-white transition-transform hover:-translate-y-0.5"
+              style={{ background: DARK }}
+            >
+              ENVIAR PEDIDO
+            </button>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <style>{`
         @keyframes fadeUp {
