@@ -646,15 +646,14 @@ function Step2({
                     width: 38,
                     height: 38,
                     borderRadius: 10,
-                    background: p.bg,
+                    background: p.color,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
                   }}
                 >
-                  <p.Icon size={18} className="" />
-                  <span style={{ display: "none" }}>{p.color}</span>
+                  <p.Icon size={18} color="#ffffff" />
                 </div>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: 13, color: "white" }}>{p.name}</div>
