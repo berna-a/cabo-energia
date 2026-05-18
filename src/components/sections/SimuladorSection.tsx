@@ -388,7 +388,7 @@ export default function SimuladorSection() {
             <div
               style={{
                 fontSize: 11,
-                color: "rgba(255,255,255,0.35)",
+                color: "#6b7280",
                 letterSpacing: "0.04em",
                 marginTop: 8,
                 textAlign: "right",
