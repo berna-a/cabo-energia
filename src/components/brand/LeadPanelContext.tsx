@@ -37,7 +37,11 @@ const leadSchema = z.object({
     .min(7, "Telemóvel inválido.")
     .max(20, "Telemóvel inválido.")
     .regex(/^[0-9 +()\-]+$/, "Use apenas números."),
-  ilha: z.enum(ILHAS, { errorMap: () => ({ message: "Selecione a sua ilha." }) }),
+  ilha: z
+    .string()
+    .refine((v) => (ILHAS as readonly string[]).includes(v), {
+      message: "Selecione a sua ilha.",
+    }),
   tipo: z.enum(["residencial", "negocio"]),
 });
 
