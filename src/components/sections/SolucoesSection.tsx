@@ -216,7 +216,7 @@ export function SolucoesSection() {
               return (
                 <button
                   key={t.id}
-                  onClick={() => setTab(t.id)}
+                  onClick={() => setAudienceTab(t.id)}
                   className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
                   style={{
                     background: active ? DARK : "transparent",
