@@ -1,6 +1,3 @@
-import { PillButton } from "@/components/brand/PillButton";
-import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
-import { useLeadPanel } from "@/components/brand/useLeadPanel";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
@@ -54,7 +51,7 @@ const plans: Plan[] = [
   },
 ];
 
-function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
+function PlanCard({ plan }: { plan: Plan }) {
   return (
     <article
       className="flex h-full flex-col rounded-2xl p-7"
@@ -122,18 +119,11 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
         ))}
       </ul>
 
-      <div className="mt-auto pt-8">
-        <PillButton size="md" variant="power" onClick={onCta} className="w-full">
-          <LigarCaboLabel />
-        </PillButton>
-      </div>
     </article>
   );
 }
 
 export function ProtecaoContinuaSection() {
-  const { openLeadPanel } = useLeadPanel();
-
   return (
     <section
       className="relative overflow-hidden bg-white"
@@ -158,7 +148,7 @@ export function ProtecaoContinuaSection() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {plans.map((p) => (
-            <PlanCard key={p.name} plan={p} onCta={() => openLeadPanel()} />
+            <PlanCard key={p.name} plan={p} />
           ))}
         </div>
       </div>
