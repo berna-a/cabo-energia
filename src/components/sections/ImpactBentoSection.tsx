@@ -242,7 +242,7 @@ export function ImpactBentoSection() {
             />
             <div className="relative z-10 flex h-full w-full items-end p-6 md:p-8">
               <div
-                className="impacto-card w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
+                className="impacto-card impacto-card--slow w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
                 style={glassPanel}
               >
                 <LeftCatchLight />
