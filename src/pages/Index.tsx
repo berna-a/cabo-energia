@@ -8,6 +8,7 @@ import { SolucoesSection } from "@/components/sections/SolucoesSection";
 import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
 import { ProcessoSection } from "@/components/sections/ProcessoSection";
 import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
+import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
         <ImpactoDiaSection />
         <ProcessoSection />
         <ProtecaoContinuaSection />
+        <RedeProtegidosSection />
         <FinalCtaSection />
       </main>
       <Footer />
