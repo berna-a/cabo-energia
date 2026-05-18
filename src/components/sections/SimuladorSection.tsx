@@ -365,39 +365,34 @@ export default function SimuladorSection() {
 
         {/* Progress */}
         {step < 6 && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              marginBottom: 28,
-            }}
-          >
-            {[1, 2, 3, 4, 5].map((n) => {
-              const bg = n < step ? GREEN : n === step ? YELLOW : "rgba(255,255,255,0.12)";
-              return (
-                <div
-                  key={n}
-                  style={{
-                    flex: 1,
-                    height: 3,
-                    borderRadius: 2,
-                    background: bg,
-                  }}
-                />
-              );
-            })}
-            <span
+          <div style={{ marginBottom: 28 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              {[1, 2, 3, 4, 5].map((n) => {
+                const bg = n < step ? GREEN : n === step ? YELLOW : "rgba(255,255,255,0.12)";
+                return (
+                  <div
+                    key={n}
+                    style={{
+                      flex: 1,
+                      height: 3,
+                      borderRadius: 2,
+                      background: bg,
+                    }}
+                  />
+                );
+              })}
+            </div>
+            <div
               style={{
                 fontSize: 11,
                 color: "rgba(255,255,255,0.35)",
                 letterSpacing: "0.04em",
-                whiteSpace: "nowrap",
-                marginLeft: 8,
+                marginTop: 8,
+                textAlign: "right",
               }}
             >
               Passo {step} de 5
-            </span>
+            </div>
           </div>
         )}
 
