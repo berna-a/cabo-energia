@@ -352,7 +352,7 @@ export default function SimuladorSection() {
           </span>
           <h2
             style={{
-              color: "white",
+              color: DARK,
               fontWeight: 700,
               fontSize: "clamp(28px, 4vw, 42px)",
               margin: "0 0 12px",
@@ -361,7 +361,7 @@ export default function SimuladorSection() {
           >
             Descubra quanto pode poupar
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 16, margin: 0 }}>
+          <p style={{ color: "#374151", fontSize: 16, margin: 0 }}>
             Em 2 minutos, veja a estimativa real para a sua casa ou negócio.
           </p>
         </div>
