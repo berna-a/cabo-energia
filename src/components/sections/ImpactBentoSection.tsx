@@ -23,8 +23,18 @@ export function ImpactBentoSection() {
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-12 max-w-2xl">
           <span
-            className="mb-4 inline-block rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em]"
-            style={{ borderColor: DARK, color: DARK }}
+            style={{
+              display: "inline-block",
+              border: "1px solid #F5C842",
+              color: "#F5C842",
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              padding: "6px 20px",
+              borderRadius: 50,
+              marginBottom: 20,
+            }}
           >
             Impacto Real
           </span>
