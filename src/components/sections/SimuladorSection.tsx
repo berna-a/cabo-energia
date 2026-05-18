@@ -252,15 +252,16 @@ export default function SimuladorSection() {
     if (Object.keys(e).length) return;
 
     const payload = {
-      nome: nome.trim(),
-      telefone: tel.trim(),
+      name: nome.trim(),
+      phone: tel.trim(),
+      client_type: seg === "casa" ? "residencial" : "empresarial",
+      source: "simulador",
+      status: "new_lead",
       ilha: island,
-      segmento: seg,
       perfil: profile,
       pacote_recomendado: currentPkg,
       fatura_mensal: fatura,
       poupanca_estimada: savings,
-      created_at: new Date().toISOString(),
     };
     try {
       if (isSupabaseConfigured() && supabase) {
