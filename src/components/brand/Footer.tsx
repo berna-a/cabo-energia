@@ -1,6 +1,7 @@
 import { MessageCircle, Mail } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/constants";
 import logoCor from "@/assets/logo-cor.png";
+import ardoLogo from "@/assets/ardo-logo.svg";
 
 export function Footer() {
   return (
@@ -35,7 +36,18 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="container flex flex-col items-start justify-between gap-2 py-5 text-xs text-ink-muted md:flex-row md:items-center">
-          <span>© {new Date().getFullYear()} CABO ENERGIA. Todos os direitos reservados.</span>
+          <span className="inline-flex items-center gap-1">
+            © {new Date().getFullYear()} CABO ENERGIA. Todos os direitos reservados. Website by{" "}
+            <a
+              href="https://ardo.media"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="ARDO"
+              className="inline-flex items-center hover:opacity-70 transition-opacity"
+            >
+              <img src={ardoLogo} alt="ARDO" className="h-[1em] w-auto inline-block" />
+            </a>
+          </span>
           <span>Cabo Verde · 238</span>
         </div>
       </div>
