@@ -26,12 +26,6 @@ export function FinalCtaSection() {
           <PillButton size="lg" variant="power" onClick={() => openLeadPanel()}>
             <LigarCaboLabel />
           </PillButton>
-          <PillButton size="lg" variant="ghost-dark" asChild>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-              <MessageCircle />
-              Falar no WhatsApp
-            </a>
-          </PillButton>
         </div>
       </div>
     </section>
