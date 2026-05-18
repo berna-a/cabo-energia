@@ -124,8 +124,6 @@ function PlanCard({ plan }: { plan: Plan }) {
 }
 
 export function ProtecaoContinuaSection() {
-  const { openLeadPanel } = useLeadPanel();
-
   return (
     <section
       className="relative overflow-hidden bg-white"
