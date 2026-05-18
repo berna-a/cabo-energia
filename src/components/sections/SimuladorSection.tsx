@@ -29,6 +29,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 
 /* ---------------------------- LOGIC / CONSTANTS ---------------------------- */
 
