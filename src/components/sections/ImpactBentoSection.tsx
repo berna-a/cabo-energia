@@ -149,7 +149,7 @@ export function ImpactBentoSection() {
                 </div>
                 <h4
                   className="mt-3"
-                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 600, fontSize: 18, lineHeight: 1.25, margin: 0 }}
+                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 600, fontSize: 14, lineHeight: 1.25, margin: 0, whiteSpace: "nowrap" }}
                 >
                   Deixe que o sol pague a conta.
                 </h4>
