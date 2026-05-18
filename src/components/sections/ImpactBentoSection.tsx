@@ -128,7 +128,7 @@ export function ImpactBentoSection() {
                 <h3
                   style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
-                  Apagão na zona, Luz na sua Casa.
+                  Apagão na zona,<br />Luz na sua Casa.
                 </h3>
                 <p
                   className="mt-3"
