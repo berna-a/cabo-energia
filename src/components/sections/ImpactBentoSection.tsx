@@ -4,14 +4,14 @@ import impactIndependencia from "@/assets/impact-independencia.jpg";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
-const MUTED = "#5b6b64";
+const MUTED = "rgba(255,255,255,0.75)";
 
 const glassPanel: React.CSSProperties = {
-  background: "rgba(255,255,255,0.75)",
-  border: "1px solid rgba(0,0,0,0.08)",
+  background: "rgba(26,92,58,0.32)",
+  border: "1px solid rgba(255,255,255,0.18)",
   backdropFilter: "blur(14px)",
   WebkitBackdropFilter: "blur(14px)",
-  boxShadow: "0 20px 50px -20px rgba(15,23,42,0.25)",
+  boxShadow: "0 20px 50px -20px rgba(13,43,31,0.35)",
 };
 
 export function ImpactBentoSection() {
@@ -48,7 +48,7 @@ export function ImpactBentoSection() {
               margin: 0,
             }}
           >
-            O que muda na sua vida.
+            O que muda na sua vida
           </h2>
         </div>
 
@@ -79,7 +79,7 @@ export function ImpactBentoSection() {
                 style={glassPanel}
               >
                 <h3
-                  style={{ color: DARK, fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
+                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
                   A rede desliga. A sua casa não.
                 </h3>
@@ -95,9 +95,9 @@ export function ImpactBentoSection() {
                       key={p}
                       className="rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
                       style={{
-                        color: DARK,
-                        background: "rgba(255,255,255,0.6)",
-                        borderColor: "rgba(13,43,31,0.15)",
+                        color: "#ffffff",
+                        background: "rgba(255,255,255,0.12)",
+                        borderColor: "rgba(255,255,255,0.25)",
                       }}
                     >
                       {p}
@@ -135,7 +135,7 @@ export function ImpactBentoSection() {
               >
                 <div
                   style={{
-                    color: DARK,
+                    color: "#F5C842",
                     fontFamily: FONT,
                     fontWeight: 900,
                     fontSize: "clamp(44px, 6.5vw, 72px)",
@@ -147,7 +147,7 @@ export function ImpactBentoSection() {
                 </div>
                 <h4
                   className="mt-3"
-                  style={{ color: DARK, fontFamily: FONT, fontWeight: 600, fontSize: 18, lineHeight: 1.25, margin: 0 }}
+                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 600, fontSize: 18, lineHeight: 1.25, margin: 0 }}
                 >
                   Deixe que o sol pague a conta.
                 </h4>
@@ -188,14 +188,14 @@ export function ImpactBentoSection() {
               >
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-8">
                   <h3
-                    style={{ color: DARK, fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
+                    style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
                   >
                     A sua casa, a sua própria rede.
                   </h3>
                   <p
                     style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0, maxWidth: 460 }}
                   >
-                    Produza a sua energia e faça parte do futuro sustentável das nossas ilhas.
+                    Produza a sua energia e faça parte do futuro sustentável de Cabo Verde
                   </p>
                 </div>
               </div>
