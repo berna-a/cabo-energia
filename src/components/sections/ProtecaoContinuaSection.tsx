@@ -1,6 +1,3 @@
-import { PillButton } from "@/components/brand/PillButton";
-import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
-import { useLeadPanel } from "@/components/brand/useLeadPanel";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
