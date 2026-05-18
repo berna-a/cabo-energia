@@ -145,7 +145,7 @@ const CASA_PROFILES: Profile[] = [
 ];
 
 const NEG_PROFILES: Profile[] = [
-  { id: "com", name: "Comércio / Escritório", sub: "Operação básica", Icon: Briefcase, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
+  { id: "com", name: "Comércio / Escritório", sub: "Operação simples", Icon: Briefcase, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
   { id: "res", name: "Restaurante / Clínica", sub: "Operação intensiva", Icon: UtensilsCrossed, color: "#EF4444", bg: "rgba(239,68,68,0.12)" },
   { id: "hot", name: "Hotel / Operação maior", sub: "Alta dependência energética", Icon: BedDouble, color: "#F59E0B", bg: "rgba(245,158,11,0.12)" },
   { id: "ind", name: "Indústria / Grande empresa", sub: "Consumo crítico", Icon: Factory, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)" },
