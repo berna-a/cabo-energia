@@ -1,11 +1,7 @@
 import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
+import { useLeadPanel } from "@/components/brand/useLeadPanel";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
@@ -18,7 +14,6 @@ type Plan = {
   name: string;
   metrics: { value: string; label: string }[];
   price: string;
-  primaryCta?: boolean;
 };
 
 const residencial: Plan[] = [
@@ -40,7 +35,6 @@ const residencial: Plan[] = [
       { value: "Até 80%", label: "Redução" },
     ],
     price: "510.000 CVE",
-    primaryCta: true,
   },
   {
     badge: "Independência",
@@ -62,7 +56,6 @@ const negocio: Plan[] = [
       { value: "15,36 kWh", label: "Proteção" },
     ],
     price: "1.350.000 CVE",
-    primaryCta: true,
   },
   {
     badge: "Imunidade",
@@ -72,11 +65,10 @@ const negocio: Plan[] = [
       { value: "Selo Oficial", label: "Rede Protegida" },
     ],
     price: "Sob Orçamento",
-    primaryCta: true,
   },
 ];
 
-function PlanCard({ plan, onCta }: { plan: Plan; onCta: (name: string) => void }) {
+function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
   return (
     <article
       className="flex h-full flex-col rounded-3xl p-7 transition-shadow hover:shadow-md"
@@ -114,11 +106,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: (name: string) => void }
 
       <div className="mt-6 grid grid-cols-2 gap-3">
         {plan.metrics.map((m) => (
-          <div
-            key={m.label}
-            className="rounded-xl p-4"
-            style={{ background: "#f8fafc" }}
-          >
+          <div key={m.label} className="rounded-xl p-4" style={{ background: "#f8fafc" }}>
             <div
               style={{
                 color: DARK,
@@ -159,17 +147,14 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: (name: string) => void }
           {plan.price}
         </div>
 
-        <button
-          onClick={() => onCta(plan.name)}
-          className="mt-5 w-full rounded-full px-5 py-3.5 text-[13px] font-semibold tracking-[0.08em] transition-transform hover:-translate-y-0.5"
-          style={
-            plan.primaryCta
-              ? { background: DARK, color: "#ffffff" }
-              : { background: "transparent", color: DARK, border: `1px solid ${DARK}` }
-          }
+        <PillButton
+          size="md"
+          variant="power"
+          onClick={onCta}
+          className="mt-5 w-full"
         >
-          LIGAR CABO
-        </button>
+          <LigarCaboLabel />
+        </PillButton>
       </div>
     </article>
   );
@@ -177,20 +162,8 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: (name: string) => void }
 
 export function SolucoesSection() {
   const [tab, setTab] = useState<"residencial" | "negocio">("residencial");
-  const [open, setOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<string>("");
-
+  const { openLeadPanel } = useLeadPanel();
   const plans = tab === "residencial" ? residencial : negocio;
-
-  const handleCta = (name: string) => {
-    setSelectedPlan(name);
-    setOpen(true);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setOpen(false);
-  };
 
   return (
     <section
@@ -265,52 +238,10 @@ export function SolucoesSection() {
           style={{ animation: "fadeUp 300ms ease both" }}
         >
           {plans.map((p) => (
-            <PlanCard key={p.name} plan={p} onCta={handleCta} />
+            <PlanCard key={p.name} plan={p} onCta={() => openLeadPanel()} />
           ))}
         </div>
       </div>
-
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-md" style={{ fontFamily: FONT }}>
-          <DialogHeader>
-            <DialogTitle style={{ color: DARK, fontWeight: 700 }}>
-              Ligar Cabo — {selectedPlan}
-            </DialogTitle>
-            <DialogDescription>
-              Deixe os seus dados e entramos em contacto em menos de 24h.
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="mt-2 space-y-3">
-            <input
-              required
-              type="text"
-              placeholder="Nome"
-              className="w-full rounded-xl border px-4 py-3 text-sm outline-none focus:border-[color:var(--dark)]"
-              style={{ borderColor: "rgba(0,0,0,0.12)" }}
-            />
-            <input
-              required
-              type="tel"
-              placeholder="Telemóvel"
-              className="w-full rounded-xl border px-4 py-3 text-sm outline-none"
-              style={{ borderColor: "rgba(0,0,0,0.12)" }}
-            />
-            <input
-              type="email"
-              placeholder="Email (opcional)"
-              className="w-full rounded-xl border px-4 py-3 text-sm outline-none"
-              style={{ borderColor: "rgba(0,0,0,0.12)" }}
-            />
-            <button
-              type="submit"
-              className="mt-2 w-full rounded-full px-5 py-3.5 text-[13px] font-semibold tracking-[0.08em] text-white transition-transform hover:-translate-y-0.5"
-              style={{ background: DARK }}
-            >
-              ENVIAR PEDIDO
-            </button>
-          </form>
-        </DialogContent>
-      </Dialog>
 
       <style>{`
         @keyframes fadeUp {
