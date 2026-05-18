@@ -7,6 +7,7 @@ import { SolutionsSection } from "@/components/sections/SolutionsSection";
 
 import { TrustSection } from "@/components/sections/TrustSection";
 import SimuladorSection from "@/components/sections/SimuladorSection";
+import { ImpactBentoSection } from "@/components/sections/ImpactBentoSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
         <HeroSection />
         <Marquee />
         <SimuladorSection />
+        <ImpactBentoSection />
         <PainSection />
         <SolutionsSection />
         
