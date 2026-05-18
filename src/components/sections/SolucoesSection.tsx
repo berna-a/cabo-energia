@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/useLeadPanel";
+import { useAudienceTab, setAudienceTab } from "./audienceTab";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
@@ -161,7 +161,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
 }
 
 export function SolucoesSection() {
-  const [tab, setTab] = useState<"residencial" | "negocio">("residencial");
+  const tab = useAudienceTab();
   const { openLeadPanel } = useLeadPanel();
   const plans = tab === "residencial" ? residencial : negocio;
 
@@ -216,7 +216,7 @@ export function SolucoesSection() {
               return (
                 <button
                   key={t.id}
-                  onClick={() => setTab(t.id)}
+                  onClick={() => setAudienceTab(t.id)}
                   className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
                   style={{
                     background: active ? DARK : "transparent",
