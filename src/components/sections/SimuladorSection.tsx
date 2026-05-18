@@ -1231,6 +1231,7 @@ function NavRow({ children }: { children: React.ReactNode }) {
     <div
       className="sim-nav"
       style={{
+        position: "relative",
         display: "flex",
         gap: 8,
         alignItems: "center",
