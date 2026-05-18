@@ -298,31 +298,6 @@ export function ImpactBentoSection() {
           z-index: 3;
           pointer-events: none;
         }
-        .impacto-card-night::before {
-          content: '';
-          position: absolute;
-          top: -120%;
-          left: -120%;
-          width: 340%;
-          height: 340%;
-          background: linear-gradient(
-            135deg,
-            transparent 0%,
-            transparent 30%,
-            rgba(200, 218, 255, 0.02) 38%,
-            rgba(210, 225, 255, 0.08) 44%,
-            rgba(215, 230, 255, 0.14) 48%,
-            rgba(218, 232, 255, 0.18) 50%,
-            rgba(215, 230, 255, 0.14) 52%,
-            rgba(210, 225, 255, 0.08) 56%,
-            rgba(200, 218, 255, 0.02) 62%,
-            transparent 70%,
-            transparent 100%
-          );
-          animation: lunarSweep 22s ease-in-out infinite alternate;
-          pointer-events: none;
-          z-index: 1;
-        }
         .impacto-card-night::after {
           content: '';
           position: absolute;
@@ -347,12 +322,6 @@ export function ImpactBentoSection() {
           50%  { opacity: 1; }
           75%  { opacity: 0.85; }
           100% { transform: translate(12%, 10%); opacity: 0.6; }
-        }
-        @keyframes lunarSweep {
-          0%   { transform: translate(-10%, -8%); opacity: 0.55; }
-          40%  { opacity: 1; }
-          60%  { opacity: 0.85; }
-          100% { transform: translate(10%, 8%); opacity: 0.65; }
         }
       `}</style>
     </section>
