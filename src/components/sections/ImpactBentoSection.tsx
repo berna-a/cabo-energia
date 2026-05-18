@@ -4,14 +4,14 @@ import impactIndependencia from "@/assets/impact-independencia.jpg";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
-const MUTED = "#5b6b64";
+const MUTED = "rgba(255,255,255,0.75)";
 
 const glassPanel: React.CSSProperties = {
-  background: "rgba(255,255,255,0.75)",
-  border: "1px solid rgba(0,0,0,0.08)",
+  background: "rgba(26,92,58,0.32)",
+  border: "1px solid rgba(255,255,255,0.18)",
   backdropFilter: "blur(14px)",
   WebkitBackdropFilter: "blur(14px)",
-  boxShadow: "0 20px 50px -20px rgba(15,23,42,0.25)",
+  boxShadow: "0 20px 50px -20px rgba(13,43,31,0.35)",
 };
 
 export function ImpactBentoSection() {
