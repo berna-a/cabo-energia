@@ -211,8 +211,7 @@ export function ImpactBentoSection() {
                   <span style={{ fontSize: "clamp(44px, 6.5vw, 72px)" }}>80%</span>
                 </div>
                 <h4
-                  className="mt-3"
-                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 600, fontSize: 14, lineHeight: 1.25, margin: 0, whiteSpace: "nowrap" }}
+                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 600, fontSize: 14, lineHeight: 1.25, margin: 0, marginTop: 17, whiteSpace: "nowrap" }}
                 >
                   Deixe que o sol pague a conta.
                 </h4>
