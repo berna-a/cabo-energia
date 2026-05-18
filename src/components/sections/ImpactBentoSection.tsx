@@ -122,7 +122,7 @@ export function ImpactBentoSection() {
             <div className="relative z-10 flex h-full w-full items-center p-6 md:p-10">
               <div
                 className="impacto-card-night flex w-full md:w-1/2 flex-col rounded-2xl p-6 md:p-7"
-                style={glassPanelNight}
+                style={{ ...glassPanelNight, marginTop: 15 }}
               >
                 <LeftCatchLightLunar />
                 <h3
@@ -131,7 +131,7 @@ export function ImpactBentoSection() {
                   Apagão na zona,<br />Luz na sua Casa.
                 </h3>
                 <p
-                  className="mt-3"
+                  className="mt-5"
                   style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0 }}
                 >
                   A cozinha, o Wi-Fi, a sua vida, não pára.
