@@ -79,7 +79,7 @@ export function ImpactBentoSection() {
                 style={glassPanel}
               >
                 <h3
-                  style={{ color: DARK, fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
+                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
                   A rede desliga. A sua casa não.
                 </h3>
@@ -95,9 +95,9 @@ export function ImpactBentoSection() {
                       key={p}
                       className="rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
                       style={{
-                        color: DARK,
-                        background: "rgba(255,255,255,0.6)",
-                        borderColor: "rgba(13,43,31,0.15)",
+                        color: "#ffffff",
+                        background: "rgba(255,255,255,0.12)",
+                        borderColor: "rgba(255,255,255,0.25)",
                       }}
                     >
                       {p}
