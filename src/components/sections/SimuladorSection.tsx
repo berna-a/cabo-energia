@@ -26,6 +26,7 @@ import {
   Check,
   ArrowLeft,
   HousePlus,
+  type LucideIcon,
 } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 
