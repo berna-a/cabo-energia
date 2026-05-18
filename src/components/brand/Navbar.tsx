@@ -86,21 +86,23 @@ export function Navbar() {
               <ChevronDown className="size-3.5 opacity-70" />
             </button>
             {openMenu === "solucoes" && (
-              <div
-                role="menu"
-                className="absolute left-1/2 top-full z-50 mt-2 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-white p-2 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.18)]"
-              >
-                {solutionsItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    role="menuitem"
-                    className="flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors hover:bg-surface-muted"
-                  >
-                    <span className="text-sm font-semibold text-ink">{item.label}</span>
-                    <span className="text-xs text-ink-soft">{item.description}</span>
-                  </Link>
-                ))}
+              <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2">
+                <div
+                  role="menu"
+                  className="w-64 overflow-hidden rounded-2xl border border-border bg-white p-2 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.18)]"
+                >
+                  {solutionsItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      role="menuitem"
+                      className="flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors hover:bg-surface-muted"
+                    >
+                      <span className="text-sm font-semibold text-ink">{item.label}</span>
+                      <span className="text-xs text-ink-soft">{item.description}</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
