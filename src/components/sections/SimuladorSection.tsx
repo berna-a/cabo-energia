@@ -130,7 +130,7 @@ type Profile = {
   id: string;
   name: string;
   sub: string;
-  Icon: React.ComponentType<{ size?: number; className?: string }>;
+  Icon: LucideIcon;
   color: string;
   bg: string;
 };
@@ -152,7 +152,7 @@ const NEG_PROFILES: Profile[] = [
 /* ----------------------------- BENEFIT MAPPING ----------------------------- */
 
 type Benefit = {
-  Icon: React.ComponentType<{ size?: number; className?: string }>;
+  Icon: LucideIcon;
   color: string;
   bg: string;
   text: string;
@@ -525,7 +525,7 @@ function SegCard({
   selected: boolean;
   onClick: () => void;
   gradient: string;
-  Icon: React.ComponentType<{ size?: number; color?: string }>;
+  Icon: LucideIcon;
   name: string;
   sub: string;
 }) {
