@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import SimuladorSection from "@/components/sections/SimuladorSection";
 import { ImpactBentoSection } from "@/components/sections/ImpactBentoSection";
 import { SolucoesSection } from "@/components/sections/SolucoesSection";
+import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 
 const Index = () => {
