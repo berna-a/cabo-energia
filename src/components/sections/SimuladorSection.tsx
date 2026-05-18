@@ -1309,7 +1309,7 @@ function YellowBtn({ children, onClick }: { children: React.ReactNode; onClick: 
       type="button"
       onClick={onClick}
       style={{
-        flex: 1,
+        width: "50%",
         background: YELLOW,
         color: DARK,
         borderRadius: 50,
