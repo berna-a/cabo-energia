@@ -48,7 +48,7 @@ export function ImpactBentoSection() {
               margin: 0,
             }}
           >
-            O que muda na sua vida.
+            O que muda na sua vida
           </h2>
         </div>
 
