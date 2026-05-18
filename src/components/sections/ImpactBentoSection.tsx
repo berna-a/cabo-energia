@@ -7,11 +7,11 @@ const DARK = "#0D2B1F";
 const MUTED = "rgba(255,255,255,0.75)";
 
 const glassPanel: React.CSSProperties = {
-  background: "rgba(26,92,58,0.32)",
-  border: "1px solid rgba(255,255,255,0.18)",
-  backdropFilter: "blur(14px)",
-  WebkitBackdropFilter: "blur(14px)",
-  boxShadow: "0 20px 50px -20px rgba(13,43,31,0.35)",
+  background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.10)",
+  backdropFilter: "blur(2px) saturate(120%)",
+  WebkitBackdropFilter: "blur(2px) saturate(120%)",
+  boxShadow: "none",
 };
 
 export function ImpactBentoSection() {
