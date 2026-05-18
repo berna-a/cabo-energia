@@ -141,7 +141,7 @@ const CASA_PROFILES: Profile[] = [
   { id: "ap", name: "Apartamento", sub: "Até 3 pessoas", Icon: Building, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
   { id: "cas", name: "Casa ou apartamento", sub: "3–5 pessoas", Icon: Home, color: "#10B981", bg: "rgba(16,185,129,0.12)" },
   { id: "mor", name: "Moradia com AC", sub: "Consumo mais elevado", Icon: HousePlus, color: "#F59E0B", bg: "rgba(245,158,11,0.12)" },
-  { id: "viv", name: "Vivenda / casa grande", sub: "Vários AC, consumo intensivo", Icon: Home, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)" },
+  { id: "viv", name: "Vivenda / casa grande", sub: "Vários AC, consumo intensivo", Icon: HousePlus, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)" },
 ];
 
 const NEG_PROFILES: Profile[] = [
