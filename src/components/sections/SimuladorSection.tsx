@@ -943,7 +943,7 @@ function Step4({
 
       <NavRow>
         <BackBtn onClick={onBack} />
-        <YellowBtn onClick={onNext}>LIGAR CABO — Quero este estudo</YellowBtn>
+        <YellowBtn onClick={onNext}>Continuar</YellowBtn>
       </NavRow>
     </div>
   );
