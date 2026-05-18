@@ -1275,7 +1275,7 @@ function ContinueBtn({
       onClick={onClick}
       disabled={disabled}
       style={{
-        flex: 1,
+        width: "50%",
         background: GREEN,
         color: "white",
         borderRadius: 50,
