@@ -24,6 +24,7 @@ const Index = () => {
         <ImpactoDiaSection />
         <ProcessoSection />
         <ProtecaoContinuaSection />
+        <RedeProtegidosSection />
         <FinalCtaSection />
       </main>
       <Footer />
