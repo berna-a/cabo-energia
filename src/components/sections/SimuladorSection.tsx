@@ -1231,6 +1231,7 @@ function NavRow({ children }: { children: React.ReactNode }) {
     <div
       className="sim-nav"
       style={{
+        position: "relative",
         display: "flex",
         gap: 8,
         alignItems: "center",
@@ -1249,6 +1250,10 @@ function BackBtn({ onClick }: { onClick: () => void }) {
       type="button"
       onClick={onClick}
       style={{
+        position: "absolute",
+        left: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
         background: "transparent",
         border: "none",
         color: "rgba(255,255,255,0.35)",
