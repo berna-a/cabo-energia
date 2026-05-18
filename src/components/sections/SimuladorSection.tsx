@@ -1013,7 +1013,7 @@ function Step5({
         <span style={{ fontSize: 12, color: "rgba(255,255,255,0.70)" }}>{PACKAGES[currentPkg].name}</span>
       </div>
 
-      <StepHeader title="Os seus dados" hint="Para Kevin poder ligar." />
+      <StepHeader title="Os seus dados" />
 
       <Field label="Nome">
         <input
