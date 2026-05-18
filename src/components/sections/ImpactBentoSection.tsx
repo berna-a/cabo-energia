@@ -128,28 +128,43 @@ export function ImpactBentoSection() {
                 <h3
                   style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
-                  A rede desliga. A sua casa não.
+                  Apagão na zona, Luz na sua Casa.
                 </h3>
                 <p
                   className="mt-3"
                   style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0 }}
                 >
-                  Proteção instantânea. O frigorífico, o Wi-Fi, a sua vida, não para.
+                  A cozinha, o Wi-Fi, a sua vida, não pára.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  {["Conforto", "Zero Interrupções", "Sempre Ligado"].map((p) => (
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: "rgba(0, 0, 0, 0.35)",
+                      border: "1px solid rgba(255, 255, 255, 0.20)",
+                      borderRadius: 50,
+                      padding: "6px 14px 6px 8px",
+                      fontSize: 12,
+                      fontWeight: 500,
+                      color: "white",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}
+                  >
                     <span
-                      key={p}
-                      className="rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider"
+                      aria-hidden
                       style={{
-                        color: "#ffffff",
-                        background: "rgba(255,255,255,0.12)",
-                        borderColor: "rgba(255,255,255,0.25)",
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        background: "#F5C842",
+                        flexShrink: 0,
                       }}
-                    >
-                      {p}
-                    </span>
-                  ))}
+                    />
+                    Sempre Ligado
+                  </span>
                 </div>
               </div>
             </div>
