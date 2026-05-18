@@ -6,7 +6,7 @@ import { PainSection } from "@/components/sections/PainSection";
 import { SolutionsSection } from "@/components/sections/SolutionsSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { TrustSection } from "@/components/sections/TrustSection";
-import { SimulatorSection } from "@/components/sections/SimulatorSection";
+import SimuladorSection from "@/components/sections/SimuladorSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 
 const Index = () => {
@@ -20,7 +20,7 @@ const Index = () => {
         <SolutionsSection />
         <HowItWorksSection />
         <TrustSection />
-        <SimulatorSection />
+        <SimuladorSection />
         <FinalCtaSection />
       </main>
       <Footer />
