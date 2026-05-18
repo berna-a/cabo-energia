@@ -1084,7 +1084,14 @@ function Step5({
 
       <NavRow>
         <BackBtn onClick={onBack} />
-        <YellowBtn onClick={onSubmit}>LIGAR CABO</YellowBtn>
+        <PillButton
+          variant="primary"
+          size="md"
+          onClick={onSubmit}
+          className="w-1/2 font-display uppercase tracking-wide"
+        >
+          <LigarCaboLabel tone="dark" />
+        </PillButton>
       </NavRow>
     </div>
   );
