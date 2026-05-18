@@ -161,7 +161,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
 }
 
 export function SolucoesSection() {
-  const [tab, setTab] = useState<"residencial" | "negocio">("residencial");
+  const tab = useAudienceTab();
   const { openLeadPanel } = useLeadPanel();
   const plans = tab === "residencial" ? residencial : negocio;
 
