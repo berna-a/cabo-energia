@@ -371,7 +371,7 @@ export default function SimuladorSection() {
           <div style={{ marginBottom: 28 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               {[1, 2, 3, 4, 5].map((n) => {
-                const bg = n < step ? GREEN : n === step ? YELLOW : "rgba(255,255,255,0.12)";
+                const bg = n < step ? GREEN : n === step ? `${GREEN}99` : `${GREEN}33`;
                 return (
                   <div
                     key={n}
