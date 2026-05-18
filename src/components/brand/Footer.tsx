@@ -45,7 +45,7 @@ export function Footer() {
               aria-label="ARDO"
               className="inline-flex items-center hover:opacity-70 transition-opacity"
             >
-              <img src={ardoLogo} alt="ARDO" className="h-[1em] w-auto inline-block" />
+              <img src={ardoLogo} alt="ARDO" className="h-[5em] w-auto inline-block" />
             </a>
           </span>
           <span>Cabo Verde · 238</span>
