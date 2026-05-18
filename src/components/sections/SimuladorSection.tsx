@@ -2,13 +2,7 @@ import * as React from "react";
 import {
   Home,
   Store,
-  ArrowLeft,
-  ArrowRight,
-  CheckCircle2,
-  ShieldCheck,
   Building,
-  House,
-  Castle,
   Briefcase,
   UtensilsCrossed,
   BedDouble,
@@ -18,927 +12,1329 @@ import {
   Smartphone,
   Coins,
   Snowflake,
-  CalendarClock,
-  Unplug,
+  CalendarCheck,
+  PowerOff,
   Leaf,
   Infinity as InfinityIcon,
   DoorOpen,
   Thermometer,
   TrendingDown,
   Clock,
-  Award,
+  BadgeCheck,
   Users,
-  type LucideIcon,
+  ShieldCheck,
+  Check,
+  ArrowLeft,
+  HousePlus,
 } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
-import { cn } from "@/lib/utils";
 
-/* ============================ DOMAIN ============================ */
+/* ---------------------------- LOGIC / CONSTANTS ---------------------------- */
 
 const TARIFA_CVE_KWH = 32.2;
 
-type Segment = "casa" | "negocio";
-type ProfileKey =
-  | "ap" | "cas" | "mor" | "viv"
-  | "com" | "res" | "hot" | "ind";
+type PkgKey = "tranquila" | "autonomia" | "plena" | "essencial" | "pleno";
 
-interface ProfileOption {
-  key: ProfileKey;
-  name: string;
-  sub: string;
-  Icon: LucideIcon;
-}
-
-const CASA_PROFILES: ProfileOption[] = [
-  { key: "ap",  name: "Apartamento",          sub: "Até 3 pessoas", Icon: Building },
-  { key: "cas", name: "Casa ou apartamento",  sub: "3–5 pessoas", Icon: Home },
-  { key: "mor", name: "Moradia com AC",       sub: "Consumo mais elevado", Icon: House },
-  { key: "viv", name: "Vivenda / casa grande", sub: "Vários AC, consumo intensivo", Icon: Castle },
-];
-
-const NEG_PROFILES: ProfileOption[] = [
-  { key: "com", name: "Comércio / Escritório", sub: "Operação básica", Icon: Briefcase },
-  { key: "res", name: "Restaurante / Clínica", sub: "Operação intensiva", Icon: UtensilsCrossed },
-  { key: "hot", name: "Hotel / Operação maior", sub: "Alta dependência energética", Icon: BedDouble },
-  { key: "ind", name: "Indústria / Grande empresa", sub: "Consumo crítico", Icon: Factory },
-];
-
-interface Benefit { Icon: LucideIcon; text: string }
-
-interface Pkg {
-  name: string;
-  price: number;
-  prodMes: number;
-  baseOffset: number;
-  promise: string;
-  benefits: Benefit[];
-  family: Segment;
-}
-
-const PACKAGES: Record<string, Pkg> = {
+const PACKAGES: Record<
+  PkgKey,
+  {
+    name: string;
+    price: number;
+    priceStr: string;
+    prodMes: number;
+    baseOffset: number;
+    family: "casa" | "negocio";
+    promise: string;
+  }
+> = {
   tranquila: {
-    name: "Casa Tranquila", price: 240000, prodMes: 0, baseOffset: 0.6, family: "casa",
-    promise: "Não fique às escuras quando a luz vai abaixo.",
-    benefits: [
-      { Icon: Refrigerator, text: "Frigorífico e congelador sempre ligados" },
-      { Icon: Lightbulb, text: "Iluminação garantida em toda a casa" },
-      { Icon: Smartphone, text: "Telemóvel, router e computador carregados" },
-    ],
+    name: "Casa Tranquila",
+    price: 240000,
+    priceStr: "A partir de 240.000 CVE",
+    prodMes: 0,
+    baseOffset: 0.6,
+    family: "casa",
+    promise: "O essencial sempre ligado, mesmo quando a luz vai abaixo.",
   },
   autonomia: {
-    name: "Casa Autonomia", price: 510000, prodMes: 438, baseOffset: 0, family: "casa",
-    promise: "O sol paga a sua conta de luz.",
-    benefits: [
-      { Icon: Coins, text: "Até 8.000 CVE poupados por mês na fatura" },
-      { Icon: Snowflake, text: "AC todo o dia sem sentir o peso na factura" },
-      { Icon: CalendarClock, text: "Sistema amortiza-se em 5 anos" },
-    ],
+    name: "Casa Autonomia",
+    price: 510000,
+    priceStr: "510.000 CVE",
+    prodMes: 438,
+    baseOffset: 0,
+    family: "casa",
+    promise: "A sua casa funciona com o sol — a factura cai todos os meses.",
   },
   plena: {
-    name: "Casa Plena", price: 730000, prodMes: 584, baseOffset: 0, family: "casa",
-    promise: "A sua casa, o seu sol, as suas regras.",
-    benefits: [
-      { Icon: Unplug, text: "Independência quase total da rede" },
-      { Icon: Leaf, text: "Menos petróleo importado em Cabo Verde" },
-      { Icon: InfinityIcon, text: "A casa funciona — apagão ou não" },
-    ],
+    name: "Casa Plena",
+    price: 730000,
+    priceStr: "730.000 CVE",
+    prodMes: 584,
+    baseOffset: 0,
+    family: "casa",
+    promise: "Independência quase total — viva como se a Electra não existisse.",
   },
   essencial: {
-    name: "Negócio Essencial", price: 1150000, prodMes: 876, baseOffset: 0, family: "negocio",
-    promise: "O seu negócio não para. A sua fatura baixa.",
-    benefits: [
-      { Icon: DoorOpen, text: "Portas abertas quando os vizinhos fecham" },
-      { Icon: Thermometer, text: "Equipamentos críticos sempre ligados" },
-      { Icon: TrendingDown, text: "Fatura reduzida em 60–75%" },
-    ],
+    name: "Negócio Essencial",
+    price: 1150000,
+    priceStr: "1.150.000 CVE",
+    prodMes: 876,
+    baseOffset: 0,
+    family: "negocio",
+    promise: "Mantenha o negócio aberto e os custos sob controlo.",
   },
   pleno: {
-    name: "Negócio Pleno", price: 1800000, prodMes: 0, baseOffset: 0.7, family: "negocio",
-    promise: "Diga aos seus clientes: nunca paramos.",
-    benefits: [
-      { Icon: Clock, text: "Operação contínua — apagão ou não" },
-      { Icon: Award, text: "Certificado Rede de Negócios Protegidos" },
-      { Icon: Users, text: "Diga aos seus clientes: nunca paramos" },
-    ],
+    name: "Negócio Pleno",
+    price: 1800000,
+    priceStr: "A partir de 1.800.000 CVE",
+    prodMes: 0,
+    baseOffset: 0.7,
+    family: "negocio",
+    promise: "Operação contínua, certificada e diferenciadora.",
   },
 };
 
-const PROFILE_TO_PKG: Record<ProfileKey, string> = {
-  ap: "tranquila", cas: "autonomia",
-  mor: "autonomia", viv: "plena",
-  com: "essencial", res: "essencial",
-  hot: "pleno", ind: "pleno",
-};
+type Seg = "casa" | "negocio";
 
-function getRecommendedPackage(
-  seg: Segment, profile: ProfileKey | null, hasRoof: boolean, fatura: number
-): string {
-  if (!profile) return seg === "casa" ? "autonomia" : "essencial";
-  let pkg = PROFILE_TO_PKG[profile];
+function getPackage(seg: Seg, profile: string, hasRoof: boolean, fatura: number): PkgKey {
+  const map: Record<string, PkgKey> = {
+    ap: "tranquila",
+    cas: "autonomia",
+    mor: "autonomia",
+    viv: "plena",
+    com: "essencial",
+    res: "essencial",
+    hot: "pleno",
+    ind: "pleno",
+  };
+  let pkg: PkgKey = map[profile] ?? (seg === "casa" ? "autonomia" : "essencial");
   if (seg === "casa" && !hasRoof) pkg = "tranquila";
   if (seg === "casa" && (profile === "mor" || profile === "viv") && fatura > 15000) pkg = "plena";
   return pkg;
 }
 
-function calcSavings(pkgKey: string, fatura: number): number {
+function calcSavings(pkgKey: PkgKey, fatura: number): number {
   const pkg = PACKAGES[pkgKey];
-  if (!pkg) return 0;
   const consumo = fatura / TARIFA_CVE_KWH;
-  const offset = pkg.prodMes > 0
-    ? Math.min(consumo, pkg.prodMes)
-    : consumo * pkg.baseOffset;
+  const offset = pkg.prodMes > 0 ? Math.min(consumo, pkg.prodMes) : consumo * pkg.baseOffset;
   const raw = Math.round(offset * TARIFA_CVE_KWH);
-  return Math.min(raw, Math.round(fatura * 0.80));
+  return Math.min(raw, Math.round(fatura * 0.8));
 }
 
-const fmtCVE = (n: number) =>
-  new Intl.NumberFormat("pt-CV", { maximumFractionDigits: 0 }).format(Math.round(n));
+const fmt = (n: number) => n.toLocaleString("pt-PT");
 
-/* ============================ HOOKS ============================ */
+/* ------------------------------- PROFILE DATA ------------------------------ */
 
-function useCountUp(target: number, duration = 600, deps: React.DependencyList = []) {
-  const [val, setVal] = React.useState(target);
-  React.useEffect(() => {
-    let raf = 0;
-    const start = performance.now();
-    const from = val;
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setVal(Math.round(from + (target - from) * eased));
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
-  return val;
-}
+type Profile = {
+  id: string;
+  name: string;
+  sub: string;
+  Icon: React.ComponentType<{ size?: number; className?: string }>;
+  color: string;
+  bg: string;
+};
 
-/* ============================ COMPONENT ============================ */
+const CASA_PROFILES: Profile[] = [
+  { id: "ap", name: "Apartamento", sub: "Até 3 pessoas", Icon: Building, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
+  { id: "cas", name: "Casa ou apartamento", sub: "3–5 pessoas", Icon: Home, color: "#10B981", bg: "rgba(16,185,129,0.12)" },
+  { id: "mor", name: "Moradia com AC", sub: "Consumo mais elevado", Icon: HousePlus, color: "#F59E0B", bg: "rgba(245,158,11,0.12)" },
+  { id: "viv", name: "Vivenda / casa grande", sub: "Vários AC, consumo intensivo", Icon: Home, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)" },
+];
+
+const NEG_PROFILES: Profile[] = [
+  { id: "com", name: "Comércio / Escritório", sub: "Operação básica", Icon: Briefcase, color: "#3B82F6", bg: "rgba(59,130,246,0.12)" },
+  { id: "res", name: "Restaurante / Clínica", sub: "Operação intensiva", Icon: UtensilsCrossed, color: "#EF4444", bg: "rgba(239,68,68,0.12)" },
+  { id: "hot", name: "Hotel / Operação maior", sub: "Alta dependência energética", Icon: BedDouble, color: "#F59E0B", bg: "rgba(245,158,11,0.12)" },
+  { id: "ind", name: "Indústria / Grande empresa", sub: "Consumo crítico", Icon: Factory, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)" },
+];
+
+/* ----------------------------- BENEFIT MAPPING ----------------------------- */
+
+type Benefit = {
+  Icon: React.ComponentType<{ size?: number; className?: string }>;
+  color: string;
+  bg: string;
+  text: string;
+};
+
+const BENEFITS: Record<PkgKey, Benefit[]> = {
+  tranquila: [
+    { Icon: Refrigerator, color: "#3B82F6", bg: "rgba(59,130,246,0.12)", text: "Frigorífico e congelador sempre ligados" },
+    { Icon: Lightbulb, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Iluminação garantida em toda a casa" },
+    { Icon: Smartphone, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Telemóvel, router e computador carregados" },
+  ],
+  autonomia: [
+    { Icon: Coins, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Até 8.000 CVE poupados por mês" },
+    { Icon: Snowflake, color: "#3B82F6", bg: "rgba(59,130,246,0.12)", text: "AC todo o dia sem sentir na factura" },
+    { Icon: CalendarCheck, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Sistema amortiza-se em 5 anos" },
+  ],
+  plena: [
+    { Icon: PowerOff, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)", text: "Independência quase total da rede" },
+    { Icon: Leaf, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Menos petróleo importado em Cabo Verde" },
+    { Icon: InfinityIcon, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "A casa funciona — apagão ou não" },
+  ],
+  essencial: [
+    { Icon: DoorOpen, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Portas abertas quando os vizinhos fecham" },
+    { Icon: Thermometer, color: "#EF4444", bg: "rgba(239,68,68,0.12)", text: "Equipamentos críticos sempre ligados" },
+    { Icon: TrendingDown, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Fatura reduzida em 60–75%" },
+  ],
+  pleno: [
+    { Icon: Clock, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)", text: "Operação contínua — apagão ou não" },
+    { Icon: BadgeCheck, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Certificado Rede de Negócios Protegidos" },
+    { Icon: Users, color: "#3B82F6", bg: "rgba(59,130,246,0.12)", text: "Diferenciador visível para os seus clientes" },
+  ],
+};
 
 const ISLANDS = [
-  "Santiago", "São Vicente", "Sal", "Fogo", "Boa Vista",
-  "Santo Antão", "São Nicolau", "Brava", "Maio",
+  "Boa Vista",
+  "Brava",
+  "Fogo",
+  "Maio",
+  "Sal",
+  "Santiago",
+  "Santo Antão",
+  "São Nicolau",
+  "São Vicente",
 ];
+
+/* --------------------------------- STYLES ---------------------------------- */
+
+const FONT = "Montserrat, system-ui, sans-serif";
+const YELLOW = "#F5C842";
+const GREEN = "#1A5C3A";
+const DARK = "#0D2B1F";
+
+/* -------------------------------- COMPONENT -------------------------------- */
 
 export default function SimuladorSection() {
   const [step, setStep] = React.useState(1);
-  const [direction, setDirection] = React.useState<"forward" | "back">("forward");
-  const [seg, setSeg] = React.useState<Segment | null>(null);
-  const [profile, setProfile] = React.useState<ProfileKey | null>(null);
+  const [seg, setSeg] = React.useState<Seg | "">("");
+  const [profile, setProfile] = React.useState("");
   const [fatura, setFatura] = React.useState(9000);
   const [hasRoof, setHasRoof] = React.useState(true);
-  const [island, setIsland] = React.useState<string | null>(null);
+  const [island, setIsland] = React.useState("");
   const [nome, setNome] = React.useState("");
   const [tel, setTel] = React.useState("");
-  const [showOther, setShowOther] = React.useState(false);
-  const [shakeNome, setShakeNome] = React.useState(false);
-  const [shakeTel, setShakeTel] = React.useState(false);
+  const [errors, setErrors] = React.useState<{ nome?: boolean; tel?: boolean }>({});
+  const [showOthers, setShowOthers] = React.useState(false);
+  const [pkgOverride, setPkgOverride] = React.useState<PkgKey | null>(null);
 
-  const currentPkg = React.useMemo(
-    () => (seg ? getRecommendedPackage(seg, profile, hasRoof, fatura) : "tranquila"),
-    [seg, profile, hasRoof, fatura]
+  const profiles = seg === "negocio" ? NEG_PROFILES : CASA_PROFILES;
+  const autoPkg = seg ? getPackage(seg as Seg, profile, hasRoof, fatura) : "tranquila";
+  const currentPkg: PkgKey = pkgOverride ?? autoPkg;
+  const savings = profile ? calcSavings(currentPkg, fatura) : 0;
+  const annual = savings * 12;
+  const payback = annual > 0 ? (PACKAGES[currentPkg].price / annual).toFixed(1) : "—";
+
+  React.useEffect(() => {
+    setPkgOverride(null);
+    setShowOthers(false);
+  }, [seg, profile, fatura, hasRoof]);
+
+  const otherOptions = (Object.keys(PACKAGES) as PkgKey[]).filter(
+    (k) => PACKAGES[k].family === (seg || "casa") && k !== currentPkg
   );
-  const savings = React.useMemo(() => calcSavings(currentPkg, fatura), [currentPkg, fatura]);
-  const pkg = PACKAGES[currentPkg];
 
-  const goTo = (n: number) => {
-    setDirection(n >= step ? "forward" : "back");
-    setStep(n);
-  };
-  const back = () => goTo(Math.max(1, step - 1));
+  const go = (n: number) => setStep(n);
 
-  const handleSelectSeg = (s: Segment) => {
+  const selectSeg = (s: Seg) => {
     setSeg(s);
-    setProfile(null);
-    setTimeout(() => goTo(2), 150);
+    setProfile("");
+    setTimeout(() => go(2), 150);
   };
 
-  const submit = async () => {
-    let bad = false;
-    if (!nome.trim()) { setShakeNome(true); setTimeout(() => setShakeNome(false), 500); bad = true; }
-    if (!tel.trim()) { setShakeTel(true); setTimeout(() => setShakeTel(false), 500); bad = true; }
-    if (bad) return;
+  const submitLead = async () => {
+    const e: typeof errors = {};
+    if (!nome.trim()) e.nome = true;
+    if (!tel.trim()) e.tel = true;
+    setErrors(e);
+    if (Object.keys(e).length) return;
 
-    const source = JSON.stringify({
-      ilha: island, segmento: seg, perfil: profile,
-      pacote: currentPkg, fatura, poupanca: savings,
-    });
+    const payload = {
+      nome: nome.trim(),
+      telefone: tel.trim(),
+      ilha: island,
+      segmento: seg,
+      perfil: profile,
+      pacote_recomendado: currentPkg,
+      fatura_mensal: fatura,
+      poupanca_estimada: savings,
+      created_at: new Date().toISOString(),
+    };
     try {
       if (isSupabaseConfigured() && supabase) {
-        const { error } = await supabase.from("leads").insert({
-          name: nome.trim(),
-          phone: tel.trim(),
-          client_type: seg === "casa" ? "residencial" : "empresarial",
-          source,
-          status: "new_lead",
-        });
-        if (error) throw error;
+        const { error } = await supabase.from("leads").insert(payload as never);
+        if (error) console.error("[Simulador] supabase error:", error);
       } else {
-        // eslint-disable-next-line no-console
-        console.warn("[Simulador] supabase não configurado", { nome, tel, source });
+        console.warn("[Simulador] supabase not configured, payload:", payload);
       }
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error("[Simulador] erro a gravar lead:", e);
-    } finally {
-      goTo(6);
+    } catch (err) {
+      console.error("[Simulador] insert failed:", err);
     }
+    go(6);
   };
-
-  const profiles = seg === "casa" ? CASA_PROFILES : NEG_PROFILES;
-
-  const step2Question = seg === "negocio" ? "Que tipo de espaço é?" : "Como é a sua casa?";
-  const step2Hint = seg === "negocio"
-    ? "Selecione o perfil do seu espaço de negócio."
-    : "Selecione o perfil que melhor descreve a sua habitação.";
-
-  const animClass = direction === "forward" ? "sim-step-fwd" : "sim-step-back";
 
   return (
     <section
       id="simulador"
-      className="relative overflow-hidden"
       style={{
-        background:
-          "radial-gradient(ellipse 70% 50% at 50% 0%, hsl(var(--brand-green)/0.35), transparent 60%), hsl(var(--brand-green-deep))",
-        fontFamily: "'Montserrat', system-ui, sans-serif",
+        background: DARK,
+        fontFamily: FONT,
+        padding: "80px 24px",
       }}
     >
       <style>{`
-        #simulador, #simulador * { font-family: 'Montserrat', system-ui, sans-serif; }
-        @keyframes sim-shake {
-          0%,100%{transform:translateX(0)}
-          25%{transform:translateX(-6px)}
-          75%{transform:translateX(6px)}
+        @keyframes simStepIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        .sim-shake{animation:sim-shake .4s ease-in-out}
-        @keyframes sim-step-fwd {
-          from{opacity:0;transform:translateY(6px)}
-          to{opacity:1;transform:translateY(0)}
+        .sim-step { animation: simStepIn 220ms ease-out; }
+        .sim-slider {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 100%;
+          height: 4px;
+          background: rgba(255,255,255,0.12);
+          border-radius: 2px;
+          outline: none;
+          background-image: linear-gradient(${YELLOW}, ${YELLOW});
+          background-repeat: no-repeat;
         }
-        @keyframes sim-step-back {
-          from{opacity:0}
-          to{opacity:1}
+        .sim-slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 20px; height: 20px;
+          border-radius: 50%;
+          background: ${YELLOW};
+          cursor: grab;
+          border: none;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
-        .sim-step-fwd{animation:sim-step-fwd .22s ease-out}
-        .sim-step-back{animation:sim-step-back .22s ease-out}
-        @keyframes sim-pulse-bar {
-          0%,100%{opacity:1}
-          50%{opacity:.6}
+        .sim-slider::-moz-range-thumb {
+          width: 20px; height: 20px;
+          border-radius: 50%;
+          background: ${YELLOW};
+          cursor: grab;
+          border: none;
         }
-        .sim-pulse-bar{animation:sim-pulse-bar 1.5s ease-in-out infinite}
-        .sim-slider{-webkit-appearance:none;appearance:none;background:transparent}
-        .sim-slider::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--track,rgba(255,255,255,0.12))}
-        .sim-slider::-moz-range-track{height:4px;border-radius:2px;background:var(--track,rgba(255,255,255,0.12))}
-        .sim-slider::-webkit-slider-thumb{-webkit-appearance:none;height:20px;width:20px;border-radius:50%;background:#F5C842;cursor:grab;margin-top:-8px;border:none;box-shadow:0 0 0 4px rgba(245,200,66,.18)}
-        .sim-slider::-moz-range-thumb{height:20px;width:20px;border-radius:50%;background:#F5C842;border:none;cursor:grab}
-
-        .sim-benefits{display:flex;flex-direction:row;gap:8px}
-        @media (max-width: 639px){
-          .sim-benefits{flex-direction:column}
+        .sim-card-wrap { max-width: 1100px; margin: 0 auto; }
+        @media (max-width: 640px) {
+          #simulador { padding: 48px 20px !important; }
+          .sim-card { padding: 24px 20px !important; }
+          .sim-grid-2, .sim-grid-2x2, .sim-grid-3 { grid-template-columns: 1fr !important; }
+          .sim-nav { flex-direction: column-reverse !important; align-items: stretch !important; }
+          .sim-nav > * { width: 100%; }
         }
       `}</style>
 
-      <div
-        className="mx-auto"
-        style={{
-          maxWidth: 1100,
-          padding: "clamp(48px, 8vw, 80px) clamp(20px, 5vw, 32px)",
-        }}
-      >
-        {/* HEADER */}
-        <header className="mb-12 text-center">
+      <div className="sim-card-wrap">
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
           <span
-            className="inline-block rounded-pill border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em]"
-            style={{ borderColor: "#F5C842", color: "#F5C842" }}
+            style={{
+              display: "inline-block",
+              border: `1px solid ${YELLOW}`,
+              color: YELLOW,
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              padding: "6px 20px",
+              borderRadius: 50,
+              marginBottom: 20,
+            }}
           >
             Simulador de Poupança
           </span>
           <h2
-            className="mt-5 font-display font-semibold text-white"
-            style={{ fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.15 }}
+            style={{
+              color: "white",
+              fontWeight: 700,
+              fontSize: "clamp(28px, 4vw, 42px)",
+              margin: "0 0 12px",
+              lineHeight: 1.15,
+            }}
           >
             Descubra quanto pode poupar
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60" style={{ fontSize: 16 }}>
+          <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 16, margin: 0 }}>
             Em 2 minutos, veja a estimativa real para a sua casa ou negócio.
           </p>
-        </header>
+        </div>
 
-        {/* CARD */}
+        {/* Progress */}
+        {step < 6 && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              marginBottom: 28,
+            }}
+          >
+            {[1, 2, 3, 4, 5].map((n) => {
+              const bg = n < step ? GREEN : n === step ? YELLOW : "rgba(255,255,255,0.12)";
+              return (
+                <div
+                  key={n}
+                  style={{
+                    flex: 1,
+                    height: 3,
+                    borderRadius: 2,
+                    background: bg,
+                  }}
+                />
+              );
+            })}
+            <span
+              style={{
+                fontSize: 11,
+                color: "rgba(255,255,255,0.35)",
+                letterSpacing: "0.04em",
+                whiteSpace: "nowrap",
+                marginLeft: 8,
+              }}
+            >
+              Passo {step} de 5
+            </span>
+          </div>
+        )}
+
+        {/* Card */}
         <div
-          className="mx-auto"
+          className="sim-card"
           style={{
-            maxWidth: 720,
             background: "rgba(255,255,255,0.04)",
             border: "1px solid rgba(255,255,255,0.08)",
             borderRadius: 24,
-            padding: "clamp(24px, 4vw, 40px)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
+            padding: "36px 32px",
+            minHeight: 480,
+            position: "relative",
           }}
         >
-          {/* Progress */}
-          <div className="mb-8 flex items-center gap-4">
-            <div className="flex flex-1 gap-1.5">
-              {[1, 2, 3, 4, 5].map((n) => {
-                const done = n < step;
-                const active = n === step;
-                return (
-                  <div
-                    key={n}
-                    className={cn("h-[3px] flex-1 rounded-[2px] transition-all duration-300", active && "sim-pulse-bar")}
-                    style={{
-                      background: done
-                        ? "#1A5C3A"
-                        : active
-                        ? "#F5C842"
-                        : "rgba(255,255,255,0.12)",
-                    }}
-                  />
-                );
-              })}
-            </div>
-            <span className="shrink-0 text-[11px] text-white/40">
-              Passo {Math.min(step, 5)} de 5
-            </span>
-          </div>
-
-          {/* STEP CONTENT — fixed-height container */}
-          <div
-            className="sim-steps-container"
-            style={{
-              position: "relative",
-            }}
-          >
-            <div
-              className="sim-steps-sizer"
-              style={{
-                position: "relative",
-              }}
-            >
-              <style>{`
-                .sim-steps-sizer{min-height:auto}
-                @media (min-width: 768px){
-                  .sim-steps-sizer{min-height:520px}
-                }
-              `}</style>
-
-              <div key={step} className={animClass} style={{ position: "relative" }}>
-                {step === 1 && (
-                  <StepShell question="Para quem é o sistema?" hint="Escolha o segmento para começar.">
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      <BigChoice
-                        Icon={Home}
-                        label="Para a minha casa"
-                        sub="Família ou residência"
-                        selected={seg === "casa"}
-                        onClick={() => handleSelectSeg("casa")}
-                      />
-                      <BigChoice
-                        Icon={Store}
-                        label="Para o meu negócio"
-                        sub="Comércio, empresa ou serviço"
-                        selected={seg === "negocio"}
-                        onClick={() => handleSelectSeg("negocio")}
-                      />
-                    </div>
-                  </StepShell>
-                )}
-
-                {step === 2 && (
-                  <StepShell question={step2Question} hint={step2Hint}>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {profiles.map((p) => (
-                        <ProfileCard
-                          key={p.key}
-                          name={p.name}
-                          sub={p.sub}
-                          Icon={p.Icon}
-                          selected={profile === p.key}
-                          onClick={() => setProfile(p.key)}
-                        />
-                      ))}
-                    </div>
-                    <Nav onBack={back} onNext={() => goTo(3)} nextDisabled={!profile} />
-                  </StepShell>
-                )}
-
-                {step === 3 && (
-                  <StepShell
-                    question="Quanto paga de luz por mês?"
-                    hint="Mova o cursor para a sua fatura típica."
-                  >
-                    <LivePreview profileSet={!!profile} savings={savings} />
-
-                    <div className="mt-6">
-                      <input
-                        type="range"
-                        min={2000}
-                        max={40000}
-                        step={500}
-                        value={fatura}
-                        onChange={(e) => setFatura(Number(e.target.value))}
-                        className="sim-slider w-full"
-                        style={
-                          {
-                            "--track": `linear-gradient(to right, #1A5C3A 0%, #1A5C3A ${
-                              ((fatura - 2000) / (40000 - 2000)) * 100
-                            }%, rgba(255,255,255,0.12) ${
-                              ((fatura - 2000) / (40000 - 2000)) * 100
-                            }%, rgba(255,255,255,0.12) 100%)`,
-                          } as React.CSSProperties
-                        }
-                        aria-label="Factura mensal"
-                      />
-                      <div className="mt-3 text-right">
-                        <div className="font-display text-2xl font-semibold text-white tabular-nums">
-                          {fmtCVE(fatura)} CVE
-                        </div>
-                        <div className="text-xs text-white/45">por mês</div>
-                      </div>
-                    </div>
-
-                    {seg === "casa" && (
-                      <label
-                        className="mt-4 flex cursor-pointer items-center justify-between gap-3 rounded-xl border px-4 py-3.5"
-                        style={{
-                          borderColor: "rgba(255,255,255,0.08)",
-                        }}
-                      >
-                        <span className="text-[13px] text-white/70">
-                          {hasRoof
-                            ? "Tenho telhado ou terraço próprio"
-                            : "Não tenho telhado próprio (arrendatário)"}
-                        </span>
-                        <span
-                          role="switch"
-                          aria-checked={hasRoof}
-                          onClick={() => setHasRoof((v) => !v)}
-                          className="relative inline-block h-6 w-[42px] shrink-0 rounded-pill transition-colors"
-                          style={{ background: hasRoof ? "#1A5C3A" : "rgba(255,255,255,0.15)" }}
-                        >
-                          <span
-                            className="absolute top-0.5 size-5 rounded-full bg-white transition-all"
-                            style={{ left: hasRoof ? 20 : 2 }}
-                          />
-                        </span>
-                      </label>
-                    )}
-
-                    <Nav onBack={back} onNext={() => goTo(4)} nextLabel="Ver a minha estimativa" />
-                  </StepShell>
-                )}
-
-                {step === 4 && (
-                  <StepShell question="A sua estimativa" hint="Indicativa, baseada nas tarifas ARME 2026.">
-                    <MetricsRow savings={savings} pkgPrice={pkg.price} />
-
-                    <div
-                      className="mt-5 rounded-2xl p-5"
-                      style={{
-                        background: "rgba(245,200,66,0.08)",
-                        border: "1px solid rgba(245,200,66,0.20)",
-                      }}
-                    >
-                      <div className="font-display text-lg font-semibold text-white">{pkg.name}</div>
-                      <p className="my-2 text-[14px] italic text-white/55">{pkg.promise}</p>
-
-                      <div className="sim-benefits mt-3">
-                        {pkg.benefits.map((b, i) => (
-                          <BenefitCard key={i} Icon={b.Icon} text={b.text} />
-                        ))}
-                      </div>
-
-                      <div className="mt-4 text-[13px] font-medium" style={{ color: "#F5C842" }}>
-                        A partir de {fmtCVE(pkg.price)} CVE
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setShowOther((v) => !v)}
-                      className="mt-4 text-[12px] text-white/35 underline underline-offset-4 hover:text-white/60"
-                    >
-                      Ver outras opções {showOther ? "↑" : "↓"}
-                    </button>
-                    {showOther && (
-                      <div className="mt-3 flex flex-col gap-2">
-                        {Object.entries(PACKAGES)
-                          .filter(([k, p]) => p.family === seg && k !== currentPkg)
-                          .map(([k, p]) => (
-                            <button
-                              key={k}
-                              type="button"
-                              className="rounded-[10px] px-4 py-2.5 text-left transition-transform hover:-translate-y-0.5"
-                              style={{ background: "rgba(255,255,255,0.04)" }}
-                            >
-                              <div className="text-[13px] font-medium text-white/75">{p.name}</div>
-                              <div className="text-[12px] italic text-white/40">{p.promise}</div>
-                            </button>
-                          ))}
-                      </div>
-                    )}
-
-                    <p className="mt-3 text-center text-[11px] text-white/30">
-                      Estimativa indicativa. Tarifas ARME 2026. O estudo personalizado é gratuito.
-                    </p>
-
-                    <Nav
-                      onBack={back}
-                      onNext={() => goTo(5)}
-                      nextLabel="LIGAR CABO — Quero este estudo"
-                      primary
-                    />
-                  </StepShell>
-                )}
-
-                {step === 5 && (
-                  <StepShell question="Os seus dados" hint="Kevin contacta-o em até 24h por WhatsApp.">
-                    <div
-                      className="mb-5 inline-flex items-center gap-2 rounded-pill px-4 py-1.5"
-                      style={{
-                        background: "rgba(26,92,58,0.25)",
-                        border: "1px solid rgba(26,92,58,0.4)",
-                      }}
-                    >
-                      <span className="size-1.5 rounded-full" style={{ background: "#F5C842" }} />
-                      <span className="text-[13px] text-white/70">{pkg.name}</span>
-                    </div>
-
-                    <div className="flex flex-col gap-3">
-                      <input
-                        className={cn("sim-input", shakeNome && "sim-shake")}
-                        placeholder="O seu nome"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        maxLength={120}
-                        style={inputStyle}
-                      />
-                      <input
-                        className={cn("sim-input", shakeTel && "sim-shake")}
-                        type="tel"
-                        inputMode="tel"
-                        placeholder="+238 ···"
-                        value={tel}
-                        onChange={(e) => setTel(e.target.value)}
-                        maxLength={30}
-                        style={inputStyle}
-                      />
-
-                      <div className="mt-1">
-                        <div className="mb-2 text-[12px] text-white/45">Ilha</div>
-                        <div className="flex flex-wrap gap-2">
-                          {ISLANDS.map((i) => {
-                            const sel = island === i;
-                            return (
-                              <button
-                                key={i}
-                                type="button"
-                                onClick={() => setIsland(i)}
-                                className="transition-colors"
-                                style={{
-                                  borderRadius: 50,
-                                  padding: "7px 16px",
-                                  fontSize: 13,
-                                  border: `1px solid ${sel ? "#F5C842" : "rgba(255,255,255,0.15)"}`,
-                                  color: sel ? "#F5C842" : "rgba(255,255,255,0.5)",
-                                  background: sel ? "rgba(245,200,66,0.08)" : "transparent",
-                                }}
-                              >
-                                {i}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-5 flex items-center justify-center gap-1.5">
-                      <ShieldCheck className="size-3.5" style={{ color: "#4CAF82" }} />
-                      <span className="text-[12px] text-white/35">
-                        Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
-                      </span>
-                    </div>
-
-                    <Nav onBack={back} onNext={submit} nextLabel="LIGAR CABO" primary />
-                  </StepShell>
-                )}
-
-                {step === 6 && (
-                  <div className="flex flex-col items-center text-center">
-                    <CheckCircle2 className="size-12" style={{ color: "#F5C842" }} />
-                    <h3 className="mt-4 font-display font-bold text-white" style={{ fontSize: 26 }}>
-                      Cabo Ligado.
-                    </h3>
-                    <p
-                      className="mx-auto mt-3 text-white/65"
-                      style={{ fontSize: 15, lineHeight: 1.7, maxWidth: 420 }}
-                    >
-                      O seu pedido foi recebido. Kevin da Cabo Energia contacta-o em até 24 horas pelo
-                      WhatsApp para confirmar a estimativa e agendar a visita técnica gratuita.
-                    </p>
-
-                    <div
-                      className="mx-auto mt-5 w-full text-left"
-                      style={{
-                        background: "rgba(255,255,255,0.05)",
-                        borderRadius: 14,
-                        padding: "16px 20px",
-                        maxWidth: 380,
-                      }}
-                    >
-                      <SummaryRow label="Nome" value={nome} />
-                      <SummaryRow label="Pacote recomendado" value={pkg.name} />
-                      <SummaryRow label="Poupança estimada" value={`${fmtCVE(savings)} CVE / mês`} />
-                      <SummaryRow label="Ilha" value={island ?? "—"} />
-                      <SummaryRow label="Telemóvel" value={tel} />
-                    </div>
-
-                    <p className="mt-4 text-[12px] text-white/40">
-                      Guarde o número +238 995 41 81 para reconhecer a chamada de Kevin.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+          {step === 1 && <Step1 onSelect={selectSeg} seg={seg as Seg} />}
+          {step === 2 && (
+            <Step2
+              seg={seg as Seg}
+              profiles={profiles}
+              profile={profile}
+              setProfile={setProfile}
+              onBack={() => go(1)}
+              onNext={() => go(3)}
+            />
+          )}
+          {step === 3 && (
+            <Step3
+              seg={seg as Seg}
+              fatura={fatura}
+              setFatura={setFatura}
+              hasRoof={hasRoof}
+              setHasRoof={setHasRoof}
+              previewSavings={savings}
+              hasProfile={!!profile}
+              onBack={() => go(2)}
+              onNext={() => go(4)}
+            />
+          )}
+          {step === 4 && (
+            <Step4
+              currentPkg={currentPkg}
+              savings={savings}
+              annual={annual}
+              payback={payback}
+              otherOptions={otherOptions}
+              showOthers={showOthers}
+              setShowOthers={setShowOthers}
+              setPkgOverride={setPkgOverride}
+              onBack={() => go(3)}
+              onNext={() => go(5)}
+            />
+          )}
+          {step === 5 && (
+            <Step5
+              currentPkg={currentPkg}
+              nome={nome}
+              setNome={setNome}
+              tel={tel}
+              setTel={setTel}
+              island={island}
+              setIsland={setIsland}
+              errors={errors}
+              onBack={() => go(4)}
+              onSubmit={submitLead}
+            />
+          )}
+          {step === 6 && (
+            <Step6
+              nome={nome}
+              tel={tel}
+              island={island}
+              currentPkg={currentPkg}
+              savings={savings}
+            />
+          )}
         </div>
       </div>
     </section>
   );
 }
 
-/* ============================ SUB-COMPONENTS ============================ */
+/* --------------------------------- STEPS ----------------------------------- */
 
-const inputStyle: React.CSSProperties = {
-  background: "rgba(255,255,255,0.06)",
-  border: "1px solid rgba(255,255,255,0.12)",
-  borderRadius: 12,
-  padding: "13px 16px",
-  color: "white",
-  fontSize: 14,
-  outline: "none",
-  width: "100%",
-};
-
-function StepShell({
-  question, hint, children,
-}: { question: string; hint: string; children: React.ReactNode }) {
+function Step1({ onSelect, seg }: { onSelect: (s: Seg) => void; seg: Seg }) {
   return (
-    <div>
-      <h3 className="font-display font-semibold text-white" style={{ fontSize: 22, marginBottom: 6 }}>
-        {question}
-      </h3>
-      <p className="text-white/50" style={{ fontSize: 14, marginBottom: 24 }}>{hint}</p>
-      {children}
+    <div className="sim-step" key="s1">
+      <StepHeader
+        title="Para onde é a solução?"
+        hint="Vamos personalizar a sua simulação."
+      />
+      <div
+        className="sim-grid-2"
+        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}
+      >
+        <SegCard
+          selected={seg === "casa"}
+          onClick={() => onSelect("casa")}
+          gradient="linear-gradient(135deg, #1A5C3A 0%, #0D2B1F 100%)"
+          Icon={Home}
+          name="Para a minha casa"
+          sub="Família ou residência"
+        />
+        <SegCard
+          selected={seg === "negocio"}
+          onClick={() => onSelect("negocio")}
+          gradient="linear-gradient(135deg, #1A3A5C 0%, #0D1F2B 100%)"
+          Icon={Store}
+          name="Para o meu negócio"
+          sub="Comércio, empresa ou serviço"
+        />
+      </div>
     </div>
   );
 }
 
-function BigChoice({
-  Icon, label, sub, selected, onClick,
-}: { Icon: LucideIcon; label: string; sub: string; selected: boolean; onClick: () => void }) {
-  const [hover, setHover] = React.useState(false);
+function SegCard({
+  selected,
+  onClick,
+  gradient,
+  Icon,
+  name,
+  sub,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  gradient: string;
+  Icon: React.ComponentType<{ size?: number; color?: string }>;
+  name: string;
+  sub: string;
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      className="text-left"
       style={{
-        background: selected
-          ? "rgba(26,92,58,0.35)"
-          : hover ? "rgba(255,255,255,0.09)" : "rgba(255,255,255,0.05)",
-        border: selected
-          ? "2px solid #F5C842"
-          : `1px solid ${hover ? "rgba(255,255,255,0.20)" : "rgba(255,255,255,0.10)"}`,
+        textAlign: "left",
         borderRadius: 20,
-        padding: selected ? "27px 23px" : "28px 24px",
+        border: selected ? `2px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.10)",
+        background: selected ? "rgba(26,92,58,0.30)" : "rgba(255,255,255,0.05)",
         cursor: "pointer",
+        overflow: "hidden",
         transition: "all 0.2s ease",
-        transform: hover && !selected ? "translateY(-2px)" : "translateY(0)",
+        padding: 0,
+        color: "white",
+        fontFamily: FONT,
+      }}
+      onMouseEnter={(e) => {
+        if (!selected) {
+          e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+          e.currentTarget.style.transform = "translateY(-2px)";
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!selected) {
+          e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+          e.currentTarget.style.transform = "translateY(0)";
+        }
       }}
     >
-      <span
+      <div
         style={{
+          height: 140,
+          background: gradient,
+          position: "relative",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          width: 48, height: 48,
-          borderRadius: "50%",
-          background: selected ? "rgba(245,200,66,0.15)" : "rgba(255,255,255,0.08)",
-          marginBottom: 16,
         }}
       >
-        <Icon size={28} color={selected ? "#F5C842" : "rgba(255,255,255,0.5)"} />
-      </span>
-      <div style={{ color: "white", fontSize: 17, fontWeight: 600, marginBottom: 4 }}>{label}</div>
-      <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>{sub}</div>
-    </button>
-  );
-}
-
-function ProfileCard({
-  name, sub, Icon, selected, onClick,
-}: { name: string; sub: string; Icon: LucideIcon; selected: boolean; onClick: () => void }) {
-  const [hover, setHover] = React.useState(false);
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      className="text-left"
-      style={{
-        background: selected
-          ? "rgba(26,92,58,0.30)"
-          : hover ? "rgba(255,255,255,0.09)" : "rgba(255,255,255,0.05)",
-        border: selected
-          ? "2px solid #F5C842"
-          : `1px solid ${hover ? "rgba(255,255,255,0.20)" : "rgba(255,255,255,0.10)"}`,
-        borderRadius: 16,
-        padding: selected ? "17px 15px" : "18px 16px",
-        cursor: "pointer",
-        transition: "all 0.2s ease",
-        display: "flex",
-        alignItems: "center",
-        gap: 14,
-      }}
-    >
-      <span
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: 40, height: 40,
-          borderRadius: "50%",
-          background: selected ? "rgba(245,200,66,0.15)" : "rgba(255,255,255,0.08)",
-          flexShrink: 0,
-        }}
-      >
-        <Icon size={20} color={selected ? "#F5C842" : "rgba(255,255,255,0.5)"} />
-      </span>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ color: "white", fontSize: 14, fontWeight: 500 }}>{name}</span>
-        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, marginTop: 2 }}>{sub}</span>
+        <Icon size={64} color="rgba(255,255,255,0.06)" />
+        <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Icon size={36} color={selected ? YELLOW : "rgba(255,255,255,0.6)"} />
+        </div>
+      </div>
+      <div style={{ padding: "18px 20px 22px" }}>
+        <div style={{ fontWeight: 700, fontSize: 16, color: "white", marginBottom: 4 }}>{name}</div>
+        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{sub}</div>
       </div>
     </button>
   );
 }
 
-function BenefitCard({ Icon, text }: { Icon: LucideIcon; text: string }) {
+function Step2({
+  seg,
+  profiles,
+  profile,
+  setProfile,
+  onBack,
+  onNext,
+}: {
+  seg: Seg;
+  profiles: Profile[];
+  profile: string;
+  setProfile: (s: string) => void;
+  onBack: () => void;
+  onNext: () => void;
+}) {
   return (
-    <div
-      style={{
-        background: "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        borderRadius: 12,
-        padding: "14px 12px",
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        gap: 8,
-      }}
-    >
-      <Icon size={24} color="#F5C842" />
-      <span
+    <div className="sim-step" key="s2">
+      <StepHeader
+        title={seg === "negocio" ? "Que tipo de espaço é?" : "Como é a sua casa?"}
+        hint={
+          seg === "negocio"
+            ? "Selecione o perfil do seu espaço de negócio."
+            : "Selecione o perfil que melhor descreve a sua habitação."
+        }
+      />
+      <div
+        className="sim-grid-2x2"
+        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}
+      >
+        {profiles.map((p) => {
+          const sel = profile === p.id;
+          return (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setProfile(p.id)}
+              style={{
+                textAlign: "left",
+                borderRadius: 16,
+                border: sel ? `2px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.10)",
+                background: sel ? "rgba(26,92,58,0.25)" : "rgba(255,255,255,0.05)",
+                cursor: "pointer",
+                overflow: "hidden",
+                transition: "all 0.2s ease",
+                padding: 0,
+                fontFamily: FONT,
+              }}
+              onMouseEnter={(e) => {
+                if (!sel) {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.20)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!sel) {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+                }
+              }}
+            >
+              <div style={{ height: 6, width: "100%", background: p.color, opacity: sel ? 1 : 0.4 }} />
+              <div style={{ padding: "14px 16px", display: "flex", alignItems: "center", gap: 12 }}>
+                <div
+                  style={{
+                    width: 38,
+                    height: 38,
+                    borderRadius: 10,
+                    background: p.bg,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  <p.Icon size={18} className="" />
+                  <span style={{ display: "none" }}>{p.color}</span>
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: 13, color: "white" }}>{p.name}</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>{p.sub}</div>
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+      <NavRow>
+        <BackBtn onClick={onBack} />
+        <ContinueBtn disabled={!profile} onClick={onNext}>
+          Continuar
+        </ContinueBtn>
+      </NavRow>
+    </div>
+  );
+}
+
+function Step3({
+  seg,
+  fatura,
+  setFatura,
+  hasRoof,
+  setHasRoof,
+  previewSavings,
+  hasProfile,
+  onBack,
+  onNext,
+}: {
+  seg: Seg;
+  fatura: number;
+  setFatura: (n: number) => void;
+  hasRoof: boolean;
+  setHasRoof: (b: boolean) => void;
+  previewSavings: number;
+  hasProfile: boolean;
+  onBack: () => void;
+  onNext: () => void;
+}) {
+  const pct = ((fatura - 2000) / (40000 - 2000)) * 100;
+  return (
+    <div className="sim-step" key="s3">
+      <StepHeader
+        title="Quanto paga de luz por mês?"
+        hint="Mexa o slider para ver a poupança em tempo real."
+      />
+
+      <div
         style={{
-          color: "rgba(255,255,255,0.8)",
-          fontSize: 13,
-          lineHeight: 1.4,
-          fontWeight: 400,
+          background: "rgba(245,200,66,0.08)",
+          border: "1px solid rgba(245,200,66,0.15)",
+          borderRadius: 14,
+          padding: "14px 18px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: 20,
         }}
       >
-        {text}
-      </span>
+        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.45)" }}>Poupança estimada / mês</span>
+        <span style={{ color: YELLOW, fontWeight: 700, fontSize: 24 }}>
+          {hasProfile ? `${fmt(previewSavings)} CVE` : "—"}
+        </span>
+      </div>
+
+      <input
+        type="range"
+        min={2000}
+        max={40000}
+        step={500}
+        value={fatura}
+        onChange={(e) => setFatura(Number(e.target.value))}
+        className="sim-slider"
+        style={{
+          marginBottom: 12,
+          backgroundSize: `${pct}% 100%`,
+        }}
+      />
+      <div style={{ textAlign: "right" }}>
+        <div style={{ fontWeight: 700, fontSize: 28, color: "white" }}>{fmt(fatura)} CVE</div>
+        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>por mês</div>
+      </div>
+
+      {seg === "casa" && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: 12,
+            padding: "14px 16px",
+            marginTop: 16,
+            cursor: "pointer",
+          }}
+          onClick={() => setHasRoof(!hasRoof)}
+        >
+          <div
+            style={{
+              width: 42,
+              height: 24,
+              borderRadius: 50,
+              background: hasRoof ? GREEN : "rgba(255,255,255,0.15)",
+              position: "relative",
+              transition: "background 0.2s",
+              flexShrink: 0,
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 3,
+                left: hasRoof ? 21 : 3,
+                width: 18,
+                height: 18,
+                borderRadius: "50%",
+                background: "white",
+                transition: "left 0.2s",
+              }}
+            />
+          </div>
+          <span style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>
+            {hasRoof ? "Tenho telhado ou terraço próprio" : "Não tenho telhado próprio (arrendatário)"}
+          </span>
+        </div>
+      )}
+
+      <NavRow>
+        <BackBtn onClick={onBack} />
+        <ContinueBtn onClick={onNext}>Ver a minha estimativa</ContinueBtn>
+      </NavRow>
     </div>
   );
 }
 
-function LivePreview({ profileSet, savings }: { profileSet: boolean; savings: number }) {
-  const animated = useCountUp(savings, 500, [savings]);
-  return (
-    <div
-      className="flex items-center justify-between"
-      style={{
-        background: "rgba(245,200,66,0.08)",
-        border: "1px solid rgba(245,200,66,0.15)",
-        borderRadius: 12,
-        padding: "12px 16px",
-      }}
-    >
-      <span className="text-white/45" style={{ fontSize: 12 }}>Poupança estimada / mês</span>
-      <span className="font-display font-semibold tabular-nums" style={{ color: "#F5C842", fontSize: 22 }}>
-        {profileSet ? `${fmtCVE(animated)} CVE` : "—"}
-      </span>
-    </div>
-  );
-}
+function Step4({
+  currentPkg,
+  savings,
+  annual,
+  payback,
+  otherOptions,
+  showOthers,
+  setShowOthers,
+  setPkgOverride,
+  onBack,
+  onNext,
+}: {
+  currentPkg: PkgKey;
+  savings: number;
+  annual: number;
+  payback: string;
+  otherOptions: PkgKey[];
+  showOthers: boolean;
+  setShowOthers: (b: boolean) => void;
+  setPkgOverride: (k: PkgKey) => void;
+  onBack: () => void;
+  onNext: () => void;
+}) {
+  const pkg = PACKAGES[currentPkg];
+  const benefits = BENEFITS[currentPkg];
 
-function MetricsRow({
-  savings, pkgPrice,
-}: { savings: number; pkgPrice: number }) {
-  const monthly = useCountUp(savings, 600, [savings]);
-  const yearly = useCountUp(savings * 12, 600, [savings]);
-  const paybackYears = savings > 0 ? pkgPrice / (savings * 12) : 0;
-  const payback = useCountUp(Math.round(paybackYears * 10), 600, [paybackYears]);
   return (
-    <div className="grid gap-3 sm:grid-cols-3">
-      <Metric label="Poupança / mês" value={`${fmtCVE(monthly)}`} unit="CVE" />
-      <Metric label="Poupança / ano" value={`${fmtCVE(yearly)}`} unit="CVE" />
-      <Metric label="Payback estimado" value={(payback / 10).toFixed(1)} unit="anos" />
+    <div className="sim-step" key="s4">
+      <StepHeader title="A sua estimativa" hint="Resultados com base nos seus dados." />
+
+      <div
+        className="sim-grid-3"
+        style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}
+      >
+        <Metric label="POUPANÇA / MÊS" value={`${fmt(savings)}`} unit="CVE" />
+        <Metric label="POUPANÇA / ANO" value={`${fmt(annual)}`} unit="CVE" />
+        <Metric label="PAYBACK ESTIMADO" value={payback} unit="anos" />
+      </div>
+
+      <div
+        style={{
+          borderRadius: 18,
+          border: "1px solid rgba(245,200,66,0.20)",
+          background: "rgba(245,200,66,0.06)",
+          padding: 20,
+          marginTop: 16,
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+          <div style={{ fontWeight: 700, fontSize: 18, color: "white" }}>{pkg.name}</div>
+          <span
+            style={{
+              fontSize: 12,
+              color: YELLOW,
+              fontWeight: 600,
+              background: "rgba(245,200,66,0.10)",
+              border: "1px solid rgba(245,200,66,0.20)",
+              borderRadius: 50,
+              padding: "4px 14px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {pkg.priceStr}
+          </span>
+        </div>
+        <div
+          style={{
+            fontSize: 13,
+            color: "rgba(255,255,255,0.5)",
+            fontStyle: "italic",
+            margin: "10px 0 14px",
+            lineHeight: 1.5,
+          }}
+        >
+          {pkg.promise}
+        </div>
+        <div
+          className="sim-grid-3"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}
+        >
+          {benefits.map((b, i) => (
+            <div
+              key={i}
+              style={{
+                borderRadius: 12,
+                padding: 12,
+                display: "flex",
+                flexDirection: "column",
+                gap: 6,
+                background: b.bg,
+              }}
+            >
+              <b.Icon size={22} color={b.color} />
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", fontWeight: 500, lineHeight: 1.4 }}>
+                {b.text}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {otherOptions.length > 0 && (
+        <div>
+          <span
+            onClick={() => setShowOthers(!showOthers)}
+            style={{
+              fontSize: 12,
+              color: "rgba(255,255,255,0.30)",
+              textDecoration: "underline",
+              cursor: "pointer",
+              marginTop: 12,
+              display: "inline-block",
+            }}
+          >
+            {showOthers ? "Ocultar outras opções" : "Ver outras opções »"}
+          </span>
+          {showOthers && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
+              {otherOptions.map((k) => (
+                <div
+                  key={k}
+                  onClick={() => setPkgOverride(k)}
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: 10,
+                    padding: "10px 14px",
+                    cursor: "pointer",
+                    transition: "background 0.15s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
+                >
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.80)" }}>
+                    {PACKAGES[k].name}
+                  </div>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.40)", fontStyle: "italic" }}>
+                    {PACKAGES[k].promise}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: 10 }}>
+        Estimativa indicativa. O estudo personalizado é gratuito e sem compromisso.
+      </div>
+
+      <NavRow>
+        <BackBtn onClick={onBack} />
+        <YellowBtn onClick={onNext}>LIGAR CABO — Quero este estudo</YellowBtn>
+      </NavRow>
     </div>
   );
 }
 
 function Metric({ label, value, unit }: { label: string; value: string; unit: string }) {
   return (
-    <div
-      style={{
-        background: "rgba(255,255,255,0.06)",
-        borderRadius: 12,
-        padding: 14,
-      }}
-    >
-      <div className="uppercase tracking-wide text-white/45" style={{ fontSize: 11 }}>
+    <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 14, padding: 14 }}>
+      <div
+        style={{
+          fontSize: 10,
+          color: "rgba(255,255,255,0.4)",
+          textTransform: "uppercase",
+          letterSpacing: "0.06em",
+        }}
+      >
         {label}
       </div>
-      <div className="mt-1 font-display font-semibold text-white tabular-nums" style={{ fontSize: 20 }}>
-        {value} <span className="text-white/40" style={{ fontSize: 11, fontWeight: 400 }}>{unit}</span>
+      <div style={{ fontWeight: 700, fontSize: 20, color: "white", marginTop: 4 }}>
+        {value}
       </div>
+      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{unit}</div>
     </div>
   );
 }
 
-function Nav({
-  onBack, onNext, nextLabel = "Continuar", nextDisabled = false, primary = false,
+function Step5({
+  currentPkg,
+  nome,
+  setNome,
+  tel,
+  setTel,
+  island,
+  setIsland,
+  errors,
+  onBack,
+  onSubmit,
 }: {
+  currentPkg: PkgKey;
+  nome: string;
+  setNome: (s: string) => void;
+  tel: string;
+  setTel: (s: string) => void;
+  island: string;
+  setIsland: (s: string) => void;
+  errors: { nome?: boolean; tel?: boolean };
   onBack: () => void;
-  onNext: () => void;
-  nextLabel?: string;
-  nextDisabled?: boolean;
-  primary?: boolean;
+  onSubmit: () => void;
 }) {
-  const [hover, setHover] = React.useState(false);
   return (
-    <div className="mt-7 flex items-center justify-between gap-3">
-      <button
-        type="button"
-        onClick={onBack}
-        className="inline-flex items-center gap-1.5 transition-colors"
+    <div className="sim-step" key="s5">
+      <div
         style={{
-          fontSize: 13,
-          color: "rgba(255,255,255,0.4)",
-          background: "transparent",
-          border: "none",
-          padding: 0,
-          cursor: "pointer",
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
-        onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
-      >
-        <ArrowLeft className="size-4" /> Voltar
-      </button>
-      <button
-        type="button"
-        onClick={onNext}
-        disabled={nextDisabled}
-        onMouseEnter={() => !nextDisabled && setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        className="inline-flex items-center gap-2"
-        style={{
-          padding: primary ? "14px 32px" : "13px 28px",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 6,
+          background: "rgba(26,92,58,0.30)",
+          border: "1px solid rgba(26,92,58,0.50)",
           borderRadius: 50,
-          background: primary
-            ? "#F5C842"
-            : hover ? "#154d30" : "#1A5C3A",
-          color: primary ? "#0D2B1F" : "white",
-          fontWeight: primary ? 700 : 500,
-          fontSize: 14,
-          letterSpacing: primary ? "0.05em" : 0,
-          border: "none",
-          opacity: nextDisabled ? 0.35 : (primary && hover ? 0.92 : 1),
-          cursor: nextDisabled ? "not-allowed" : "pointer",
-          transform: hover && !nextDisabled ? (primary ? "scale(1.02)" : "scale(1.01)") : "scale(1)",
-          transition: primary ? "all 0.15s ease" : "all 0.2s ease",
+          padding: "6px 16px",
+          marginBottom: 16,
         }}
       >
-        {nextLabel} {!primary && <ArrowRight className="size-4" />}
-      </button>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: YELLOW, display: "inline-block" }} />
+        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.70)" }}>{PACKAGES[currentPkg].name}</span>
+      </div>
+
+      <StepHeader title="Os seus dados" hint="Para Kevin poder ligar." />
+
+      <Field label="Nome">
+        <input
+          type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          placeholder="O seu nome"
+          style={inputStyle(errors.nome)}
+          onFocus={(e) => (e.currentTarget.style.borderColor = YELLOW)}
+          onBlur={(e) =>
+            (e.currentTarget.style.borderColor = errors.nome
+              ? "rgba(239,68,68,0.6)"
+              : "rgba(255,255,255,0.12)")
+          }
+        />
+      </Field>
+
+      <Field label="Telemóvel (WhatsApp)">
+        <input
+          type="tel"
+          value={tel}
+          onChange={(e) => setTel(e.target.value)}
+          placeholder="+238 ···"
+          style={inputStyle(errors.tel)}
+          onFocus={(e) => (e.currentTarget.style.borderColor = YELLOW)}
+          onBlur={(e) =>
+            (e.currentTarget.style.borderColor = errors.tel
+              ? "rgba(239,68,68,0.6)"
+              : "rgba(255,255,255,0.12)")
+          }
+        />
+      </Field>
+
+      <Field label="Ilha">
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+          {ISLANDS.map((i) => {
+            const sel = island === i;
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setIsland(i)}
+                style={{
+                  border: sel ? `1px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.15)",
+                  borderRadius: 50,
+                  padding: "7px 16px",
+                  fontSize: 12,
+                  fontFamily: FONT,
+                  color: sel ? YELLOW : "rgba(255,255,255,0.50)",
+                  background: sel ? "rgba(245,200,66,0.08)" : "transparent",
+                  cursor: "pointer",
+                  transition: "all 0.15s",
+                }}
+              >
+                {i}
+              </button>
+            );
+          })}
+        </div>
+      </Field>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 12 }}>
+        <ShieldCheck size={14} color="#4CAF82" />
+        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)" }}>
+          Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
+        </span>
+      </div>
+
+      <NavRow>
+        <BackBtn onClick={onBack} />
+        <YellowBtn onClick={onSubmit}>LIGAR CABO</YellowBtn>
+      </NavRow>
     </div>
   );
 }
 
-function SummaryRow({ label, value }: { label: string; value: string }) {
+function inputStyle(error?: boolean): React.CSSProperties {
+  return {
+    width: "100%",
+    background: "rgba(255,255,255,0.06)",
+    border: `1px solid ${error ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.12)"}`,
+    borderRadius: 12,
+    padding: "13px 16px",
+    color: "white",
+    fontSize: 14,
+    fontFamily: FONT,
+    outline: "none",
+    transition: "border-color 0.15s",
+  };
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-baseline justify-between gap-3 py-1">
-      <span className="text-white/40" style={{ fontSize: 12 }}>{label}</span>
-      <span className="text-white/80" style={{ fontSize: 13, fontWeight: 500 }}>{value || "—"}</span>
+    <div style={{ marginBottom: 14 }}>
+      <div
+        style={{
+          fontSize: 11,
+          color: "rgba(255,255,255,0.40)",
+          textTransform: "uppercase",
+          letterSpacing: "0.03em",
+          marginBottom: 6,
+        }}
+      >
+        {label}
+      </div>
+      {children}
     </div>
+  );
+}
+
+function Step6({
+  nome,
+  tel,
+  island,
+  currentPkg,
+  savings,
+}: {
+  nome: string;
+  tel: string;
+  island: string;
+  currentPkg: PkgKey;
+  savings: number;
+}) {
+  const rows: [string, string][] = [
+    ["Nome", nome],
+    ["Pacote recomendado", PACKAGES[currentPkg].name],
+    ["Poupança estimada", `${fmt(savings)} CVE / mês`],
+    ...((island ? [["Ilha", island]] : []) as [string, string][]),
+    ["Telemóvel", tel],
+  ];
+  return (
+    <div className="sim-step" key="s6" style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: 64,
+          height: 64,
+          border: `2px solid ${YELLOW}`,
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "0 auto 20px",
+        }}
+      >
+        <Check size={28} color={YELLOW} />
+      </div>
+      <h3 style={{ fontWeight: 700, fontSize: 24, color: "white", margin: "0 0 10px" }}>Cabo Ligado.</h3>
+      <p
+        style={{
+          color: "rgba(255,255,255,0.55)",
+          fontSize: 14,
+          lineHeight: 1.7,
+          maxWidth: 400,
+          margin: "0 auto 24px",
+        }}
+      >
+        O seu pedido foi recebido. Kevin da Cabo Energia contacta-o em até 24 horas pelo WhatsApp para
+        confirmar a estimativa e agendar a visita técnica gratuita.
+      </p>
+
+      <div
+        style={{
+          background: "rgba(255,255,255,0.05)",
+          borderRadius: 14,
+          padding: "14px 18px",
+          maxWidth: 380,
+          margin: "0 auto",
+          textAlign: "left",
+        }}
+      >
+        {rows.map(([label, value], i) => (
+          <div
+            key={label}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "7px 0",
+              borderBottom: i === rows.length - 1 ? "none" : "1px solid rgba(255,255,255,0.06)",
+              gap: 12,
+            }}
+          >
+            <span style={{ color: "rgba(255,255,255,0.35)", fontSize: 13 }}>{label}</span>
+            <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: 13 }}>{value}</span>
+          </div>
+        ))}
+      </div>
+
+      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.30)", marginTop: 16 }}>
+        Guarde o número +238 995 41 81 para reconhecer a chamada de Kevin.
+      </p>
+    </div>
+  );
+}
+
+/* ----------------------------- SHARED PIECES ------------------------------- */
+
+function StepHeader({ title, hint }: { title: string; hint: string }) {
+  return (
+    <>
+      <h3 style={{ fontSize: 22, fontWeight: 700, color: "white", margin: "0 0 6px" }}>{title}</h3>
+      <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", margin: "0 0 28px" }}>{hint}</p>
+    </>
+  );
+}
+
+function NavRow({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className="sim-nav"
+      style={{
+        display: "flex",
+        gap: 8,
+        alignItems: "center",
+        marginTop: 24,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function BackBtn({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        background: "transparent",
+        border: "none",
+        color: "rgba(255,255,255,0.35)",
+        fontSize: 13,
+        fontFamily: FONT,
+        display: "flex",
+        alignItems: "center",
+        gap: 4,
+        cursor: "pointer",
+        padding: 0,
+        transition: "color 0.15s",
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.70)")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
+    >
+      <ArrowLeft size={14} />
+      Voltar
+    </button>
+  );
+}
+
+function ContinueBtn({
+  children,
+  onClick,
+  disabled,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      style={{
+        flex: 1,
+        background: GREEN,
+        color: "white",
+        borderRadius: 50,
+        padding: "13px 28px",
+        fontFamily: FONT,
+        fontWeight: 600,
+        fontSize: 14,
+        border: "none",
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.3 : 1,
+        transition: "all 0.15s",
+      }}
+      onMouseEnter={(e) => {
+        if (disabled) return;
+        e.currentTarget.style.background = "#154d30";
+        e.currentTarget.style.transform = "scale(1.01)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = GREEN;
+        e.currentTarget.style.transform = "scale(1)";
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+function YellowBtn({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        flex: 1,
+        background: YELLOW,
+        color: DARK,
+        borderRadius: 50,
+        padding: "14px 32px",
+        fontFamily: FONT,
+        fontWeight: 700,
+        fontSize: 14,
+        letterSpacing: "0.05em",
+        border: "none",
+        cursor: "pointer",
+        transition: "all 0.15s",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.opacity = "0.92";
+        e.currentTarget.style.transform = "scale(1.02)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.opacity = "1";
+        e.currentTarget.style.transform = "scale(1)";
+      }}
+    >
+      {children}
+    </button>
   );
 }
