@@ -574,7 +574,7 @@ function SegCard({
       </div>
       <div style={{ padding: "18px 20px 22px" }}>
         <div style={{ fontWeight: 700, fontSize: 16, color: "white", marginBottom: 4 }}>{name}</div>
-        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{sub}</div>
+        <div style={{ fontSize: 12, color: "#ffffff" }}>{sub}</div>
       </div>
     </button>
   );
@@ -658,7 +658,7 @@ function Step2({
                 </div>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: 13, color: "white" }}>{p.name}</div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>{p.sub}</div>
+                  <div style={{ fontSize: 11, color: "#ffffff", marginTop: 2 }}>{p.sub}</div>
                 </div>
               </div>
             </button>
@@ -737,7 +737,7 @@ function Step3({
       />
       <div style={{ textAlign: "right" }}>
         <div style={{ fontWeight: 400, fontSize: 28, color: "white" }}>{fmt(fatura)} CVE</div>
-        <div style={{ fontWeight: 700, fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>por mês</div>
+        <div style={{ fontWeight: 700, fontSize: 12, color: "#ffffff", marginTop: 2 }}>por mês</div>
       </div>
 
       {seg === "casa" && (
@@ -779,7 +779,7 @@ function Step3({
               }}
             />
           </div>
-          <span style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>
+          <span style={{ fontSize: 13, color: "#ffffff" }}>
             {hasRoof ? "Tenho telhado ou terraço próprio" : "Não tenho telhado próprio (arrendatário)"}
           </span>
         </div>
@@ -861,7 +861,7 @@ function Step4({
         <div
           style={{
             fontSize: 13,
-            color: "rgba(255,255,255,0.5)",
+            color: "#ffffff",
             fontStyle: "italic",
             margin: "10px 0 14px",
             lineHeight: 1.5,
@@ -886,7 +886,7 @@ function Step4({
               }}
             >
               <b.Icon size={22} color={b.color} />
-              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", fontWeight: 500, lineHeight: 1.4 }}>
+              <div style={{ fontSize: 12, color: "#ffffff", fontWeight: 500, lineHeight: 1.4 }}>
                 {b.text}
               </div>
             </div>
@@ -900,7 +900,7 @@ function Step4({
             onClick={() => setShowOthers(!showOthers)}
             style={{
               fontSize: 12,
-              color: "rgba(255,255,255,0.30)",
+              color: "#ffffff",
               textDecoration: "underline",
               cursor: "pointer",
               marginTop: 12,
@@ -926,10 +926,10 @@ function Step4({
                   onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                 >
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.80)" }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#ffffff" }}>
                     {PACKAGES[k].name}
                   </div>
-                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.40)", fontStyle: "italic" }}>
+                  <div style={{ fontSize: 12, color: "#ffffff", fontStyle: "italic" }}>
                     {PACKAGES[k].promise}
                   </div>
                 </div>
@@ -939,7 +939,7 @@ function Step4({
         </div>
       )}
 
-      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", textAlign: "center", marginTop: 10 }}>
+      <div style={{ fontSize: 11, color: "#ffffff", textAlign: "center", marginTop: 10 }}>
         Estimativa indicativa. O estudo personalizado é gratuito e sem compromisso.
       </div>
 
@@ -957,7 +957,7 @@ function Metric({ label, value, unit }: { label: string; value: string; unit: st
       <div
         style={{
           fontSize: 10,
-          color: "rgba(255,255,255,0.4)",
+          color: "#ffffff",
           textTransform: "uppercase",
           letterSpacing: "0.06em",
         }}
@@ -967,7 +967,7 @@ function Metric({ label, value, unit }: { label: string; value: string; unit: st
       <div style={{ fontWeight: 700, fontSize: 20, color: "white", marginTop: 4 }}>
         {value}
       </div>
-      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{unit}</div>
+      <div style={{ fontSize: 10, color: "#ffffff" }}>{unit}</div>
     </div>
   );
 }
@@ -1010,7 +1010,7 @@ function Step5({
         }}
       >
         <span style={{ width: 6, height: 6, borderRadius: "50%", background: YELLOW, display: "inline-block" }} />
-        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.70)" }}>{PACKAGES[currentPkg].name}</span>
+        <span style={{ fontSize: 12, color: "#ffffff" }}>{PACKAGES[currentPkg].name}</span>
       </div>
 
       <StepHeader title="Os seus dados" />
@@ -1077,7 +1077,7 @@ function Step5({
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12 }}>
         <ShieldCheck size={14} color="#4CAF82" />
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.30)", textAlign: "center" }}>
+        <span style={{ fontSize: 11, color: "#ffffff", textAlign: "center" }}>
           Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
         </span>
       </div>
@@ -1118,7 +1118,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       <div
         style={{
           fontSize: 11,
-          color: "rgba(255,255,255,0.40)",
+          color: "#ffffff",
           textTransform: "uppercase",
           letterSpacing: "0.03em",
           marginBottom: 6,
@@ -1170,7 +1170,7 @@ function Step6({
       <h3 style={{ fontWeight: 700, fontSize: 24, color: "white", margin: "0 0 10px" }}>Cabo Ligado.</h3>
       <p
         style={{
-          color: "rgba(255,255,255,0.55)",
+          color: "#ffffff",
           fontSize: 14,
           lineHeight: 1.7,
           maxWidth: 400,
@@ -1202,13 +1202,13 @@ function Step6({
               gap: 12,
             }}
           >
-            <span style={{ color: "rgba(255,255,255,0.35)", fontSize: 13 }}>{label}</span>
-            <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: 13 }}>{value}</span>
+            <span style={{ color: "#ffffff", fontSize: 13 }}>{label}</span>
+            <span style={{ color: "#ffffff", fontWeight: 600, fontSize: 13 }}>{value}</span>
           </div>
         ))}
       </div>
 
-      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.30)", marginTop: 16 }}>
+      <p style={{ fontSize: 12, color: "#ffffff", marginTop: 16 }}>
         Guarde o número +238 995 41 81 para reconhecer a chamada de Kevin.
       </p>
     </div>
@@ -1256,7 +1256,7 @@ function BackBtn({ onClick }: { onClick: () => void }) {
         transform: "translateY(-50%)",
         background: "transparent",
         border: "none",
-        color: "rgba(255,255,255,0.35)",
+        color: "#ffffff",
         fontSize: 13,
         fontFamily: FONT,
         display: "flex",
@@ -1266,8 +1266,8 @@ function BackBtn({ onClick }: { onClick: () => void }) {
         padding: 0,
         transition: "color 0.15s",
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.70)")}
-      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.35)")}
+      onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
     >
       <ArrowLeft size={14} />
       Voltar
