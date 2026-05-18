@@ -29,6 +29,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { PillButton } from "@/components/brand/PillButton";
+import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 
 /* ---------------------------- LOGIC / CONSTANTS ---------------------------- */
 
@@ -943,7 +945,7 @@ function Step4({
 
       <NavRow>
         <BackBtn onClick={onBack} />
-        <YellowBtn onClick={onNext}>LIGAR CABO — Quero este estudo</YellowBtn>
+        <YellowBtn onClick={onNext}>Continuar</YellowBtn>
       </NavRow>
     </div>
   );
@@ -1082,7 +1084,14 @@ function Step5({
 
       <NavRow>
         <BackBtn onClick={onBack} />
-        <YellowBtn onClick={onSubmit}>LIGAR CABO</YellowBtn>
+        <PillButton
+          variant="primary"
+          size="md"
+          onClick={onSubmit}
+          className="w-1/2 font-display uppercase tracking-wide"
+        >
+          <LigarCaboLabel tone="dark" />
+        </PillButton>
       </NavRow>
     </div>
   );
@@ -1275,7 +1284,7 @@ function ContinueBtn({
       onClick={onClick}
       disabled={disabled}
       style={{
-        flex: 1,
+        width: "50%",
         background: GREEN,
         color: "white",
         borderRadius: 50,
@@ -1309,7 +1318,7 @@ function YellowBtn({ children, onClick }: { children: React.ReactNode; onClick: 
       type="button"
       onClick={onClick}
       style={{
-        flex: 1,
+        width: "50%",
         background: YELLOW,
         color: DARK,
         borderRadius: 50,
