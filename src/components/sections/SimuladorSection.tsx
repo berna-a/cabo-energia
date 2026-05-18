@@ -1177,8 +1177,8 @@ function Step6({
           margin: "0 auto 24px",
         }}
       >
-        O seu pedido foi recebido. Kevin da Cabo Energia contacta-o em até 24 horas pelo WhatsApp para
-        confirmar a estimativa e agendar a visita técnica gratuita.
+        O seu pedido foi recebido. Kevin da Cabo Energia contacta-o em até 24 horas, para
+        confirmar a estimativa e agendar o levantamento (visita técnica).
       </p>
 
       <div
@@ -1234,6 +1234,7 @@ function NavRow({ children }: { children: React.ReactNode }) {
         display: "flex",
         gap: 8,
         alignItems: "center",
+        justifyContent: "center",
         marginTop: 24,
       }}
     >
