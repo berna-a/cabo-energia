@@ -73,8 +73,8 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
     <article
       className="flex h-full flex-col rounded-3xl p-7 transition-shadow hover:shadow-md"
       style={{
-        background: "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.10)",
+        background: "rgba(255,255,255,0.95)",
+        border: "1px solid rgba(0,0,0,0.06)",
       }}
     >
       <span
@@ -82,7 +82,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
         style={
           plan.badgeHighlight
             ? { background: YELLOW, color: DARK }
-            : { background: "rgba(255,255,255,0.10)", color: "#ffffff" }
+            : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
         }
       >
         {plan.badge}
@@ -91,7 +91,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
       <h3
         className="mt-5"
         style={{
-          color: "#ffffff",
+          color: "#0D2B1F",
           fontFamily: FONT,
           fontWeight: 700,
           fontSize: 24,
@@ -105,10 +105,10 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
 
       <div className="mt-6 grid grid-cols-2 gap-3">
         {plan.metrics.map((m) => (
-          <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}>
+          <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(13,43,31,0.06)", border: "1px solid rgba(0,0,0,0.06)" }}>
             <div
               style={{
-                color: "#ffffff",
+                color: "#0D2B1F",
                 fontFamily: FONT,
                 fontWeight: 800,
                 fontSize: "clamp(16px, 1.6vw, 20px)",
@@ -120,7 +120,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
             </div>
             <div
               style={{
-                color: "rgba(255,255,255,0.60)",
+                color: "rgba(13,43,31,0.45)",
                 fontSize: 11,
                 marginTop: 6,
                 textTransform: "uppercase",
@@ -136,7 +136,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
       <div className="mt-auto pt-8">
         <div
           style={{
-            color: "#ffffff",
+            color: "#0D2B1F",
             fontFamily: FONT,
             fontWeight: 800,
             fontSize: 26,
