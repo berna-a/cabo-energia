@@ -389,7 +389,7 @@ export default function SimuladorSection() {
             <div
               style={{
                 fontSize: 11,
-                color: "#6b7280",
+                color: "rgba(13,43,31,0.40)",
                 letterSpacing: "0.04em",
                 marginTop: 8,
                 textAlign: "right",
@@ -404,8 +404,8 @@ export default function SimuladorSection() {
         <div
           className="sim-card"
           style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.10)",
+            background: "rgba(255,255,255,0.95)",
+            border: "1px solid rgba(0,0,0,0.06)",
             borderRadius: 24,
             padding: "36px 32px",
             minHeight: 480,
