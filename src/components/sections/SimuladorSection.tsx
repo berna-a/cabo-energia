@@ -1222,8 +1222,8 @@ function Step6({
 function StepHeader({ title, hint }: { title: string; hint?: string }) {
   return (
     <>
-      <h3 style={{ fontSize: 22, fontWeight: 700, color: "white", margin: "0 0 6px" }}>{title}</h3>
-      <p style={{ fontSize: 13, color: "#ffffff", margin: "0 0 28px" }}>{hint}</p>
+      <h3 style={{ fontSize: 22, fontWeight: 700, color: "#0D2B1F", margin: "0 0 6px" }}>{title}</h3>
+      <p style={{ fontSize: 13, color: "rgba(13,43,31,0.65)", margin: "0 0 28px" }}>{hint}</p>
     </>
   );
 }
@@ -1258,7 +1258,7 @@ function BackBtn({ onClick }: { onClick: () => void }) {
         transform: "translateY(-50%)",
         background: "transparent",
         border: "none",
-        color: "#ffffff",
+        color: "rgba(13,43,31,0.40)",
         fontSize: 13,
         fontFamily: FONT,
         display: "flex",
@@ -1268,8 +1268,8 @@ function BackBtn({ onClick }: { onClick: () => void }) {
         padding: 0,
         transition: "color 0.15s",
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-      onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
+      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(13,43,31,0.70)")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(13,43,31,0.40)")}
     >
       <ArrowLeft size={14} />
       Voltar
