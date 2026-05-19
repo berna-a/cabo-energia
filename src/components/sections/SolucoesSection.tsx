@@ -166,8 +166,8 @@ export function SolucoesSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white"
-      style={{ fontFamily: FONT, padding: "96px 24px" }}
+      className="relative overflow-hidden"
+      style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-10 text-center">
@@ -189,7 +189,7 @@ export function SolucoesSection() {
           </span>
           <h2
             style={{
-              color: DARK,
+              color: "#ffffff",
               fontFamily: FONT,
               fontWeight: 700,
               fontSize: "clamp(28px, 4vw, 44px)",
@@ -205,7 +205,7 @@ export function SolucoesSection() {
         <div className="mb-10 flex justify-center">
           <div
             className="inline-flex rounded-full p-1"
-            style={{ background: "rgba(13,43,31,0.06)" }}
+            style={{ background: "rgba(255,255,255,0.08)" }}
           >
             {([
               { id: "residencial", label: "Residencial" },
@@ -218,8 +218,8 @@ export function SolucoesSection() {
                   onClick={() => setAudienceTab(t.id)}
                   className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
                   style={{
-                    background: active ? DARK : "transparent",
-                    color: active ? "#ffffff" : DARK,
+                    background: active ? YELLOW : "transparent",
+                    color: active ? DARK : "#ffffff",
                   }}
                 >
                   {t.label}
