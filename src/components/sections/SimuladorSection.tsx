@@ -1169,10 +1169,10 @@ function Step6({
       >
         <Check size={28} color={YELLOW} />
       </div>
-      <h3 style={{ fontWeight: 700, fontSize: 24, color: "white", margin: "0 0 10px" }}>Cabo Ligado.</h3>
+      <h3 style={{ fontWeight: 700, fontSize: 24, color: "#0D2B1F", margin: "0 0 10px" }}>Cabo Ligado.</h3>
       <p
         style={{
-          color: "#ffffff",
+          color: "rgba(13,43,31,0.60)",
           fontSize: 14,
           lineHeight: 1.7,
           maxWidth: 400,
@@ -1185,7 +1185,7 @@ function Step6({
 
       <div
         style={{
-          background: "rgba(255,255,255,0.05)",
+          background: "rgba(13,43,31,0.05)",
           borderRadius: 14,
           padding: "14px 18px",
           maxWidth: 380,
@@ -1200,17 +1200,17 @@ function Step6({
               display: "flex",
               justifyContent: "space-between",
               padding: "7px 0",
-              borderBottom: i === rows.length - 1 ? "none" : "1px solid rgba(255,255,255,0.06)",
+              borderBottom: i === rows.length - 1 ? "none" : "1px solid rgba(13,43,31,0.08)",
               gap: 12,
             }}
           >
-            <span style={{ color: "#ffffff", fontSize: 13 }}>{label}</span>
-            <span style={{ color: "#ffffff", fontWeight: 600, fontSize: 13 }}>{value}</span>
+            <span style={{ color: "rgba(13,43,31,0.40)", fontSize: 13 }}>{label}</span>
+            <span style={{ color: "#0D2B1F", fontWeight: 600, fontSize: 13 }}>{value}</span>
           </div>
         ))}
       </div>
 
-      <p style={{ fontSize: 12, color: "#ffffff", marginTop: 16 }}>
+      <p style={{ fontSize: 12, color: "rgba(13,43,31,0.35)", marginTop: 16 }}>
         Guarde o número +238 995 41 81 para reconhecer a chamada de Kevin.
       </p>
     </div>
