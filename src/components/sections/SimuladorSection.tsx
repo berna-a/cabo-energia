@@ -1102,11 +1102,11 @@ function Step5({
 function inputStyle(error?: boolean): React.CSSProperties {
   return {
     width: "100%",
-    background: "rgba(255,255,255,0.06)",
-    border: `1px solid ${error ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.12)"}`,
+    background: "rgba(13,43,31,0.05)",
+    border: `1px solid ${error ? "rgba(239,68,68,0.6)" : "rgba(13,43,31,0.15)"}`,
     borderRadius: 12,
     padding: "13px 16px",
-    color: "white",
+    color: "#0D2B1F",
     fontSize: 14,
     fontFamily: FONT,
     outline: "none",
@@ -1120,7 +1120,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       <div
         style={{
           fontSize: 11,
-          color: "#ffffff",
+          color: "rgba(13,43,31,0.65)",
           textTransform: "uppercase",
           letterSpacing: "0.03em",
           marginBottom: 6,
