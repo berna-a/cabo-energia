@@ -708,8 +708,8 @@ function Step3({
 
       <div
         style={{
-          background: "rgba(245,200,66,0.08)",
-          border: "1px solid rgba(245,200,66,0.15)",
+          background: "rgba(245,200,66,0.12)",
+          border: "1px solid rgba(245,200,66,0.25)",
           borderRadius: 14,
           padding: "14px 18px",
           display: "flex",
@@ -718,7 +718,7 @@ function Step3({
           marginBottom: 20,
         }}
       >
-        <span style={{ fontSize: 12, color: "#ffffff" }}>Poupança estimada / mês</span>
+        <span style={{ fontSize: 12, color: "rgba(13,43,31,0.55)" }}>Poupança estimada / mês</span>
         <span style={{ color: YELLOW, fontWeight: 700, fontSize: 24 }}>
           {hasProfile ? `${fmt(previewSavings)} CVE` : "—"}
         </span>
@@ -738,8 +738,8 @@ function Step3({
         }}
       />
       <div style={{ textAlign: "right" }}>
-        <div style={{ fontWeight: 400, fontSize: 28, color: "white" }}>{fmt(fatura)} CVE</div>
-        <div style={{ fontWeight: 700, fontSize: 12, color: "#ffffff", marginTop: 2 }}>por mês</div>
+        <div style={{ fontWeight: 400, fontSize: 28, color: "#0D2B1F" }}>{fmt(fatura)} CVE</div>
+        <div style={{ fontWeight: 700, fontSize: 12, color: "rgba(13,43,31,0.65)", marginTop: 2 }}>por mês</div>
       </div>
 
       {seg === "casa" && (
@@ -748,8 +748,8 @@ function Step3({
             display: "flex",
             alignItems: "center",
             gap: 12,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(13,43,31,0.05)",
+            border: "1px solid rgba(13,43,31,0.10)",
             borderRadius: 12,
             padding: "14px 16px",
             marginTop: 16,
@@ -762,7 +762,7 @@ function Step3({
               width: 42,
               height: 24,
               borderRadius: 50,
-              background: hasRoof ? GREEN : "rgba(255,255,255,0.15)",
+              background: hasRoof ? GREEN : "rgba(13,43,31,0.15)",
               position: "relative",
               transition: "background 0.2s",
               flexShrink: 0,
@@ -781,7 +781,7 @@ function Step3({
               }}
             />
           </div>
-          <span style={{ fontSize: 13, color: "#ffffff" }}>
+          <span style={{ fontSize: 13, color: "rgba(13,43,31,0.65)" }}>
             {hasRoof ? "Tenho telhado ou terraço próprio" : "Não tenho telhado próprio (arrendatário)"}
           </span>
         </div>
