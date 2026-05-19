@@ -73,9 +73,8 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
     <article
       className="flex h-full flex-col rounded-3xl p-7 transition-shadow hover:shadow-md"
       style={{
-        background: "#ffffff",
-        border: "1px solid rgba(0,0,0,0.05)",
-        boxShadow: "0 2px 14px -6px rgba(15,23,42,0.08)",
+        background: "rgba(255,255,255,0.06)",
+        border: "1px solid rgba(255,255,255,0.10)",
       }}
     >
       <span
@@ -83,7 +82,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
         style={
           plan.badgeHighlight
             ? { background: YELLOW, color: DARK }
-            : { background: "rgba(13,43,31,0.06)", color: DARK }
+            : { background: "rgba(255,255,255,0.10)", color: "#ffffff" }
         }
       >
         {plan.badge}
@@ -92,7 +91,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
       <h3
         className="mt-5"
         style={{
-          color: DARK,
+          color: "#ffffff",
           fontFamily: FONT,
           fontWeight: 700,
           fontSize: 24,
@@ -106,10 +105,10 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
 
       <div className="mt-6 grid grid-cols-2 gap-3">
         {plan.metrics.map((m) => (
-          <div key={m.label} className="rounded-xl p-4" style={{ background: "#f8fafc" }}>
+          <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}>
             <div
               style={{
-                color: DARK,
+                color: "#ffffff",
                 fontFamily: FONT,
                 fontWeight: 800,
                 fontSize: "clamp(16px, 1.6vw, 20px)",
@@ -121,7 +120,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
             </div>
             <div
               style={{
-                color: MUTED,
+                color: "rgba(255,255,255,0.60)",
                 fontSize: 11,
                 marginTop: 6,
                 textTransform: "uppercase",
@@ -137,7 +136,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
       <div className="mt-auto pt-8">
         <div
           style={{
-            color: DARK,
+            color: "#ffffff",
             fontFamily: FONT,
             fontWeight: 800,
             fontSize: 26,
@@ -167,8 +166,8 @@ export function SolucoesSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white"
-      style={{ fontFamily: FONT, padding: "96px 24px" }}
+      className="relative overflow-hidden"
+      style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-10 text-center">
@@ -190,7 +189,7 @@ export function SolucoesSection() {
           </span>
           <h2
             style={{
-              color: DARK,
+              color: "#ffffff",
               fontFamily: FONT,
               fontWeight: 700,
               fontSize: "clamp(28px, 4vw, 44px)",
@@ -206,7 +205,7 @@ export function SolucoesSection() {
         <div className="mb-10 flex justify-center">
           <div
             className="inline-flex rounded-full p-1"
-            style={{ background: "rgba(13,43,31,0.06)" }}
+            style={{ background: "rgba(255,255,255,0.08)" }}
           >
             {([
               { id: "residencial", label: "Residencial" },
@@ -219,8 +218,8 @@ export function SolucoesSection() {
                   onClick={() => setAudienceTab(t.id)}
                   className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
                   style={{
-                    background: active ? DARK : "transparent",
-                    color: active ? "#ffffff" : DARK,
+                    background: active ? YELLOW : "transparent",
+                    color: active ? DARK : "#ffffff",
                   }}
                 >
                   {t.label}
