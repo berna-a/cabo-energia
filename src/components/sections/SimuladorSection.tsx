@@ -535,24 +535,26 @@ function SegCard({
       style={{
         textAlign: "left",
         borderRadius: 20,
-        border: selected ? `2px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.10)",
-        background: selected ? "rgba(26,92,58,0.30)" : "rgba(255,255,255,0.05)",
+        border: selected ? `2px solid ${YELLOW}` : "1px solid rgba(13,43,31,0.10)",
+        background: selected ? "rgba(26,92,58,0.12)" : "rgba(13,43,31,0.05)",
         cursor: "pointer",
         overflow: "hidden",
         transition: "all 0.2s ease",
         padding: 0,
-        color: "white",
+        color: DARK,
         fontFamily: FONT,
       }}
       onMouseEnter={(e) => {
         if (!selected) {
-          e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+          e.currentTarget.style.background = "rgba(13,43,31,0.09)";
+          e.currentTarget.style.borderColor = "rgba(13,43,31,0.20)";
           e.currentTarget.style.transform = "translateY(-2px)";
         }
       }}
       onMouseLeave={(e) => {
         if (!selected) {
-          e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+          e.currentTarget.style.background = "rgba(13,43,31,0.05)";
+          e.currentTarget.style.borderColor = "rgba(13,43,31,0.10)";
           e.currentTarget.style.transform = "translateY(0)";
         }
       }}
@@ -573,8 +575,8 @@ function SegCard({
         </div>
       </div>
       <div style={{ padding: "18px 20px 22px" }}>
-        <div style={{ fontWeight: 700, fontSize: 16, color: "white", marginBottom: 4 }}>{name}</div>
-        <div style={{ fontSize: 12, color: "#ffffff" }}>{sub}</div>
+        <div style={{ fontWeight: 700, fontSize: 16, color: "#0D2B1F", marginBottom: 4 }}>{name}</div>
+        <div style={{ fontSize: 12, color: "rgba(13,43,31,0.45)" }}>{sub}</div>
       </div>
     </button>
   );
