@@ -53,11 +53,11 @@ export function ProcessoSection() {
             <article
               key={s.n}
               className="rounded-xl p-7"
-              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
+              style={{ background: "rgba(255,255,255,0.95)", border: "1px solid rgba(0,0,0,0.06)" }}
             >
               <div
                 style={{
-                  color: "#ffffff",
+                  color: "#0D2B1F",
                   opacity: 0.30,
                   fontFamily: FONT,
                   fontWeight: 800,
@@ -71,7 +71,7 @@ export function ProcessoSection() {
               <h4
                 className="mt-6"
                 style={{
-                  color: "#ffffff",
+                  color: "#0D2B1F",
                   fontFamily: FONT,
                   fontWeight: 700,
                   fontSize: 18,
@@ -84,7 +84,7 @@ export function ProcessoSection() {
               </h4>
               <p
                 className="mt-3"
-                style={{ color: "rgba(255,255,255,0.60)", fontSize: 13, lineHeight: 1.55, margin: 0 }}
+                style={{ color: "rgba(13,43,31,0.65)", fontSize: 13, lineHeight: 1.55, margin: 0 }}
               >
                 {s.copy}
               </p>

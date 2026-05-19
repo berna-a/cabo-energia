@@ -299,7 +299,7 @@ export default function SimuladorSection() {
           appearance: none;
           width: 100%;
           height: 4px;
-          background: rgba(255,255,255,0.12);
+          background: rgba(13,43,31,0.12);
           border-radius: 2px;
           outline: none;
           background-image: linear-gradient(${YELLOW}, ${YELLOW});
@@ -389,7 +389,7 @@ export default function SimuladorSection() {
             <div
               style={{
                 fontSize: 11,
-                color: "#6b7280",
+                color: "rgba(13,43,31,0.40)",
                 letterSpacing: "0.04em",
                 marginTop: 8,
                 textAlign: "right",
@@ -404,8 +404,8 @@ export default function SimuladorSection() {
         <div
           className="sim-card"
           style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.10)",
+            background: "rgba(255,255,255,0.95)",
+            border: "1px solid rgba(0,0,0,0.06)",
             borderRadius: 24,
             padding: "36px 32px",
             minHeight: 480,
@@ -535,24 +535,26 @@ function SegCard({
       style={{
         textAlign: "left",
         borderRadius: 20,
-        border: selected ? `2px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.10)",
-        background: selected ? "rgba(26,92,58,0.30)" : "rgba(255,255,255,0.05)",
+        border: selected ? `2px solid ${YELLOW}` : "1px solid rgba(13,43,31,0.10)",
+        background: selected ? "rgba(26,92,58,0.12)" : "rgba(13,43,31,0.05)",
         cursor: "pointer",
         overflow: "hidden",
         transition: "all 0.2s ease",
         padding: 0,
-        color: "white",
+        color: DARK,
         fontFamily: FONT,
       }}
       onMouseEnter={(e) => {
         if (!selected) {
-          e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+          e.currentTarget.style.background = "rgba(13,43,31,0.09)";
+          e.currentTarget.style.borderColor = "rgba(13,43,31,0.20)";
           e.currentTarget.style.transform = "translateY(-2px)";
         }
       }}
       onMouseLeave={(e) => {
         if (!selected) {
-          e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+          e.currentTarget.style.background = "rgba(13,43,31,0.05)";
+          e.currentTarget.style.borderColor = "rgba(13,43,31,0.10)";
           e.currentTarget.style.transform = "translateY(0)";
         }
       }}
@@ -573,8 +575,8 @@ function SegCard({
         </div>
       </div>
       <div style={{ padding: "18px 20px 22px" }}>
-        <div style={{ fontWeight: 700, fontSize: 16, color: "white", marginBottom: 4 }}>{name}</div>
-        <div style={{ fontSize: 12, color: "#ffffff" }}>{sub}</div>
+        <div style={{ fontWeight: 700, fontSize: 16, color: "#0D2B1F", marginBottom: 4 }}>{name}</div>
+        <div style={{ fontSize: 12, color: "rgba(13,43,31,0.45)" }}>{sub}</div>
       </div>
     </button>
   );
@@ -619,8 +621,8 @@ function Step2({
               style={{
                 textAlign: "left",
                 borderRadius: 16,
-                border: sel ? `2px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.10)",
-                background: sel ? "rgba(26,92,58,0.25)" : "rgba(255,255,255,0.05)",
+                border: sel ? `2px solid ${YELLOW}` : "1px solid rgba(13,43,31,0.10)",
+                background: sel ? "rgba(26,92,58,0.10)" : "rgba(13,43,31,0.05)",
                 cursor: "pointer",
                 overflow: "hidden",
                 transition: "all 0.2s ease",
@@ -629,14 +631,14 @@ function Step2({
               }}
               onMouseEnter={(e) => {
                 if (!sel) {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.09)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.20)";
+                  e.currentTarget.style.background = "rgba(13,43,31,0.09)";
+                  e.currentTarget.style.borderColor = "rgba(13,43,31,0.20)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!sel) {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+                  e.currentTarget.style.background = "rgba(13,43,31,0.05)";
+                  e.currentTarget.style.borderColor = "rgba(13,43,31,0.10)";
                 }
               }}
             >
@@ -657,8 +659,8 @@ function Step2({
                   <p.Icon size={18} color="#ffffff" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 600, fontSize: 13, color: "white" }}>{p.name}</div>
-                  <div style={{ fontSize: 11, color: "#ffffff", marginTop: 2 }}>{p.sub}</div>
+                  <div style={{ fontWeight: 600, fontSize: 13, color: "#0D2B1F" }}>{p.name}</div>
+                  <div style={{ fontSize: 11, color: "rgba(13,43,31,0.45)", marginTop: 2 }}>{p.sub}</div>
                 </div>
               </div>
             </button>
@@ -706,8 +708,8 @@ function Step3({
 
       <div
         style={{
-          background: "rgba(245,200,66,0.08)",
-          border: "1px solid rgba(245,200,66,0.15)",
+          background: "rgba(245,200,66,0.12)",
+          border: "1px solid rgba(245,200,66,0.25)",
           borderRadius: 14,
           padding: "14px 18px",
           display: "flex",
@@ -716,7 +718,7 @@ function Step3({
           marginBottom: 20,
         }}
       >
-        <span style={{ fontSize: 12, color: "#ffffff" }}>Poupança estimada / mês</span>
+        <span style={{ fontSize: 12, color: "rgba(13,43,31,0.55)" }}>Poupança estimada / mês</span>
         <span style={{ color: YELLOW, fontWeight: 700, fontSize: 24 }}>
           {hasProfile ? `${fmt(previewSavings)} CVE` : "—"}
         </span>
@@ -736,8 +738,8 @@ function Step3({
         }}
       />
       <div style={{ textAlign: "right" }}>
-        <div style={{ fontWeight: 400, fontSize: 28, color: "white" }}>{fmt(fatura)} CVE</div>
-        <div style={{ fontWeight: 700, fontSize: 12, color: "#ffffff", marginTop: 2 }}>por mês</div>
+        <div style={{ fontWeight: 400, fontSize: 28, color: "#0D2B1F" }}>{fmt(fatura)} CVE</div>
+        <div style={{ fontWeight: 700, fontSize: 12, color: "rgba(13,43,31,0.65)", marginTop: 2 }}>por mês</div>
       </div>
 
       {seg === "casa" && (
@@ -746,8 +748,8 @@ function Step3({
             display: "flex",
             alignItems: "center",
             gap: 12,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            background: "rgba(13,43,31,0.05)",
+            border: "1px solid rgba(13,43,31,0.10)",
             borderRadius: 12,
             padding: "14px 16px",
             marginTop: 16,
@@ -760,7 +762,7 @@ function Step3({
               width: 42,
               height: 24,
               borderRadius: 50,
-              background: hasRoof ? GREEN : "rgba(255,255,255,0.15)",
+              background: hasRoof ? GREEN : "rgba(13,43,31,0.15)",
               position: "relative",
               transition: "background 0.2s",
               flexShrink: 0,
@@ -779,7 +781,7 @@ function Step3({
               }}
             />
           </div>
-          <span style={{ fontSize: 13, color: "#ffffff" }}>
+          <span style={{ fontSize: 13, color: "rgba(13,43,31,0.65)" }}>
             {hasRoof ? "Tenho telhado ou terraço próprio" : "Não tenho telhado próprio (arrendatário)"}
           </span>
         </div>
@@ -835,21 +837,21 @@ function Step4({
       <div
         style={{
           borderRadius: 18,
-          border: "1px solid rgba(245,200,66,0.20)",
-          background: "rgba(245,200,66,0.06)",
+          border: "1px solid rgba(245,200,66,0.25)",
+          background: "rgba(245,200,66,0.10)",
           padding: 20,
           marginTop: 16,
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-          <div style={{ fontWeight: 700, fontSize: 18, color: "white" }}>{pkg.name}</div>
+          <div style={{ fontWeight: 700, fontSize: 18, color: "#0D2B1F" }}>{pkg.name}</div>
           <span
             style={{
               fontSize: 12,
-              color: YELLOW,
+              color: "#0D2B1F",
               fontWeight: 600,
-              background: "rgba(245,200,66,0.10)",
-              border: "1px solid rgba(245,200,66,0.20)",
+              background: "rgba(245,200,66,0.15)",
+              border: "1px solid rgba(245,200,66,0.30)",
               borderRadius: 50,
               padding: "4px 14px",
               whiteSpace: "nowrap",
@@ -861,7 +863,7 @@ function Step4({
         <div
           style={{
             fontSize: 13,
-            color: "#ffffff",
+            color: "rgba(13,43,31,0.55)",
             fontStyle: "italic",
             margin: "10px 0 14px",
             lineHeight: 1.5,
@@ -886,7 +888,7 @@ function Step4({
               }}
             >
               <b.Icon size={22} color={b.color} />
-              <div style={{ fontSize: 12, color: "#ffffff", fontWeight: 500, lineHeight: 1.4 }}>
+              <div style={{ fontSize: 12, color: "#0D2B1F", fontWeight: 500, lineHeight: 1.4 }}>
                 {b.text}
               </div>
             </div>
@@ -900,7 +902,7 @@ function Step4({
             onClick={() => setShowOthers(!showOthers)}
             style={{
               fontSize: 12,
-              color: "#ffffff",
+              color: "rgba(13,43,31,0.35)",
               textDecoration: "underline",
               cursor: "pointer",
               marginTop: 12,
@@ -916,20 +918,20 @@ function Step4({
                   key={k}
                   onClick={() => setPkgOverride(k)}
                   style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(13,43,31,0.05)",
+                    border: "1px solid rgba(13,43,31,0.10)",
                     borderRadius: 10,
                     padding: "10px 14px",
                     cursor: "pointer",
                     transition: "background 0.15s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(13,43,31,0.09)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(13,43,31,0.05)")}
                 >
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "#ffffff" }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "rgba(13,43,31,0.80)" }}>
                     {PACKAGES[k].name}
                   </div>
-                  <div style={{ fontSize: 12, color: "#ffffff", fontStyle: "italic" }}>
+                  <div style={{ fontSize: 12, color: "rgba(13,43,31,0.45)", fontStyle: "italic" }}>
                     {PACKAGES[k].promise}
                   </div>
                 </div>
@@ -939,7 +941,7 @@ function Step4({
         </div>
       )}
 
-      <div style={{ fontSize: 11, color: "#ffffff", textAlign: "center", marginTop: 10 }}>
+      <div style={{ fontSize: 11, color: "rgba(13,43,31,0.30)", textAlign: "center", marginTop: 10 }}>
         Estimativa indicativa. O estudo personalizado é gratuito e sem compromisso.
       </div>
 
@@ -953,21 +955,21 @@ function Step4({
 
 function Metric({ label, value, unit }: { label: string; value: string; unit: string }) {
   return (
-    <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 14, padding: 14 }}>
+    <div style={{ background: "rgba(13,43,31,0.06)", borderRadius: 14, padding: 14 }}>
       <div
         style={{
           fontSize: 10,
-          color: "#ffffff",
+          color: "rgba(13,43,31,0.50)",
           textTransform: "uppercase",
           letterSpacing: "0.06em",
         }}
       >
         {label}
       </div>
-      <div style={{ fontWeight: 700, fontSize: 20, color: "white", marginTop: 4 }}>
+      <div style={{ fontWeight: 700, fontSize: 20, color: "#0D2B1F", marginTop: 4 }}>
         {value}
       </div>
-      <div style={{ fontSize: 10, color: "#ffffff" }}>{unit}</div>
+      <div style={{ fontSize: 10, color: "rgba(13,43,31,0.50)" }}>{unit}</div>
     </div>
   );
 }
@@ -1002,15 +1004,15 @@ function Step5({
           display: "inline-flex",
           alignItems: "center",
           gap: 6,
-          background: "rgba(26,92,58,0.30)",
-          border: "1px solid rgba(26,92,58,0.50)",
+          background: "rgba(26,92,58,0.12)",
+          border: "1px solid rgba(26,92,58,0.25)",
           borderRadius: 50,
           padding: "6px 16px",
           marginBottom: 16,
         }}
       >
         <span style={{ width: 6, height: 6, borderRadius: "50%", background: YELLOW, display: "inline-block" }} />
-        <span style={{ fontSize: 12, color: "#ffffff" }}>{PACKAGES[currentPkg].name}</span>
+        <span style={{ fontSize: 12, color: "#0D2B1F" }}>{PACKAGES[currentPkg].name}</span>
       </div>
 
       <StepHeader title="Os seus dados" />
@@ -1026,7 +1028,7 @@ function Step5({
           onBlur={(e) =>
             (e.currentTarget.style.borderColor = errors.nome
               ? "rgba(239,68,68,0.6)"
-              : "rgba(255,255,255,0.12)")
+              : "rgba(13,43,31,0.15)")
           }
         />
       </Field>
@@ -1042,7 +1044,7 @@ function Step5({
           onBlur={(e) =>
             (e.currentTarget.style.borderColor = errors.tel
               ? "rgba(239,68,68,0.6)"
-              : "rgba(255,255,255,0.12)")
+              : "rgba(13,43,31,0.15)")
           }
         />
       </Field>
@@ -1057,13 +1059,13 @@ function Step5({
                 type="button"
                 onClick={() => setIsland(i)}
                 style={{
-                  border: sel ? `1px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.15)",
+                  border: sel ? `1px solid ${YELLOW}` : "1px solid rgba(13,43,31,0.20)",
                   borderRadius: 50,
                   padding: "7px 16px",
                   fontSize: 12,
                   fontFamily: FONT,
-                  color: sel ? YELLOW : "rgba(255,255,255,0.50)",
-                  background: sel ? "rgba(245,200,66,0.08)" : "transparent",
+                  color: sel ? "#0D2B1F" : "rgba(13,43,31,0.50)",
+                  background: sel ? "rgba(245,200,66,0.12)" : "transparent",
                   cursor: "pointer",
                   transition: "all 0.15s",
                 }}
@@ -1076,8 +1078,8 @@ function Step5({
       </Field>
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12 }}>
-        <ShieldCheck size={14} color="#4CAF82" />
-        <span style={{ fontSize: 11, color: "#ffffff", textAlign: "center" }}>
+        <ShieldCheck size={14} color="#1A5C3A" />
+        <span style={{ fontSize: 11, color: "rgba(13,43,31,0.40)", textAlign: "center" }}>
           Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
         </span>
       </div>
@@ -1100,11 +1102,11 @@ function Step5({
 function inputStyle(error?: boolean): React.CSSProperties {
   return {
     width: "100%",
-    background: "rgba(255,255,255,0.06)",
-    border: `1px solid ${error ? "rgba(239,68,68,0.6)" : "rgba(255,255,255,0.12)"}`,
+    background: "rgba(13,43,31,0.05)",
+    border: `1px solid ${error ? "rgba(239,68,68,0.6)" : "rgba(13,43,31,0.15)"}`,
     borderRadius: 12,
     padding: "13px 16px",
-    color: "white",
+    color: "#0D2B1F",
     fontSize: 14,
     fontFamily: FONT,
     outline: "none",
@@ -1118,7 +1120,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       <div
         style={{
           fontSize: 11,
-          color: "#ffffff",
+          color: "rgba(13,43,31,0.65)",
           textTransform: "uppercase",
           letterSpacing: "0.03em",
           marginBottom: 6,
@@ -1167,10 +1169,10 @@ function Step6({
       >
         <Check size={28} color={YELLOW} />
       </div>
-      <h3 style={{ fontWeight: 700, fontSize: 24, color: "white", margin: "0 0 10px" }}>Cabo Ligado.</h3>
+      <h3 style={{ fontWeight: 700, fontSize: 24, color: "#0D2B1F", margin: "0 0 10px" }}>Cabo Ligado.</h3>
       <p
         style={{
-          color: "#ffffff",
+          color: "rgba(13,43,31,0.60)",
           fontSize: 14,
           lineHeight: 1.7,
           maxWidth: 400,
@@ -1183,7 +1185,7 @@ function Step6({
 
       <div
         style={{
-          background: "rgba(255,255,255,0.05)",
+          background: "rgba(13,43,31,0.05)",
           borderRadius: 14,
           padding: "14px 18px",
           maxWidth: 380,
@@ -1198,17 +1200,17 @@ function Step6({
               display: "flex",
               justifyContent: "space-between",
               padding: "7px 0",
-              borderBottom: i === rows.length - 1 ? "none" : "1px solid rgba(255,255,255,0.06)",
+              borderBottom: i === rows.length - 1 ? "none" : "1px solid rgba(13,43,31,0.08)",
               gap: 12,
             }}
           >
-            <span style={{ color: "#ffffff", fontSize: 13 }}>{label}</span>
-            <span style={{ color: "#ffffff", fontWeight: 600, fontSize: 13 }}>{value}</span>
+            <span style={{ color: "rgba(13,43,31,0.40)", fontSize: 13 }}>{label}</span>
+            <span style={{ color: "#0D2B1F", fontWeight: 600, fontSize: 13 }}>{value}</span>
           </div>
         ))}
       </div>
 
-      <p style={{ fontSize: 12, color: "#ffffff", marginTop: 16 }}>
+      <p style={{ fontSize: 12, color: "rgba(13,43,31,0.35)", marginTop: 16 }}>
         Guarde o número +238 995 41 81 para reconhecer a chamada de Kevin.
       </p>
     </div>
@@ -1220,8 +1222,8 @@ function Step6({
 function StepHeader({ title, hint }: { title: string; hint?: string }) {
   return (
     <>
-      <h3 style={{ fontSize: 22, fontWeight: 700, color: "white", margin: "0 0 6px" }}>{title}</h3>
-      <p style={{ fontSize: 13, color: "#ffffff", margin: "0 0 28px" }}>{hint}</p>
+      <h3 style={{ fontSize: 22, fontWeight: 700, color: "#0D2B1F", margin: "0 0 6px" }}>{title}</h3>
+      <p style={{ fontSize: 13, color: "rgba(13,43,31,0.65)", margin: "0 0 28px" }}>{hint}</p>
     </>
   );
 }
@@ -1256,7 +1258,7 @@ function BackBtn({ onClick }: { onClick: () => void }) {
         transform: "translateY(-50%)",
         background: "transparent",
         border: "none",
-        color: "#ffffff",
+        color: "rgba(13,43,31,0.40)",
         fontSize: 13,
         fontFamily: FONT,
         display: "flex",
@@ -1266,8 +1268,8 @@ function BackBtn({ onClick }: { onClick: () => void }) {
         padding: 0,
         transition: "color 0.15s",
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-      onMouseLeave={(e) => (e.currentTarget.style.color = "#ffffff")}
+      onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(13,43,31,0.70)")}
+      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(13,43,31,0.40)")}
     >
       <ArrowLeft size={14} />
       Voltar
