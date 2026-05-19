@@ -19,11 +19,20 @@ const Index = () => {
         <HeroSection />
         <Marquee />
         <ImpactBentoSection />
-        <SimuladorSection />
-        <SolucoesSection />
-        <ImpactoDiaSection />
-        <ProcessoSection />
-        <ProtecaoContinuaSection />
+        <div
+          style={{
+            background: "#0D2B1F",
+            borderRadius: 32,
+            margin: "48px 24px",
+            overflow: "hidden",
+          }}
+        >
+          <SimuladorSection />
+          <SolucoesSection />
+          <ImpactoDiaSection />
+          <ProcessoSection />
+          <ProtecaoContinuaSection />
+        </div>
         <RedeProtegidosSection />
         <FinalCtaSection />
       </main>
