@@ -82,7 +82,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
         style={
           plan.badgeHighlight
             ? { background: YELLOW, color: DARK }
-            : { background: "rgba(13,43,31,0.06)", color: DARK }
+            : { background: "rgba(255,255,255,0.10)", color: "#ffffff" }
         }
       >
         {plan.badge}
@@ -91,7 +91,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
       <h3
         className="mt-5"
         style={{
-          color: DARK,
+          color: "#ffffff",
           fontFamily: FONT,
           fontWeight: 700,
           fontSize: 24,
@@ -105,10 +105,10 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
 
       <div className="mt-6 grid grid-cols-2 gap-3">
         {plan.metrics.map((m) => (
-          <div key={m.label} className="rounded-xl p-4" style={{ background: "#f8fafc" }}>
+          <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}>
             <div
               style={{
-                color: DARK,
+                color: "#ffffff",
                 fontFamily: FONT,
                 fontWeight: 800,
                 fontSize: "clamp(16px, 1.6vw, 20px)",
@@ -120,7 +120,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
             </div>
             <div
               style={{
-                color: MUTED,
+                color: "rgba(255,255,255,0.60)",
                 fontSize: 11,
                 marginTop: 6,
                 textTransform: "uppercase",
@@ -136,7 +136,7 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
       <div className="mt-auto pt-8">
         <div
           style={{
-            color: DARK,
+            color: "#ffffff",
             fontFamily: FONT,
             fontWeight: 800,
             fontSize: 26,
