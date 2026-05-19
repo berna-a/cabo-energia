@@ -52,14 +52,14 @@ export function ImpactoDiaSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white"
-      style={{ fontFamily: FONT, padding: "96px 24px" }}
+      className="relative overflow-hidden"
+      style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-10">
           <h2
             style={{
-              color: DARK,
+              color: "#ffffff",
               fontFamily: FONT,
               fontWeight: 700,
               fontSize: "clamp(28px, 4vw, 44px)",
@@ -81,18 +81,18 @@ export function ImpactoDiaSection() {
             <article
               key={title}
               className="rounded-2xl p-7"
-              style={{ background: "#f8fafc" }}
+              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
             >
               <div
                 className="flex h-11 w-11 items-center justify-center rounded-xl"
-                style={{ background: "#ffffff", color: DARK, border: "1px solid rgba(0,0,0,0.05)" }}
+                style={{ background: "rgba(255,255,255,0.10)", color: "#ffffff", border: "1px solid rgba(255,255,255,0.10)" }}
               >
                 <Icon size={20} strokeWidth={1.75} />
               </div>
               <h3
                 className="mt-6"
                 style={{
-                  color: DARK,
+                  color: "#ffffff",
                   fontFamily: FONT,
                   fontWeight: 700,
                   fontSize: "clamp(20px, 2vw, 26px)",
@@ -105,7 +105,7 @@ export function ImpactoDiaSection() {
               </h3>
               <p
                 className="mt-3"
-                style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0 }}
+                style={{ color: "rgba(255,255,255,0.60)", fontSize: 14, lineHeight: 1.55, margin: 0 }}
               >
                 {copy}
               </p>
