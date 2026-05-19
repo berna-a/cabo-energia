@@ -28,14 +28,14 @@ const steps = [
 export function ProcessoSection() {
   return (
     <section
-      className="relative overflow-hidden bg-white"
-      style={{ fontFamily: FONT, padding: "96px 24px" }}
+      className="relative overflow-hidden"
+      style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mb-10">
           <h2
             style={{
-              color: DARK,
+              color: "#ffffff",
               fontFamily: FONT,
               fontWeight: 700,
               fontSize: "clamp(28px, 4vw, 44px)",
@@ -53,12 +53,12 @@ export function ProcessoSection() {
             <article
               key={s.n}
               className="rounded-xl p-7"
-              style={{ background: "#f8fafc" }}
+              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)" }}
             >
               <div
                 style={{
-                  color: DARK,
-                  opacity: 0.18,
+                  color: "#ffffff",
+                  opacity: 0.30,
                   fontFamily: FONT,
                   fontWeight: 800,
                   fontSize: "clamp(44px, 5vw, 64px)",
@@ -71,7 +71,7 @@ export function ProcessoSection() {
               <h4
                 className="mt-6"
                 style={{
-                  color: DARK,
+                  color: "#ffffff",
                   fontFamily: FONT,
                   fontWeight: 700,
                   fontSize: 18,
@@ -84,7 +84,7 @@ export function ProcessoSection() {
               </h4>
               <p
                 className="mt-3"
-                style={{ color: MUTED, fontSize: 13, lineHeight: 1.55, margin: 0 }}
+                style={{ color: "rgba(255,255,255,0.60)", fontSize: 13, lineHeight: 1.55, margin: 0 }}
               >
                 {s.copy}
               </p>
