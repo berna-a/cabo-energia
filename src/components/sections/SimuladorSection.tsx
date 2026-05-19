@@ -299,7 +299,7 @@ export default function SimuladorSection() {
           appearance: none;
           width: 100%;
           height: 4px;
-          background: rgba(255,255,255,0.12);
+          background: rgba(13,43,31,0.12);
           border-radius: 2px;
           outline: none;
           background-image: linear-gradient(${YELLOW}, ${YELLOW});
