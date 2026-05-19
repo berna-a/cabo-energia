@@ -837,21 +837,21 @@ function Step4({
       <div
         style={{
           borderRadius: 18,
-          border: "1px solid rgba(245,200,66,0.20)",
-          background: "rgba(245,200,66,0.06)",
+          border: "1px solid rgba(245,200,66,0.25)",
+          background: "rgba(245,200,66,0.10)",
           padding: 20,
           marginTop: 16,
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-          <div style={{ fontWeight: 700, fontSize: 18, color: "white" }}>{pkg.name}</div>
+          <div style={{ fontWeight: 700, fontSize: 18, color: "#0D2B1F" }}>{pkg.name}</div>
           <span
             style={{
               fontSize: 12,
-              color: YELLOW,
+              color: "#0D2B1F",
               fontWeight: 600,
-              background: "rgba(245,200,66,0.10)",
-              border: "1px solid rgba(245,200,66,0.20)",
+              background: "rgba(245,200,66,0.15)",
+              border: "1px solid rgba(245,200,66,0.30)",
               borderRadius: 50,
               padding: "4px 14px",
               whiteSpace: "nowrap",
@@ -863,7 +863,7 @@ function Step4({
         <div
           style={{
             fontSize: 13,
-            color: "#ffffff",
+            color: "rgba(13,43,31,0.55)",
             fontStyle: "italic",
             margin: "10px 0 14px",
             lineHeight: 1.5,
@@ -888,7 +888,7 @@ function Step4({
               }}
             >
               <b.Icon size={22} color={b.color} />
-              <div style={{ fontSize: 12, color: "#ffffff", fontWeight: 500, lineHeight: 1.4 }}>
+              <div style={{ fontSize: 12, color: "#0D2B1F", fontWeight: 500, lineHeight: 1.4 }}>
                 {b.text}
               </div>
             </div>
@@ -902,7 +902,7 @@ function Step4({
             onClick={() => setShowOthers(!showOthers)}
             style={{
               fontSize: 12,
-              color: "#ffffff",
+              color: "rgba(13,43,31,0.35)",
               textDecoration: "underline",
               cursor: "pointer",
               marginTop: 12,
@@ -918,20 +918,20 @@ function Step4({
                   key={k}
                   onClick={() => setPkgOverride(k)}
                   style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(13,43,31,0.05)",
+                    border: "1px solid rgba(13,43,31,0.10)",
                     borderRadius: 10,
                     padding: "10px 14px",
                     cursor: "pointer",
                     transition: "background 0.15s",
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(13,43,31,0.09)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(13,43,31,0.05)")}
                 >
-                  <div style={{ fontSize: 13, fontWeight: 600, color: "#ffffff" }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "rgba(13,43,31,0.80)" }}>
                     {PACKAGES[k].name}
                   </div>
-                  <div style={{ fontSize: 12, color: "#ffffff", fontStyle: "italic" }}>
+                  <div style={{ fontSize: 12, color: "rgba(13,43,31,0.45)", fontStyle: "italic" }}>
                     {PACKAGES[k].promise}
                   </div>
                 </div>
@@ -941,7 +941,7 @@ function Step4({
         </div>
       )}
 
-      <div style={{ fontSize: 11, color: "#ffffff", textAlign: "center", marginTop: 10 }}>
+      <div style={{ fontSize: 11, color: "rgba(13,43,31,0.30)", textAlign: "center", marginTop: 10 }}>
         Estimativa indicativa. O estudo personalizado é gratuito e sem compromisso.
       </div>
 
