@@ -955,21 +955,21 @@ function Step4({
 
 function Metric({ label, value, unit }: { label: string; value: string; unit: string }) {
   return (
-    <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 14, padding: 14 }}>
+    <div style={{ background: "rgba(13,43,31,0.06)", borderRadius: 14, padding: 14 }}>
       <div
         style={{
           fontSize: 10,
-          color: "#ffffff",
+          color: "rgba(13,43,31,0.50)",
           textTransform: "uppercase",
           letterSpacing: "0.06em",
         }}
       >
         {label}
       </div>
-      <div style={{ fontWeight: 700, fontSize: 20, color: "white", marginTop: 4 }}>
+      <div style={{ fontWeight: 700, fontSize: 20, color: "#0D2B1F", marginTop: 4 }}>
         {value}
       </div>
-      <div style={{ fontSize: 10, color: "#ffffff" }}>{unit}</div>
+      <div style={{ fontSize: 10, color: "rgba(13,43,31,0.50)" }}>{unit}</div>
     </div>
   );
 }
