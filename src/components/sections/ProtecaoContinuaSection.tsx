@@ -56,8 +56,8 @@ function PlanCard({ plan }: { plan: Plan }) {
     <article
       className="flex h-full flex-col rounded-2xl p-7"
       style={{
-        background: "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.10)",
+        background: "rgba(255,255,255,0.95)",
+        border: "1px solid rgba(0,0,0,0.06)",
       }}
     >
       <span
@@ -65,7 +65,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         style={
           plan.badgeHighlight
             ? { background: YELLOW, color: DARK }
-            : { background: "rgba(255,255,255,0.10)", color: "#ffffff" }
+            : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
         }
       >
         {plan.badge}
@@ -74,7 +74,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       <h3
         className="mt-6"
         style={{
-          color: "#ffffff",
+          color: "#0D2B1F",
           fontFamily: FONT,
           fontWeight: 700,
           fontSize: "clamp(26px, 2.8vw, 34px)",
@@ -90,7 +90,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       <div
         className="mt-5"
         style={{
-          color: "#ffffff",
+          color: "#0D2B1F",
           fontFamily: FONT,
           fontWeight: 800,
           fontSize: "clamp(22px, 2.2vw, 28px)",
@@ -102,7 +102,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       </div>
       <div
         className="mt-1.5"
-        style={{ color: "rgba(255,255,255,0.60)", fontSize: 12, letterSpacing: "0.02em" }}
+        style={{ color: "rgba(13,43,31,0.65)", fontSize: 12, letterSpacing: "0.02em" }}
       >
         por mês · faturado anualmente
       </div>
@@ -111,9 +111,9 @@ function PlanCard({ plan }: { plan: Plan }) {
         {plan.features.map((f) => (
           <li
             key={f}
-            style={{ color: "rgba(255,255,255,0.60)", fontSize: 13, lineHeight: 1.5 }}
+            style={{ color: "rgba(13,43,31,0.65)", fontSize: 13, lineHeight: 1.5 }}
           >
-            <span style={{ color: "#ffffff", marginRight: 8 }}>•</span>
+            <span style={{ color: "#1A5C3A", marginRight: 8 }}>•</span>
             {f}
           </li>
         ))}
