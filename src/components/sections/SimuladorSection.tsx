@@ -1004,15 +1004,15 @@ function Step5({
           display: "inline-flex",
           alignItems: "center",
           gap: 6,
-          background: "rgba(26,92,58,0.30)",
-          border: "1px solid rgba(26,92,58,0.50)",
+          background: "rgba(26,92,58,0.12)",
+          border: "1px solid rgba(26,92,58,0.25)",
           borderRadius: 50,
           padding: "6px 16px",
           marginBottom: 16,
         }}
       >
         <span style={{ width: 6, height: 6, borderRadius: "50%", background: YELLOW, display: "inline-block" }} />
-        <span style={{ fontSize: 12, color: "#ffffff" }}>{PACKAGES[currentPkg].name}</span>
+        <span style={{ fontSize: 12, color: "#0D2B1F" }}>{PACKAGES[currentPkg].name}</span>
       </div>
 
       <StepHeader title="Os seus dados" />
@@ -1028,7 +1028,7 @@ function Step5({
           onBlur={(e) =>
             (e.currentTarget.style.borderColor = errors.nome
               ? "rgba(239,68,68,0.6)"
-              : "rgba(255,255,255,0.12)")
+              : "rgba(13,43,31,0.15)")
           }
         />
       </Field>
@@ -1044,7 +1044,7 @@ function Step5({
           onBlur={(e) =>
             (e.currentTarget.style.borderColor = errors.tel
               ? "rgba(239,68,68,0.6)"
-              : "rgba(255,255,255,0.12)")
+              : "rgba(13,43,31,0.15)")
           }
         />
       </Field>
@@ -1059,13 +1059,13 @@ function Step5({
                 type="button"
                 onClick={() => setIsland(i)}
                 style={{
-                  border: sel ? `1px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.15)",
+                  border: sel ? `1px solid ${YELLOW}` : "1px solid rgba(13,43,31,0.20)",
                   borderRadius: 50,
                   padding: "7px 16px",
                   fontSize: 12,
                   fontFamily: FONT,
-                  color: sel ? YELLOW : "rgba(255,255,255,0.50)",
-                  background: sel ? "rgba(245,200,66,0.08)" : "transparent",
+                  color: sel ? "#0D2B1F" : "rgba(13,43,31,0.50)",
+                  background: sel ? "rgba(245,200,66,0.12)" : "transparent",
                   cursor: "pointer",
                   transition: "all 0.15s",
                 }}
@@ -1078,8 +1078,8 @@ function Step5({
       </Field>
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12 }}>
-        <ShieldCheck size={14} color="#4CAF82" />
-        <span style={{ fontSize: 11, color: "#ffffff", textAlign: "center" }}>
+        <ShieldCheck size={14} color="#1A5C3A" />
+        <span style={{ fontSize: 11, color: "rgba(13,43,31,0.40)", textAlign: "center" }}>
           Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
         </span>
       </div>
