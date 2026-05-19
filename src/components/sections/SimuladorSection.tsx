@@ -283,7 +283,7 @@ export default function SimuladorSection() {
     <section
       id="simulador"
       style={{
-        background: "#ffffff",
+        background: "transparent",
         fontFamily: FONT,
         padding: "80px 24px",
       }}
