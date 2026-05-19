@@ -621,8 +621,8 @@ function Step2({
               style={{
                 textAlign: "left",
                 borderRadius: 16,
-                border: sel ? `2px solid ${YELLOW}` : "1px solid rgba(255,255,255,0.10)",
-                background: sel ? "rgba(26,92,58,0.25)" : "rgba(255,255,255,0.05)",
+                border: sel ? `2px solid ${YELLOW}` : "1px solid rgba(13,43,31,0.10)",
+                background: sel ? "rgba(26,92,58,0.10)" : "rgba(13,43,31,0.05)",
                 cursor: "pointer",
                 overflow: "hidden",
                 transition: "all 0.2s ease",
@@ -631,14 +631,14 @@ function Step2({
               }}
               onMouseEnter={(e) => {
                 if (!sel) {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.09)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.20)";
+                  e.currentTarget.style.background = "rgba(13,43,31,0.09)";
+                  e.currentTarget.style.borderColor = "rgba(13,43,31,0.20)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (!sel) {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)";
+                  e.currentTarget.style.background = "rgba(13,43,31,0.05)";
+                  e.currentTarget.style.borderColor = "rgba(13,43,31,0.10)";
                 }
               }}
             >
@@ -659,8 +659,8 @@ function Step2({
                   <p.Icon size={18} color="#ffffff" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 600, fontSize: 13, color: "white" }}>{p.name}</div>
-                  <div style={{ fontSize: 11, color: "#ffffff", marginTop: 2 }}>{p.sub}</div>
+                  <div style={{ fontWeight: 600, fontSize: 13, color: "#0D2B1F" }}>{p.name}</div>
+                  <div style={{ fontSize: 11, color: "rgba(13,43,31,0.45)", marginTop: 2 }}>{p.sub}</div>
                 </div>
               </div>
             </button>
