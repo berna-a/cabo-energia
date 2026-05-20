@@ -2,8 +2,6 @@ import {
   Refrigerator,
   Wifi,
   Sun,
-  Store,
-  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -29,19 +27,6 @@ const residencial: Item[] = [
     icon: Sun,
     title: "Ar condicionado sem culpa.",
     copy: "Use a climatização nas horas de maior calor sabendo que é o sol que paga a conta.",
-  },
-];
-
-const negocio: Item[] = [
-  {
-    icon: Store,
-    title: "Portas abertas sempre.",
-    copy: "Continue a receber clientes, faturar e processar pagamentos enquanto a concorrência fecha.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Zero quebras de stock.",
-    copy: "Sistemas de frio, servidores e equipamentos críticos 100% protegidos contra picos e apagões.",
   },
 ];
 
