@@ -82,7 +82,7 @@ export function ImpactBentoSection() {
               marginBottom: 20,
             }}
           >
-            Impacto Real
+            A Sua Vida com Cabo Energia
           </span>
           <h2
             style={{
@@ -94,7 +94,7 @@ export function ImpactBentoSection() {
               margin: 0,
             }}
           >
-            O que muda na sua vida
+            O antes e o depois.
           </h2>
         </div>
 
