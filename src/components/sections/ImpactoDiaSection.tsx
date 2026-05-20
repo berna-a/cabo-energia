@@ -6,7 +6,7 @@ import {
   ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
-import { useAudienceTab } from "./audienceTab";
+
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
