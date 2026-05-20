@@ -140,6 +140,21 @@ h1, h2, h3, h4 {
   }
   .rounded-pill { border-radius: var(--radius-pill); }
 
+  .site-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media (min-width: 768px) {
+    .site-container { padding-left: 32px; padding-right: 32px; }
+  }
+  @media (min-width: 1200px) {
+    .site-container { padding-left: 24px; padding-right: 24px; }
+  }
+
   .bg-shimmer {
     background: linear-gradient(
       110deg,

@@ -43,8 +43,9 @@ export function HeroSection() {
         ref={ref}
         className="reveal relative min-h-[100svh]"
       >
-        <div className="relative mx-auto min-h-[100svh] w-full max-w-[1350px] px-6 pb-14 md:px-6 md:pb-16">
-          <div className="absolute inset-x-6 bottom-14 flex flex-col gap-8 md:inset-x-6 md:bottom-16 md:flex-row md:items-end md:justify-between">
+        <div className="site-container relative min-h-[100svh] pb-14 md:pb-16">
+          <div className="absolute inset-x-5 bottom-14 flex flex-col gap-8 md:inset-x-8 md:bottom-16 md:flex-row md:items-end md:justify-between lg:inset-x-6">
+
 
             {/* Esquerda: badge + headline + subtítulo */}
             <div className="max-w-[90%] md:max-w-[62%]">
