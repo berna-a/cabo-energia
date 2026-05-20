@@ -197,10 +197,9 @@ export function RedeProtegidosSection() {
                   maxWidth: 520,
                 }}
               >
-                Ao ativar o seu sistema empresarial, o seu estabelecimento entra
-                oficialmente na Rede de Negócios Protegidos. Receba o certificado
-                físico oficial para a sua montra e comunique ao mercado: aqui a
-                energia nunca para.
+                O seu estabelecimento entra na Rede de Negócios Protegidos.
+                Afixe o certificado na montra — e comunique ao mercado que
+                aqui a energia nunca para.
               </p>
 
               <div className="mt-8">
