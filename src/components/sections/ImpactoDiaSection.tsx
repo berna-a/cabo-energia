@@ -72,7 +72,6 @@ export function ImpactoDiaSection() {
         </div>
 
         <div
-          key={tab}
           className={`grid grid-cols-1 gap-6 ${cols}`}
           style={{ animation: "fadeUp 300ms ease both" }}
         >
