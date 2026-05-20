@@ -1,4 +1,5 @@
 import { MessageCircle, Mail } from "lucide-react";
+import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
 import { WHATSAPP_URL } from "@/lib/constants";
 import logoCor from "@/assets/logo-cor.png";
 import ardoLogo from "@/assets/ardo-logo.svg";
@@ -81,6 +82,55 @@ export function Footer() {
               style={{ color: DARK }}
             >
               <Mail className="size-4" /> contacto@caboenergia.cv
+            </a>
+          </div>
+
+          {/* Social links */}
+          <div className="mt-5 flex flex-row gap-3">
+            <a
+              href="https://www.instagram.com/caboenergia.cv/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-full border transition-all duration-200 hover:border-[#F5C842] hover:text-[#F5C842] hover:bg-[rgba(245,200,66,0.08)]"
+              style={{
+                width: 36,
+                height: 36,
+                borderColor: "rgba(13,43,31,0.15)",
+                color: "rgba(13,43,31,0.55)",
+                textDecoration: "none",
+              }}
+            >
+              <IconBrandInstagram size={18} stroke={1.5} />
+            </a>
+            <a
+              href="https://www.facebook.com/people/Cabo-Energia/61587485371472/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-full border transition-all duration-200 hover:border-[#F5C842] hover:text-[#F5C842] hover:bg-[rgba(245,200,66,0.08)]"
+              style={{
+                width: 36,
+                height: 36,
+                borderColor: "rgba(13,43,31,0.15)",
+                color: "rgba(13,43,31,0.55)",
+                textDecoration: "none",
+              }}
+            >
+              <IconBrandFacebook size={18} stroke={1.5} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/cabo-energia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center rounded-full border transition-all duration-200 hover:border-[#F5C842] hover:text-[#F5C842] hover:bg-[rgba(245,200,66,0.08)]"
+              style={{
+                width: 36,
+                height: 36,
+                borderColor: "rgba(13,43,31,0.15)",
+                color: "rgba(13,43,31,0.55)",
+                textDecoration: "none",
+              }}
+            >
+              <IconBrandLinkedin size={18} stroke={1.5} />
             </a>
           </div>
         </div>
