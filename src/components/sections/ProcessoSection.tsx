@@ -44,7 +44,7 @@ export function ProcessoSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            O Processo
+            Da simulação à instalação — sem surpresas.
           </h2>
         </div>
 
