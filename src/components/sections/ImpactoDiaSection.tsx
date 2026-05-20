@@ -46,9 +46,8 @@ const negocio: Item[] = [
 ];
 
 export function ImpactoDiaSection() {
-  const tab = useAudienceTab();
-  const items = tab === "residencial" ? residencial : negocio;
-  const cols = tab === "residencial" ? "md:grid-cols-3" : "md:grid-cols-2";
+  const items = residencial;
+  const cols = "md:grid-cols-3";
 
   return (
     <section
