@@ -245,7 +245,7 @@ export function SolucoesSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Escolha o pacote certo para si
+            O seu nível de energia, a sua escolha.
           </h2>
         </div>
 
