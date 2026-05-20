@@ -57,11 +57,11 @@ export function ProcessoSection() {
             >
               <div
                 style={{
-                  color: "#0D2B1F",
-                  opacity: 0.30,
+                  color: "#F5C842",
+                  opacity: 1,
                   fontFamily: FONT,
-                  fontWeight: 800,
-                  fontSize: "clamp(44px, 5vw, 64px)",
+                  fontWeight: 700,
+                  fontSize: "clamp(48px, 6vw, 72px)",
                   lineHeight: 1,
                   letterSpacing: "-0.04em",
                 }}
