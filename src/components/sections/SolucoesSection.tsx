@@ -12,6 +12,8 @@ type Plan = {
   badge: string;
   badgeHighlight?: boolean;
   name: string;
+  promise: string;
+  image: string;
   metrics: { value: string; label: string }[];
   price: string;
 };
@@ -20,6 +22,8 @@ const residencial: Plan[] = [
   {
     badge: "Proteção",
     name: "Casa Tranquila",
+    promise: "Não fique às escuras quando a luz vai abaixo.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
     metrics: [
       { value: "3k – 5k CVE", label: "Poupança" },
       { value: "5,12 kWh", label: "Backup" },
@@ -30,6 +34,8 @@ const residencial: Plan[] = [
     badge: "Popular",
     badgeHighlight: true,
     name: "Casa Autonomia",
+    promise: "O sol paga a sua conta de luz.",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600",
     metrics: [
       { value: "6k – 8k CVE", label: "Poupança" },
       { value: "Até 80%", label: "Redução" },
@@ -39,6 +45,8 @@ const residencial: Plan[] = [
   {
     badge: "Independência",
     name: "Casa Plena",
+    promise: "A sua casa, o seu sol, as suas regras.",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600",
     metrics: [
       { value: "10k – 15k CVE", label: "Poupança" },
       { value: "10,24 kWh", label: "Autonomia" },
@@ -51,6 +59,8 @@ const negocio: Plan[] = [
   {
     badge: "Eficiência",
     name: "Negócio Essencial",
+    promise: "O seu negócio não para. A sua fatura baixa.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600",
     metrics: [
       { value: "25k – 40k CVE", label: "Poupança" },
       { value: "15,36 kWh", label: "Proteção" },
@@ -60,6 +70,8 @@ const negocio: Plan[] = [
   {
     badge: "Imunidade",
     name: "Negócio Pleno",
+    promise: "Diga aos seus clientes: nunca paramos.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600",
     metrics: [
       { value: "À Medida", label: "Retorno" },
       { value: "Selo Oficial", label: "Rede Protegida" },
