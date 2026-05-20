@@ -83,89 +83,124 @@ const negocio: Plan[] = [
 function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
   return (
     <article
-      className="flex h-full flex-col rounded-3xl p-7 transition-shadow hover:shadow-md"
+      className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-md"
       style={{
         background: "rgba(255,255,255,0.95)",
         border: "1px solid rgba(0,0,0,0.06)",
+        borderRadius: 16,
       }}
     >
-      <span
-        className="inline-block self-start rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
-        style={
-          plan.badgeHighlight
-            ? { background: YELLOW, color: DARK }
-            : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
-        }
-      >
-        {plan.badge}
-      </span>
-
-      <h3
-        className="mt-5"
+      <div
         style={{
-          color: "#0D2B1F",
-          fontFamily: FONT,
-          fontWeight: 700,
-          fontSize: 24,
-          lineHeight: 1.15,
-          margin: 0,
-          letterSpacing: "-0.01em",
+          position: "relative",
+          height: 160,
+          backgroundImage: `url(${plan.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        {plan.name}
-      </h3>
-
-      <div className="mt-6 grid grid-cols-2 gap-3">
-        {plan.metrics.map((m) => (
-          <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(13,43,31,0.06)", border: "1px solid rgba(0,0,0,0.06)" }}>
-            <div
-              style={{
-                color: "#0D2B1F",
-                fontFamily: FONT,
-                fontWeight: 800,
-                fontSize: "clamp(16px, 1.6vw, 20px)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {m.value}
-            </div>
-            <div
-              style={{
-                color: "rgba(13,43,31,0.45)",
-                fontSize: 11,
-                marginTop: 6,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-              }}
-            >
-              {m.label}
-            </div>
-          </div>
-        ))}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, transparent 0%, rgba(13,43,31,0.85) 100%)",
+          }}
+        />
       </div>
 
-      <div className="mt-auto pt-8">
-        <div
+      <div className="flex h-full flex-col p-7">
+        <span
+          className="inline-block self-start rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
+          style={
+            plan.badgeHighlight
+              ? { background: YELLOW, color: DARK }
+              : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
+          }
+        >
+          {plan.badge}
+        </span>
+
+        <h3
+          className="mt-5"
           style={{
             color: "#0D2B1F",
             fontFamily: FONT,
-            fontWeight: 800,
-            fontSize: 26,
-            letterSpacing: "-0.02em",
+            fontWeight: 700,
+            fontSize: 24,
+            lineHeight: 1.15,
+            margin: 0,
+            letterSpacing: "-0.01em",
           }}
         >
-          {plan.price}
+          {plan.name}
+        </h3>
+
+        <p
+          className="mt-2"
+          style={{
+            fontStyle: "italic",
+            fontSize: 13,
+            color: "rgba(13,43,31,0.55)",
+            margin: 0,
+            lineHeight: 1.45,
+          }}
+        >
+          {plan.promise}
+        </p>
+
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          {plan.metrics.map((m) => (
+            <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(13,43,31,0.06)", border: "1px solid rgba(0,0,0,0.06)" }}>
+              <div
+                style={{
+                  color: "#0D2B1F",
+                  fontFamily: FONT,
+                  fontWeight: 800,
+                  fontSize: "clamp(16px, 1.6vw, 20px)",
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {m.value}
+              </div>
+              <div
+                style={{
+                  color: "rgba(13,43,31,0.45)",
+                  fontSize: 11,
+                  marginTop: 6,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                {m.label}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <PillButton
-          size="md"
-          variant="power"
-          onClick={onCta}
-          className="mt-5 w-full"
-        >
-          <LigarCaboLabel />
-        </PillButton>
+        <div className="mt-auto pt-8">
+          <div
+            style={{
+              color: "#0D2B1F",
+              fontFamily: FONT,
+              fontWeight: 800,
+              fontSize: 26,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {plan.price}
+          </div>
+
+          <PillButton
+            size="md"
+            variant="power"
+            onClick={onCta}
+            className="mt-5 w-full"
+          >
+            <LigarCaboLabel />
+          </PillButton>
+        </div>
       </div>
     </article>
   );
