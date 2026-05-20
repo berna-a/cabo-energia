@@ -322,7 +322,7 @@ export default function SimuladorSection() {
           cursor: grab;
           border: none;
         }
-        .sim-card-wrap { max-width: 1100px; margin: 0 auto; }
+        .sim-card-wrap { width: 100%; max-width: 1200px; margin: 0 auto; }
         @media (max-width: 640px) {
           #simulador { padding: 48px 20px !important; }
           .sim-card { padding: 24px 20px !important; }

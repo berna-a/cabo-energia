@@ -11,37 +11,39 @@ export function FinalCtaSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white"
-      style={{ fontFamily: FONT, padding: "120px 24px" }}
+      className="relative overflow-hidden bg-white w-full"
+      style={{ fontFamily: FONT, paddingTop: 120, paddingBottom: 120 }}
     >
-      <div className="mx-auto max-w-2xl text-center">
-        <h2
-          style={{
-            color: DARK,
-            fontFamily: FONT,
-            fontWeight: 700,
-            fontSize: "clamp(30px, 4.4vw, 48px)",
-            lineHeight: 1.1,
-            letterSpacing: "-0.02em",
-            margin: 0,
-          }}
-        >
-          A rede falha. A Cabo Energia não.
-        </h2>
-        <p
-          className="mx-auto mt-5 max-w-xl"
-          style={{ color: MUTED, fontSize: 16, lineHeight: 1.6 }}
-        >
-          O diagnóstico inicial é gratuito e sem compromisso.
-        </p>
-        <div className="mt-9 flex justify-center">
-          <PillButton
-            size="lg"
-            variant="power"
-            onClick={() => openLeadPanel({ source: "final_cta" })}
+      <div className="site-container text-center">
+        <div className="mx-auto max-w-2xl">
+          <h2
+            style={{
+              color: DARK,
+              fontFamily: FONT,
+              fontWeight: 700,
+              fontSize: "clamp(30px, 4.4vw, 48px)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              margin: 0,
+            }}
           >
-            <LigarCaboLabel />
-          </PillButton>
+            A rede falha. A Cabo Energia não.
+          </h2>
+          <p
+            className="mx-auto mt-5 max-w-xl"
+            style={{ color: MUTED, fontSize: 16, lineHeight: 1.6 }}
+          >
+            O diagnóstico inicial é gratuito e sem compromisso.
+          </p>
+          <div className="mt-9 flex justify-center">
+            <PillButton
+              size="lg"
+              variant="power"
+              onClick={() => openLeadPanel({ source: "final_cta" })}
+            >
+              <LigarCaboLabel />
+            </PillButton>
+          </div>
         </div>
       </div>
     </section>

@@ -56,7 +56,7 @@ export function Footer() {
       style={{ fontFamily: FONT }}
     >
       <div
-        className="container grid grid-cols-1 gap-12 md:grid-cols-3"
+        className="site-container grid grid-cols-1 gap-12 md:grid-cols-3"
         style={{ paddingTop: 48, paddingBottom: 32 }}
       >
         {/* Column 1 — Brand */}
@@ -110,7 +110,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="container flex flex-col items-start justify-between gap-2 py-5 text-xs md:flex-row md:items-center" style={{ color: MUTED }}>
+        <div className="site-container flex flex-col items-start justify-between gap-2 py-5 text-xs md:flex-row md:items-center" style={{ color: MUTED }}>
           <span className="inline-flex items-center" style={{ fontSize: 12 }}>
             © {new Date().getFullYear()} CABO ENERGIA. Todos os direitos reservados. Website by
             <a
