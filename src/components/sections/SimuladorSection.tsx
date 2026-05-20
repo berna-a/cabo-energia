@@ -370,17 +370,19 @@ export default function SimuladorSection() {
         {/* Progress */}
         {step < 6 && (
           <div style={{ marginBottom: 28 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               {[1, 2, 3, 4, 5].map((n) => {
-                const bg = n < step ? YELLOW : n === step ? `${YELLOW}99` : `${GREEN}33`;
+                const isActive = n === step;
+                const bg = n < step ? YELLOW : isActive ? YELLOW : `${GREEN}33`;
                 return (
                   <div
                     key={n}
                     style={{
                       flex: 1,
-                      height: 3,
-                      borderRadius: 2,
+                      height: 5,
+                      borderRadius: 3,
                       background: bg,
+                      boxShadow: isActive ? "0 0 6px rgba(245, 200, 66, 0.50)" : "none",
                     }}
                   />
                 );

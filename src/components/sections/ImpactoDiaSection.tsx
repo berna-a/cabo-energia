@@ -2,11 +2,9 @@ import {
   Refrigerator,
   Wifi,
   Sun,
-  Store,
-  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
-import { useAudienceTab } from "./audienceTab";
+
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
@@ -32,23 +30,9 @@ const residencial: Item[] = [
   },
 ];
 
-const negocio: Item[] = [
-  {
-    icon: Store,
-    title: "Portas abertas sempre.",
-    copy: "Continue a receber clientes, faturar e processar pagamentos enquanto a concorrência fecha.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Zero quebras de stock.",
-    copy: "Sistemas de frio, servidores e equipamentos críticos 100% protegidos contra picos e apagões.",
-  },
-];
-
 export function ImpactoDiaSection() {
-  const tab = useAudienceTab();
-  const items = tab === "residencial" ? residencial : negocio;
-  const cols = tab === "residencial" ? "md:grid-cols-3" : "md:grid-cols-2";
+  const items = residencial;
+  const cols = "md:grid-cols-3";
 
   return (
     <section
@@ -73,7 +57,6 @@ export function ImpactoDiaSection() {
         </div>
 
         <div
-          key={tab}
           className={`grid grid-cols-1 gap-6 ${cols}`}
           style={{ animation: "fadeUp 300ms ease both" }}
         >

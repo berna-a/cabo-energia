@@ -26,14 +26,13 @@ export function FinalCtaSection() {
             margin: 0,
           }}
         >
-          Proteja o seu futuro energético.
+          A rede falha. A Cabo Energia não.
         </h2>
         <p
           className="mx-auto mt-5 max-w-xl"
           style={{ color: MUTED, fontSize: 16, lineHeight: 1.6 }}
         >
-          Não fique refém da instabilidade da rede. O diagnóstico inicial é gratuito
-          e sem compromisso.
+          O diagnóstico inicial é gratuito e sem compromisso.
         </p>
         <div className="mt-9 flex justify-center">
           <PillButton

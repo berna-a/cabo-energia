@@ -82,7 +82,7 @@ export function ImpactBentoSection() {
               marginBottom: 20,
             }}
           >
-            Impacto Real
+            A Sua Vida com Cabo Energia
           </span>
           <h2
             style={{
@@ -94,7 +94,7 @@ export function ImpactBentoSection() {
               margin: 0,
             }}
           >
-            O que muda na sua vida
+            O antes e o depois.
           </h2>
         </div>
 
@@ -193,28 +193,44 @@ export function ImpactBentoSection() {
             <div className="relative z-10 flex h-full items-center justify-center p-6">
               <div
                 className="impacto-card impacto-card--static rounded-3xl p-6 text-center"
-                style={{ ...glassPanel, maxWidth: 280 }}
+                style={{ ...glassPanel, maxWidth: 320 }}
               >
                 <LeftCatchLight />
-                <div
-                  style={{
-                    color: "#F5C842",
-                    fontFamily: FONT,
-                    fontWeight: 900,
-                    lineHeight: 1,
-                    letterSpacing: "-0.04em",
-                  }}
+                <h3
+                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
-                  <span style={{ display: "block", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 700, letterSpacing: "0.02em", marginBottom: 4, color: "#ffffff" }}>
-                    POUPE ATÉ
+                  Deixe que o Sol pague a conta.
+                </h3>
+                <div className="mt-5 flex justify-center">
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: "rgba(0, 0, 0, 0.35)",
+                      border: "1px solid rgba(255, 255, 255, 0.20)",
+                      borderRadius: 50,
+                      padding: "6px 14px 6px 8px",
+                      fontSize: 12,
+                      fontWeight: 500,
+                      color: "white",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    <span
+                      aria-hidden
+                      style={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: "50%",
+                        background: "#F5C842",
+                        flexShrink: 0,
+                      }}
+                    />
+                    Poupe até 80%
                   </span>
-                  <span style={{ fontSize: "clamp(44px, 6.5vw, 72px)" }}>80%</span>
                 </div>
-                <h4
-                  style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 600, fontSize: 14, lineHeight: 1.25, margin: 0, marginTop: 17, whiteSpace: "nowrap" }}
-                >
-                  Deixe que o sol pague a conta.
-                </h4>
               </div>
             </div>
           </article>

@@ -61,7 +61,7 @@ export function HeroSection() {
               <h1
                 className="font-display text-white"
                 style={{
-                  fontSize: "clamp(3.24rem, 6vw, 5.2rem)",
+                  fontSize: "clamp(3.89rem, 7.2vw, 6.24rem)",
                   lineHeight: 1.05,
                   fontWeight: 600,
                   letterSpacing: "0.02em",
@@ -77,7 +77,7 @@ export function HeroSection() {
                 className="mt-5 max-w-md leading-relaxed text-white/70"
                 style={{ fontSize: "1rem", fontWeight: 400 }}
               >
-                Painéis e backup chave-na-mão para casas e negócios em todas as ilhas.
+                A sua casa e o seu negócio nunca mais param por falta de luz.
               </p>
             </div>
 

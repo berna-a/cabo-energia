@@ -12,6 +12,8 @@ type Plan = {
   badge: string;
   badgeHighlight?: boolean;
   name: string;
+  promise: string;
+  image: string;
   metrics: { value: string; label: string }[];
   price: string;
 };
@@ -20,6 +22,8 @@ const residencial: Plan[] = [
   {
     badge: "Proteção",
     name: "Casa Tranquila",
+    promise: "Não fique às escuras quando a luz vai abaixo.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
     metrics: [
       { value: "3k – 5k CVE", label: "Poupança" },
       { value: "5,12 kWh", label: "Backup" },
@@ -30,6 +34,8 @@ const residencial: Plan[] = [
     badge: "Popular",
     badgeHighlight: true,
     name: "Casa Autonomia",
+    promise: "O sol paga a sua conta de luz.",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600",
     metrics: [
       { value: "6k – 8k CVE", label: "Poupança" },
       { value: "Até 80%", label: "Redução" },
@@ -39,6 +45,8 @@ const residencial: Plan[] = [
   {
     badge: "Independência",
     name: "Casa Plena",
+    promise: "A sua casa, o seu sol, as suas regras.",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600",
     metrics: [
       { value: "10k – 15k CVE", label: "Poupança" },
       { value: "10,24 kWh", label: "Autonomia" },
@@ -51,6 +59,8 @@ const negocio: Plan[] = [
   {
     badge: "Eficiência",
     name: "Negócio Essencial",
+    promise: "O seu negócio não para. A sua fatura baixa.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600",
     metrics: [
       { value: "25k – 40k CVE", label: "Poupança" },
       { value: "15,36 kWh", label: "Proteção" },
@@ -60,6 +70,8 @@ const negocio: Plan[] = [
   {
     badge: "Imunidade",
     name: "Negócio Pleno",
+    promise: "Diga aos seus clientes: nunca paramos.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600",
     metrics: [
       { value: "À Medida", label: "Retorno" },
       { value: "Selo Oficial", label: "Rede Protegida" },
@@ -71,89 +83,124 @@ const negocio: Plan[] = [
 function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
   return (
     <article
-      className="flex h-full flex-col rounded-3xl p-7 transition-shadow hover:shadow-md"
+      className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-md"
       style={{
         background: "rgba(255,255,255,0.95)",
         border: "1px solid rgba(0,0,0,0.06)",
+        borderRadius: 16,
       }}
     >
-      <span
-        className="inline-block self-start rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
-        style={
-          plan.badgeHighlight
-            ? { background: YELLOW, color: DARK }
-            : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
-        }
-      >
-        {plan.badge}
-      </span>
-
-      <h3
-        className="mt-5"
+      <div
         style={{
-          color: "#0D2B1F",
-          fontFamily: FONT,
-          fontWeight: 700,
-          fontSize: 24,
-          lineHeight: 1.15,
-          margin: 0,
-          letterSpacing: "-0.01em",
+          position: "relative",
+          height: 160,
+          backgroundImage: `url(${plan.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        {plan.name}
-      </h3>
-
-      <div className="mt-6 grid grid-cols-2 gap-3">
-        {plan.metrics.map((m) => (
-          <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(13,43,31,0.06)", border: "1px solid rgba(0,0,0,0.06)" }}>
-            <div
-              style={{
-                color: "#0D2B1F",
-                fontFamily: FONT,
-                fontWeight: 800,
-                fontSize: "clamp(16px, 1.6vw, 20px)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {m.value}
-            </div>
-            <div
-              style={{
-                color: "rgba(13,43,31,0.45)",
-                fontSize: 11,
-                marginTop: 6,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-              }}
-            >
-              {m.label}
-            </div>
-          </div>
-        ))}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(180deg, transparent 0%, rgba(13,43,31,0.85) 100%)",
+          }}
+        />
       </div>
 
-      <div className="mt-auto pt-8">
-        <div
+      <div className="flex h-full flex-col p-7">
+        <span
+          className="inline-block self-start rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
+          style={
+            plan.badgeHighlight
+              ? { background: YELLOW, color: DARK }
+              : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
+          }
+        >
+          {plan.badge}
+        </span>
+
+        <h3
+          className="mt-5"
           style={{
             color: "#0D2B1F",
             fontFamily: FONT,
-            fontWeight: 800,
-            fontSize: 26,
-            letterSpacing: "-0.02em",
+            fontWeight: 700,
+            fontSize: 24,
+            lineHeight: 1.15,
+            margin: 0,
+            letterSpacing: "-0.01em",
           }}
         >
-          {plan.price}
+          {plan.name}
+        </h3>
+
+        <p
+          className="mt-2"
+          style={{
+            fontStyle: "italic",
+            fontSize: 13,
+            color: "rgba(13,43,31,0.55)",
+            margin: 0,
+            lineHeight: 1.45,
+          }}
+        >
+          {plan.promise}
+        </p>
+
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          {plan.metrics.map((m) => (
+            <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(13,43,31,0.06)", border: "1px solid rgba(0,0,0,0.06)" }}>
+              <div
+                style={{
+                  color: "#0D2B1F",
+                  fontFamily: FONT,
+                  fontWeight: 800,
+                  fontSize: "clamp(16px, 1.6vw, 20px)",
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {m.value}
+              </div>
+              <div
+                style={{
+                  color: "rgba(13,43,31,0.45)",
+                  fontSize: 11,
+                  marginTop: 6,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                }}
+              >
+                {m.label}
+              </div>
+            </div>
+          ))}
         </div>
 
-        <PillButton
-          size="md"
-          variant="power"
-          onClick={onCta}
-          className="mt-5 w-full"
-        >
-          <LigarCaboLabel />
-        </PillButton>
+        <div className="mt-auto pt-8">
+          <div
+            style={{
+              color: "#0D2B1F",
+              fontFamily: FONT,
+              fontWeight: 800,
+              fontSize: 26,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {plan.price}
+          </div>
+
+          <PillButton
+            size="md"
+            variant="power"
+            onClick={onCta}
+            className="mt-5 w-full"
+          >
+            <LigarCaboLabel />
+          </PillButton>
+        </div>
       </div>
     </article>
   );
@@ -198,7 +245,7 @@ export function SolucoesSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Escolha o pacote certo para si
+            O seu nível de energia, a sua escolha.
           </h2>
         </div>
 
