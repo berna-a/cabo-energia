@@ -197,34 +197,25 @@ const Empresarial = () => {
               Escolha o nível de proteção para o seu negócio
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
               {[
                 {
                   name: "Negócio Essencial",
                   badge: "Eficiência",
                   badgeGold: false,
-                  m1: { value: "12k – 18k CVE", label: "Poupança" },
-                  m2: { value: "20 kWh", label: "Backup" },
+                  m1: { value: "25k – 40k CVE", label: "Poupança" },
+                  m2: { value: "15,36 kWh", label: "Proteção" },
                   price: "1.350.000 CVE",
                   filled: false,
                 },
                 {
-                  name: "Negócio Pro",
-                  badge: "Popular",
-                  badgeGold: true,
-                  m1: { value: "25k – 40k CVE", label: "Poupança" },
-                  m2: { value: "Até 90%", label: "Redução" },
-                  price: "2.600.000 CVE",
-                  filled: true,
-                },
-                {
-                  name: "Negócio à Medida",
+                  name: "Negócio Pleno",
                   badge: "Imunidade",
-                  badgeGold: false,
-                  m1: { value: "Selo Oficial", label: "Rede Protegida" },
-                  m2: { value: "À Medida", label: "Retorno" },
+                  badgeGold: true,
+                  m1: { value: "À Medida", label: "Retorno" },
+                  m2: { value: "Selo Oficial", label: "Rede Protegida" },
                   price: "Sob Orçamento",
-                  filled: false,
+                  filled: true,
                 },
               ].map((plan) => (
                 <article
