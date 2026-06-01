@@ -28,3 +28,6 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+
+# macOS custom-icon artifacts (criados pelo iCloud/Finder)
+Icon?

@@ -9,7 +9,10 @@ import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
 import { ProcessoSection } from "@/components/sections/ProcessoSection";
 import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
 import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
-import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
+import { TrustBadges } from "@/components/TrustBadges";
+import { HowItWorks } from "@/components/HowItWorks";
+import { PricingKits } from "@/components/PricingKits";
+import { FinalCTA } from "@/components/FinalCTA";
 
 const Index = () => {
   return (
@@ -17,6 +20,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <TrustBadges />
         <Marquee />
         <ImpactBentoSection />
         <div
@@ -33,8 +37,10 @@ const Index = () => {
           <ProcessoSection />
           <ProtecaoContinuaSection />
         </div>
+        <HowItWorks />
+        <PricingKits />
         <RedeProtegidosSection />
-        <FinalCtaSection />
+        <FinalCTA />
       </main>
       <Footer />
     </div>
