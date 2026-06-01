@@ -1,0 +1,26 @@
+name: Manter Supabase acordado
+
+# Impede o projeto Supabase (free tier) de pausar por inatividade.
+# O free tier pausa ~7 dias sem atividade; corremos a cada 3 dias com margem.
+# A chave abaixo é a PUBLISHABLE key (pública por design, já vai no bundle do site).
+
+on:
+  schedule:
+    - cron: "0 6 */3 * *" # a cada 3 dias, 06:00 UTC
+  workflow_dispatch: {} # permite correr manualmente no separador Actions
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pingar a API do Supabase
+        run: |
+          URL="https://egzsxtgtleyjesvnioct.supabase.co"
+          KEY="sb_publishable_mDlZf3Zm5F0gjhz4xLtcNg_Eb1alnby"
+          code=$(curl -s -o /dev/null -w "%{http_code}" "$URL/rest/v1/?apikey=$KEY" --max-time 30)
+          echo "Resposta do Supabase: HTTP $code"
+          # Qualquer resposta HTTP confirma que o projeto está acordado.
+          if [ "$code" = "000" ]; then
+            echo "::error::Sem resposta do Supabase (projeto pausado ou offline)."
+            exit 1
+          fi
