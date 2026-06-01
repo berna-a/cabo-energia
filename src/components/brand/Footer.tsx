@@ -83,19 +83,7 @@ export function Footer() {
             >
               <Mail className="size-4" /> contacto@caboenergia.cv
             </a>
-            <a
-              href="tel:+2389954181"
-              className="inline-flex items-center gap-2 hover:text-brand-green"
-              style={{ color: DARK }}
-            >
-              <span className="text-sm">📞</span> 995 41 81
-            </a>
           </div>
-          <p style={{ fontSize: 12, color: MUTED, margin: "8px 0 0" }}>
-            Achada Grande Frente, Praia
-            <br />
-            Santiago, Cabo Verde
-          </p>
 
           {/* Social links */}
           <div className="mt-5 flex flex-row gap-3">
@@ -198,7 +186,7 @@ export function Footer() {
               />
             </a>
           </span>
-          <span style={{ fontSize: 12 }}>In Partnership with <strong>ENGTEC</strong> · Cabo Verde</span>
+          <span style={{ fontSize: 12 }}>Cabo Verde · 238</span>
         </div>
       </div>
     </footer>
