@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { LeadPanelProvider } from "@/components/brand/LeadPanelContext";
 import Index from "./pages/Index.tsx";
 import Residencial from "./pages/Residencial.tsx";
+import Empresarial from "./pages/Empresarial.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PropostasPage from "./pages/PropostasPage.tsx";
 
@@ -21,6 +22,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/residencial" element={<Residencial />} />
+            <Route path="/empresarial" element={<Empresarial />} />
             <Route path="/proposta" element={<PropostasPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
