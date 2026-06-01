@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
 import { Marquee } from "@/components/brand/Marquee";
@@ -12,6 +13,22 @@ import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSecti
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 
 const Index = () => {
+  // Salta para a secção indicada no URL (ex.: /#como-funciona), mesmo vindo de outra página.
+  useEffect(() => {
+    const scrollToHash = () => {
+      const id = window.location.hash.replace("#", "");
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    };
+    const t = window.setTimeout(scrollToHash, 150);
+    window.addEventListener("hashchange", scrollToHash);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

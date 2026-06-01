@@ -28,6 +28,7 @@ const steps = [
 export function ProcessoSection() {
   return (
     <section
+      id="como-funciona"
       className="relative overflow-hidden"
       style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >

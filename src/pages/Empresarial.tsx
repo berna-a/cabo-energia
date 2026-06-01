@@ -6,7 +6,6 @@ import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import heroEmpresarial from "@/assets/hero-bg.png";
 import { TrustBadge } from "@/components/brand/TrustBadge";
 import { SectionHeader } from "@/components/brand/SectionHeader";
-import { ProcessStep } from "@/components/brand/ProcessStep";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
@@ -45,23 +44,12 @@ const includedItems = [
   },
 ];
 
-const steps = [
-  { title: "Lead", description: "Entra em contacto connosco." },
-  { title: "Contacto", description: "Falamos consigo em até 24 horas." },
-  { title: "Levantamento", description: "Visita técnica ao local (5.000 CVE, dedutível)." },
-  { title: "Orçamento", description: "Proposta clara com produção, poupança e custo." },
-  { title: "50% Upfront", description: "Confirmação e pagamento inicial." },
-  { title: "Instalação", description: "Equipa técnica, materiais em stock." },
-  { title: "Follow-up", description: "Acompanhamento pós-instalação incluído." },
-];
-
 const Empresarial = () => {
   const { openLeadPanel } = useLeadPanel();
   const heroRef = useRevealOnScroll<HTMLDivElement>();
   const whyRef = useRevealOnScroll<HTMLDivElement>();
   const kitsRef = useRevealOnScroll<HTMLDivElement>();
   const includedRef = useRevealOnScroll<HTMLDivElement>();
-  const processRef = useRevealOnScroll<HTMLDivElement>();
   const ctaRef = useRevealOnScroll<HTMLDivElement>();
 
   return (
@@ -93,12 +81,13 @@ const Empresarial = () => {
                   Soluções Empresariais
                 </TrustBadge>
                 <h1
-                  className="font-extrabold text-white"
+                  className="font-display text-white"
                   style={{
                     fontSize: "clamp(2.75rem, 5vw, 4.5rem)",
-                    lineHeight: 0.95,
-                    fontWeight: 800,
-                    letterSpacing: "-0.025em",
+                    lineHeight: 1.05,
+                    fontWeight: 600,
+                    letterSpacing: "0.02em",
+                    textTransform: "uppercase",
                   }}
                 >
                   O seu negócio nunca mais pára.
@@ -304,32 +293,6 @@ const Empresarial = () => {
                   </p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 4: PROCESS */}
-        <section className="bg-surface-muted py-20 md:py-28">
-          <div ref={processRef} className="reveal container flex flex-col gap-14">
-            <SectionHeader
-              align="center"
-              overline="Como funciona"
-              headline="Do primeiro contacto à instalação — sem complicações."
-              className="mx-auto"
-            />
-
-            <div className="-mx-6 overflow-x-auto pb-2 lg:mx-0 lg:overflow-visible">
-              <div className="flex snap-x snap-mandatory gap-4 px-6 lg:grid lg:grid-cols-7 lg:gap-6 lg:px-0">
-                {steps.map((s, i) => (
-                  <ProcessStep
-                    key={s.title}
-                    index={i}
-                    total={steps.length}
-                    title={s.title}
-                    description={s.description}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </section>
