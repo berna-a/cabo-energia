@@ -1,6 +1,6 @@
-import impactProtecao from "@/assets/impact-protecao.png";
+import impactProtecao from "@/assets/impact-protecao.webp";
 import impactFatura from "@/assets/impact-fatura.jpg";
-import impactIndependencia from "@/assets/impact-independencia.png";
+import impactIndependencia from "@/assets/impact-independencia.webp";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";

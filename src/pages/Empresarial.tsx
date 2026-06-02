@@ -3,7 +3,7 @@ import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
-import heroEmpresarial from "@/assets/hero-bg.png";
+import heroEmpresarial from "@/assets/hero-bg.webp";
 import { TrustBadge } from "@/components/brand/TrustBadge";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";

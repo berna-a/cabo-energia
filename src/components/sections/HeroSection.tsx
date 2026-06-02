@@ -2,7 +2,7 @@ import * as React from "react";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
-import heroImage from "@/assets/hero-bg.png";
+import heroImage from "@/assets/hero-bg.webp";
 
 export function HeroSection() {
   const ref = useRevealOnScroll<HTMLDivElement>();
