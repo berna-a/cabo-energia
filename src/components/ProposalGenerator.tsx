@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import logoCor from "@/assets/logo-cor.png";
+import logoCor from "@/assets/logo-cor.webp";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const GREEN = "#1A5C3A";

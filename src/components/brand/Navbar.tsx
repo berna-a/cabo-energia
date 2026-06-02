@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
 import { LigarCaboLabel } from "./LigarCaboLabel";
 import { useLeadPanel } from "./LeadPanelContext";
-import logoBranco from "@/assets/logo-branco.png";
-import logoCor from "@/assets/logo-cor.png";
+import logoBranco from "@/assets/logo-branco.webp";
+import logoCor from "@/assets/logo-cor.webp";
 
 const solutionsItems = [
   { label: "Residencial", href: "/residencial", description: "Para a sua casa." },

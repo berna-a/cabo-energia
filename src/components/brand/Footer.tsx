@@ -1,7 +1,7 @@
 import { MessageCircle, Mail } from "lucide-react";
 import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
 import { WHATSAPP_URL } from "@/lib/constants";
-import logoCor from "@/assets/logo-cor.png";
+import logoCor from "@/assets/logo-cor.webp";
 import ardoLogo from "@/assets/ardo-logo.svg";
 
 const DARK = "#0D2B1F";

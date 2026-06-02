@@ -1,4 +1,4 @@
-import caboWordmark from "@/assets/cabo-wordmark.png";
+import caboWordmark from "@/assets/cabo-wordmark.webp";
 import { cn } from "@/lib/utils";
 
 interface LigarCaboLabelProps {
