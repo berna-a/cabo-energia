@@ -6,7 +6,8 @@ import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { SolucoesSection } from "@/components/sections/SolucoesSection";
-import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
+import { NegocioCustoSection } from "@/components/sections/NegocioCustoSection";
+import { NegocioVsGeradorSection } from "@/components/sections/NegocioVsGeradorSection";
 import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
 import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
@@ -93,6 +94,9 @@ const Empresarial = () => {
 
         <Marquee />
 
+        {/* Problema quantificado: o custo de não fazer nada */}
+        <NegocioCustoSection />
+
         {/* Container verde-escuro arredondado — assinatura visual da homepage */}
         <div
           style={{
@@ -103,9 +107,11 @@ const Empresarial = () => {
           }}
         >
           <SolucoesSection audience="negocio" showToggle={false} />
-          <ImpactoDiaSection />
           <ProtecaoContinuaSection />
         </div>
+
+        {/* Solar vs Gerador + ROI/payback */}
+        <NegocioVsGeradorSection />
 
         <RedeProtegidosSection />
         <FinalCtaSection />
