@@ -1,67 +1,40 @@
-import { Sun, Battery, Wrench, Cable, Layers, Factory, Activity, Zap, ShieldCheck } from "lucide-react";
+import { useEffect } from "react";
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
+import { Marquee } from "@/components/brand/Marquee";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
-import heroEmpresarial from "@/assets/hero-bg.webp";
-import { TrustBadge } from "@/components/brand/TrustBadge";
-import { SectionHeader } from "@/components/brand/SectionHeader";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
+import { SolucoesSection } from "@/components/sections/SolucoesSection";
+import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
+import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
+import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
+import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
+import { setAudienceTab } from "@/components/sections/audienceTab";
+import heroEmpresarial from "@/assets/hero-bg.webp";
 
 const SOURCE = "website_empresarial";
-
-const includedItems = [
-  {
-    icon: <Factory className="size-5" />,
-    title: "Inversor trifásico industrial",
-    description: "Potência para equipamentos exigentes — frio, máquinas e climatização.",
-  },
-  {
-    icon: <Battery className="size-5" />,
-    title: "Baterias LiFePO4 de alta capacidade",
-    description: "Banco de energia dimensionado para o consumo real do seu negócio.",
-  },
-  {
-    icon: <Sun className="size-5" />,
-    title: "Painéis de alta eficiência",
-    description: "Módulos prontos para o clima caboverdiano, com máxima produção.",
-  },
-  {
-    icon: <Layers className="size-5" />,
-    title: "Estrutura industrial robusta",
-    description: "Para coberturas de chapa, laje ou telha de grandes vãos.",
-  },
-  {
-    icon: <Activity className="size-5" />,
-    title: "Monitorização remota 24/7",
-    description: "Acompanhamento contínuo da produção e da saúde do sistema.",
-  },
-  {
-    icon: <Wrench className="size-5" />,
-    title: "Contrato de manutenção",
-    description: "Manutenção preventiva opcional para máxima disponibilidade.",
-  },
-];
 
 const Empresarial = () => {
   const { openLeadPanel } = useLeadPanel();
   const heroRef = useRevealOnScroll<HTMLDivElement>();
-  const whyRef = useRevealOnScroll<HTMLDivElement>();
-  const kitsRef = useRevealOnScroll<HTMLDivElement>();
-  const includedRef = useRevealOnScroll<HTMLDivElement>();
-  const ctaRef = useRevealOnScroll<HTMLDivElement>();
+
+  // Esta página é de negócio: as secções partilhadas abrem no separador "Negócio".
+  useEffect(() => {
+    setAudienceTab("negocio");
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>
-        {/* HERO */}
-        <section className="relative isolate overflow-hidden text-white" style={{ height: "70vh", minHeight: 560 }}>
+        {/* HERO — mesmo tratamento da página principal */}
+        <section className="relative isolate min-h-[100svh] overflow-hidden text-white">
           <img
             src={heroEmpresarial}
             alt="Negócio em Cabo Verde com energia solar"
-            className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
             loading="eager"
             fetchPriority="high"
           />
@@ -70,256 +43,79 @@ const Empresarial = () => {
             className="absolute inset-0 -z-10"
             style={{
               background:
-                "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.0) 50%)",
+                "radial-gradient(ellipse 110% 130% at 0% 100%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.1) 80%, rgba(0,0,0,0) 100%)",
             }}
           />
 
-          <div ref={heroRef} className="reveal relative h-full px-6 md:px-12">
-            <div className="absolute inset-x-6 bottom-12 flex flex-col gap-10 md:inset-x-12 md:flex-row md:items-end md:justify-between md:gap-12">
-              <div className="max-w-[85%] lg:max-w-[60%]">
-                <TrustBadge tone="light" className="mb-5">
-                  Soluções Empresariais
-                </TrustBadge>
-                <h1
-                  className="font-display text-white"
-                  style={{
-                    fontSize: "clamp(2.75rem, 5vw, 4.5rem)",
-                    lineHeight: 1.05,
-                    fontWeight: 600,
-                    letterSpacing: "0.02em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  O seu negócio nunca mais pára.
-                </h1>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row">
-                <PillButton
-                  size="lg"
-                  variant="power"
-                  onClick={() =>
-                    openLeadPanel({ clientType: "empresarial", source: SOURCE })
-                  }
-                >
-                  <LigarCaboLabel />
-                </PillButton>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 1: BENTO GRID — WHY NOW */}
-        <section className="bg-white py-20 md:py-28" style={{ fontFamily: "Montserrat, sans-serif" }}>
-          <div
-            ref={whyRef}
-            className="reveal container grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {/* Card 1 — Continuidade */}
-            <article
-              className="rounded-2xl bg-slate-50 p-8 md:col-span-1 flex flex-col gap-5"
-              style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
-            >
-              <div
-                className="flex size-12 items-center justify-center rounded-xl bg-white"
-                style={{ border: "1px solid rgba(0,0,0,0.05)" }}
-              >
-                <Zap className="size-5" style={{ color: "#0D2B1F" }} />
-              </div>
-              <h3 className="text-xl font-bold leading-tight" style={{ color: "#0D2B1F" }}>
-                Cada apagão é dinheiro perdido.
-              </h3>
-              <p className="text-sm leading-relaxed text-slate-500">
-                Energia ininterrupta para frio, máquinas e atendimento. O seu negócio não fecha quando a rede falha.
-              </p>
-            </article>
-
-            {/* Card 2 — Financeiro */}
-            <article
-              className="rounded-2xl bg-slate-50 p-8 md:col-span-1 flex flex-col justify-between gap-6"
-              style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
-            >
-              <div className="flex flex-col gap-2">
-                <span
-                  className="font-extrabold leading-[0.95] tracking-tight"
-                  style={{ color: "#0D2B1F", fontSize: "clamp(2.5rem, 4.5vw, 3.75rem)" }}
-                >
-                  25k – 40k CVE
-                </span>
-                <span className="text-sm font-medium text-slate-600">
-                  Poupança média mensal estimada
-                </span>
-              </div>
-              <p className="text-xs leading-relaxed text-slate-500">
-                Retorno do investimento entre 3 a 6 anos, conforme o consumo.
-              </p>
-            </article>
-
-            {/* Card 3 — Rede Protegida */}
-            <article
-              className="rounded-2xl bg-slate-50 p-8 md:col-span-1 flex flex-col gap-5"
-              style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
-            >
-              <div
-                className="flex size-12 items-center justify-center rounded-xl bg-white"
-                style={{ border: "1px solid rgba(0,0,0,0.05)" }}
-              >
-                <ShieldCheck className="size-5" style={{ color: "#0D2B1F" }} />
-              </div>
-              <h3 className="text-xl font-bold leading-tight" style={{ color: "#0D2B1F" }}>
-                Rede de Negócios Protegidos.
-              </h3>
-              <p className="text-sm leading-relaxed text-slate-500">
-                O seu estabelecimento ganha o selo oficial e diz aos clientes: aqui nunca paramos.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        {/* SECTION 2: PLANOS EMPRESARIAIS */}
-        <section className="bg-white py-20 md:py-28" style={{ fontFamily: "Montserrat, sans-serif" }}>
-          <div ref={kitsRef} className="reveal container flex flex-col gap-14">
-            <h2
-              className="font-bold tracking-tight max-w-3xl"
-              style={{ color: "#0D2B1F", fontSize: "clamp(1.875rem, 3vw, 2.75rem)", lineHeight: 1.1 }}
-            >
-              Escolha o nível de proteção para o seu negócio
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-              {[
-                {
-                  name: "Negócio Essencial",
-                  badge: "Eficiência",
-                  badgeGold: false,
-                  m1: { value: "25k – 40k CVE", label: "Poupança" },
-                  m2: { value: "15,36 kWh", label: "Proteção" },
-                  price: "1.350.000 CVE",
-                  filled: false,
-                },
-                {
-                  name: "Negócio Pleno",
-                  badge: "Imunidade",
-                  badgeGold: true,
-                  m1: { value: "À Medida", label: "Retorno" },
-                  m2: { value: "Selo Oficial", label: "Rede Protegida" },
-                  price: "Sob Orçamento",
-                  filled: true,
-                },
-              ].map((plan) => (
-                <article
-                  key={plan.name}
-                  className="rounded-2xl bg-slate-50 p-8 flex flex-col gap-6"
-                  style={{ border: "1px solid rgba(0,0,0,0.05)", color: "#0D2B1F" }}
-                >
-                  <div>
-                    <span
-                      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-                      style={
-                        plan.badgeGold
-                          ? { background: "#F5C842", color: "#0D2B1F" }
-                          : { background: "#fff", color: "#0D2B1F", border: "1px solid rgba(0,0,0,0.06)" }
-                      }
-                    >
-                      {plan.badge}
+          <div ref={heroRef} className="reveal relative min-h-[100svh]">
+            <div className="site-container relative min-h-[100svh] pb-14 md:pb-16">
+              <div className="absolute inset-x-5 bottom-14 flex flex-col gap-8 md:inset-x-8 md:bottom-16 md:flex-row md:items-end md:justify-between lg:inset-x-6">
+                {/* Esquerda: badge + headline + subtítulo */}
+                <div className="max-w-[90%] md:max-w-[62%]">
+                  <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+                    <span className="text-overline text-white/80">
+                      Soluções Empresariais
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-bold whitespace-nowrap" style={{ color: "#0D2B1F" }}>
-                    {plan.name}
-                  </h3>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {[plan.m1, plan.m2].map((m) => (
-                      <div
-                        key={m.label}
-                        className="rounded-xl bg-white p-4 flex flex-col gap-1"
-                        style={{ border: "1px solid rgba(0,0,0,0.05)" }}
-                      >
-                        <span className="font-bold leading-tight" style={{ color: "#0D2B1F", fontSize: "clamp(1rem, 1.4vw, 1.25rem)" }}>
-                          {m.value}
-                        </span>
-                        <span className="text-xs text-slate-500">{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div
-                    className="font-extrabold tracking-tight"
-                    style={{ color: "#0D2B1F", fontSize: "clamp(1.75rem, 2.6vw, 2.25rem)" }}
+                  <h1
+                    className="font-display text-white"
+                    style={{
+                      fontSize: "clamp(3.89rem, 7.2vw, 6.24rem)",
+                      lineHeight: 1.05,
+                      fontWeight: 600,
+                      letterSpacing: "0.02em",
+                      textTransform: "uppercase",
+                    }}
                   >
-                    {plan.price}
-                  </div>
+                    O seu negócio<br />
+                    nunca pára.
+                  </h1>
 
-                  <button
-                    type="button"
-                    onClick={() => openLeadPanel({ clientType: "empresarial", source: SOURCE })}
-                    className="mt-auto w-full rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors"
-                    style={
-                      plan.filled
-                        ? { background: "#0D2B1F", color: "#fff" }
-                        : { background: "transparent", color: "#0D2B1F", border: "1.5px solid #0D2B1F" }
-                    }
+                  <p
+                    className="mt-5 max-w-md leading-relaxed text-white/70"
+                    style={{ fontSize: "1rem", fontWeight: 400 }}
                   >
-                    LIGAR CABO
-                  </button>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 3: WHAT'S INCLUDED */}
-        <section className="bg-white py-20 md:py-28">
-          <div ref={includedRef} className="reveal container flex flex-col gap-14">
-            <SectionHeader
-              align="left"
-              overline="O que está incluído"
-              headline="Uma solução completa. Sem surpresas."
-            />
-
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {includedItems.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex flex-col gap-3 rounded-2xl border border-border bg-white p-6 transition-transform duration-300 hover:-translate-y-0.5"
-                >
-                  <div className="flex size-10 items-center justify-center rounded-pill bg-brand-green/10 text-brand-green">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-base font-semibold text-ink">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-ink-soft">
-                    {item.description}
+                    Energia solar contínua para comércio, serviços e indústria. Sem apagões, com a fatura a cair.
                   </p>
                 </div>
-              ))}
+
+                {/* Direita: CTA */}
+                <div className="relative flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row lg:items-center">
+                  <PillButton
+                    size="lg"
+                    variant="power"
+                    onClick={() =>
+                      openLeadPanel({ clientType: "empresarial", source: SOURCE })
+                    }
+                  >
+                    <LigarCaboLabel />
+                  </PillButton>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 5: FINAL CTA */}
-        <section className="bg-brand-green py-20 md:py-28 text-white">
-          <div ref={ctaRef} className="reveal container flex flex-col items-center gap-8 text-center">
-            <h2 className="text-headline max-w-2xl text-white">
-              Pronto para proteger o seu negócio?
-            </h2>
-            <p className="text-body-lg max-w-xl text-white/85">
-              Fale connosco hoje. O estudo de poupança é gratuito e sem
-              compromisso.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <PillButton
-                size="lg"
-                variant="power"
-                onClick={() =>
-                  openLeadPanel({ clientType: "empresarial", source: SOURCE })
-                }
-              >
-                <LigarCaboLabel />
-              </PillButton>
-            </div>
-          </div>
-        </section>
+        <Marquee />
+
+        {/* Container verde-escuro arredondado — assinatura visual da homepage */}
+        <div
+          style={{
+            background: "#0D2B1F",
+            borderRadius: 32,
+            margin: "48px 24px",
+            overflow: "hidden",
+          }}
+        >
+          <SolucoesSection />
+          <ImpactoDiaSection />
+          <ProtecaoContinuaSection />
+        </div>
+
+        <RedeProtegidosSection />
+        <FinalCtaSection />
       </main>
       <Footer />
     </div>
