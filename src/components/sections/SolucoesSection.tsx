@@ -1,7 +1,7 @@
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/useLeadPanel";
-import { useAudienceTab, setAudienceTab } from "./audienceTab";
+import { useAudienceTab, setAudienceTab, type AudienceTab } from "./audienceTab";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
@@ -206,8 +206,12 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
   );
 }
 
-export function SolucoesSection() {
-  const tab = useAudienceTab();
+export function SolucoesSection({
+  showToggle = true,
+  audience,
+}: { showToggle?: boolean; audience?: AudienceTab } = {}) {
+  const globalTab = useAudienceTab();
+  const tab = audience ?? globalTab;
   const { openLeadPanel } = useLeadPanel();
   const plans = tab === "residencial" ? residencial : negocio;
 
@@ -249,32 +253,34 @@ export function SolucoesSection() {
           </h2>
         </div>
 
-        <div className="mb-10 flex justify-center">
-          <div
-            className="inline-flex rounded-full p-1"
-            style={{ background: "rgba(255,255,255,0.08)" }}
-          >
-            {([
-              { id: "residencial", label: "Residencial" },
-              { id: "negocio", label: "Negócio" },
-            ] as const).map((t) => {
-              const active = tab === t.id;
-              return (
-                <button
-                  key={t.id}
-                  onClick={() => setAudienceTab(t.id)}
-                  className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
-                  style={{
-                    background: active ? YELLOW : "transparent",
-                    color: active ? DARK : "#ffffff",
-                  }}
-                >
-                  {t.label}
-                </button>
-              );
-            })}
+        {showToggle && (
+          <div className="mb-10 flex justify-center">
+            <div
+              className="inline-flex rounded-full p-1"
+              style={{ background: "rgba(255,255,255,0.08)" }}
+            >
+              {([
+                { id: "residencial", label: "Residencial" },
+                { id: "negocio", label: "Negócio" },
+              ] as const).map((t) => {
+                const active = tab === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => setAudienceTab(t.id)}
+                    className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
+                    style={{
+                      background: active ? YELLOW : "transparent",
+                      color: active ? DARK : "#ffffff",
+                    }}
+                  >
+                    {t.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
         <div
           key={tab}

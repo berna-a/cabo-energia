@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
 import { Marquee } from "@/components/brand/Marquee";
@@ -11,7 +10,6 @@ import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
 import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
 import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
-import { setAudienceTab } from "@/components/sections/audienceTab";
 import heroEmpresarial from "@/assets/hero-bg.webp";
 
 const SOURCE = "website_empresarial";
@@ -19,11 +17,6 @@ const SOURCE = "website_empresarial";
 const Empresarial = () => {
   const { openLeadPanel } = useLeadPanel();
   const heroRef = useRevealOnScroll<HTMLDivElement>();
-
-  // Esta página é de negócio: as secções partilhadas abrem no separador "Negócio".
-  useEffect(() => {
-    setAudienceTab("negocio");
-  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -109,7 +102,7 @@ const Empresarial = () => {
             overflow: "hidden",
           }}
         >
-          <SolucoesSection />
+          <SolucoesSection audience="negocio" showToggle={false} />
           <ImpactoDiaSection />
           <ProtecaoContinuaSection />
         </div>
