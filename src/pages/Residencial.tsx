@@ -6,7 +6,8 @@ import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { SolucoesSection } from "@/components/sections/SolucoesSection";
-import { ImpactoDiaSection } from "@/components/sections/ImpactoDiaSection";
+import { CasaPreocupacoesSection } from "@/components/sections/CasaPreocupacoesSection";
+import { CasaFaturaSection } from "@/components/sections/CasaFaturaSection";
 import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
 import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
@@ -93,6 +94,9 @@ const Residencial = () => {
 
         <Marquee />
 
+        {/* O que deixa de o preocupar (apagões em casa) */}
+        <CasaPreocupacoesSection />
+
         {/* Container verde-escuro arredondado — assinatura visual da homepage */}
         <div
           style={{
@@ -103,9 +107,11 @@ const Residencial = () => {
           }}
         >
           <SolucoesSection audience="residencial" showToggle={false} />
-          <ImpactoDiaSection />
           <ProtecaoContinuaSection />
         </div>
+
+        {/* Fatura antes/depois + financiamento */}
+        <CasaFaturaSection />
 
         <RedeProtegidosSection />
         <FinalCtaSection />
