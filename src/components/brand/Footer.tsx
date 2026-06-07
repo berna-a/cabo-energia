@@ -139,11 +139,11 @@ export function Footer() {
         <ColumnLinks
           label="Soluções"
           links={[
-            { href: "#solucoes", text: "Casa Tranquila" },
             { href: "#solucoes", text: "Casa Autonomia" },
-            { href: "#solucoes", text: "Casa Plena" },
+            { href: "#solucoes", text: "Casa Família" },
+            { href: "#solucoes", text: "Casa Prestige" },
             { href: "#solucoes", text: "Negócio Essencial" },
-            { href: "#solucoes", text: "Negócio Pleno" },
+            { href: "#solucoes", text: "Negócio Corporativo" },
           ]}
         />
 

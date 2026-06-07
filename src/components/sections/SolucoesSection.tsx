@@ -15,43 +15,47 @@ type Plan = {
   promise: string;
   image: string;
   metrics: { value: string; label: string }[];
-  price: string;
+  production: string;
+  system: string;
 };
 
 const residencial: Plan[] = [
   {
-    badge: "Proteção",
-    name: "Casa Tranquila",
-    promise: "Não fique às escuras quando a luz vai abaixo.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+    badge: "Essencial",
+    name: "Casa Autonomia",
+    promise: "O sol paga a sua conta de luz, todos os meses.",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600",
     metrics: [
-      { value: "3k – 5k CVE", label: "Poupança" },
-      { value: "5,12 kWh", label: "Backup" },
+      { value: "10k CVE/mês", label: "Poupança" },
+      { value: "1–2 anos", label: "Retorno" },
     ],
-    price: "240.000 CVE",
+    production: "447 kWh/mês",
+    system: "6 painéis · inversor 5 kW · bateria 5 kWh",
   },
   {
     badge: "Popular",
     badgeHighlight: true,
-    name: "Casa Autonomia",
-    promise: "O sol paga a sua conta de luz.",
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600",
-    metrics: [
-      { value: "6k – 8k CVE", label: "Poupança" },
-      { value: "Até 80%", label: "Redução" },
-    ],
-    price: "510.000 CVE",
-  },
-  {
-    badge: "Independência",
-    name: "Casa Plena",
-    promise: "A sua casa, o seu sol, as suas regras.",
+    name: "Casa Família",
+    promise: "Energia de sobra para toda a casa.",
     image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600",
     metrics: [
-      { value: "10k – 15k CVE", label: "Poupança" },
-      { value: "10,24 kWh", label: "Autonomia" },
+      { value: "20k CVE/mês", label: "Poupança" },
+      { value: "1–2 anos", label: "Retorno" },
     ],
-    price: "730.000 CVE",
+    production: "894 kWh/mês",
+    system: "12 painéis · inversor 10 kW · bateria 10 kWh",
+  },
+  {
+    badge: "Prestígio",
+    name: "Casa Prestige",
+    promise: "Independência total — viva como se a ELECTRA não existisse.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+    metrics: [
+      { value: "50k CVE/mês", label: "Poupança" },
+      { value: "1–2 anos", label: "Retorno" },
+    ],
+    production: "1788 kWh/mês",
+    system: "24 painéis · inversor 15 kW · bateria 15 kWh",
   },
 ];
 
@@ -62,21 +66,24 @@ const negocio: Plan[] = [
     promise: "O seu negócio não para. A sua fatura baixa.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600",
     metrics: [
-      { value: "25k – 40k CVE", label: "Poupança" },
-      { value: "15,36 kWh", label: "Proteção" },
+      { value: "50k CVE/mês", label: "Poupança" },
+      { value: "1–2 anos", label: "Retorno" },
     ],
-    price: "1.350.000 CVE",
+    production: "1788 kWh/mês",
+    system: "24 painéis · inversor 15 kW · bateria 15 kWh",
   },
   {
-    badge: "Imunidade",
-    name: "Negócio Pleno",
-    promise: "Diga aos seus clientes: nunca paramos.",
+    badge: "Corporativo",
+    badgeHighlight: true,
+    name: "Negócio Corporativo",
+    promise: "Potência para operar sem limites.",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600",
     metrics: [
-      { value: "À Medida", label: "Retorno" },
-      { value: "Selo Oficial", label: "Rede Protegida" },
+      { value: "100k CVE/mês", label: "Poupança" },
+      { value: "1–2 anos", label: "Retorno" },
     ],
-    price: "Sob Orçamento",
+    production: "3579 kWh/mês",
+    system: "48 painéis · 30 kW inversores · 30 kWh baterias",
   },
 ];
 
@@ -189,7 +196,17 @@ function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
               letterSpacing: "-0.02em",
             }}
           >
-            {plan.price}
+            {plan.production}
+          </div>
+          <div
+            style={{
+              color: "rgba(13,43,31,0.55)",
+              fontSize: 12,
+              marginTop: 6,
+              lineHeight: 1.4,
+            }}
+          >
+            {plan.system}
           </div>
 
           <PillButton

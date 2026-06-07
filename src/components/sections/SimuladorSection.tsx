@@ -52,49 +52,49 @@ const PACKAGES: Record<
   }
 > = {
   tranquila: {
-    name: "Casa Tranquila",
-    price: 240000,
-    priceStr: "A partir de 240.000 CVE",
-    prodMes: 0,
+    name: "Casa Autonomia",
+    price: 0,
+    priceStr: "Sob orçamento",
+    prodMes: 447,
     baseOffset: 0.6,
     family: "casa",
-    promise: "O essencial sempre ligado, mesmo quando a luz vai abaixo.",
+    promise: "O sol paga a sua conta de luz, todos os meses.",
   },
   autonomia: {
-    name: "Casa Autonomia",
-    price: 510000,
-    priceStr: "510.000 CVE",
-    prodMes: 438,
+    name: "Casa Família",
+    price: 0,
+    priceStr: "Sob orçamento",
+    prodMes: 894,
     baseOffset: 0,
     family: "casa",
-    promise: "A sua casa funciona com o sol — a factura cai todos os meses.",
+    promise: "Energia de sobra para toda a casa.",
   },
   plena: {
-    name: "Casa Plena",
-    price: 730000,
-    priceStr: "730.000 CVE",
-    prodMes: 584,
+    name: "Casa Prestige",
+    price: 0,
+    priceStr: "Sob orçamento",
+    prodMes: 1788,
     baseOffset: 0,
     family: "casa",
-    promise: "Independência quase total — viva como se a Electra não existisse.",
+    promise: "Independência total — viva como se a ELECTRA não existisse.",
   },
   essencial: {
     name: "Negócio Essencial",
-    price: 1150000,
-    priceStr: "1.150.000 CVE",
-    prodMes: 876,
+    price: 0,
+    priceStr: "Sob orçamento",
+    prodMes: 1788,
     baseOffset: 0,
     family: "negocio",
-    promise: "Mantenha o negócio aberto e os custos sob controlo.",
+    promise: "O seu negócio não para. A sua fatura baixa.",
   },
   pleno: {
-    name: "Negócio Pleno",
-    price: 1800000,
-    priceStr: "A partir de 1.800.000 CVE",
-    prodMes: 0,
+    name: "Negócio Corporativo",
+    price: 0,
+    priceStr: "Sob orçamento",
+    prodMes: 3579,
     baseOffset: 0.7,
     family: "negocio",
-    promise: "Operação contínua, certificada e diferenciadora.",
+    promise: "Potência para operar sem limites.",
   },
 };
 
@@ -168,9 +168,9 @@ const BENEFITS: Record<PkgKey, Benefit[]> = {
     { Icon: Smartphone, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Telemóvel, router e computador carregados" },
   ],
   autonomia: [
-    { Icon: Coins, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Até 8.000 CVE poupados por mês" },
+    { Icon: Coins, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Até 20.000 CVE poupados por mês" },
     { Icon: Snowflake, color: "#3B82F6", bg: "rgba(59,130,246,0.12)", text: "AC todo o dia sem sentir na factura" },
-    { Icon: CalendarCheck, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Sistema amortiza-se em 5 anos" },
+    { Icon: CalendarCheck, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Retorno do investimento em 1 a 2 anos" },
   ],
   plena: [
     { Icon: PowerOff, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)", text: "Independência quase total da rede" },
@@ -228,7 +228,7 @@ export default function SimuladorSection() {
   const currentPkg: PkgKey = pkgOverride ?? autoPkg;
   const savings = profile ? calcSavings(currentPkg, fatura) : 0;
   const annual = savings * 12;
-  const payback = annual > 0 ? (PACKAGES[currentPkg].price / annual).toFixed(1) : "—";
+  const payback = "1–2";
 
   React.useEffect(() => {
     setPkgOverride(null);
