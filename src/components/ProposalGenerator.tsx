@@ -12,49 +12,62 @@ const LIGHT = "#F0F7F2";
 type TipoPropriedade = "Residencial" | "Comercial";
 type TipoTelhado = "Telha" | "Terraço" | "Chapa";
 type Ligacao = "Monofásico" | "Trifásico";
-type NomeKit = "Casa Basic" | "Casa Plus" | "Business Basic" | "Business Plus";
+type NomeKit =
+  | "Casa Autonomia"
+  | "Casa Família"
+  | "Casa Prestige"
+  | "Negócio Essencial"
+  | "Negócio Corporativo";
 
 interface KitInfo {
   nome: NomeKit;
-  preco: number;
   prodDiaria: string;
   poupancaMensal: string;
   payback: string;
+  backup: string;
   componentes: string[];
 }
 
 const KITS: KitInfo[] = [
   {
-    nome: "Casa Basic",
-    preco: 469926,
-    prodDiaria: "4 kWh/dia",
-    poupancaMensal: "3.000–5.000 CVE",
-    payback: "6–8 anos",
-    componentes: ["2× Painel Suntech 410W", "Inversor híbrido 3kW", "Bateria LiFePO4 5kWh", "Estrutura e cablagem", "Instalação e comissionamento"],
+    nome: "Casa Autonomia",
+    prodDiaria: "14,9 kWh/dia",
+    poupancaMensal: "10.000 CVE",
+    payback: "1–2 anos",
+    backup: "~6h",
+    componentes: ["6× Painel 585Wp", "Inversor híbrido 5 kW", "Bateria LiFePO4 5 kWh", "Estrutura e cablagem", "Instalação e comissionamento"],
   },
   {
-    nome: "Casa Plus",
-    preco: 772028,
-    prodDiaria: "8 kWh/dia",
-    poupancaMensal: "6.000–9.000 CVE",
-    payback: "5–7 anos",
-    componentes: ["4× Painel Suntech 410W", "Inversor híbrido 5kW", "Bateria LiFePO4 10kWh", "Estrutura e cablagem", "Instalação e comissionamento", "Monitorização remota"],
+    nome: "Casa Família",
+    prodDiaria: "29,8 kWh/dia",
+    poupancaMensal: "20.000 CVE",
+    payback: "1–2 anos",
+    backup: "~12h",
+    componentes: ["12× Painel 585Wp", "2× Inversor 5 kW (10 kW)", "Bateria LiFePO4 10 kWh", "Estrutura e cablagem", "Instalação e comissionamento", "Monitorização remota"],
   },
   {
-    nome: "Business Basic",
-    preco: 1206763,
-    prodDiaria: "16 kWh/dia",
-    poupancaMensal: "12.000–18.000 CVE",
-    payback: "4–6 anos",
-    componentes: ["8× Painel Suntech 410W", "Inversor trifásico 8kW", "Bateria LiFePO4 20kWh", "Estrutura industrial", "Instalação e comissionamento", "Monitorização remota"],
+    nome: "Casa Prestige",
+    prodDiaria: "59,6 kWh/dia",
+    poupancaMensal: "50.000 CVE",
+    payback: "1–2 anos",
+    backup: "~18h",
+    componentes: ["24× Painel 585Wp", "Inversor 15 kW", "Bateria LiFePO4 15 kWh", "Estrutura e cablagem", "Instalação e comissionamento", "Monitorização remota"],
   },
   {
-    nome: "Business Plus",
-    preco: 2342895,
-    prodDiaria: "32 kWh/dia",
-    poupancaMensal: "25.000–40.000 CVE",
-    payback: "3–5 anos",
-    componentes: ["16× Painel Suntech 410W", "Inversor trifásico 15kW", "Bateria LiFePO4 40kWh", "Estrutura industrial", "Instalação e comissionamento", "Monitorização remota 24/7", "Contrato de manutenção 1 ano"],
+    nome: "Negócio Essencial",
+    prodDiaria: "59,6 kWh/dia",
+    poupancaMensal: "50.000 CVE",
+    payback: "1–2 anos",
+    backup: "~6h",
+    componentes: ["24× Painel 585Wp", "Inversor 15 kW", "Bateria LiFePO4 15 kWh", "Estrutura industrial", "Instalação e comissionamento", "Monitorização remota"],
+  },
+  {
+    nome: "Negócio Corporativo",
+    prodDiaria: "119,3 kWh/dia",
+    poupancaMensal: "100.000 CVE",
+    payback: "1–2 anos",
+    backup: "~12h",
+    componentes: ["48× Painel 585Wp", "2× Inversor 15 kW (30 kW)", "Bateria LiFePO4 30 kWh", "Estrutura industrial", "Monitorização remota 24/7", "Contrato de manutenção 1 ano"],
   },
 ];
 
@@ -79,6 +92,7 @@ interface FormData {
 
   // Kit
   kitSelecionado: NomeKit;
+  preco: string;
   observacoes: string;
 
   // Proposta
@@ -112,7 +126,8 @@ export function ProposalGenerator() {
     equipamentos: "",
     faturaMensal: "",
     numPessoas: "",
-    kitSelecionado: "Casa Basic",
+    kitSelecionado: "Casa Autonomia",
+    preco: "",
     observacoes: "",
     numeroPropostaPart: String(Math.floor(Math.random() * 900) + 100),
   });
@@ -120,6 +135,7 @@ export function ProposalGenerator() {
   const kit = KITS.find((k) => k.nome === form.kitSelecionado)!;
   const faturaMensalNum = parseFloat(form.faturaMensal.replace(/\D/g, "")) || 0;
   const custoAnual = faturaMensalNum * 12;
+  const precoNum = parseFloat(form.preco.replace(/\D/g, "")) || 0;
   const dataPropostaFormatada = today();
   const numeroCompleto = `CE-${new Date().getFullYear()}-${form.numeroPropostaPart}`;
 
@@ -276,9 +292,10 @@ export function ProposalGenerator() {
               <SelectField
                 label="Kit"
                 value={form.kitSelecionado}
-                options={["Casa Basic", "Casa Plus", "Business Basic", "Business Plus"]}
+                options={["Casa Autonomia", "Casa Família", "Casa Prestige", "Negócio Essencial", "Negócio Corporativo"]}
                 onChange={(v) => set("kitSelecionado", v as NomeKit)}
               />
+              <Field label="Preço final (CVE)" value={form.preco} onChange={(v) => set("preco", v)} placeholder="Ex: 850000" />
               <div>
                 <label style={labelStyle}>Observações técnicas</label>
                 <textarea
@@ -458,13 +475,14 @@ export function ProposalGenerator() {
                   style={{
                     marginTop: 20,
                     display: "grid",
-                    gridTemplateColumns: "1fr 1fr 1fr",
+                    gridTemplateColumns: "1fr 1fr",
                     gap: 12,
                   }}
                 >
                   <StatBox label="Produção diária" value={kit.prodDiaria} sub="" accent={false} />
                   <StatBox label="Poupança mensal" value={kit.poupancaMensal} sub="" accent />
                   <StatBox label="Retorno do investimento" value={kit.payback} sub="" accent={false} />
+                  <StatBox label="Autonomia em apagão" value={kit.backup} sub="" accent={false} />
                 </div>
                 <div style={{ marginTop: 24 }}>
                   <div
@@ -603,29 +621,30 @@ export function ProposalGenerator() {
 
                 <div style={{ display: "flex", gap: 32, alignItems: "flex-end", marginBottom: 24 }}>
                   <div>
-                    <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", textDecoration: "line-through" }}>
-                      {formatCVE(Math.round(kit.preco * 1.1))}
-                    </div>
                     <div style={{ fontSize: 36, fontWeight: 800, color: YELLOW, lineHeight: 1 }}>
-                      {formatCVE(kit.preco)}
+                      {precoNum > 0 ? formatCVE(precoNum) : "Sob orçamento"}
                     </div>
                     <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", marginTop: 4 }}>
-                      Preço com desconto de campanha
+                      {precoNum > 0
+                        ? "Investimento total, instalação incluída"
+                        : "Valor definido após levantamento técnico"}
                     </div>
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 12,
-                    marginBottom: 24,
-                  }}
-                >
-                  <PaymentBox label="Entrada (50%)" value={formatCVE(Math.round(kit.preco * 0.5))} />
-                  <PaymentBox label="Após instalação (50%)" value={formatCVE(Math.round(kit.preco * 0.5))} />
-                </div>
+                {precoNum > 0 && (
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: 12,
+                      marginBottom: 24,
+                    }}
+                  >
+                    <PaymentBox label="Entrada (50%)" value={formatCVE(Math.round(precoNum * 0.5))} />
+                    <PaymentBox label="Após instalação (50%)" value={formatCVE(Math.round(precoNum * 0.5))} />
+                  </div>
+                )}
 
                 <div
                   style={{
