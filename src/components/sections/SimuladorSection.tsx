@@ -269,27 +269,39 @@ export default function SimuladorSection() {
       poupanca_estimada: savings,
     };
     setSubmitState("submitting");
+
+    // Lead é capturada se a BD gravar OU se o email for enviado (rede de segurança).
+    let supabaseOk = false;
+    let emailOk = false;
+
+    // 1) Base de dados (best-effort)
     try {
       if (isSupabaseConfigured() && supabase) {
         const { error } = await supabase.from("leads").insert(payload as never);
-        if (error) {
-          console.error("[Simulador] supabase error:", error);
-          setSubmitState("error");
-          return;
-        }
-        // Sucesso: notifica a equipa por email (não bloqueia o utilizador)
-        fetch("/api/notify-lead", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }).catch(() => {});
-      } else {
-        console.warn("[Simulador] supabase not configured, payload:", payload);
+        supabaseOk = !error;
+        if (error) console.error("[Simulador] supabase error:", error);
       }
-      setSubmitState("idle");
-      go(6);
     } catch (err) {
       console.error("[Simulador] insert failed:", err);
+    }
+
+    // 2) Email à equipa via Vercel (funciona mesmo que a BD esteja em baixo)
+    try {
+      const res = await fetch("/api/notify-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      emailOk = res.ok && data.emailed === true;
+    } catch (err) {
+      console.error("[Simulador] notify failed:", err);
+    }
+
+    if (supabaseOk || emailOk) {
+      setSubmitState("idle");
+      go(6);
+    } else {
       setSubmitState("error");
     }
   };
