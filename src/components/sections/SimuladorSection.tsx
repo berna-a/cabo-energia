@@ -30,6 +30,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { WHATSAPP_URL } from "@/lib/constants";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 
@@ -220,6 +221,7 @@ export default function SimuladorSection() {
   const [nome, setNome] = React.useState("");
   const [tel, setTel] = React.useState("");
   const [errors, setErrors] = React.useState<{ nome?: boolean; tel?: boolean }>({});
+  const [submitState, setSubmitState] = React.useState<"idle" | "submitting" | "error">("idle");
   const [showOthers, setShowOthers] = React.useState(false);
   const [pkgOverride, setPkgOverride] = React.useState<PkgKey | null>(null);
 
@@ -266,17 +268,30 @@ export default function SimuladorSection() {
       fatura_mensal: fatura,
       poupanca_estimada: savings,
     };
+    setSubmitState("submitting");
     try {
       if (isSupabaseConfigured() && supabase) {
         const { error } = await supabase.from("leads").insert(payload as never);
-        if (error) console.error("[Simulador] supabase error:", error);
+        if (error) {
+          console.error("[Simulador] supabase error:", error);
+          setSubmitState("error");
+          return;
+        }
+        // Sucesso: notifica a equipa por email (não bloqueia o utilizador)
+        fetch("/api/notify-lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }).catch(() => {});
       } else {
         console.warn("[Simulador] supabase not configured, payload:", payload);
       }
+      setSubmitState("idle");
+      go(6);
     } catch (err) {
       console.error("[Simulador] insert failed:", err);
+      setSubmitState("error");
     }
-    go(6);
   };
 
   return (
@@ -464,6 +479,7 @@ export default function SimuladorSection() {
               errors={errors}
               onBack={() => go(4)}
               onSubmit={submitLead}
+              submitState={submitState}
             />
           )}
           {step === 6 && (
@@ -987,6 +1003,7 @@ function Step5({
   errors,
   onBack,
   onSubmit,
+  submitState,
 }: {
   currentPkg: PkgKey;
   nome: string;
@@ -998,6 +1015,7 @@ function Step5({
   errors: { nome?: boolean; tel?: boolean };
   onBack: () => void;
   onSubmit: () => void;
+  submitState: "idle" | "submitting" | "error";
 }) {
   return (
     <div className="sim-step" key="s5">
@@ -1086,15 +1104,57 @@ function Step5({
         </span>
       </div>
 
+      {submitState === "error" && (
+        <div
+          style={{
+            marginTop: 14,
+            padding: "14px 16px",
+            borderRadius: 12,
+            background: "rgba(239,68,68,0.08)",
+            border: "1px solid rgba(239,68,68,0.30)",
+            fontSize: 13,
+            color: "#0D2B1F",
+            lineHeight: 1.5,
+          }}
+        >
+          Não conseguimos registar agora. Fale connosco diretamente:
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              marginTop: 10,
+              background: "#1A5C3A",
+              color: "#fff",
+              borderRadius: 50,
+              padding: "10px 18px",
+              fontSize: 13,
+              fontWeight: 700,
+              textDecoration: "none",
+            }}
+          >
+            Falar no WhatsApp
+          </a>
+        </div>
+      )}
+
       <NavRow>
         <BackBtn onClick={onBack} />
         <PillButton
           variant="primary"
           size="md"
           onClick={onSubmit}
+          disabled={submitState === "submitting"}
           className="w-1/2 font-display uppercase tracking-wide"
         >
-          <LigarCaboLabel tone="dark" />
+          {submitState === "submitting" ? (
+            <span>A enviar…</span>
+          ) : (
+            <LigarCaboLabel tone="dark" />
+          )}
         </PillButton>
       </NavRow>
     </div>
