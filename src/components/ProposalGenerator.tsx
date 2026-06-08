@@ -97,6 +97,8 @@ interface FormData {
 
   // Proposta
   numeroPropostaPart: string;
+  vendedor: string;
+  vendedorTel: string;
 }
 
 function today() {
@@ -130,6 +132,8 @@ export function ProposalGenerator() {
     preco: "",
     observacoes: "",
     numeroPropostaPart: String(Math.floor(Math.random() * 900) + 100),
+    vendedor: "Kevin",
+    vendedorTel: "995 41 81",
   });
 
   const kit = KITS.find((k) => k.nome === form.kitSelecionado)!;
@@ -237,12 +241,31 @@ export function ProposalGenerator() {
               <Field label="Email" value={form.email} onChange={(v) => set("email", v)} />
               <div>
                 <label style={labelStyle}>Foto da casa/negócio</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFotoUpload}
-                  style={{ fontSize: 12, marginTop: 4, width: "100%" }}
-                />
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    height: 38,
+                    marginTop: 4,
+                    border: "1px dashed rgba(26,92,58,0.35)",
+                    borderRadius: 8,
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: GREEN,
+                    background: LIGHT,
+                    cursor: "pointer",
+                  }}
+                >
+                  {form.fotoCasa ? "Trocar foto" : "⬆ Carregar foto"}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFotoUpload}
+                    style={{ display: "none" }}
+                  />
+                </label>
                 {form.fotoCasa && (
                   <img
                     src={form.fotoCasa}
@@ -312,6 +335,8 @@ export function ProposalGenerator() {
                 />
               </div>
               <Field label="Nº Proposta" value={form.numeroPropostaPart} onChange={(v) => set("numeroPropostaPart", v)} />
+              <Field label="Vendedor" value={form.vendedor} onChange={(v) => set("vendedor", v)} placeholder="Ex: Kevin" />
+              <Field label="Contacto do vendedor" value={form.vendedorTel} onChange={(v) => set("vendedorTel", v)} placeholder="Ex: 995 41 81" />
             </Section>
 
             <button
@@ -668,9 +693,9 @@ export function ProposalGenerator() {
                   }}
                 >
                   <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 4 }}>
-                    Para avançar, contacte Kevin:
+                    Para avançar, contacte {form.vendedor || "a Cabo Energia"}:
                   </div>
-                  <div style={{ fontSize: 20, fontWeight: 800 }}>995 41 81</div>
+                  <div style={{ fontSize: 20, fontWeight: 800 }}>{form.vendedorTel || "995 41 81"}</div>
                   <div style={{ fontSize: 12, marginTop: 4, opacity: 0.7 }}>WhatsApp disponível</div>
                 </div>
               </div>
