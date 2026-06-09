@@ -8,6 +8,8 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { LeadPanelContext, type ClientType } from "./leadPanelContextValue";
+import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { WHATSAPP_URL } from "@/lib/constants";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
@@ -54,9 +56,11 @@ type FormState = {
 
 function LeadModalForm({
   defaultClientType,
+  source,
   onSubmitted,
 }: {
   defaultClientType: ClientType;
+  source?: string;
   onSubmitted: () => void;
 }) {
   const [form, setForm] = React.useState<FormState>({
@@ -67,6 +71,7 @@ function LeadModalForm({
   });
   const [errors, setErrors] = React.useState<Record<string, string>>({});
   const [submitting, setSubmitting] = React.useState(false);
+  const [submitFailed, setSubmitFailed] = React.useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,11 +86,48 @@ function LeadModalForm({
       return;
     }
     setErrors({});
+    setSubmitFailed(false);
     setSubmitting(true);
-    // Simulate async submit; real backend integration can be wired later.
-    await new Promise((r) => setTimeout(r, 600));
+
+    const payload = {
+      name: form.nome.trim(),
+      phone: form.telemovel.trim(),
+      client_type: form.tipo === "negocio" ? "empresarial" : "residencial",
+      source: source || "website_lead_panel",
+      status: "new_lead",
+      ilha: form.ilha,
+    };
+
+    // Lead capturada se a BD gravar OU se o email for enviado (rede de segurança).
+    let supabaseOk = false;
+    let emailOk = false;
+    try {
+      if (isSupabaseConfigured() && supabase) {
+        const { error } = await supabase.from("leads").insert(payload as never);
+        supabaseOk = !error;
+        if (error) console.error("[LeadPanel] supabase error:", error);
+      }
+    } catch (err) {
+      console.error("[LeadPanel] insert failed:", err);
+    }
+    try {
+      const res = await fetch("/api/notify-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      emailOk = res.ok && data.emailed === true;
+    } catch (err) {
+      console.error("[LeadPanel] notify failed:", err);
+    }
+
     setSubmitting(false);
-    onSubmitted();
+    if (supabaseOk || emailOk) {
+      onSubmitted();
+    } else {
+      setSubmitFailed(true);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -201,6 +243,26 @@ function LeadModalForm({
         </div>
       </div>
 
+      {submitFailed && (
+        <div
+          style={{
+            borderRadius: 10,
+            background: "rgba(239,68,68,0.08)",
+            border: "1px solid rgba(239,68,68,0.30)",
+            padding: "12px 14px",
+            fontSize: 13,
+            color: DARK,
+            lineHeight: 1.5,
+          }}
+        >
+          Não conseguimos registar agora. Fale connosco diretamente:{" "}
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" style={{ color: "#1A5C3A", fontWeight: 700 }}>
+            WhatsApp
+          </a>
+          .
+        </div>
+      )}
+
       <button
         type="submit"
         disabled={submitting}
@@ -249,10 +311,12 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
   const [defaultClientType, setDefaultClientType] = React.useState<ClientType>(undefined);
+  const [defaultSource, setDefaultSource] = React.useState<string | undefined>(undefined);
 
   const openLeadPanel = React.useCallback(
     (defaults?: { clientType?: ClientType; source?: string }) => {
       setDefaultClientType(defaults?.clientType);
+      setDefaultSource(defaults?.source);
       setSubmitted(false);
       setOpen(true);
     },
@@ -316,6 +380,7 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
                 <div className="mt-6">
                   <LeadModalForm
                     defaultClientType={defaultClientType}
+                    source={defaultSource}
                     onSubmitted={() => setSubmitted(true)}
                   />
                 </div>
