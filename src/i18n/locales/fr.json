@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "solucoes": "Solutions",
+    "residencial": "Résidentiel",
+    "residencialDesc": "Pour votre maison.",
+    "empresarial": "Entreprises",
+    "empresarialDesc": "Pour votre entreprise.",
+    "comoFunciona": "Comment ça marche",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "badge": "Énergie à l'épreuve des coupures",
+    "title1": "Cap-Vert",
+    "title2": "Toujours Alimenté.",
+    "subtitle": "Votre maison et votre entreprise ne s'arrêtent plus faute d'électricité."
+  },
+  "footer": {
+    "tagline": "Énergie à l'épreuve des coupures.",
+    "solucoes": "Solutions",
+    "empresa": "Entreprise",
+    "comoFunciona": "Comment ça marche",
+    "planosProtecao": "Plans de Protection",
+    "rede": "Réseau d'Entreprises Protégées",
+    "contacto": "Contact",
+    "rights": "Tous droits réservés. Site web par"
+  }
+}

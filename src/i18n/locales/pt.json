@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "solucoes": "Soluções",
+    "residencial": "Residencial",
+    "residencialDesc": "Para a sua casa.",
+    "empresarial": "Empresarial",
+    "empresarialDesc": "Para o seu negócio.",
+    "comoFunciona": "Como funciona",
+    "contacto": "Contacto"
+  },
+  "hero": {
+    "badge": "Energia à prova de apagões",
+    "title1": "Cabo Verde",
+    "title2": "Sempre Ligado.",
+    "subtitle": "A sua casa e o seu negócio nunca mais param por falta de luz."
+  },
+  "footer": {
+    "tagline": "Energia à prova de apagões.",
+    "solucoes": "Soluções",
+    "empresa": "Empresa",
+    "comoFunciona": "Como funciona",
+    "planosProtecao": "Planos de Proteção",
+    "rede": "Rede de Negócios Protegidos",
+    "contacto": "Contacto",
+    "rights": "Todos os direitos reservados. Website by"
+  }
+}

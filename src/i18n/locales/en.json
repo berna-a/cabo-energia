@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "solucoes": "Solutions",
+    "residencial": "Residential",
+    "residencialDesc": "For your home.",
+    "empresarial": "Business",
+    "empresarialDesc": "For your business.",
+    "comoFunciona": "How it works",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "badge": "Blackout-proof energy",
+    "title1": "Cape Verde",
+    "title2": "Always On.",
+    "subtitle": "Your home and your business never stop for lack of power again."
+  },
+  "footer": {
+    "tagline": "Blackout-proof energy.",
+    "solucoes": "Solutions",
+    "empresa": "Company",
+    "comoFunciona": "How it works",
+    "planosProtecao": "Protection Plans",
+    "rede": "Protected Businesses Network",
+    "contacto": "Contact",
+    "rights": "All rights reserved. Website by"
+  }
+}

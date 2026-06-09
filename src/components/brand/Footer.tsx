@@ -1,6 +1,8 @@
 import { MessageCircle, Mail } from "lucide-react";
 import { IconBrandInstagram, IconBrandFacebook, IconBrandLinkedin } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import { WHATSAPP_URL } from "@/lib/constants";
+import { LanguageToggle } from "./LanguageToggle";
 import logoCor from "@/assets/logo-cor.webp";
 import ardoLogo from "@/assets/ardo-logo.svg";
 
@@ -50,6 +52,7 @@ function ColumnLinks({
 }
 
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer
       id="contacto"
@@ -64,7 +67,7 @@ export function Footer() {
         <div className="flex flex-col gap-4 max-w-sm">
           <img src={logoCor} alt="CABO ENERGIA" className="h-16 w-auto object-contain" />
           <p style={{ fontSize: 13, color: MUTED, margin: 0 }}>
-            Energia à prova de apagões.
+            {t("footer.tagline")}
           </p>
           <div className="mt-2 flex flex-col gap-2 text-sm">
             <a
@@ -137,7 +140,7 @@ export function Footer() {
 
         {/* Column 2 — Soluções */}
         <ColumnLinks
-          label="Soluções"
+          label={t("footer.solucoes")}
           links={[
             { href: "#solucoes", text: "Casa Autonomia" },
             { href: "#solucoes", text: "Casa Família" },
@@ -149,12 +152,12 @@ export function Footer() {
 
         {/* Column 3 — Empresa */}
         <ColumnLinks
-          label="Empresa"
+          label={t("footer.empresa")}
           links={[
-            { href: "#processo", text: "Como funciona" },
-            { href: "#protecao", text: "Planos de Proteção" },
-            { href: "#rede", text: "Rede de Negócios Protegidos" },
-            { href: "#contacto", text: "Contacto" },
+            { href: "#processo", text: t("footer.comoFunciona") },
+            { href: "#protecao", text: t("footer.planosProtecao") },
+            { href: "#rede", text: t("footer.rede") },
+            { href: "#contacto", text: t("footer.contacto") },
           ]}
         />
       </div>
@@ -162,7 +165,7 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="site-container flex flex-col items-start justify-between gap-2 py-5 text-xs md:flex-row md:items-center" style={{ color: MUTED }}>
           <span className="inline-flex items-center" style={{ fontSize: 12 }}>
-            © {new Date().getFullYear()} CABO ENERGIA. Todos os direitos reservados. Website by
+            © {new Date().getFullYear()} CABO ENERGIA. {t("footer.rights")}
             <a
               href="https://ardo.media"
               target="_blank"
@@ -186,7 +189,10 @@ export function Footer() {
               />
             </a>
           </span>
-          <span style={{ fontSize: 12 }}>Cabo Verde · 238</span>
+          <div className="flex items-center gap-4">
+            <LanguageToggle tone="dark" />
+            <span style={{ fontSize: 12 }}>Cabo Verde · 238</span>
+          </div>
         </div>
       </div>
     </footer>

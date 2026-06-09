@@ -1,10 +1,12 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import heroImage from "@/assets/hero-bg.webp";
 
 export function HeroSection() {
+  const { t } = useTranslation();
   const ref = useRevealOnScroll<HTMLDivElement>();
   const [igniting, setIgniting] = React.useState(false);
 
@@ -54,7 +56,7 @@ export function HeroSection() {
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                 <span className="text-overline text-white/80">
-                  Energia à prova de apagões
+                  {t("hero.badge")}
                 </span>
               </div>
 
@@ -69,8 +71,8 @@ export function HeroSection() {
                   textTransform: "uppercase",
                 }}
               >
-                Cabo Verde<br />
-                Sempre Ligado.
+                {t("hero.title1")}<br />
+                {t("hero.title2")}
               </h1>
 
               {/* Subtítulo */}
@@ -78,7 +80,7 @@ export function HeroSection() {
                 className="mt-5 max-w-md leading-relaxed text-white/70"
                 style={{ fontSize: "1rem", fontWeight: 400 }}
               >
-                A sua casa e o seu negócio nunca mais param por falta de luz.
+                {t("hero.subtitle")}
               </p>
             </div>
 

@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
 import { LigarCaboLabel } from "./LigarCaboLabel";
+import { useTranslation } from "react-i18next";
 import { useLeadPanel } from "./LeadPanelContext";
+import { LanguageToggle } from "./LanguageToggle";
 import logoBranco from "@/assets/logo-branco.webp";
 import logoCor from "@/assets/logo-cor.webp";
 
-const solutionsItems = [
-  { label: "Residencial", href: "/residencial", description: "Para a sua casa." },
-  { label: "Empresarial", href: "/empresarial", description: "Para o seu negócio." },
-];
-
 export function Navbar() {
+  const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
+  const solutionsItems = [
+    { label: t("nav.residencial"), href: "/residencial", description: t("nav.residencialDesc") },
+    { label: t("nav.empresarial"), href: "/empresarial", description: t("nav.empresarialDesc") },
+  ];
   const [scrolled, setScrolled] = React.useState(false);
   const [openMenu, setOpenMenu] = React.useState<string | null>(null);
 
@@ -82,7 +84,7 @@ export function Navbar() {
               aria-expanded={openMenu === "solucoes"}
               aria-haspopup="menu"
             >
-              Soluções
+              {t("nav.solucoes")}
               <ChevronDown className="size-3.5 opacity-70" />
             </button>
             {openMenu === "solucoes" && (
@@ -115,7 +117,7 @@ export function Navbar() {
             )}
             style={{ padding: "8px 16px" }}
           >
-            Como funciona
+            {t("nav.comoFunciona")}
             <ChevronDown className="size-3.5 opacity-70" />
           </a>
 
@@ -127,29 +129,32 @@ export function Navbar() {
             )}
             style={{ padding: "8px 16px" }}
           >
-            Contacto
+            {t("nav.contacto")}
           </a>
         </nav>
 
-        {/* Right: CTA — only visible when scrolled (white navbar) */}
-        <div
-          className={cn(
-            "transition-all duration-300",
-            scrolled
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-1 pointer-events-none"
-          )}
-          aria-hidden={!scrolled}
-        >
-          <PillButton
-            size="md"
-            variant="power"
-            onClick={() => openLeadPanel()}
-            className="shrink-0"
-            tabIndex={scrolled ? 0 : -1}
+        {/* Right: idioma (sempre visível) + CTA (aparece com scroll) */}
+        <div className="flex shrink-0 items-center gap-3 md:gap-4">
+          <LanguageToggle tone={scrolled ? "dark" : "light"} />
+          <div
+            className={cn(
+              "transition-all duration-300",
+              scrolled
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 -translate-y-1 pointer-events-none"
+            )}
+            aria-hidden={!scrolled}
           >
-            <LigarCaboLabel />
-          </PillButton>
+            <PillButton
+              size="md"
+              variant="power"
+              onClick={() => openLeadPanel()}
+              className="shrink-0"
+              tabIndex={scrolled ? 0 : -1}
+            >
+              <LigarCaboLabel />
+            </PillButton>
+          </div>
         </div>
       </div>
     </header>
