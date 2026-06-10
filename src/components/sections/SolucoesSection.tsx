@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/useLeadPanel";
@@ -19,73 +20,19 @@ type Plan = {
   system: string;
 };
 
-const residencial: Plan[] = [
-  {
-    badge: "Essencial",
-    name: "Casa Autonomia",
-    promise: "O sol paga a sua conta de luz, todos os meses.",
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600",
-    metrics: [
-      { value: "10k CVE/mês", label: "Poupança" },
-      { value: "1–2 anos", label: "Retorno" },
-    ],
-    production: "447 kWh/mês",
-    system: "6 painéis · inversor 5 kW · bateria 5 kWh",
-  },
-  {
-    badge: "Popular",
-    badgeHighlight: true,
-    name: "Casa Família",
-    promise: "Energia de sobra para toda a casa.",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600",
-    metrics: [
-      { value: "20k CVE/mês", label: "Poupança" },
-      { value: "1–2 anos", label: "Retorno" },
-    ],
-    production: "894 kWh/mês",
-    system: "12 painéis · inversor 10 kW · bateria 10 kWh",
-  },
-  {
-    badge: "Prestígio",
-    name: "Casa Prestige",
-    promise: "Independência total — viva como se a ELECTRA não existisse.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
-    metrics: [
-      { value: "50k CVE/mês", label: "Poupança" },
-      { value: "1–2 anos", label: "Retorno" },
-    ],
-    production: "1788 kWh/mês",
-    system: "24 painéis · inversor 15 kW · bateria 15 kWh",
-  },
+// Nome/imagem/destaque ficam em código; o conteúdo traduzível vem dos locales.
+const RES_META = [
+  { name: "Casa Autonomia", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600", badgeHighlight: false },
+  { name: "Casa Família", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600", badgeHighlight: true },
+  { name: "Casa Prestige", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600", badgeHighlight: false },
 ];
 
-const negocio: Plan[] = [
-  {
-    badge: "Eficiência",
-    name: "Negócio Essencial",
-    promise: "O seu negócio não para. A sua fatura baixa.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600",
-    metrics: [
-      { value: "50k CVE/mês", label: "Poupança" },
-      { value: "1–2 anos", label: "Retorno" },
-    ],
-    production: "1788 kWh/mês",
-    system: "24 painéis · inversor 15 kW · bateria 15 kWh",
-  },
-  {
-    badge: "Corporativo",
-    badgeHighlight: true,
-    name: "Negócio Corporativo",
-    promise: "Potência para operar sem limites.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600",
-    metrics: [
-      { value: "100k CVE/mês", label: "Poupança" },
-      { value: "1–2 anos", label: "Retorno" },
-    ],
-    production: "3579 kWh/mês",
-    system: "48 painéis · 30 kW inversores · 30 kWh baterias",
-  },
+const NEG_META = [
+  { name: "Negócio Essencial", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600", badgeHighlight: false },
+  { name: "Negócio Corporativo", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600", badgeHighlight: true },
 ];
+
+type PlanContent = { badge: string; promise: string; poupanca: string; production: string; system: string };
 
 function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
   return (
@@ -227,10 +174,25 @@ export function SolucoesSection({
   showToggle = true,
   audience,
 }: { showToggle?: boolean; audience?: AudienceTab } = {}) {
+  const { t } = useTranslation();
   const globalTab = useAudienceTab();
   const tab = audience ?? globalTab;
   const { openLeadPanel } = useLeadPanel();
-  const plans = tab === "residencial" ? residencial : negocio;
+  const meta = tab === "residencial" ? RES_META : NEG_META;
+  const content = t(`solucoes.${tab}`, { returnObjects: true }) as PlanContent[];
+  const plans: Plan[] = content.map((d, i) => ({
+    badge: d.badge,
+    badgeHighlight: meta[i]?.badgeHighlight,
+    name: meta[i]?.name ?? "",
+    promise: d.promise,
+    image: meta[i]?.image ?? "",
+    metrics: [
+      { value: d.poupanca, label: t("solucoes.poupancaLabel") },
+      { value: t("solucoes.retornoValue"), label: t("solucoes.retornoLabel") },
+    ],
+    production: d.production,
+    system: d.system,
+  }));
 
   return (
     <section
@@ -253,7 +215,7 @@ export function SolucoesSection({
               marginBottom: 20,
             }}
           >
-            Soluções
+            {t("solucoes.pill")}
           </span>
           <h2
             style={{
@@ -266,7 +228,7 @@ export function SolucoesSection({
               letterSpacing: "-0.02em",
             }}
           >
-            O seu nível de energia, a sua escolha.
+            {t("solucoes.title")}
           </h2>
         </div>
 
@@ -277,21 +239,21 @@ export function SolucoesSection({
               style={{ background: "rgba(255,255,255,0.08)" }}
             >
               {([
-                { id: "residencial", label: "Residencial" },
-                { id: "negocio", label: "Negócio" },
-              ] as const).map((t) => {
-                const active = tab === t.id;
+                { id: "residencial", label: t("solucoes.toggleResidencial") },
+                { id: "negocio", label: t("solucoes.toggleNegocio") },
+              ] as const).map((opt) => {
+                const active = tab === opt.id;
                 return (
                   <button
-                    key={t.id}
-                    onClick={() => setAudienceTab(t.id)}
+                    key={opt.id}
+                    onClick={() => setAudienceTab(opt.id)}
                     className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
                     style={{
                       background: active ? YELLOW : "transparent",
                       color: active ? DARK : "#ffffff",
                     }}
                   >
-                    {t.label}
+                    {opt.label}
                   </button>
                 );
               })}

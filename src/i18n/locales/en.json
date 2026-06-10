@@ -43,6 +43,24 @@
     "title": "The grid fails. Cabo Energia doesn't.",
     "subtitle": "The initial assessment is free and with no commitment."
   },
+  "solucoes": {
+    "pill": "Solutions",
+    "title": "Your level of energy, your choice.",
+    "toggleResidencial": "Residential",
+    "toggleNegocio": "Business",
+    "poupancaLabel": "Savings",
+    "retornoLabel": "Payback",
+    "retornoValue": "1–2 years",
+    "residencial": [
+      { "badge": "Essential", "promise": "The sun pays your electricity bill, every month.", "poupanca": "10k CVE/mo", "production": "447 kWh/mo", "system": "6 panels · 5 kW inverter · 5 kWh battery" },
+      { "badge": "Popular", "promise": "Plenty of energy for the whole home.", "poupanca": "20k CVE/mo", "production": "894 kWh/mo", "system": "12 panels · 10 kW inverter · 10 kWh battery" },
+      { "badge": "Prestige", "promise": "Total independence — live as if ELECTRA didn't exist.", "poupanca": "50k CVE/mo", "production": "1788 kWh/mo", "system": "24 panels · 15 kW inverter · 15 kWh battery" }
+    ],
+    "negocio": [
+      { "badge": "Efficiency", "promise": "Your business never stops. Your bill drops.", "poupanca": "50k CVE/mo", "production": "1788 kWh/mo", "system": "24 panels · 15 kW inverter · 15 kWh battery" },
+      { "badge": "Corporate", "promise": "Power to operate without limits.", "poupanca": "100k CVE/mo", "production": "3579 kWh/mo", "system": "48 panels · 30 kW inverters · 30 kWh batteries" }
+    ]
+  },
   "footer": {
     "tagline": "Blackout-proof energy.",
     "solucoes": "Solutions",

@@ -43,6 +43,24 @@
     "title": "A rede falha. A Cabo Energia não.",
     "subtitle": "O diagnóstico inicial é gratuito e sem compromisso."
   },
+  "solucoes": {
+    "pill": "Soluções",
+    "title": "O seu nível de energia, a sua escolha.",
+    "toggleResidencial": "Residencial",
+    "toggleNegocio": "Negócio",
+    "poupancaLabel": "Poupança",
+    "retornoLabel": "Retorno",
+    "retornoValue": "1–2 anos",
+    "residencial": [
+      { "badge": "Essencial", "promise": "O sol paga a sua conta de luz, todos os meses.", "poupanca": "10k CVE/mês", "production": "447 kWh/mês", "system": "6 painéis · inversor 5 kW · bateria 5 kWh" },
+      { "badge": "Popular", "promise": "Energia de sobra para toda a casa.", "poupanca": "20k CVE/mês", "production": "894 kWh/mês", "system": "12 painéis · inversor 10 kW · bateria 10 kWh" },
+      { "badge": "Prestígio", "promise": "Independência total — viva como se a ELECTRA não existisse.", "poupanca": "50k CVE/mês", "production": "1788 kWh/mês", "system": "24 painéis · inversor 15 kW · bateria 15 kWh" }
+    ],
+    "negocio": [
+      { "badge": "Eficiência", "promise": "O seu negócio não para. A sua fatura baixa.", "poupanca": "50k CVE/mês", "production": "1788 kWh/mês", "system": "24 painéis · inversor 15 kW · bateria 15 kWh" },
+      { "badge": "Corporativo", "promise": "Potência para operar sem limites.", "poupanca": "100k CVE/mês", "production": "3579 kWh/mês", "system": "48 painéis · 30 kW inversores · 30 kWh baterias" }
+    ]
+  },
   "footer": {
     "tagline": "Energia à prova de apagões.",
     "solucoes": "Soluções",

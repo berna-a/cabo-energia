@@ -43,6 +43,24 @@
     "title": "Le réseau lâche. Cabo Energia, non.",
     "subtitle": "Le diagnostic initial est gratuit et sans engagement."
   },
+  "solucoes": {
+    "pill": "Solutions",
+    "title": "Votre niveau d'énergie, votre choix.",
+    "toggleResidencial": "Résidentiel",
+    "toggleNegocio": "Entreprise",
+    "poupancaLabel": "Économies",
+    "retornoLabel": "Retour",
+    "retornoValue": "1–2 ans",
+    "residencial": [
+      { "badge": "Essentiel", "promise": "Le soleil paie votre facture d'électricité, chaque mois.", "poupanca": "10k CVE/mois", "production": "447 kWh/mois", "system": "6 panneaux · onduleur 5 kW · batterie 5 kWh" },
+      { "badge": "Populaire", "promise": "De l'énergie en abondance pour toute la maison.", "poupanca": "20k CVE/mois", "production": "894 kWh/mois", "system": "12 panneaux · onduleur 10 kW · batterie 10 kWh" },
+      { "badge": "Prestige", "promise": "Indépendance totale — vivez comme si ELECTRA n'existait pas.", "poupanca": "50k CVE/mois", "production": "1788 kWh/mois", "system": "24 panneaux · onduleur 15 kW · batterie 15 kWh" }
+    ],
+    "negocio": [
+      { "badge": "Efficacité", "promise": "Votre entreprise ne s'arrête jamais. Votre facture baisse.", "poupanca": "50k CVE/mois", "production": "1788 kWh/mois", "system": "24 panneaux · onduleur 15 kW · batterie 15 kWh" },
+      { "badge": "Corporatif", "promise": "La puissance pour opérer sans limites.", "poupanca": "100k CVE/mois", "production": "3579 kWh/mois", "system": "48 panneaux · 30 kW onduleurs · 30 kWh batteries" }
+    ]
+  },
   "footer": {
     "tagline": "Énergie à l'épreuve des coupures.",
     "solucoes": "Solutions",
