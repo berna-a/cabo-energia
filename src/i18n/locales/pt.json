@@ -14,6 +14,35 @@
     "title2": "Sempre Ligado.",
     "subtitle": "A sua casa e o seu negócio nunca mais param por falta de luz."
   },
+  "marquee": {
+    "items": [
+      "Instalação chave-na-mão",
+      "Logística inter-ilhas",
+      "Parceiro certificado Sunwaytech",
+      "Serviço pós-instalação incluído"
+    ]
+  },
+  "processo": {
+    "title": "Da simulação à instalação — sem surpresas.",
+    "steps": [
+      { "title": "Simulação & Contacto", "copy": "Utilize o simulador no topo da página. A nossa equipa liga de volta em menos de 24 horas." },
+      { "title": "Levantamento Técnico", "copy": "Visita cirúrgica ao local para analisar o telhado e os consumos. Custo de 5.000 CVE (100% dedutível no contrato)." },
+      { "title": "Plano de Proteção", "copy": "Recebe uma proposta final transparente com o cálculo exato da sua produção solar, poupança e retorno." },
+      { "title": "Instalação & Ligação", "copy": "Montagem técnica cirúrgica realizada por profissionais certificados e testes de carga ao vivo. A sua vida não para." }
+    ]
+  },
+  "impactoDia": {
+    "title": "O impacto no seu dia a dia",
+    "items": [
+      { "title": "Não pare de cozinhar.", "copy": "Frigorífico e arca vertical sempre ligados. Zero desperdício de alimentos." },
+      { "title": "Não pare de produzir.", "copy": "Wi-Fi ativo, computadores carregados e iluminação para trabalhar ou estudar." },
+      { "title": "Ar condicionado sem culpa.", "copy": "Use a climatização nas horas de maior calor sabendo que é o sol que paga a conta." }
+    ]
+  },
+  "finalCta": {
+    "title": "A rede falha. A Cabo Energia não.",
+    "subtitle": "O diagnóstico inicial é gratuito e sem compromisso."
+  },
   "footer": {
     "tagline": "Energia à prova de apagões.",
     "solucoes": "Soluções",

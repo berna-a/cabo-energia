@@ -14,6 +14,35 @@
     "title2": "Toujours Alimenté.",
     "subtitle": "Votre maison et votre entreprise ne s'arrêtent plus faute d'électricité."
   },
+  "marquee": {
+    "items": [
+      "Installation clé en main",
+      "Logistique inter-îles",
+      "Partenaire certifié Sunwaytech",
+      "Service après-installation inclus"
+    ]
+  },
+  "processo": {
+    "title": "De la simulation à l'installation — sans surprises.",
+    "steps": [
+      { "title": "Simulation & Contact", "copy": "Utilisez le simulateur en haut de la page. Notre équipe vous rappelle en moins de 24 heures." },
+      { "title": "Étude technique", "copy": "Une visite précise sur place pour analyser la toiture et les consommations. Coût de 5 000 CVE (100% déductible du contrat)." },
+      { "title": "Plan de Protection", "copy": "Vous recevez une proposition finale transparente avec le calcul exact de votre production solaire, vos économies et votre retour." },
+      { "title": "Installation & Raccordement", "copy": "Montage technique précis réalisé par des professionnels certifiés avec tests de charge en direct. Votre vie ne s'arrête pas." }
+    ]
+  },
+  "impactoDia": {
+    "title": "L'impact sur votre quotidien",
+    "items": [
+      { "title": "N'arrêtez pas de cuisiner.", "copy": "Réfrigérateur et congélateur toujours allumés. Zéro gaspillage alimentaire." },
+      { "title": "N'arrêtez pas de produire.", "copy": "Wi-Fi actif, ordinateurs chargés et éclairage pour travailler ou étudier." },
+      { "title": "Climatisation sans culpabilité.", "copy": "Utilisez la climatisation aux heures les plus chaudes en sachant que c'est le soleil qui paie la facture." }
+    ]
+  },
+  "finalCta": {
+    "title": "Le réseau lâche. Cabo Energia, non.",
+    "subtitle": "Le diagnostic initial est gratuit et sans engagement."
+  },
   "footer": {
     "tagline": "Énergie à l'épreuve des coupures.",
     "solucoes": "Solutions",

@@ -1,37 +1,17 @@
-import {
-  Refrigerator,
-  Wifi,
-  Sun,
-  type LucideIcon,
-} from "lucide-react";
-
+import { Refrigerator, Wifi, Sun, type LucideIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
 const MUTED = "#6b7280";
 
-type Item = { icon: LucideIcon; title: string; copy: string };
-
-const residencial: Item[] = [
-  {
-    icon: Refrigerator,
-    title: "Não pare de cozinhar.",
-    copy: "Frigorífico e arca vertical sempre ligados. Zero desperdício de alimentos.",
-  },
-  {
-    icon: Wifi,
-    title: "Não pare de produzir.",
-    copy: "Wi-Fi ativo, computadores carregados e iluminação para trabalhar ou estudar.",
-  },
-  {
-    icon: Sun,
-    title: "Ar condicionado sem culpa.",
-    copy: "Use a climatização nas horas de maior calor sabendo que é o sol que paga a conta.",
-  },
-];
+const ICONS: LucideIcon[] = [Refrigerator, Wifi, Sun];
 
 export function ImpactoDiaSection() {
-  const items = residencial;
+  const { t } = useTranslation();
+  const items = (t("impactoDia.items", { returnObjects: true }) as { title: string; copy: string }[]).map(
+    (it, i) => ({ ...it, icon: ICONS[i] })
+  );
   const cols = "md:grid-cols-3";
 
   return (
@@ -52,7 +32,7 @@ export function ImpactoDiaSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            O impacto no seu dia a dia
+            {t("impactoDia.title")}
           </h2>
         </div>
 

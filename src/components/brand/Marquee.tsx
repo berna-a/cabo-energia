@@ -1,12 +1,9 @@
-const items = [
-  "Instalação chave-na-mão",
-  "Logística inter-ilhas",
-  "Parceiro certificado Sunwaytech",
-  "Serviço pós-instalação incluído",
-];
+import { useTranslation } from "react-i18next";
 
 export function Marquee() {
-  // Repeat content twice for a seamless loop
+  const { t } = useTranslation();
+  const items = t("marquee.items", { returnObjects: true }) as string[];
+  // Repeat content for a seamless loop
   const loop = [...items, ...items, ...items, ...items];
 
   return (

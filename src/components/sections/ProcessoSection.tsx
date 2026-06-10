@@ -1,31 +1,14 @@
+import { useTranslation } from "react-i18next";
+
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
 const MUTED = "#6b7280";
 
-const steps = [
-  {
-    n: "01",
-    title: "Simulação & Contacto",
-    copy: "Utilize o simulador no topo da página. A nossa equipa liga de volta em menos de 24 horas.",
-  },
-  {
-    n: "02",
-    title: "Levantamento Técnico",
-    copy: "Visita cirúrgica ao local para analisar o telhado e os consumos. Custo de 5.000 CVE (100% dedutível no contrato).",
-  },
-  {
-    n: "03",
-    title: "Plano de Proteção",
-    copy: "Recebe uma proposta final transparente com o cálculo exato da sua produção solar, poupança e retorno.",
-  },
-  {
-    n: "04",
-    title: "Instalação & Ligação",
-    copy: "Montagem técnica cirúrgica realizada por profissionais certificados e testes de carga ao vivo. A sua vida não para.",
-  },
-];
-
 export function ProcessoSection() {
+  const { t } = useTranslation();
+  const steps = (t("processo.steps", { returnObjects: true }) as { title: string; copy: string }[]).map(
+    (s, i) => ({ n: String(i + 1).padStart(2, "0"), ...s })
+  );
   return (
     <section
       id="como-funciona"
@@ -45,7 +28,7 @@ export function ProcessoSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Da simulação à instalação — sem surpresas.
+            {t("processo.title")}
           </h2>
         </div>
 

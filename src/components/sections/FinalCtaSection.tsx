@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/useLeadPanel";
@@ -7,6 +8,7 @@ const DARK = "#0D2B1F";
 const MUTED = "#6b7280";
 
 export function FinalCtaSection() {
+  const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
 
   return (
@@ -27,13 +29,13 @@ export function FinalCtaSection() {
               margin: 0,
             }}
           >
-            A rede falha. A Cabo Energia não.
+            {t("finalCta.title")}
           </h2>
           <p
             className="mx-auto mt-5 max-w-xl"
             style={{ color: MUTED, fontSize: 16, lineHeight: 1.6 }}
           >
-            O diagnóstico inicial é gratuito e sem compromisso.
+            {t("finalCta.subtitle")}
           </p>
           <div className="mt-9 flex justify-center">
             <PillButton

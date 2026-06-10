@@ -14,6 +14,35 @@
     "title2": "Always On.",
     "subtitle": "Your home and your business never stop for lack of power again."
   },
+  "marquee": {
+    "items": [
+      "Turnkey installation",
+      "Inter-island logistics",
+      "Sunwaytech certified partner",
+      "Post-installation service included"
+    ]
+  },
+  "processo": {
+    "title": "From simulation to installation — no surprises.",
+    "steps": [
+      { "title": "Simulation & Contact", "copy": "Use the simulator at the top of the page. Our team calls you back in under 24 hours." },
+      { "title": "Technical Survey", "copy": "A precise on-site visit to assess your roof and consumption. Cost of 5,000 CVE (100% deductible from the contract)." },
+      { "title": "Protection Plan", "copy": "You receive a transparent final proposal with the exact calculation of your solar production, savings and payback." },
+      { "title": "Installation & Connection", "copy": "Precise technical assembly by certified professionals with live load testing. Your life doesn't stop." }
+    ]
+  },
+  "impactoDia": {
+    "title": "The impact on your daily life",
+    "items": [
+      { "title": "Don't stop cooking.", "copy": "Fridge and freezer always on. Zero food waste." },
+      { "title": "Don't stop working.", "copy": "Active Wi-Fi, charged computers and lighting to work or study." },
+      { "title": "Air conditioning without guilt.", "copy": "Use cooling during the hottest hours knowing the sun pays the bill." }
+    ]
+  },
+  "finalCta": {
+    "title": "The grid fails. Cabo Energia doesn't.",
+    "subtitle": "The initial assessment is free and with no commitment."
+  },
   "footer": {
     "tagline": "Blackout-proof energy.",
     "solucoes": "Solutions",
