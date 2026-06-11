@@ -61,6 +61,34 @@
       { "badge": "Corporatif", "promise": "La puissance pour opérer sans limites.", "poupanca": "100k CVE/mois", "production": "3579 kWh/mois", "system": "48 panneaux · 30 kW onduleurs · 30 kWh batteries" }
     ]
   },
+  "impactBento": {
+    "pill": "Votre Vie avec Cabo Energia",
+    "title": "Avant et après.",
+    "card1Title": "Coupure dans le quartier, Lumière chez vous.",
+    "card1Copy": "La cuisine, le Wi-Fi, votre vie — rien ne s'arrête.",
+    "card1Badge": "Toujours Alimenté",
+    "card2Title": "Laissez le Soleil payer la facture.",
+    "card2Badge": "Économisez jusqu'à 80%",
+    "card3Title": "Votre maison, votre propre réseau.",
+    "card3Copy": "Produisez votre énergie et participez à l'avenir durable du Cap-Vert."
+  },
+  "protecao": {
+    "title": "Plans de Protection Continue",
+    "perMonth": "par mois · facturé annuellement",
+    "plans": [
+      { "name": "Plan Sécurité", "badge": "Surveillance", "features": ["Surveillance à distance du système 24/7", "Rapport de performance mensuel", "Alertes automatiques de panne", "Réponse technique sous 48h"] },
+      { "name": "Plan Sérénité", "badge": "Recommandé", "features": ["Tout ce qui est inclus dans le Plan Sécurité", "2× nettoyages professionnels des panneaux par an", "1× visite technique d'audit annuelle", "Réponse technique prioritaire sous 24h"] },
+      { "name": "Plan Intégral", "badge": "Immunité Totale", "features": ["Tout ce qui est inclus dans le Plan Sérénité", "4× nettoyages professionnels des panneaux par an", "Mises à jour logicielles prioritaires", "Réponse sous 4h avec remplacement immédiat en cas de panne"] }
+    ]
+  },
+  "rede": {
+    "pill": "Réseau d'Entreprises Protégées",
+    "title": "Une promesse que la concurrence ne peut pas faire.",
+    "body": "Votre établissement rejoint le Réseau d'Entreprises Protégées. Affichez le certificat en vitrine — et dites au marché qu'ici, l'énergie ne s'arrête jamais.",
+    "certOfficial": "Certificat Officiel · 2026",
+    "certMember": "Membre Officiel",
+    "certProtected": "Entreprise Protégée contre les Coupures"
+  },
   "footer": {
     "tagline": "Énergie à l'épreuve des coupures.",
     "solucoes": "Solutions",

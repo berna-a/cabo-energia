@@ -61,6 +61,34 @@
       { "badge": "Corporativo", "promise": "Potência para operar sem limites.", "poupanca": "100k CVE/mês", "production": "3579 kWh/mês", "system": "48 painéis · 30 kW inversores · 30 kWh baterias" }
     ]
   },
+  "impactBento": {
+    "pill": "A Sua Vida com Cabo Energia",
+    "title": "O antes e o depois.",
+    "card1Title": "Apagão na zona, Luz na sua Casa.",
+    "card1Copy": "A cozinha, o Wi-Fi, a sua vida, não pára.",
+    "card1Badge": "Sempre Ligado",
+    "card2Title": "Deixe que o Sol pague a conta.",
+    "card2Badge": "Poupe até 80%",
+    "card3Title": "A sua casa, a sua própria rede.",
+    "card3Copy": "Produza a sua energia e faça parte do futuro sustentável de Cabo Verde."
+  },
+  "protecao": {
+    "title": "Planos de Proteção Contínua",
+    "perMonth": "por mês · faturado anualmente",
+    "plans": [
+      { "name": "Plano Seguro", "badge": "Vigilância", "features": ["Monitorização remota do sistema 24/7", "Relatório mensal de performance", "Alertas automáticos de falha", "Resposta técnica em 48h"] },
+      { "name": "Plano Tranquilo", "badge": "Recomendado", "features": ["Tudo o que está incluído no Seguro", "2× Limpezas profissionais de painéis por ano", "1× Visita técnica de auditoria anual", "Resposta técnica prioritária em 24h"] },
+      { "name": "Plano Pleno", "badge": "Imunidade Total", "features": ["Tudo o que está incluído no Tranquilo", "4× Limpezas profissionais de painéis por ano", "Atualizações prioritárias de software", "Resposta em 4h com substituição imediata em avaria"] }
+    ]
+  },
+  "rede": {
+    "pill": "Rede de Negócios Protegidos",
+    "title": "Uma promessa que a concorrência não pode fazer.",
+    "body": "O seu estabelecimento entra na Rede de Negócios Protegidos. Afixe o certificado na montra — e comunique ao mercado que aqui a energia nunca para.",
+    "certOfficial": "Certificado Oficial · 2026",
+    "certMember": "Membro Oficial",
+    "certProtected": "Empresa Protegida contra Apagões"
+  },
   "footer": {
     "tagline": "Energia à prova de apagões.",
     "solucoes": "Soluções",

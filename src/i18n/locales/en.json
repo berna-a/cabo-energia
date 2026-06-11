@@ -61,6 +61,34 @@
       { "badge": "Corporate", "promise": "Power to operate without limits.", "poupanca": "100k CVE/mo", "production": "3579 kWh/mo", "system": "48 panels · 30 kW inverters · 30 kWh batteries" }
     ]
   },
+  "impactBento": {
+    "pill": "Your Life with Cabo Energia",
+    "title": "Before and after.",
+    "card1Title": "Blackout in the area, Light in your Home.",
+    "card1Copy": "The kitchen, the Wi-Fi, your life — it doesn't stop.",
+    "card1Badge": "Always On",
+    "card2Title": "Let the Sun pay the bill.",
+    "card2Badge": "Save up to 80%",
+    "card3Title": "Your home, your own grid.",
+    "card3Copy": "Produce your own energy and be part of Cape Verde's sustainable future."
+  },
+  "protecao": {
+    "title": "Continuous Protection Plans",
+    "perMonth": "per month · billed annually",
+    "plans": [
+      { "name": "Secure Plan", "badge": "Monitoring", "features": ["24/7 remote system monitoring", "Monthly performance report", "Automatic failure alerts", "Technical response within 48h"] },
+      { "name": "Calm Plan", "badge": "Recommended", "features": ["Everything in the Secure Plan", "2× professional panel cleanings per year", "1× annual technical audit visit", "Priority technical response within 24h"] },
+      { "name": "Full Plan", "badge": "Total Immunity", "features": ["Everything in the Calm Plan", "4× professional panel cleanings per year", "Priority software updates", "Response within 4h with immediate replacement on failure"] }
+    ]
+  },
+  "rede": {
+    "pill": "Protected Businesses Network",
+    "title": "A promise the competition can't make.",
+    "body": "Your business joins the Protected Businesses Network. Display the certificate in your window — and tell the market that here, the power never stops.",
+    "certOfficial": "Official Certificate · 2026",
+    "certMember": "Official Member",
+    "certProtected": "Business Protected Against Blackouts"
+  },
   "footer": {
     "tagline": "Blackout-proof energy.",
     "solucoes": "Solutions",

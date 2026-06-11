@@ -1,4 +1,6 @@
 
+import { useTranslation } from "react-i18next";
+
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
 const DARK = "#0D2B1F";
 const MUTED = "#6b7280";
@@ -13,45 +15,15 @@ type Plan = {
   primaryCta?: boolean;
 };
 
-const plans: Plan[] = [
-  {
-    badge: "Vigilância",
-    price: "2.500 CVE",
-    name: "Plano Seguro",
-    features: [
-      "Monitorização remota do sistema 24/7",
-      "Relatório mensal de performance",
-      "Alertas automáticos de falha",
-      "Resposta técnica em 48h",
-    ],
-  },
-  {
-    badge: "Recomendado",
-    badgeHighlight: true,
-    price: "4.500 CVE",
-    name: "Plano Tranquilo",
-    features: [
-      "Tudo o que está incluído no Seguro",
-      "2× Limpezas profissionais de painéis por ano",
-      "1× Visita técnica de auditoria anual",
-      "Resposta técnica prioritária em 24h",
-    ],
-    primaryCta: true,
-  },
-  {
-    badge: "Imunidade Total",
-    price: "8.000 CVE",
-    name: "Plano Pleno",
-    features: [
-      "Tudo o que está incluído no Tranquilo",
-      "4× Limpezas profissionais de painéis por ano",
-      "Atualizações prioritárias de software",
-      "Resposta em 4h com substituição imediata em avaria",
-    ],
-  },
+// Preço/destaque em código; nome, badge e features vêm das traduções.
+const PRICE_META = [
+  { price: "2.500 CVE", badgeHighlight: false, primaryCta: false },
+  { price: "4.500 CVE", badgeHighlight: true, primaryCta: true },
+  { price: "8.000 CVE", badgeHighlight: false, primaryCta: false },
 ];
 
 function PlanCard({ plan }: { plan: Plan }) {
+  const { t } = useTranslation();
   return (
     <article
       className="flex h-full flex-col rounded-2xl p-7"
@@ -104,7 +76,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         className="mt-1.5"
         style={{ color: "rgba(13,43,31,0.65)", fontSize: 12, letterSpacing: "0.02em" }}
       >
-        por mês · faturado anualmente
+        {t("protecao.perMonth")}
       </div>
 
       <ul className="mt-5 space-y-2.5">
@@ -124,6 +96,20 @@ function PlanCard({ plan }: { plan: Plan }) {
 }
 
 export function ProtecaoContinuaSection() {
+  const { t } = useTranslation();
+  const content = t("protecao.plans", { returnObjects: true }) as {
+    name: string;
+    badge: string;
+    features: string[];
+  }[];
+  const plans: Plan[] = content.map((c, i) => ({
+    name: c.name,
+    badge: c.badge,
+    features: c.features,
+    price: PRICE_META[i]?.price ?? "",
+    badgeHighlight: PRICE_META[i]?.badgeHighlight,
+    primaryCta: PRICE_META[i]?.primaryCta,
+  }));
   return (
     <section
       className="relative overflow-hidden"
@@ -142,7 +128,7 @@ export function ProtecaoContinuaSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Planos de Proteção Contínua
+            {t("protecao.title")}
           </h2>
         </div>
 

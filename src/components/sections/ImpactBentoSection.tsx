@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import impactProtecao from "@/assets/impact-protecao.webp";
 import impactFatura from "@/assets/impact-fatura.jpg";
 import impactIndependencia from "@/assets/impact-independencia.webp";
@@ -61,6 +62,7 @@ const LeftCatchLightLunar = () => (
 );
 
 export function ImpactBentoSection() {
+  const { t } = useTranslation();
   return (
     <section
       className="relative overflow-hidden bg-white"
@@ -82,7 +84,7 @@ export function ImpactBentoSection() {
               marginBottom: 20,
             }}
           >
-            A Sua Vida com Cabo Energia
+            {t("impactBento.pill")}
           </span>
           <h2
             style={{
@@ -94,7 +96,7 @@ export function ImpactBentoSection() {
               margin: 0,
             }}
           >
-            O antes e o depois.
+            {t("impactBento.title")}
           </h2>
         </div>
 
@@ -128,13 +130,13 @@ export function ImpactBentoSection() {
                 <h3
                   style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
-                  Apagão na zona,<br />Luz na sua Casa.
+                  {t("impactBento.card1Title")}
                 </h3>
                 <p
                   className="mt-5"
                   style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0 }}
                 >
-                  A cozinha, o Wi-Fi, a sua vida, não pára.
+                  {t("impactBento.card1Copy")}
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   <span
@@ -163,7 +165,7 @@ export function ImpactBentoSection() {
                         flexShrink: 0,
                       }}
                     />
-                    Sempre Ligado
+                    {t("impactBento.card1Badge")}
                   </span>
                 </div>
               </div>
@@ -199,7 +201,7 @@ export function ImpactBentoSection() {
                 <h3
                   style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: 24, lineHeight: 1.2, margin: 0 }}
                 >
-                  Deixe que o Sol pague a conta.
+                  {t("impactBento.card2Title")}
                 </h3>
                 <div className="mt-5 flex justify-center">
                   <span
@@ -228,7 +230,7 @@ export function ImpactBentoSection() {
                         flexShrink: 0,
                       }}
                     />
-                    Poupe até 80%
+                    {t("impactBento.card2Badge")}
                   </span>
                 </div>
               </div>
@@ -265,13 +267,12 @@ export function ImpactBentoSection() {
                   <h3
                     style={{ color: "#ffffff", fontFamily: FONT, fontWeight: 700, fontSize: "clamp(20px, 2.6vw, 28px)", lineHeight: 1.2, margin: 0 }}
                   >
-                    A sua casa, a sua própria rede.
+                    {t("impactBento.card3Title")}
                   </h3>
                   <p
                     style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0, maxWidth: 460 }}
                   >
-                    Produza a sua energia e faça parte<br />
-                    do futuro sustentável de Cabo Verde
+                    {t("impactBento.card3Copy")}
                   </p>
                 </div>
               </div>

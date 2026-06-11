@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/useLeadPanel";
@@ -8,6 +9,7 @@ const MUTED = "#6b7280";
 const YELLOW = "#F5C842";
 
 function CertificateSlot() {
+  const { t } = useTranslation();
   return (
     <div
       className="relative w-full overflow-hidden rounded-xl"
@@ -58,7 +60,7 @@ function CertificateSlot() {
               textTransform: "uppercase",
             }}
           >
-            Certificado Oficial · 2026
+            {t("rede.certOfficial")}
           </div>
         </div>
 
@@ -74,7 +76,7 @@ function CertificateSlot() {
               letterSpacing: "-0.02em",
             }}
           >
-            Membro Oficial
+            {t("rede.certMember")}
           </div>
           <div
             className="mt-2"
@@ -87,7 +89,7 @@ function CertificateSlot() {
               textTransform: "uppercase",
             }}
           >
-            Empresa Protegida contra Apagões
+            {t("rede.certProtected")}
           </div>
           <div
             className="mt-3 h-px w-20"
@@ -139,6 +141,7 @@ function CertificateSlot() {
 }
 
 export function RedeProtegidosSection() {
+  const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
 
   return (
@@ -172,7 +175,7 @@ export function RedeProtegidosSection() {
                   marginBottom: 20,
                 }}
               >
-                Rede de Negócios Protegidos
+                {t("rede.pill")}
               </span>
               <h2
                 style={{
@@ -185,7 +188,7 @@ export function RedeProtegidosSection() {
                   margin: 0,
                 }}
               >
-                Uma promessa que a concorrência não pode fazer.
+                {t("rede.title")}
               </h2>
               <p
                 className="mt-5"
@@ -197,9 +200,7 @@ export function RedeProtegidosSection() {
                   maxWidth: 520,
                 }}
               >
-                O seu estabelecimento entra na Rede de Negócios Protegidos.
-                Afixe o certificado na montra — e comunique ao mercado que
-                aqui a energia nunca para.
+                {t("rede.body")}
               </p>
 
               <div className="mt-8">
