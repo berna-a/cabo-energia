@@ -29,6 +29,7 @@ import {
   Castle,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { PillButton } from "@/components/brand/PillButton";
@@ -212,6 +213,7 @@ const DARK = "#0D2B1F";
 /* -------------------------------- COMPONENT -------------------------------- */
 
 export default function SimuladorSection() {
+  const { t } = useTranslation();
   const [step, setStep] = React.useState(1);
   const [seg, setSeg] = React.useState<Seg | "">("");
   const [profile, setProfile] = React.useState("");
@@ -376,7 +378,7 @@ export default function SimuladorSection() {
               marginBottom: 20,
             }}
           >
-            Simulador de Poupança
+            {t("simulador.pill")}
           </span>
           <h2
             style={{
@@ -387,10 +389,10 @@ export default function SimuladorSection() {
               lineHeight: 1.15,
             }}
           >
-            Descubra quanto pode poupar
+            {t("simulador.title")}
           </h2>
           <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, margin: 0 }}>
-            Em 2 minutos, veja a estimativa real para a sua casa ou negócio.
+            {t("simulador.subtitle")}
           </p>
         </div>
 
@@ -512,11 +514,12 @@ export default function SimuladorSection() {
 /* --------------------------------- STEPS ----------------------------------- */
 
 function Step1({ onSelect, seg }: { onSelect: (s: Seg) => void; seg: Seg }) {
+  const { t } = useTranslation();
   return (
     <div className="sim-step" key="s1">
       <StepHeader
-        title="Para onde é a solução?"
-        hint="Vamos personalizar a sua simulação."
+        title={t("simulador.step1Title")}
+        hint={t("simulador.step1Hint")}
       />
       <div
         className="sim-grid-2"
@@ -527,16 +530,16 @@ function Step1({ onSelect, seg }: { onSelect: (s: Seg) => void; seg: Seg }) {
           onClick={() => onSelect("casa")}
           gradient="linear-gradient(135deg, #1A5C3A 0%, #0D2B1F 100%)"
           Icon={Home}
-          name="Para a minha casa"
-          sub="Família ou residência"
+          name={t("simulador.forHome")}
+          sub={t("simulador.forHomeSub")}
         />
         <SegCard
           selected={seg === "negocio"}
           onClick={() => onSelect("negocio")}
           gradient="linear-gradient(135deg, #1A3A5C 0%, #0D1F2B 100%)"
           Icon={Store}
-          name="Para o meu negócio"
-          sub="Comércio, empresa ou serviço"
+          name={t("simulador.forBusiness")}
+          sub={t("simulador.forBusinessSub")}
         />
       </div>
     </div>
@@ -627,21 +630,22 @@ function Step2({
   onBack: () => void;
   onNext: () => void;
 }) {
+  const { t } = useTranslation();
+  const labels = t(
+    seg === "negocio" ? "simulador.profilesBusiness" : "simulador.profilesHome",
+    { returnObjects: true }
+  ) as { name: string; sub: string }[];
   return (
     <div className="sim-step" key="s2">
       <StepHeader
-        title={seg === "negocio" ? "Que tipo de espaço é?" : "Como é a sua casa?"}
-        hint={
-          seg === "negocio"
-            ? "Selecione o perfil do seu espaço de negócio."
-            : "Selecione o perfil que melhor descreve a sua habitação."
-        }
+        title={seg === "negocio" ? t("simulador.step2TitleBusiness") : t("simulador.step2TitleHome")}
+        hint={seg === "negocio" ? t("simulador.step2HintBusiness") : t("simulador.step2HintHome")}
       />
       <div
         className="sim-grid-2x2"
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}
       >
-        {profiles.map((p) => {
+        {profiles.map((p, i) => {
           const sel = profile === p.id;
           return (
             <button
@@ -689,8 +693,8 @@ function Step2({
                   <p.Icon size={18} color="#ffffff" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 600, fontSize: 13, color: "#0D2B1F" }}>{p.name}</div>
-                  <div style={{ fontSize: 11, color: "rgba(13,43,31,0.45)", marginTop: 2 }}>{p.sub}</div>
+                  <div style={{ fontWeight: 600, fontSize: 13, color: "#0D2B1F" }}>{labels[i]?.name ?? p.name}</div>
+                  <div style={{ fontSize: 11, color: "rgba(13,43,31,0.45)", marginTop: 2 }}>{labels[i]?.sub ?? p.sub}</div>
                 </div>
               </div>
             </button>
@@ -700,7 +704,7 @@ function Step2({
       <NavRow>
         <BackBtn onClick={onBack} />
         <ContinueBtn disabled={!profile} onClick={onNext}>
-          Continuar
+          {t("simulador.continue")}
         </ContinueBtn>
       </NavRow>
     </div>
@@ -728,12 +732,13 @@ function Step3({
   onBack: () => void;
   onNext: () => void;
 }) {
+  const { t } = useTranslation();
   const pct = ((fatura - 2000) / (40000 - 2000)) * 100;
   return (
     <div className="sim-step" key="s3">
       <StepHeader
-        title="Quanto paga de luz por mês?"
-        hint="Mexa o slider para ver a poupança em tempo real."
+        title={t("simulador.step3Title")}
+        hint={t("simulador.step3Hint")}
       />
 
       <div
@@ -748,7 +753,7 @@ function Step3({
           marginBottom: 20,
         }}
       >
-        <span style={{ fontSize: 12, color: "rgba(13,43,31,0.55)" }}>Poupança estimada / mês</span>
+        <span style={{ fontSize: 12, color: "rgba(13,43,31,0.55)" }}>{t("simulador.estSavingsMonth")}</span>
         <span style={{ color: YELLOW, fontWeight: 700, fontSize: 24 }}>
           {hasProfile ? `${fmt(previewSavings)} CVE` : "—"}
         </span>
@@ -769,7 +774,7 @@ function Step3({
       />
       <div style={{ textAlign: "right" }}>
         <div style={{ fontWeight: 400, fontSize: 28, color: "#0D2B1F" }}>{fmt(fatura)} CVE</div>
-        <div style={{ fontWeight: 700, fontSize: 12, color: "rgba(13,43,31,0.65)", marginTop: 2 }}>por mês</div>
+        <div style={{ fontWeight: 700, fontSize: 12, color: "rgba(13,43,31,0.65)", marginTop: 2 }}>{t("simulador.perMonth")}</div>
       </div>
 
       {seg === "casa" && (
@@ -812,14 +817,14 @@ function Step3({
             />
           </div>
           <span style={{ fontSize: 13, color: "rgba(13,43,31,0.65)" }}>
-            {hasRoof ? "Tenho telhado ou terraço próprio" : "Não tenho telhado próprio (arrendatário)"}
+            {hasRoof ? t("simulador.roofYes") : t("simulador.roofNo")}
           </span>
         </div>
       )}
 
       <NavRow>
         <BackBtn onClick={onBack} />
-        <ContinueBtn onClick={onNext}>Ver a minha estimativa</ContinueBtn>
+        <ContinueBtn onClick={onNext}>{t("simulador.seeEstimate")}</ContinueBtn>
       </NavRow>
     </div>
   );
@@ -848,20 +853,21 @@ function Step4({
   onBack: () => void;
   onNext: () => void;
 }) {
+  const { t } = useTranslation();
   const pkg = PACKAGES[currentPkg];
   const benefits = BENEFITS[currentPkg];
 
   return (
     <div className="sim-step" key="s4">
-      <StepHeader title="A sua estimativa" hint="Resultados com base nos seus dados." />
+      <StepHeader title={t("simulador.step4Title")} hint={t("simulador.step4Hint")} />
 
       <div
         className="sim-grid-3"
         style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}
       >
-        <Metric label="POUPANÇA / MÊS" value={`${fmt(savings)}`} unit="CVE" />
-        <Metric label="POUPANÇA / ANO" value={`${fmt(annual)}`} unit="CVE" />
-        <Metric label="PAYBACK ESTIMADO" value={payback} unit="anos" />
+        <Metric label={t("simulador.metricSavingsMonth")} value={`${fmt(savings)}`} unit="CVE" />
+        <Metric label={t("simulador.metricSavingsYear")} value={`${fmt(annual)}`} unit="CVE" />
+        <Metric label={t("simulador.metricPayback")} value={payback} unit={t("simulador.years")} />
       </div>
 
       <div
@@ -887,7 +893,7 @@ function Step4({
               whiteSpace: "nowrap",
             }}
           >
-            {pkg.priceStr}
+            {t("simulador.quote")}
           </span>
         </div>
         <div
@@ -899,7 +905,7 @@ function Step4({
             lineHeight: 1.5,
           }}
         >
-          {pkg.promise}
+          {t(`simulador.promises.${currentPkg}`)}
         </div>
         <div
           className="sim-grid-3"
@@ -919,7 +925,7 @@ function Step4({
             >
               <b.Icon size={22} color={b.color} />
               <div style={{ fontSize: 12, color: "#0D2B1F", fontWeight: 500, lineHeight: 1.4 }}>
-                {b.text}
+                {t(`simulador.benefits.${currentPkg}.${i}`)}
               </div>
             </div>
           ))}
@@ -939,7 +945,7 @@ function Step4({
               display: "inline-block",
             }}
           >
-            {showOthers ? "Ocultar outras opções" : "Ver outras opções »"}
+            {showOthers ? t("simulador.hideOthers") : t("simulador.showOthers")}
           </span>
           {showOthers && (
             <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
@@ -962,7 +968,7 @@ function Step4({
                     {PACKAGES[k].name}
                   </div>
                   <div style={{ fontSize: 12, color: "rgba(13,43,31,0.45)", fontStyle: "italic" }}>
-                    {PACKAGES[k].promise}
+                    {t(`simulador.promises.${k}`)}
                   </div>
                 </div>
               ))}
@@ -972,12 +978,12 @@ function Step4({
       )}
 
       <div style={{ fontSize: 11, color: "rgba(13,43,31,0.30)", textAlign: "center", marginTop: 10 }}>
-        Estimativa indicativa. O estudo personalizado é gratuito e sem compromisso.
+        {t("simulador.disclaimer")}
       </div>
 
       <NavRow>
         <BackBtn onClick={onBack} />
-        <YellowBtn onClick={onNext}>Continuar</YellowBtn>
+        <YellowBtn onClick={onNext}>{t("simulador.continue")}</YellowBtn>
       </NavRow>
     </div>
   );
@@ -1029,6 +1035,7 @@ function Step5({
   onSubmit: () => void;
   submitState: "idle" | "submitting" | "error";
 }) {
+  const { t } = useTranslation();
   return (
     <div className="sim-step" key="s5">
       <div
@@ -1047,14 +1054,14 @@ function Step5({
         <span style={{ fontSize: 12, color: "#0D2B1F" }}>{PACKAGES[currentPkg].name}</span>
       </div>
 
-      <StepHeader title="Os seus dados" />
+      <StepHeader title={t("simulador.step5Title")} />
 
-      <Field label="Nome">
+      <Field label={t("simulador.fieldName")}>
         <input
           type="text"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          placeholder="O seu nome"
+          placeholder={t("simulador.fieldNamePlaceholder")}
           style={inputStyle(errors.nome)}
           onFocus={(e) => (e.currentTarget.style.borderColor = YELLOW)}
           onBlur={(e) =>
@@ -1065,12 +1072,12 @@ function Step5({
         />
       </Field>
 
-      <Field label="Telemóvel (WhatsApp)">
+      <Field label={t("simulador.fieldPhone")}>
         <input
           type="tel"
           value={tel}
           onChange={(e) => setTel(e.target.value)}
-          placeholder="+238 ···"
+          placeholder={t("simulador.fieldPhonePlaceholder")}
           style={inputStyle(errors.tel)}
           onFocus={(e) => (e.currentTarget.style.borderColor = YELLOW)}
           onBlur={(e) =>
@@ -1081,7 +1088,7 @@ function Step5({
         />
       </Field>
 
-      <Field label="Ilha">
+      <Field label={t("simulador.fieldIsland")}>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
           {ISLANDS.map((i) => {
             const sel = island === i;
@@ -1112,7 +1119,7 @@ function Step5({
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12 }}>
         <ShieldCheck size={14} color="#1A5C3A" />
         <span style={{ fontSize: 11, color: "rgba(13,43,31,0.40)", textAlign: "center" }}>
-          Os seus dados são usados apenas para agendar o estudo. Nunca partilhados.
+          {t("simulador.privacy")}
         </span>
       </div>
 
@@ -1129,7 +1136,7 @@ function Step5({
             lineHeight: 1.5,
           }}
         >
-          Não conseguimos registar agora. Fale connosco diretamente:
+          {t("simulador.errorMsg")}
           <a
             href={WHATSAPP_URL}
             target="_blank"
@@ -1148,7 +1155,7 @@ function Step5({
               textDecoration: "none",
             }}
           >
-            Falar no WhatsApp
+            {t("simulador.whatsapp")}
           </a>
         </div>
       )}
@@ -1163,7 +1170,7 @@ function Step5({
           className="w-1/2 font-display uppercase tracking-wide"
         >
           {submitState === "submitting" ? (
-            <span>A enviar…</span>
+            <span>{t("simulador.sending")}</span>
           ) : (
             <LigarCaboLabel tone="dark" />
           )}
@@ -1220,12 +1227,13 @@ function Step6({
   currentPkg: PkgKey;
   savings: number;
 }) {
+  const { t } = useTranslation();
   const rows: [string, string][] = [
-    ["Nome", nome],
-    ["Pacote recomendado", PACKAGES[currentPkg].name],
-    ["Poupança estimada", `${fmt(savings)} CVE / mês`],
-    ...((island ? [["Ilha", island]] : []) as [string, string][]),
-    ["Telemóvel", tel],
+    [t("simulador.rowName"), nome],
+    [t("simulador.rowPackage"), PACKAGES[currentPkg].name],
+    [t("simulador.rowSavings"), `${fmt(savings)} ${t("simulador.savingsPerMonth")}`],
+    ...((island ? [[t("simulador.rowIsland"), island]] : []) as [string, string][]),
+    [t("simulador.rowPhone"), tel],
   ];
   return (
     <div className="sim-step" key="s6" style={{ textAlign: "center" }}>
@@ -1243,7 +1251,7 @@ function Step6({
       >
         <Check size={28} color={YELLOW} />
       </div>
-      <h3 style={{ fontWeight: 700, fontSize: 24, color: "#0D2B1F", margin: "0 0 10px" }}>Cabo Ligado.</h3>
+      <h3 style={{ fontWeight: 700, fontSize: 24, color: "#0D2B1F", margin: "0 0 10px" }}>{t("simulador.step6Title")}</h3>
       <p
         style={{
           color: "rgba(13,43,31,0.60)",
@@ -1253,8 +1261,7 @@ function Step6({
           margin: "0 auto 24px",
         }}
       >
-        O seu pedido foi recebido. Kevin da Cabo Energia contacta-o em até 24 horas, para
-        confirmar a estimativa e agendar o levantamento (visita técnica).
+        {t("simulador.step6Body")}
       </p>
 
       <div
@@ -1285,7 +1292,7 @@ function Step6({
       </div>
 
       <p style={{ fontSize: 12, color: "rgba(13,43,31,0.35)", marginTop: 16 }}>
-        Guarde o número +238 995 41 81 para reconhecer a chamada de Kevin.
+        {t("simulador.step6Note")}
       </p>
     </div>
   );
@@ -1321,6 +1328,7 @@ function NavRow({ children }: { children: React.ReactNode }) {
 }
 
 function BackBtn({ onClick }: { onClick: () => void }) {
+  const { t } = useTranslation();
   return (
     <button
       type="button"
@@ -1346,7 +1354,7 @@ function BackBtn({ onClick }: { onClick: () => void }) {
       onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(13,43,31,0.40)")}
     >
       <ArrowLeft size={14} />
-      Voltar
+      {t("simulador.back")}
     </button>
   );
 }
