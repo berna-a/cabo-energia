@@ -190,6 +190,64 @@
       "pleno": ["Continuous operation — blackout or not", "Protected Businesses Network certificate", "A visible edge for your customers"]
     }
   },
+  "pages": {
+    "residencialBadge": "Residential Solutions",
+    "residencialTitle1": "Your home",
+    "residencialTitle2": "always on.",
+    "residencialSubtitle": "Solar energy with battery: continuous comfort and a falling bill, even when the grid fails.",
+    "empresarialBadge": "Business Solutions",
+    "empresarialTitle1": "Your business",
+    "empresarialTitle2": "never stops.",
+    "empresarialSubtitle": "Continuous solar energy for shops, services and industry. No blackouts, with a falling bill."
+  },
+  "casaPreocupacoes": {
+    "overline": "The end of blackouts at home",
+    "headline": "Stop living to ELECTRA's rhythm.",
+    "items": [
+      { "title": "Spoiled food", "desc": "When the power goes, the fridge stops — and the week's food with it." },
+      { "title": "Sleepless nights", "desc": "With no AC or fan, the heat won't let anyone sleep." },
+      { "title": "No water at home", "desc": "The pump stops and you're left without water right when you need it most." },
+      { "title": "Vulnerable home", "desc": "Alarms, cameras and lights go out. And the kids with no light to study." }
+    ]
+  },
+  "casaFatura": {
+    "overline": "Real savings",
+    "headline": "Your electricity bill, finally going down.",
+    "todayLabel": "Your bill today",
+    "todayValue": "9,000+ CVE",
+    "todayUnit": " /mo",
+    "todayNote": "With ELECTRA — and rising every year.",
+    "withLabel": "With Cabo Energia",
+    "withValue": "up to 80% less",
+    "withNote": "Savings start in the very first month — and the sun doesn't raise the price.",
+    "financingTitle": "You don't have to pay it all at once.",
+    "financingBody": "We have instalment and financing options. Talk to us and we'll build a plan to fit your budget."
+  },
+  "negocioCusto": {
+    "overline": "The cost of doing nothing",
+    "headline": "How much does a blackout really cost your business?",
+    "items": [
+      { "title": "Spoiled stock", "desc": "Fridges and freezers stop. Fresh produce lost in just a few hours." },
+      { "title": "Sales halted", "desc": "No till, no card machine, no light. Every hour closed is revenue that won't come back." },
+      { "title": "Generator diesel", "desc": "Thousands of CVE a month in fuel — and the price only goes up." },
+      { "title": "Damaged equipment", "desc": "Power surges and outages burn out expensive machines." }
+    ]
+  },
+  "vsGerador": {
+    "overline": "Solar vs Diesel generator",
+    "headline": "The generator burns money. The sun works for free.",
+    "headerGerador": "Diesel generator",
+    "headerSolar": "Cabo Energia · Solar",
+    "rows": [
+      { "label": "Monthly cost", "gerador": "Constant diesel — rises with the price", "solar": "Almost zero once installed" },
+      { "label": "Noise", "gerador": "Loud, bothers customers and neighbours", "solar": "Completely silent" },
+      { "label": "Maintenance", "gerador": "Frequent and expensive", "solar": "Minimal, with remote monitoring" },
+      { "label": "Reliability", "gerador": "Breaks down at the worst moment", "solar": "Stable energy, day after day" },
+      { "label": "Environment", "gerador": "Smoke and emissions", "solar": "Clean and 100% renewable" }
+    ],
+    "roiTitle": "Payback in 3 to 6 years.",
+    "roiBody": "After that, your energy is practically free — while the generator keeps costing every month."
+  },
   "footer": {
     "tagline": "Blackout-proof energy.",
     "solucoes": "Solutions",

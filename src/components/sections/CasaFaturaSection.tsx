@@ -1,4 +1,5 @@
 import { TrendingUp, TrendingDown, Wallet } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
@@ -8,6 +9,7 @@ import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 const SOURCE = "website_residencial";
 
 export function CasaFaturaSection() {
+  const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
   const ref = useRevealOnScroll<HTMLDivElement>();
 
@@ -16,8 +18,8 @@ export function CasaFaturaSection() {
       <div ref={ref} className="reveal container flex flex-col gap-14">
         <SectionHeader
           align="center"
-          overline="Poupança real"
-          headline="A sua fatura de luz, finalmente a descer."
+          overline={t("casaFatura.overline")}
+          headline={t("casaFatura.headline")}
           className="mx-auto"
         />
 
@@ -29,11 +31,11 @@ export function CasaFaturaSection() {
               <TrendingUp className="size-5" />
             </div>
             <span className="text-sm font-semibold uppercase tracking-wide text-ink-soft">
-              A sua conta hoje
+              {t("casaFatura.todayLabel")}
             </span>
-            <span className="text-4xl font-extrabold text-ink">9.000+ CVE<span className="text-lg font-semibold text-ink-soft"> /mês</span></span>
+            <span className="text-4xl font-extrabold text-ink">{t("casaFatura.todayValue")}<span className="text-lg font-semibold text-ink-soft">{t("casaFatura.todayUnit")}</span></span>
             <p className="text-sm leading-relaxed text-ink-soft">
-              Com a ELECTRA — e a subir todos os anos.
+              {t("casaFatura.todayNote")}
             </p>
           </div>
 
@@ -43,11 +45,11 @@ export function CasaFaturaSection() {
               <TrendingDown className="size-5" />
             </div>
             <span className="text-sm font-semibold uppercase tracking-wide text-white/80">
-              Com a Cabo Energia
+              {t("casaFatura.withLabel")}
             </span>
-            <span className="text-4xl font-extrabold">até 80% menos</span>
+            <span className="text-4xl font-extrabold">{t("casaFatura.withValue")}</span>
             <p className="text-sm leading-relaxed text-white/85">
-              A poupança começa logo no primeiro mês — e o sol não aumenta o preço.
+              {t("casaFatura.withNote")}
             </p>
           </div>
         </div>
@@ -58,10 +60,10 @@ export function CasaFaturaSection() {
             <Wallet className="size-6" />
           </div>
           <h3 className="max-w-2xl text-2xl font-bold leading-tight text-ink md:text-3xl">
-            Não precisa de pagar tudo de uma vez.
+            {t("casaFatura.financingTitle")}
           </h3>
           <p className="max-w-xl text-ink-soft">
-            Temos soluções de pagamento faseado e financiamento. Fale connosco e montamos um plano à medida do seu orçamento.
+            {t("casaFatura.financingBody")}
           </p>
           <PillButton
             size="lg"

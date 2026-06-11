@@ -1,39 +1,23 @@
 import { Snowflake, Moon, Droplets, ShieldCheck } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
-const preocupacoes = [
-  {
-    icon: Snowflake,
-    title: "Comida a estragar",
-    desc: "Quando a luz vai, o frigorífico pára — e a comida da semana com ele.",
-  },
-  {
-    icon: Moon,
-    title: "Noites sem descanso",
-    desc: "Sem ar condicionado nem ventoinha, o calor não deixa ninguém dormir.",
-  },
-  {
-    icon: Droplets,
-    title: "Sem água em casa",
-    desc: "A bomba pára e fica sem água logo quando mais precisa dela.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Casa vulnerável",
-    desc: "Alarmes, câmaras e luzes apagam-se. E os filhos sem luz para estudar.",
-  },
-];
+const ICONS = [Snowflake, Moon, Droplets, ShieldCheck];
 
 export function CasaPreocupacoesSection() {
+  const { t } = useTranslation();
   const ref = useRevealOnScroll<HTMLDivElement>();
+  const preocupacoes = (t("casaPreocupacoes.items", { returnObjects: true }) as { title: string; desc: string }[]).map(
+    (it, i) => ({ ...it, icon: ICONS[i] })
+  );
   return (
     <section className="bg-white py-20 md:py-28">
       <div ref={ref} className="reveal container flex flex-col gap-14">
         <SectionHeader
           align="left"
-          overline="O fim dos apagões em casa"
-          headline="Deixe de viver ao ritmo da ELECTRA."
+          overline={t("casaPreocupacoes.overline")}
+          headline={t("casaPreocupacoes.headline")}
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {preocupacoes.map((c) => (

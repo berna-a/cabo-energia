@@ -1,39 +1,23 @@
 import { Snowflake, ShoppingCart, Fuel, Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
-const custos = [
-  {
-    icon: Snowflake,
-    title: "Stock estragado",
-    desc: "Frigoríficos e arcas param. Produto fresco perdido em poucas horas.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Vendas paradas",
-    desc: "Sem caixa, sem TPA, sem luz. Cada hora fechado é faturação que não volta.",
-  },
-  {
-    icon: Fuel,
-    title: "Gasóleo do gerador",
-    desc: "Milhares de CVE por mês em combustível — e o preço só sobe.",
-  },
-  {
-    icon: Zap,
-    title: "Equipamentos danificados",
-    desc: "Picos e quebras de energia queimam máquinas caras.",
-  },
-];
+const ICONS = [Snowflake, ShoppingCart, Fuel, Zap];
 
 export function NegocioCustoSection() {
+  const { t } = useTranslation();
   const ref = useRevealOnScroll<HTMLDivElement>();
+  const custos = (t("negocioCusto.items", { returnObjects: true }) as { title: string; desc: string }[]).map(
+    (it, i) => ({ ...it, icon: ICONS[i] })
+  );
   return (
     <section className="bg-white py-20 md:py-28">
       <div ref={ref} className="reveal container flex flex-col gap-14">
         <SectionHeader
           align="left"
-          overline="O custo de não fazer nada"
-          headline="Quanto custa, afinal, um apagão ao seu negócio?"
+          overline={t("negocioCusto.overline")}
+          headline={t("negocioCusto.headline")}
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {custos.map((c) => (

@@ -190,6 +190,64 @@
       "pleno": ["Opération continue — coupure ou non", "Certificat Réseau d'Entreprises Protégées", "Un atout visible pour vos clients"]
     }
   },
+  "pages": {
+    "residencialBadge": "Solutions Résidentielles",
+    "residencialTitle1": "Votre maison",
+    "residencialTitle2": "toujours alimentée.",
+    "residencialSubtitle": "Énergie solaire avec batterie : confort continu et facture en baisse, même quand le réseau lâche.",
+    "empresarialBadge": "Solutions Entreprises",
+    "empresarialTitle1": "Votre entreprise",
+    "empresarialTitle2": "ne s'arrête jamais.",
+    "empresarialSubtitle": "Énergie solaire continue pour commerces, services et industrie. Sans coupures, avec une facture en baisse."
+  },
+  "casaPreocupacoes": {
+    "overline": "La fin des coupures à la maison",
+    "headline": "Ne vivez plus au rythme d'ELECTRA.",
+    "items": [
+      { "title": "Nourriture gâchée", "desc": "Quand le courant part, le frigo s'arrête — et les courses de la semaine avec." },
+      { "title": "Nuits sans repos", "desc": "Sans clim ni ventilateur, la chaleur empêche de dormir." },
+      { "title": "Plus d'eau à la maison", "desc": "La pompe s'arrête et vous n'avez plus d'eau au pire moment." },
+      { "title": "Maison vulnérable", "desc": "Alarmes, caméras et lumières s'éteignent. Et les enfants sans lumière pour étudier." }
+    ]
+  },
+  "casaFatura": {
+    "overline": "Économies réelles",
+    "headline": "Votre facture d'électricité, enfin en baisse.",
+    "todayLabel": "Votre facture aujourd'hui",
+    "todayValue": "9 000+ CVE",
+    "todayUnit": " /mois",
+    "todayNote": "Avec ELECTRA — et en hausse chaque année.",
+    "withLabel": "Avec Cabo Energia",
+    "withValue": "jusqu'à 80% de moins",
+    "withNote": "Les économies commencent dès le premier mois — et le soleil n'augmente pas le prix.",
+    "financingTitle": "Pas besoin de tout payer d'un coup.",
+    "financingBody": "Nous proposons des solutions de paiement échelonné et de financement. Parlons-en et nous bâtissons un plan adapté à votre budget."
+  },
+  "negocioCusto": {
+    "overline": "Le coût de ne rien faire",
+    "headline": "Combien coûte vraiment une coupure à votre entreprise ?",
+    "items": [
+      { "title": "Stock gâché", "desc": "Frigos et congélateurs s'arrêtent. Produits frais perdus en quelques heures." },
+      { "title": "Ventes à l'arrêt", "desc": "Pas de caisse, pas de TPE, pas de lumière. Chaque heure fermée, c'est du chiffre perdu." },
+      { "title": "Gazole du générateur", "desc": "Des milliers de CVE par mois en carburant — et le prix ne fait que monter." },
+      { "title": "Équipements endommagés", "desc": "Les pics et coupures grillent des machines coûteuses." }
+    ]
+  },
+  "vsGerador": {
+    "overline": "Solaire vs Générateur diesel",
+    "headline": "Le générateur brûle de l'argent. Le soleil travaille gratuitement.",
+    "headerGerador": "Générateur diesel",
+    "headerSolar": "Cabo Energia · Solaire",
+    "rows": [
+      { "label": "Coût mensuel", "gerador": "Gazole constant — monte avec le prix", "solar": "Quasi nul une fois installé" },
+      { "label": "Bruit", "gerador": "Fort, dérange clients et voisins", "solar": "Totalement silencieux" },
+      { "label": "Entretien", "gerador": "Fréquent et coûteux", "solar": "Minimal, avec surveillance à distance" },
+      { "label": "Fiabilité", "gerador": "Tombe en panne au pire moment", "solar": "Énergie stable, jour après jour" },
+      { "label": "Environnement", "gerador": "Fumée et émissions", "solar": "Propre et 100% renouvelable" }
+    ],
+    "roiTitle": "Retour sur investissement en 3 à 6 ans.",
+    "roiBody": "Ensuite, votre énergie est quasiment gratuite — tandis que le générateur continue de coûter chaque mois."
+  },
   "footer": {
     "tagline": "Énergie à l'épreuve des coupures.",
     "solucoes": "Solutions",

@@ -190,6 +190,64 @@
       "pleno": ["Operação contínua — apagão ou não", "Certificado Rede de Negócios Protegidos", "Diferenciador visível para os seus clientes"]
     }
   },
+  "pages": {
+    "residencialBadge": "Soluções Residenciais",
+    "residencialTitle1": "A sua casa",
+    "residencialTitle2": "sempre ligada.",
+    "residencialSubtitle": "Energia solar com bateria: conforto contínuo e a fatura a cair, mesmo quando a rede falha.",
+    "empresarialBadge": "Soluções Empresariais",
+    "empresarialTitle1": "O seu negócio",
+    "empresarialTitle2": "nunca pára.",
+    "empresarialSubtitle": "Energia solar contínua para comércio, serviços e indústria. Sem apagões, com a fatura a cair."
+  },
+  "casaPreocupacoes": {
+    "overline": "O fim dos apagões em casa",
+    "headline": "Deixe de viver ao ritmo da ELECTRA.",
+    "items": [
+      { "title": "Comida a estragar", "desc": "Quando a luz vai, o frigorífico pára — e a comida da semana com ele." },
+      { "title": "Noites sem descanso", "desc": "Sem ar condicionado nem ventoinha, o calor não deixa ninguém dormir." },
+      { "title": "Sem água em casa", "desc": "A bomba pára e fica sem água logo quando mais precisa dela." },
+      { "title": "Casa vulnerável", "desc": "Alarmes, câmaras e luzes apagam-se. E os filhos sem luz para estudar." }
+    ]
+  },
+  "casaFatura": {
+    "overline": "Poupança real",
+    "headline": "A sua fatura de luz, finalmente a descer.",
+    "todayLabel": "A sua conta hoje",
+    "todayValue": "9.000+ CVE",
+    "todayUnit": " /mês",
+    "todayNote": "Com a ELECTRA — e a subir todos os anos.",
+    "withLabel": "Com a Cabo Energia",
+    "withValue": "até 80% menos",
+    "withNote": "A poupança começa logo no primeiro mês — e o sol não aumenta o preço.",
+    "financingTitle": "Não precisa de pagar tudo de uma vez.",
+    "financingBody": "Temos soluções de pagamento faseado e financiamento. Fale connosco e montamos um plano à medida do seu orçamento."
+  },
+  "negocioCusto": {
+    "overline": "O custo de não fazer nada",
+    "headline": "Quanto custa, afinal, um apagão ao seu negócio?",
+    "items": [
+      { "title": "Stock estragado", "desc": "Frigoríficos e arcas param. Produto fresco perdido em poucas horas." },
+      { "title": "Vendas paradas", "desc": "Sem caixa, sem TPA, sem luz. Cada hora fechado é faturação que não volta." },
+      { "title": "Gasóleo do gerador", "desc": "Milhares de CVE por mês em combustível — e o preço só sobe." },
+      { "title": "Equipamentos danificados", "desc": "Picos e quebras de energia queimam máquinas caras." }
+    ]
+  },
+  "vsGerador": {
+    "overline": "Solar vs Gerador a diesel",
+    "headline": "O gerador queima dinheiro. O sol trabalha de graça.",
+    "headerGerador": "Gerador a diesel",
+    "headerSolar": "Cabo Energia · Solar",
+    "rows": [
+      { "label": "Custo mensal", "gerador": "Gasóleo constante — sobe com o preço", "solar": "Quase zero depois de instalado" },
+      { "label": "Ruído", "gerador": "Alto, incomoda clientes e vizinhos", "solar": "Totalmente silencioso" },
+      { "label": "Manutenção", "gerador": "Frequente e cara", "solar": "Mínima, com monitorização remota" },
+      { "label": "Fiabilidade", "gerador": "Avaria e falha no pior momento", "solar": "Energia estável, dia após dia" },
+      { "label": "Ambiente", "gerador": "Fumo e emissões", "solar": "Limpo e 100% renovável" }
+    ],
+    "roiTitle": "Retorno do investimento em 3 a 6 anos.",
+    "roiBody": "Depois disso, a sua energia é praticamente grátis — enquanto o gerador continua a custar todos os meses."
+  },
   "footer": {
     "tagline": "Energia à prova de apagões.",
     "solucoes": "Soluções",

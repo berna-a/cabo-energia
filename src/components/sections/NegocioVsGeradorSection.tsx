@@ -1,31 +1,26 @@
 import { Check, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { SectionHeader } from "@/components/brand/SectionHeader";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
 import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
-const rows = [
-  { label: "Custo mensal", gerador: "Gasóleo constante — sobe com o preço", solar: "Quase zero depois de instalado" },
-  { label: "Ruído", gerador: "Alto, incomoda clientes e vizinhos", solar: "Totalmente silencioso" },
-  { label: "Manutenção", gerador: "Frequente e cara", solar: "Mínima, com monitorização remota" },
-  { label: "Fiabilidade", gerador: "Avaria e falha no pior momento", solar: "Energia estável, dia após dia" },
-  { label: "Ambiente", gerador: "Fumo e emissões", solar: "Limpo e 100% renovável" },
-];
-
 const SOURCE = "website_empresarial";
 
 export function NegocioVsGeradorSection() {
+  const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
   const ref = useRevealOnScroll<HTMLDivElement>();
+  const rows = t("vsGerador.rows", { returnObjects: true }) as { label: string; gerador: string; solar: string }[];
 
   return (
     <section className="bg-surface-muted py-20 md:py-28">
       <div ref={ref} className="reveal container flex flex-col gap-14">
         <SectionHeader
           align="center"
-          overline="Solar vs Gerador a diesel"
-          headline="O gerador queima dinheiro. O sol trabalha de graça."
+          overline={t("vsGerador.overline")}
+          headline={t("vsGerador.headline")}
           className="mx-auto"
         />
 
@@ -34,9 +29,9 @@ export function NegocioVsGeradorSection() {
           {/* Cabeçalho */}
           <div className="grid grid-cols-3 text-sm font-bold">
             <div className="p-4" />
-            <div className="p-4 text-center text-ink-soft">Gerador a diesel</div>
+            <div className="p-4 text-center text-ink-soft">{t("vsGerador.headerGerador")}</div>
             <div className="p-4 text-center text-brand-green" style={{ background: "rgba(26,92,58,0.06)" }}>
-              Cabo Energia · Solar
+              {t("vsGerador.headerSolar")}
             </div>
           </div>
           {/* Linhas */}
@@ -58,10 +53,10 @@ export function NegocioVsGeradorSection() {
         {/* Faixa de ROI */}
         <div className="flex flex-col items-center gap-6 rounded-2xl bg-brand-green p-8 text-center text-white md:p-12">
           <h3 className="max-w-2xl text-2xl font-bold leading-tight md:text-3xl">
-            Retorno do investimento em 3 a 6 anos.
+            {t("vsGerador.roiTitle")}
           </h3>
           <p className="max-w-xl text-white/85">
-            Depois disso, a sua energia é praticamente grátis — enquanto o gerador continua a custar todos os meses.
+            {t("vsGerador.roiBody")}
           </p>
           <PillButton
             size="lg"

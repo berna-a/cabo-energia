@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
 import { Marquee } from "@/components/brand/Marquee";
@@ -16,6 +17,7 @@ import heroResidencial from "@/assets/hero-residencial.webp";
 const SOURCE = "website_residencial";
 
 const Residencial = () => {
+  const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
   const heroRef = useRevealOnScroll<HTMLDivElement>();
 
@@ -49,7 +51,7 @@ const Residencial = () => {
                   <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
                     <span className="text-overline text-white/80">
-                      Soluções Residenciais
+                      {t("pages.residencialBadge")}
                     </span>
                   </div>
 
@@ -63,15 +65,15 @@ const Residencial = () => {
                       textTransform: "uppercase",
                     }}
                   >
-                    A sua casa<br />
-                    sempre ligada.
+                    {t("pages.residencialTitle1")}<br />
+                    {t("pages.residencialTitle2")}
                   </h1>
 
                   <p
                     className="mt-5 max-w-md leading-relaxed text-white/70"
                     style={{ fontSize: "1rem", fontWeight: 400 }}
                   >
-                    Energia solar com bateria: conforto contínuo e a fatura a cair, mesmo quando a rede falha.
+                    {t("pages.residencialSubtitle")}
                   </p>
                 </div>
 
