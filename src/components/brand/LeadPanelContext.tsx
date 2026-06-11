@@ -1,5 +1,6 @@
 import * as React from "react";
 import { z } from "zod";
+import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import {
   Dialog,
@@ -31,18 +32,18 @@ const leadSchema = z.object({
   nome: z
     .string()
     .trim()
-    .min(2, "Indique o seu nome completo.")
-    .max(100, "Máximo 100 caracteres."),
+    .min(2, "leadPanel.validName")
+    .max(100, "leadPanel.validMax"),
   telemovel: z
     .string()
     .trim()
-    .min(7, "Telemóvel inválido.")
-    .max(20, "Telemóvel inválido.")
-    .regex(/^[0-9 +()\-]+$/, "Use apenas números."),
+    .min(7, "leadPanel.validPhone")
+    .max(20, "leadPanel.validPhone")
+    .regex(/^[0-9 +()\-]+$/, "leadPanel.validPhoneChars"),
   ilha: z
     .string()
     .refine((v) => (ILHAS as readonly string[]).includes(v), {
-      message: "Selecione a sua ilha.",
+      message: "leadPanel.validIsland",
     }),
   tipo: z.enum(["residencial", "negocio"]),
 });
@@ -63,6 +64,7 @@ function LeadModalForm({
   source?: string;
   onSubmitted: () => void;
 }) {
+  const { t } = useTranslation();
   const [form, setForm] = React.useState<FormState>({
     nome: "",
     telemovel: "",
@@ -80,7 +82,7 @@ function LeadModalForm({
       const next: Record<string, string> = {};
       for (const issue of result.error.issues) {
         const key = issue.path[0]?.toString();
-        if (key && !next[key]) next[key] = issue.message;
+        if (key && !next[key]) next[key] = t(issue.message);
       }
       setErrors(next);
       return;
@@ -157,7 +159,7 @@ function LeadModalForm({
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div>
         <label style={labelStyle} htmlFor="lead-nome">
-          Nome completo
+          {t("leadPanel.name")}
         </label>
         <input
           id="lead-nome"
@@ -175,7 +177,7 @@ function LeadModalForm({
 
       <div>
         <label style={labelStyle} htmlFor="lead-telemovel">
-          Telemóvel
+          {t("leadPanel.phone")}
         </label>
         <input
           id="lead-telemovel"
@@ -194,7 +196,7 @@ function LeadModalForm({
 
       <div>
         <label style={labelStyle} htmlFor="lead-ilha">
-          Ilha
+          {t("leadPanel.island")}
         </label>
         <select
           id="lead-ilha"
@@ -204,7 +206,7 @@ function LeadModalForm({
             setForm((f) => ({ ...f, ilha: e.target.value as FormState["ilha"] }))
           }
         >
-          <option value="">Selecione a ilha…</option>
+          <option value="">{t("leadPanel.islandPlaceholder")}</option>
           {ILHAS.map((i) => (
             <option key={i} value={i}>
               {i}
@@ -217,26 +219,26 @@ function LeadModalForm({
       </div>
 
       <div>
-        <span style={labelStyle}>Tipo de solução</span>
+        <span style={labelStyle}>{t("leadPanel.solutionType")}</span>
         <div
           className="inline-flex w-full rounded-full p-1"
           style={{ background: "rgba(13,43,31,0.06)" }}
           role="tablist"
         >
-          {(["residencial", "negocio"] as const).map((t) => {
-            const active = form.tipo === t;
+          {(["residencial", "negocio"] as const).map((tipo) => {
+            const active = form.tipo === tipo;
             return (
               <button
-                key={t}
+                key={tipo}
                 type="button"
-                onClick={() => setForm((f) => ({ ...f, tipo: t }))}
+                onClick={() => setForm((f) => ({ ...f, tipo }))}
                 className="flex-1 rounded-full px-4 py-2 text-sm font-semibold transition-all"
                 style={{
                   background: active ? DARK : "transparent",
                   color: active ? "#ffffff" : DARK,
                 }}
               >
-                {t === "residencial" ? "Residencial" : "Negócio"}
+                {tipo === "residencial" ? t("leadPanel.residential") : t("leadPanel.business")}
               </button>
             );
           })}
@@ -255,7 +257,7 @@ function LeadModalForm({
             lineHeight: 1.5,
           }}
         >
-          Não conseguimos registar agora. Fale connosco diretamente:{" "}
+          {t("leadPanel.error")}{" "}
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" style={{ color: "#1A5C3A", fontWeight: 700 }}>
             WhatsApp
           </a>
@@ -269,13 +271,14 @@ function LeadModalForm({
         className="mt-2 w-full rounded-full px-6 py-4 text-sm font-semibold uppercase tracking-[0.1em] transition-transform hover:-translate-y-0.5 disabled:opacity-60"
         style={{ background: DARK, color: "#ffffff", fontFamily: FONT }}
       >
-        {submitting ? "A enviar…" : "Confirmar Contacto"}
+        {submitting ? t("leadPanel.submitting") : t("leadPanel.submit")}
       </button>
     </form>
   );
 }
 
 function SuccessMessage() {
+  const { t } = useTranslation();
   return (
     <div className="py-6 text-center">
       <div
@@ -295,19 +298,20 @@ function SuccessMessage() {
           margin: 0,
         }}
       >
-        Obrigado.
+        {t("leadPanel.successTitle")}
       </h3>
       <p
         className="mx-auto mt-3 max-w-sm"
         style={{ color: MUTED, fontSize: 14, lineHeight: 1.55 }}
       >
-        A nossa equipa irá ligar-lhe nas próximas 24 horas. Cabo Verde não pode parar.
+        {t("leadPanel.successBody")}
       </p>
     </div>
   );
 }
 
 export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
   const [defaultClientType, setDefaultClientType] = React.useState<ClientType>(undefined);
@@ -368,13 +372,13 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
                     margin: 0,
                   }}
                 >
-                  Ligar Cabo
+                  {t("leadPanel.title")}
                 </DialogTitle>
                 <DialogDescription
                   className="mt-2"
                   style={{ color: MUTED, fontSize: 13, lineHeight: 1.55 }}
                 >
-                  Deixe os seus dados. Contactamos em menos de 24 horas — sem compromisso.
+                  {t("leadPanel.subtitle")}
                 </DialogDescription>
 
                 <div className="mt-6">
@@ -387,9 +391,9 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
               </>
             ) : (
               <>
-                <DialogTitle className="sr-only">Pedido enviado</DialogTitle>
+                <DialogTitle className="sr-only">{t("leadPanel.successSr")}</DialogTitle>
                 <DialogDescription className="sr-only">
-                  Receberá um contacto em 24 horas.
+                  {t("leadPanel.successBody")}
                 </DialogDescription>
                 <SuccessMessage />
               </>

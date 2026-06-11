@@ -89,6 +89,28 @@
     "certMember": "Membro Oficial",
     "certProtected": "Empresa Protegida contra Apagões"
   },
+  "leadPanel": {
+    "title": "Ligar Cabo",
+    "subtitle": "Deixe os seus dados. Contactamos em menos de 24 horas — sem compromisso.",
+    "name": "Nome completo",
+    "phone": "Telemóvel",
+    "island": "Ilha",
+    "islandPlaceholder": "Selecione a ilha…",
+    "solutionType": "Tipo de solução",
+    "residential": "Residencial",
+    "business": "Negócio",
+    "submit": "Confirmar Contacto",
+    "submitting": "A enviar…",
+    "error": "Não conseguimos registar agora. Fale connosco diretamente:",
+    "successTitle": "Obrigado.",
+    "successBody": "A nossa equipa irá ligar-lhe nas próximas 24 horas. Cabo Verde não pode parar.",
+    "successSr": "Pedido enviado",
+    "validName": "Indique o seu nome completo.",
+    "validMax": "Máximo 100 caracteres.",
+    "validPhone": "Telemóvel inválido.",
+    "validPhoneChars": "Use apenas números.",
+    "validIsland": "Selecione a sua ilha."
+  },
   "footer": {
     "tagline": "Energia à prova de apagões.",
     "solucoes": "Soluções",

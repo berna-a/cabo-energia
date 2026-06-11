@@ -89,6 +89,28 @@
     "certMember": "Official Member",
     "certProtected": "Business Protected Against Blackouts"
   },
+  "leadPanel": {
+    "title": "Ligar Cabo",
+    "subtitle": "Leave your details. We'll contact you in under 24 hours — no commitment.",
+    "name": "Full name",
+    "phone": "Phone",
+    "island": "Island",
+    "islandPlaceholder": "Select your island…",
+    "solutionType": "Solution type",
+    "residential": "Residential",
+    "business": "Business",
+    "submit": "Confirm Contact",
+    "submitting": "Sending…",
+    "error": "We couldn't register you right now. Contact us directly:",
+    "successTitle": "Thank you.",
+    "successBody": "Our team will call you within the next 24 hours. Cape Verde can't stop.",
+    "successSr": "Request sent",
+    "validName": "Please enter your full name.",
+    "validMax": "Maximum 100 characters.",
+    "validPhone": "Invalid phone number.",
+    "validPhoneChars": "Use numbers only.",
+    "validIsland": "Select your island."
+  },
   "footer": {
     "tagline": "Blackout-proof energy.",
     "solucoes": "Solutions",

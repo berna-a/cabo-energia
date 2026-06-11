@@ -89,6 +89,28 @@
     "certMember": "Membre Officiel",
     "certProtected": "Entreprise Protégée contre les Coupures"
   },
+  "leadPanel": {
+    "title": "Ligar Cabo",
+    "subtitle": "Laissez vos coordonnées. Nous vous contactons en moins de 24 heures — sans engagement.",
+    "name": "Nom complet",
+    "phone": "Téléphone",
+    "island": "Île",
+    "islandPlaceholder": "Sélectionnez votre île…",
+    "solutionType": "Type de solution",
+    "residential": "Résidentiel",
+    "business": "Entreprise",
+    "submit": "Confirmer le Contact",
+    "submitting": "Envoi…",
+    "error": "Nous n'avons pas pu vous enregistrer pour le moment. Contactez-nous directement :",
+    "successTitle": "Merci.",
+    "successBody": "Notre équipe vous appellera dans les prochaines 24 heures. Le Cap-Vert ne peut pas s'arrêter.",
+    "successSr": "Demande envoyée",
+    "validName": "Veuillez indiquer votre nom complet.",
+    "validMax": "Maximum 100 caractères.",
+    "validPhone": "Numéro de téléphone invalide.",
+    "validPhoneChars": "Utilisez uniquement des chiffres.",
+    "validIsland": "Sélectionnez votre île."
+  },
   "footer": {
     "tagline": "Énergie à l'épreuve des coupures.",
     "solucoes": "Solutions",
