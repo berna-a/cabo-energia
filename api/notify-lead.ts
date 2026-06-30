@@ -19,6 +19,7 @@ const esc = (v: unknown) =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
@@ -96,8 +97,9 @@ export default async function handler(req: any, res: any) {
       return;
     }
     res.status(200).json({ ok: true, emailed: true });
-  } catch (err: any) {
-    res.status(500).json({ ok: false, emailed: false, error: String(err?.message || err) });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    res.status(500).json({ ok: false, emailed: false, error: message });
   }
 }
 

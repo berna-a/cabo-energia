@@ -39,7 +39,7 @@ const leadSchema = z.object({
     .trim()
     .min(7, "leadPanel.validPhone")
     .max(20, "leadPanel.validPhone")
-    .regex(/^[0-9 +()\-]+$/, "leadPanel.validPhoneChars"),
+    .regex(/^[0-9 +()-]+$/, "leadPanel.validPhoneChars"),
   ilha: z
     .string()
     .refine((v) => (ILHAS as readonly string[]).includes(v), {
