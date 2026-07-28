@@ -24,6 +24,13 @@
       "priority": "0.9"
     },
     {
+      "path": "/privacidade",
+      "title": "Política de Privacidade — CABO ENERGIA",
+      "description": "Que dados a CABO ENERGIA recolhe no site, para que servem, quanto tempo ficam guardados e como pode pedir para os ver, corrigir ou apagar.",
+      "changefreq": "yearly",
+      "priority": "0.3"
+    },
+    {
       "path": "/proposta",
       "title": "Gerador de Propostas — CABO ENERGIA",
       "description": "Ferramenta interna da CABO ENERGIA.",

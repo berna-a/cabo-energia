@@ -190,6 +190,13 @@ export function Footer() {
             </a>
           </span>
           <div className="flex items-center gap-4">
+            <a
+              href="/privacidade"
+              className="transition-colors hover:!text-brand-green"
+              style={{ fontSize: 12, color: MUTED, textDecoration: "none" }}
+            >
+              {t("footer.privacidade")}
+            </a>
             <LanguageToggle tone="dark" />
             <span style={{ fontSize: 12 }}>Cabo Verde · 238</span>
           </div>

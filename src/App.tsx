@@ -10,6 +10,7 @@ import Index from "./pages/Index.tsx";
 import Residencial from "./pages/Residencial.tsx";
 import Empresarial from "./pages/Empresarial.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Privacidade from "./pages/Privacidade.tsx";
 
 // Ferramenta interna: carregada só quando /proposta é aberta, para não pesar
 // no bundle do site público (arrasta jspdf, html2canvas e recharts).
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/residencial" element={<Residencial />} />
             <Route path="/empresarial" element={<Empresarial />} />
+            <Route path="/privacidade" element={<Privacidade />} />
             <Route
               path="/proposta"
               element={
