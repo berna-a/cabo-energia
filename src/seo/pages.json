@@ -1,0 +1,33 @@
+{
+  "siteUrl": "https://www.caboenergia.cv",
+  "ogImage": "/social/og-cabo-energia.jpg",
+  "pages": [
+    {
+      "path": "/",
+      "title": "CABO ENERGIA — Energia Solar para Casas e Negócios em Cabo Verde",
+      "description": "Sistemas solares completos em Cabo Verde. Stock local na Praia, contacto em 24 horas e suporte contínuo — para que nunca pare por falta de luz.",
+      "changefreq": "weekly",
+      "priority": "1.0"
+    },
+    {
+      "path": "/residencial",
+      "title": "Energia Solar para Casas em Cabo Verde — CABO ENERGIA",
+      "description": "Proteja a sua casa dos apagões e baixe a factura de luz. Kits solares com bateria, instalados em Cabo Verde com stock local e resposta em 24 horas.",
+      "changefreq": "monthly",
+      "priority": "0.9"
+    },
+    {
+      "path": "/empresarial",
+      "title": "Energia Solar para Negócios em Cabo Verde — CABO ENERGIA",
+      "description": "Um apagão é dinheiro perdido. Sistemas solares com backup para negócios em Cabo Verde — stock local, instalação rápida e suporte contínuo.",
+      "changefreq": "monthly",
+      "priority": "0.9"
+    },
+    {
+      "path": "/proposta",
+      "title": "Gerador de Propostas — CABO ENERGIA",
+      "description": "Ferramenta interna da CABO ENERGIA.",
+      "noindex": true
+    }
+  ]
+}

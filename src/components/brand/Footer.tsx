@@ -142,11 +142,11 @@ export function Footer() {
         <ColumnLinks
           label={t("footer.solucoes")}
           links={[
-            { href: "#solucoes", text: "Casa Autonomia" },
-            { href: "#solucoes", text: "Casa Família" },
-            { href: "#solucoes", text: "Casa Prestige" },
-            { href: "#solucoes", text: "Negócio Essencial" },
-            { href: "#solucoes", text: "Negócio Corporativo" },
+            { href: "/residencial#solucoes", text: "Casa Autonomia" },
+            { href: "/residencial#solucoes", text: "Casa Família" },
+            { href: "/residencial#solucoes", text: "Casa Prestige" },
+            { href: "/empresarial#solucoes", text: "Negócio Essencial" },
+            { href: "/empresarial#solucoes", text: "Negócio Corporativo" },
           ]}
         />
 
@@ -154,9 +154,9 @@ export function Footer() {
         <ColumnLinks
           label={t("footer.empresa")}
           links={[
-            { href: "#processo", text: t("footer.comoFunciona") },
-            { href: "#protecao", text: t("footer.planosProtecao") },
-            { href: "#rede", text: t("footer.rede") },
+            { href: "/#como-funciona", text: t("footer.comoFunciona") },
+            { href: "/#protecao", text: t("footer.planosProtecao") },
+            { href: "/#rede", text: t("footer.rede") },
             { href: "#contacto", text: t("footer.contacto") },
           ]}
         />

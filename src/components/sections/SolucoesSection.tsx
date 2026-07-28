@@ -196,6 +196,7 @@ export function SolucoesSection({
 
   return (
     <section
+      id="solucoes"
       className="relative overflow-hidden"
       style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >

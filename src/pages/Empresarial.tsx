@@ -32,7 +32,7 @@ const Empresarial = () => {
             alt="Negócio em Cabo Verde com energia solar"
             className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
           />
           <div
             aria-hidden

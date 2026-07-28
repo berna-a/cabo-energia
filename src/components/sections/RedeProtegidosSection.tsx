@@ -146,6 +146,7 @@ export function RedeProtegidosSection() {
 
   return (
     <section
+      id="rede"
       className="relative overflow-hidden bg-white"
       style={{ fontFamily: FONT, padding: "96px 24px" }}
     >

@@ -28,7 +28,7 @@ export function HeroSection() {
         alt="Família em casa com painéis solares"
         className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
         loading="eager"
-        fetchPriority="high"
+        fetchpriority="high"
       />
 
       {/* Overlay — radial elliptical fade from bottom-left */}

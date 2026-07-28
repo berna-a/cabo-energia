@@ -112,6 +112,7 @@ export function ProtecaoContinuaSection() {
   }));
   return (
     <section
+      id="protecao"
       className="relative overflow-hidden"
       style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
     >
