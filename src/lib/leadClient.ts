@@ -36,8 +36,12 @@ export interface Lead {
   /**
    * Dados do simulador de poupança, quando existem: factura mensal, perfil,
    * pacote sugerido, poupança estimada. Ficam em campos próprios no AOS.
+   *
+   * Lista de pares, e não objecto: os nomes de campo no Convex só admitem
+   * ASCII, e estas etiquetas têm acentos ("Poupança estimada"). Em lista, a
+   * etiqueta é um valor — passa qualquer texto e mantém a ordem.
    */
-  camposExtra?: Record<string, string | number | boolean>;
+  camposExtra?: { chave: string; valor: string | number | boolean }[];
 }
 
 /**
@@ -48,10 +52,10 @@ export interface Lead {
  * tentam-se os dois caminhos mesmo que o primeiro já tenha resultado.
  */
 export async function submitLead(lead: Lead): Promise<boolean> {
-  const camposExtra = {
-    ...(lead.ilha ? { Ilha: lead.ilha } : {}),
-    ...(lead.camposExtra ?? {}),
-  };
+  const camposExtra = [
+    ...(lead.ilha ? [{ chave: "Ilha", valor: lead.ilha }] : []),
+    ...(lead.camposExtra ?? []),
+  ];
 
   let aosOk = false;
   try {
@@ -61,7 +65,7 @@ export async function submitLead(lead: Lead): Promise<boolean> {
       servico: lead.tipo === "empresarial" ? "empresarial" : "residencial",
       origem: lead.origem,
       org_slug: ORG_SLUG,
-      ...(Object.keys(camposExtra).length ? { campos_extra: camposExtra } : {}),
+      ...(camposExtra.length ? { campos_extra: camposExtra } : {}),
     });
     aosOk = true;
   } catch (err) {
@@ -80,7 +84,7 @@ export async function submitLead(lead: Lead): Promise<boolean> {
         client_type: lead.tipo,
         source: lead.origem,
         ilha: lead.ilha,
-        ...camposExtra,
+        ...Object.fromEntries(camposExtra.map((c) => [c.chave, c.valor])),
       }),
     });
     const data = await res.json().catch(() => ({}));

@@ -268,13 +268,16 @@ export default function SimuladorSection() {
       tipo: seg === "casa" ? "residencial" : "empresarial",
       ilha: island,
       origem: "simulador",
-      camposExtra: {
+      camposExtra: [
         // Nomes legíveis, não os códigos internos: quem lê isto é o comercial.
-        Perfil: profiles.find((p) => p.id === profile)?.name ?? "",
-        "Pacote sugerido": PACKAGES[currentPkg].name,
-        "Factura mensal (CVE)": fatura,
-        "Poupança estimada (CVE/mês)": savings,
-      },
+        {
+          chave: "Perfil",
+          valor: profiles.find((p) => p.id === profile)?.name ?? "",
+        },
+        { chave: "Pacote sugerido", valor: PACKAGES[currentPkg].name },
+        { chave: "Factura mensal (CVE)", valor: fatura },
+        { chave: "Poupança estimada (CVE/mês)", valor: savings },
+      ],
     });
 
     if (capturada) {
