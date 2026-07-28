@@ -125,8 +125,9 @@ const Privacidade = () => {
             <Seccao n="4" titulo="Com que fundamento">
               <p>
                 Tratamos os seus dados com base no seu <strong>consentimento</strong>, dado no
-                momento em que submete o formulário, e para <strong>diligências prévias a um
-                contrato</strong> que nos pediu — a proposta que quer receber.
+                momento em que submete o formulário, e porque são necessários a{" "}
+                <strong>diligências prévias a um contrato</strong> que nos pediu — a proposta que
+                quer receber. São os fundamentos previstos no artigo 7.º da lei aplicável.
               </p>
               <p>
                 Pode retirar o consentimento a qualquer momento, sem justificar. Ver o ponto 8.
@@ -162,6 +163,11 @@ const Privacidade = () => {
                 salvaguardas contratuais e técnicas de proteção reconhecidas internacionalmente.
               </p>
               <p>
+                Esta transferência é admitida pelo artigo 20.º da lei aplicável, por ser necessária
+                a diligências prévias ao contrato que nos pediu, e conta ainda com o consentimento
+                que nos dá ao submeter o formulário.
+              </p>
+              <p>
                 Se preferir não ter os seus dados tratados fora do país, contacte-nos diretamente
                 por telefone ou WhatsApp em vez de usar os formulários do site.
               </p>
@@ -169,9 +175,11 @@ const Privacidade = () => {
 
             <Seccao n="7" titulo="Durante quanto tempo guardamos">
               <p>
-                Guardamos os dados do seu pedido pelo tempo necessário a responder-lhe e a
-                acompanhar o processo comercial, e até <strong>24 meses</strong> após o último
-                contacto entre nós.
+                A lei obriga-nos a guardar os dados apenas durante o período necessário à
+                finalidade para que os recolhemos (artigo 6.º). Para um pedido de proposta,
+                fixámos esse período em <strong>24 meses</strong> a contar do último contacto entre
+                nós — o tempo em que uma decisão de investimento desta natureza costuma
+                amadurecer. Findo o prazo, os dados são eliminados.
               </p>
               <p>
                 Se se tornar nosso cliente, guardamos o necessário para cumprir a garantia, o
@@ -186,28 +194,34 @@ const Privacidade = () => {
               </p>
               <ul className="ml-5 flex list-disc flex-col gap-2">
                 <li>
-                  <strong>Saber</strong> que dados temos sobre si e o que fazemos com eles;
+                  <strong>Ser informado</strong> sobre que dados temos e o que fazemos com eles
+                  (artigo 11.º);
                 </li>
                 <li>
-                  <strong>Aceder</strong> a esses dados e obter uma cópia;
+                  <strong>Aceder</strong> aos seus dados e obter uma cópia inteligível, sem custos
+                  excessivos (artigo 12.º);
                 </li>
                 <li>
-                  <strong>Corrigir</strong> o que estiver errado ou incompleto;
+                  <strong>Corrigir</strong> o que estiver errado ou incompleto, e obter o
+                  apagamento ou bloqueio dos dados cujo tratamento não cumpra a lei (artigo 12.º);
                 </li>
                 <li>
-                  <strong>Apagar</strong> os seus dados;
-                </li>
-                <li>
-                  <strong>Opor-se</strong> ao tratamento e retirar o consentimento que deu;
+                  <strong>Opor-se</strong> ao tratamento por razões ligadas à sua situação, e
+                  recusar gratuitamente o uso dos seus dados para marketing (artigo 13.º);
                 </li>
                 <li>
                   <strong>Não ficar sujeito</strong> a decisões tomadas apenas por meios
-                  automáticos que o afetem de forma significativa;
+                  automáticos que o afetem de forma significativa (artigo 14.º);
                 </li>
                 <li>
-                  <strong>Reclamar</strong> junto da autoridade de controlo.
+                  <strong>Reclamar</strong> junto da CNPD e recorrer judicialmente (artigo 30.º).
                 </li>
               </ul>
+              <p>
+                <strong>Além do que a lei exige:</strong> se nos pedir para apagar os seus dados,
+                apagamos — mesmo que o tratamento seja legítimo e não sejamos obrigados a fazê-lo.
+                Basta pedir.
+              </p>
               <p>
                 Para exercer qualquer um destes direitos, basta escrever para{" "}
                 <a

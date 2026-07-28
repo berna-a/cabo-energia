@@ -30,7 +30,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { submitLead as enviarLead } from "@/lib/leadClient";
 import { WHATSAPP_URL } from "@/lib/constants";
 import { PillButton } from "@/components/brand/PillButton";
 import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
@@ -258,49 +258,26 @@ export default function SimuladorSection() {
     setErrors(e);
     if (Object.keys(e).length) return;
 
-    const payload = {
-      name: nome.trim(),
-      phone: tel.trim(),
-      client_type: seg === "casa" ? "residencial" : "empresarial",
-      source: "simulador",
-      status: "new_lead",
-      ilha: island,
-      perfil: profile,
-      pacote_recomendado: currentPkg,
-      fatura_mensal: fatura,
-      poupanca_estimada: savings,
-    };
     setSubmitState("submitting");
 
-    // Lead é capturada se a BD gravar OU se o email for enviado (rede de segurança).
-    let supabaseOk = false;
-    let emailOk = false;
+    // O que o simulador apurou segue com a lead: é isto que permite ao
+    // comercial ligar já a saber do que se trata, em vez de começar do zero.
+    const capturada = await enviarLead({
+      nome: nome.trim(),
+      telemovel: tel.trim(),
+      tipo: seg === "casa" ? "residencial" : "empresarial",
+      ilha: island,
+      origem: "simulador",
+      camposExtra: {
+        // Nomes legíveis, não os códigos internos: quem lê isto é o comercial.
+        Perfil: profiles.find((p) => p.id === profile)?.name ?? "",
+        "Pacote sugerido": PACKAGES[currentPkg].name,
+        "Factura mensal (CVE)": fatura,
+        "Poupança estimada (CVE/mês)": savings,
+      },
+    });
 
-    // 1) Base de dados (best-effort)
-    try {
-      if (isSupabaseConfigured() && supabase) {
-        const { error } = await supabase.from("leads").insert(payload as never);
-        supabaseOk = !error;
-        if (error) console.error("[Simulador] supabase error:", error);
-      }
-    } catch (err) {
-      console.error("[Simulador] insert failed:", err);
-    }
-
-    // 2) Email à equipa via Vercel (funciona mesmo que a BD esteja em baixo)
-    try {
-      const res = await fetch("/api/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json().catch(() => ({}));
-      emailOk = res.ok && data.emailed === true;
-    } catch (err) {
-      console.error("[Simulador] notify failed:", err);
-    }
-
-    if (supabaseOk || emailOk) {
+    if (capturada) {
       setSubmitState("idle");
       go(6);
     } else {

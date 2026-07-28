@@ -9,7 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { LeadPanelContext, type ClientType } from "./leadPanelContextValue";
-import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
+import { submitLead } from "@/lib/leadClient";
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
@@ -91,41 +91,16 @@ function LeadModalForm({
     setSubmitFailed(false);
     setSubmitting(true);
 
-    const payload = {
-      name: form.nome.trim(),
-      phone: form.telemovel.trim(),
-      client_type: form.tipo === "negocio" ? "empresarial" : "residencial",
-      source: source || "website_lead_panel",
-      status: "new_lead",
+    const capturada = await submitLead({
+      nome: form.nome.trim(),
+      telemovel: form.telemovel.trim(),
+      tipo: form.tipo === "negocio" ? "empresarial" : "residencial",
       ilha: form.ilha,
-    };
-
-    // Lead capturada se a BD gravar OU se o email for enviado (rede de segurança).
-    let supabaseOk = false;
-    let emailOk = false;
-    try {
-      if (isSupabaseConfigured() && supabase) {
-        const { error } = await supabase.from("leads").insert(payload as never);
-        supabaseOk = !error;
-        if (error) console.error("[LeadPanel] supabase error:", error);
-      }
-    } catch (err) {
-      console.error("[LeadPanel] insert failed:", err);
-    }
-    try {
-      const res = await fetch("/api/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json().catch(() => ({}));
-      emailOk = res.ok && data.emailed === true;
-    } catch (err) {
-      console.error("[LeadPanel] notify failed:", err);
-    }
+      origem: source || "website_lead_panel",
+    });
 
     setSubmitting(false);
-    if (supabaseOk || emailOk) {
+    if (capturada) {
       onSubmitted();
     } else {
       setSubmitFailed(true);
