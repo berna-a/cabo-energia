@@ -172,7 +172,7 @@ const BENEFITS: Record<PkgKey, Benefit[]> = {
   autonomia: [
     { Icon: Coins, color: "#F5C842", bg: "rgba(245,200,66,0.10)", text: "Até 20.000 CVE poupados por mês" },
     { Icon: Snowflake, color: "#3B82F6", bg: "rgba(59,130,246,0.12)", text: "AC todo o dia sem sentir na factura" },
-    { Icon: CalendarCheck, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Retorno do investimento em 1 a 2 anos" },
+    { Icon: CalendarCheck, color: "#10B981", bg: "rgba(16,185,129,0.12)", text: "Retorno do investimento em 3 a 4 anos" },
   ],
   plena: [
     { Icon: PowerOff, color: "#8B5CF6", bg: "rgba(139,92,246,0.12)", text: "Independência quase total da rede" },
@@ -232,7 +232,11 @@ export default function SimuladorSection() {
   const currentPkg: PkgKey = pkgOverride ?? autoPkg;
   const savings = profile ? calcSavings(currentPkg, fatura) : 0;
   const annual = savings * 12;
-  const payback = "1–2";
+  // 2–4 anos é o intervalo real dos cinco kits, com os preços promocionais do
+  // Kevin (04-08-2026) sobre a poupança mensal anunciada: o mais rápido é o
+  // Casa Prestige com 2 anos, o mais lento 3,9. Dizia "1–2" até 12-08-2026, e
+  // nenhum kit chegava lá. Ver o cabeçalho de ProposalGenerator.tsx para a conta.
+  const payback = "2–4";
 
   React.useEffect(() => {
     setPkgOverride(null);

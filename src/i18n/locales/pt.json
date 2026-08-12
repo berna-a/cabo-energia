@@ -25,18 +25,39 @@
   "processo": {
     "title": "Da simulação à instalação — sem surpresas.",
     "steps": [
-      { "title": "Simulação & Contacto", "copy": "Utilize o simulador no topo da página. A nossa equipa liga de volta em menos de 24 horas." },
-      { "title": "Levantamento Técnico", "copy": "Visita cirúrgica ao local para analisar o telhado e os consumos. Custo de 5.000 CVE (100% dedutível no contrato)." },
-      { "title": "Plano de Proteção", "copy": "Recebe uma proposta final transparente com o cálculo exato da sua produção solar, poupança e retorno." },
-      { "title": "Instalação & Ligação", "copy": "Montagem técnica cirúrgica realizada por profissionais certificados e testes de carga ao vivo. A sua vida não para." }
+      {
+        "title": "Simulação & Contacto",
+        "copy": "Utilize o simulador no topo da página. A nossa equipa liga de volta em menos de 24 horas."
+      },
+      {
+        "title": "Levantamento Técnico",
+        "copy": "Visita cirúrgica ao local para analisar o telhado e os consumos. Custo de 5.000 CVE (100% dedutível no contrato)."
+      },
+      {
+        "title": "Plano de Proteção",
+        "copy": "Recebe uma proposta final transparente com o cálculo exato da sua produção solar, poupança e retorno."
+      },
+      {
+        "title": "Instalação & Ligação",
+        "copy": "Montagem técnica cirúrgica realizada por profissionais certificados e testes de carga ao vivo. A sua vida não para."
+      }
     ]
   },
   "impactoDia": {
     "title": "O impacto no seu dia a dia",
     "items": [
-      { "title": "Não pare de cozinhar.", "copy": "Frigorífico e arca vertical sempre ligados. Zero desperdício de alimentos." },
-      { "title": "Não pare de produzir.", "copy": "Wi-Fi ativo, computadores carregados e iluminação para trabalhar ou estudar." },
-      { "title": "Ar condicionado sem culpa.", "copy": "Use a climatização nas horas de maior calor sabendo que é o sol que paga a conta." }
+      {
+        "title": "Não pare de cozinhar.",
+        "copy": "Frigorífico e arca vertical sempre ligados. Zero desperdício de alimentos."
+      },
+      {
+        "title": "Não pare de produzir.",
+        "copy": "Wi-Fi ativo, computadores carregados e iluminação para trabalhar ou estudar."
+      },
+      {
+        "title": "Ar condicionado sem culpa.",
+        "copy": "Use a climatização nas horas de maior calor sabendo que é o sol que paga a conta."
+      }
     ]
   },
   "finalCta": {
@@ -50,15 +71,45 @@
     "toggleNegocio": "Negócio",
     "poupancaLabel": "Poupança",
     "retornoLabel": "Retorno",
-    "retornoValue": "1–2 anos",
+    "retornoValue": "2–4 anos",
     "residencial": [
-      { "badge": "Essencial", "promise": "O sol paga a sua conta de luz, todos os meses.", "poupanca": "10k CVE/mês", "production": "447 kWh/mês", "system": "6 painéis · inversor 5 kW · bateria 5 kWh" },
-      { "badge": "Popular", "promise": "Energia de sobra para toda a casa.", "poupanca": "20k CVE/mês", "production": "894 kWh/mês", "system": "12 painéis · inversor 10 kW · bateria 10 kWh" },
-      { "badge": "Prestígio", "promise": "Independência total — viva como se a ELECTRA não existisse.", "poupanca": "50k CVE/mês", "production": "1788 kWh/mês", "system": "24 painéis · inversor 15 kW · bateria 15 kWh" }
+      {
+        "badge": "Essencial",
+        "promise": "O sol paga a sua conta de luz, todos os meses.",
+        "poupanca": "10k CVE/mês",
+        "production": "447 kWh/mês",
+        "system": "6 painéis · inversor 5 kW · bateria 5 kWh"
+      },
+      {
+        "badge": "Popular",
+        "promise": "Energia de sobra para toda a casa.",
+        "poupanca": "20k CVE/mês",
+        "production": "894 kWh/mês",
+        "system": "12 painéis · inversor 10 kW · bateria 10 kWh"
+      },
+      {
+        "badge": "Prestígio",
+        "promise": "Independência total — viva como se a ELECTRA não existisse.",
+        "poupanca": "50k CVE/mês",
+        "production": "1788 kWh/mês",
+        "system": "24 painéis · inversor 15 kW · bateria 15 kWh"
+      }
     ],
     "negocio": [
-      { "badge": "Eficiência", "promise": "O seu negócio não para. A sua fatura baixa.", "poupanca": "50k CVE/mês", "production": "1788 kWh/mês", "system": "24 painéis · inversor 15 kW · bateria 15 kWh" },
-      { "badge": "Corporativo", "promise": "Potência para operar sem limites.", "poupanca": "100k CVE/mês", "production": "3579 kWh/mês", "system": "48 painéis · 30 kW inversores · 30 kWh baterias" }
+      {
+        "badge": "Eficiência",
+        "promise": "O seu negócio não para. A sua fatura baixa.",
+        "poupanca": "50k CVE/mês",
+        "production": "1788 kWh/mês",
+        "system": "24 painéis · inversor 15 kW · bateria 15 kWh"
+      },
+      {
+        "badge": "Corporativo",
+        "promise": "Potência para operar sem limites.",
+        "poupanca": "100k CVE/mês",
+        "production": "3579 kWh/mês",
+        "system": "48 painéis · 30 kW inversores · 30 kWh baterias"
+      }
     ]
   },
   "impactBento": {
@@ -76,9 +127,36 @@
     "title": "Planos de Proteção Contínua",
     "perMonth": "por mês · faturado anualmente",
     "plans": [
-      { "name": "Plano Seguro", "badge": "Vigilância", "features": ["Monitorização remota do sistema 24/7", "Relatório mensal de performance", "Alertas automáticos de falha", "Resposta técnica em 48h"] },
-      { "name": "Plano Tranquilo", "badge": "Recomendado", "features": ["Tudo o que está incluído no Seguro", "2× Limpezas profissionais de painéis por ano", "1× Visita técnica de auditoria anual", "Resposta técnica prioritária em 24h"] },
-      { "name": "Plano Pleno", "badge": "Imunidade Total", "features": ["Tudo o que está incluído no Tranquilo", "4× Limpezas profissionais de painéis por ano", "Atualizações prioritárias de software", "Resposta em 4h com substituição imediata em avaria"] }
+      {
+        "name": "Plano Seguro",
+        "badge": "Vigilância",
+        "features": [
+          "Monitorização remota do sistema 24/7",
+          "Relatório mensal de performance",
+          "Alertas automáticos de falha",
+          "Resposta técnica em 48h"
+        ]
+      },
+      {
+        "name": "Plano Tranquilo",
+        "badge": "Recomendado",
+        "features": [
+          "Tudo o que está incluído no Seguro",
+          "2× Limpezas profissionais de painéis por ano",
+          "1× Visita técnica de auditoria anual",
+          "Resposta técnica prioritária em 24h"
+        ]
+      },
+      {
+        "name": "Plano Pleno",
+        "badge": "Imunidade Total",
+        "features": [
+          "Tudo o que está incluído no Tranquilo",
+          "4× Limpezas profissionais de painéis por ano",
+          "Atualizações prioritárias de software",
+          "Resposta em 4h com substituição imediata em avaria"
+        ]
+      }
     ]
   },
   "rede": {
@@ -126,16 +204,40 @@
     "step2HintHome": "Selecione o perfil que melhor descreve a sua habitação.",
     "step2HintBusiness": "Selecione o perfil do seu espaço de negócio.",
     "profilesHome": [
-      { "name": "Apartamento", "sub": "Até 3 pessoas" },
-      { "name": "Casa ou apartamento", "sub": "3–5 pessoas" },
-      { "name": "Moradia com AC", "sub": "Consumo mais elevado" },
-      { "name": "Vivenda / casa grande", "sub": "Vários AC, consumo intensivo" }
+      {
+        "name": "Apartamento",
+        "sub": "Até 3 pessoas"
+      },
+      {
+        "name": "Casa ou apartamento",
+        "sub": "3–5 pessoas"
+      },
+      {
+        "name": "Moradia com AC",
+        "sub": "Consumo mais elevado"
+      },
+      {
+        "name": "Vivenda / casa grande",
+        "sub": "Vários AC, consumo intensivo"
+      }
     ],
     "profilesBusiness": [
-      { "name": "Comércio / Escritório", "sub": "Operação simples" },
-      { "name": "Restaurante / Clínica", "sub": "Operação intensiva" },
-      { "name": "Hotel / Operação maior", "sub": "Alta dependência energética" },
-      { "name": "Indústria / Grande empresa", "sub": "Consumo crítico" }
+      {
+        "name": "Comércio / Escritório",
+        "sub": "Operação simples"
+      },
+      {
+        "name": "Restaurante / Clínica",
+        "sub": "Operação intensiva"
+      },
+      {
+        "name": "Hotel / Operação maior",
+        "sub": "Alta dependência energética"
+      },
+      {
+        "name": "Indústria / Grande empresa",
+        "sub": "Consumo crítico"
+      }
     ],
     "step3Title": "Quanto paga de luz por mês?",
     "step3Hint": "Mexa o slider para ver a poupança em tempo real.",
@@ -183,11 +285,31 @@
       "pleno": "Potência para operar sem limites."
     },
     "benefits": {
-      "tranquila": ["Frigorífico e congelador sempre ligados", "Iluminação garantida em toda a casa", "Telemóvel, router e computador carregados"],
-      "autonomia": ["Até 20.000 CVE poupados por mês", "AC todo o dia sem sentir na factura", "Retorno do investimento em 1 a 2 anos"],
-      "plena": ["Independência quase total da rede", "Menos petróleo importado em Cabo Verde", "A casa funciona — apagão ou não"],
-      "essencial": ["Portas abertas quando os vizinhos fecham", "Equipamentos críticos sempre ligados", "Fatura reduzida em 60–75%"],
-      "pleno": ["Operação contínua — apagão ou não", "Certificado Rede de Negócios Protegidos", "Diferenciador visível para os seus clientes"]
+      "tranquila": [
+        "Frigorífico e congelador sempre ligados",
+        "Iluminação garantida em toda a casa",
+        "Telemóvel, router e computador carregados"
+      ],
+      "autonomia": [
+        "Até 20.000 CVE poupados por mês",
+        "AC todo o dia sem sentir na factura",
+        "Retorno do investimento em 3 a 4 anos"
+      ],
+      "plena": [
+        "Independência quase total da rede",
+        "Menos petróleo importado em Cabo Verde",
+        "A casa funciona — apagão ou não"
+      ],
+      "essencial": [
+        "Portas abertas quando os vizinhos fecham",
+        "Equipamentos críticos sempre ligados",
+        "Fatura reduzida em 60–75%"
+      ],
+      "pleno": [
+        "Operação contínua — apagão ou não",
+        "Certificado Rede de Negócios Protegidos",
+        "Diferenciador visível para os seus clientes"
+      ]
     }
   },
   "pages": {
@@ -204,10 +326,22 @@
     "overline": "O fim dos apagões em casa",
     "headline": "Deixe de viver ao ritmo da ELECTRA.",
     "items": [
-      { "title": "Comida a estragar", "desc": "Quando a luz vai, o frigorífico pára — e a comida da semana com ele." },
-      { "title": "Noites sem descanso", "desc": "Sem ar condicionado nem ventoinha, o calor não deixa ninguém dormir." },
-      { "title": "Sem água em casa", "desc": "A bomba pára e fica sem água logo quando mais precisa dela." },
-      { "title": "Casa vulnerável", "desc": "Alarmes, câmaras e luzes apagam-se. E os filhos sem luz para estudar." }
+      {
+        "title": "Comida a estragar",
+        "desc": "Quando a luz vai, o frigorífico pára — e a comida da semana com ele."
+      },
+      {
+        "title": "Noites sem descanso",
+        "desc": "Sem ar condicionado nem ventoinha, o calor não deixa ninguém dormir."
+      },
+      {
+        "title": "Sem água em casa",
+        "desc": "A bomba pára e fica sem água logo quando mais precisa dela."
+      },
+      {
+        "title": "Casa vulnerável",
+        "desc": "Alarmes, câmaras e luzes apagam-se. E os filhos sem luz para estudar."
+      }
     ]
   },
   "casaFatura": {
@@ -227,10 +361,22 @@
     "overline": "O custo de não fazer nada",
     "headline": "Quanto custa, afinal, um apagão ao seu negócio?",
     "items": [
-      { "title": "Stock estragado", "desc": "Frigoríficos e arcas param. Produto fresco perdido em poucas horas." },
-      { "title": "Vendas paradas", "desc": "Sem caixa, sem TPA, sem luz. Cada hora fechado é faturação que não volta." },
-      { "title": "Gasóleo do gerador", "desc": "Milhares de CVE por mês em combustível — e o preço só sobe." },
-      { "title": "Equipamentos danificados", "desc": "Picos e quebras de energia queimam máquinas caras." }
+      {
+        "title": "Stock estragado",
+        "desc": "Frigoríficos e arcas param. Produto fresco perdido em poucas horas."
+      },
+      {
+        "title": "Vendas paradas",
+        "desc": "Sem caixa, sem TPA, sem luz. Cada hora fechado é faturação que não volta."
+      },
+      {
+        "title": "Gasóleo do gerador",
+        "desc": "Milhares de CVE por mês em combustível — e o preço só sobe."
+      },
+      {
+        "title": "Equipamentos danificados",
+        "desc": "Picos e quebras de energia queimam máquinas caras."
+      }
     ]
   },
   "vsGerador": {
@@ -239,13 +385,33 @@
     "headerGerador": "Gerador a diesel",
     "headerSolar": "Cabo Energia · Solar",
     "rows": [
-      { "label": "Custo mensal", "gerador": "Gasóleo constante — sobe com o preço", "solar": "Quase zero depois de instalado" },
-      { "label": "Ruído", "gerador": "Alto, incomoda clientes e vizinhos", "solar": "Totalmente silencioso" },
-      { "label": "Manutenção", "gerador": "Frequente e cara", "solar": "Mínima, com monitorização remota" },
-      { "label": "Fiabilidade", "gerador": "Avaria e falha no pior momento", "solar": "Energia estável, dia após dia" },
-      { "label": "Ambiente", "gerador": "Fumo e emissões", "solar": "Limpo e 100% renovável" }
+      {
+        "label": "Custo mensal",
+        "gerador": "Gasóleo constante — sobe com o preço",
+        "solar": "Quase zero depois de instalado"
+      },
+      {
+        "label": "Ruído",
+        "gerador": "Alto, incomoda clientes e vizinhos",
+        "solar": "Totalmente silencioso"
+      },
+      {
+        "label": "Manutenção",
+        "gerador": "Frequente e cara",
+        "solar": "Mínima, com monitorização remota"
+      },
+      {
+        "label": "Fiabilidade",
+        "gerador": "Avaria e falha no pior momento",
+        "solar": "Energia estável, dia após dia"
+      },
+      {
+        "label": "Ambiente",
+        "gerador": "Fumo e emissões",
+        "solar": "Limpo e 100% renovável"
+      }
     ],
-    "roiTitle": "Retorno do investimento em 3 a 6 anos.",
+    "roiTitle": "Retorno do investimento em 3 a 4 anos.",
     "roiBody": "Depois disso, a sua energia é praticamente grátis — enquanto o gerador continua a custar todos os meses."
   },
   "footer": {

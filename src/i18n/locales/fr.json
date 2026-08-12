@@ -25,18 +25,39 @@
   "processo": {
     "title": "De la simulation à l'installation — sans surprises.",
     "steps": [
-      { "title": "Simulation & Contact", "copy": "Utilisez le simulateur en haut de la page. Notre équipe vous rappelle en moins de 24 heures." },
-      { "title": "Étude technique", "copy": "Une visite précise sur place pour analyser la toiture et les consommations. Coût de 5 000 CVE (100% déductible du contrat)." },
-      { "title": "Plan de Protection", "copy": "Vous recevez une proposition finale transparente avec le calcul exact de votre production solaire, vos économies et votre retour." },
-      { "title": "Installation & Raccordement", "copy": "Montage technique précis réalisé par des professionnels certifiés avec tests de charge en direct. Votre vie ne s'arrête pas." }
+      {
+        "title": "Simulation & Contact",
+        "copy": "Utilisez le simulateur en haut de la page. Notre équipe vous rappelle en moins de 24 heures."
+      },
+      {
+        "title": "Étude technique",
+        "copy": "Une visite précise sur place pour analyser la toiture et les consommations. Coût de 5 000 CVE (100% déductible du contrat)."
+      },
+      {
+        "title": "Plan de Protection",
+        "copy": "Vous recevez une proposition finale transparente avec le calcul exact de votre production solaire, vos économies et votre retour."
+      },
+      {
+        "title": "Installation & Raccordement",
+        "copy": "Montage technique précis réalisé par des professionnels certifiés avec tests de charge en direct. Votre vie ne s'arrête pas."
+      }
     ]
   },
   "impactoDia": {
     "title": "L'impact sur votre quotidien",
     "items": [
-      { "title": "N'arrêtez pas de cuisiner.", "copy": "Réfrigérateur et congélateur toujours allumés. Zéro gaspillage alimentaire." },
-      { "title": "N'arrêtez pas de produire.", "copy": "Wi-Fi actif, ordinateurs chargés et éclairage pour travailler ou étudier." },
-      { "title": "Climatisation sans culpabilité.", "copy": "Utilisez la climatisation aux heures les plus chaudes en sachant que c'est le soleil qui paie la facture." }
+      {
+        "title": "N'arrêtez pas de cuisiner.",
+        "copy": "Réfrigérateur et congélateur toujours allumés. Zéro gaspillage alimentaire."
+      },
+      {
+        "title": "N'arrêtez pas de produire.",
+        "copy": "Wi-Fi actif, ordinateurs chargés et éclairage pour travailler ou étudier."
+      },
+      {
+        "title": "Climatisation sans culpabilité.",
+        "copy": "Utilisez la climatisation aux heures les plus chaudes en sachant que c'est le soleil qui paie la facture."
+      }
     ]
   },
   "finalCta": {
@@ -50,15 +71,45 @@
     "toggleNegocio": "Entreprise",
     "poupancaLabel": "Économies",
     "retornoLabel": "Retour",
-    "retornoValue": "1–2 ans",
+    "retornoValue": "2–4 ans",
     "residencial": [
-      { "badge": "Essentiel", "promise": "Le soleil paie votre facture d'électricité, chaque mois.", "poupanca": "10k CVE/mois", "production": "447 kWh/mois", "system": "6 panneaux · onduleur 5 kW · batterie 5 kWh" },
-      { "badge": "Populaire", "promise": "De l'énergie en abondance pour toute la maison.", "poupanca": "20k CVE/mois", "production": "894 kWh/mois", "system": "12 panneaux · onduleur 10 kW · batterie 10 kWh" },
-      { "badge": "Prestige", "promise": "Indépendance totale — vivez comme si ELECTRA n'existait pas.", "poupanca": "50k CVE/mois", "production": "1788 kWh/mois", "system": "24 panneaux · onduleur 15 kW · batterie 15 kWh" }
+      {
+        "badge": "Essentiel",
+        "promise": "Le soleil paie votre facture d'électricité, chaque mois.",
+        "poupanca": "10k CVE/mois",
+        "production": "447 kWh/mois",
+        "system": "6 panneaux · onduleur 5 kW · batterie 5 kWh"
+      },
+      {
+        "badge": "Populaire",
+        "promise": "De l'énergie en abondance pour toute la maison.",
+        "poupanca": "20k CVE/mois",
+        "production": "894 kWh/mois",
+        "system": "12 panneaux · onduleur 10 kW · batterie 10 kWh"
+      },
+      {
+        "badge": "Prestige",
+        "promise": "Indépendance totale — vivez comme si ELECTRA n'existait pas.",
+        "poupanca": "50k CVE/mois",
+        "production": "1788 kWh/mois",
+        "system": "24 panneaux · onduleur 15 kW · batterie 15 kWh"
+      }
     ],
     "negocio": [
-      { "badge": "Efficacité", "promise": "Votre entreprise ne s'arrête jamais. Votre facture baisse.", "poupanca": "50k CVE/mois", "production": "1788 kWh/mois", "system": "24 panneaux · onduleur 15 kW · batterie 15 kWh" },
-      { "badge": "Corporatif", "promise": "La puissance pour opérer sans limites.", "poupanca": "100k CVE/mois", "production": "3579 kWh/mois", "system": "48 panneaux · 30 kW onduleurs · 30 kWh batteries" }
+      {
+        "badge": "Efficacité",
+        "promise": "Votre entreprise ne s'arrête jamais. Votre facture baisse.",
+        "poupanca": "50k CVE/mois",
+        "production": "1788 kWh/mois",
+        "system": "24 panneaux · onduleur 15 kW · batterie 15 kWh"
+      },
+      {
+        "badge": "Corporatif",
+        "promise": "La puissance pour opérer sans limites.",
+        "poupanca": "100k CVE/mois",
+        "production": "3579 kWh/mois",
+        "system": "48 panneaux · 30 kW onduleurs · 30 kWh batteries"
+      }
     ]
   },
   "impactBento": {
@@ -76,9 +127,36 @@
     "title": "Plans de Protection Continue",
     "perMonth": "par mois · facturé annuellement",
     "plans": [
-      { "name": "Plan Sécurité", "badge": "Surveillance", "features": ["Surveillance à distance du système 24/7", "Rapport de performance mensuel", "Alertes automatiques de panne", "Réponse technique sous 48h"] },
-      { "name": "Plan Sérénité", "badge": "Recommandé", "features": ["Tout ce qui est inclus dans le Plan Sécurité", "2× nettoyages professionnels des panneaux par an", "1× visite technique d'audit annuelle", "Réponse technique prioritaire sous 24h"] },
-      { "name": "Plan Intégral", "badge": "Immunité Totale", "features": ["Tout ce qui est inclus dans le Plan Sérénité", "4× nettoyages professionnels des panneaux par an", "Mises à jour logicielles prioritaires", "Réponse sous 4h avec remplacement immédiat en cas de panne"] }
+      {
+        "name": "Plan Sécurité",
+        "badge": "Surveillance",
+        "features": [
+          "Surveillance à distance du système 24/7",
+          "Rapport de performance mensuel",
+          "Alertes automatiques de panne",
+          "Réponse technique sous 48h"
+        ]
+      },
+      {
+        "name": "Plan Sérénité",
+        "badge": "Recommandé",
+        "features": [
+          "Tout ce qui est inclus dans le Plan Sécurité",
+          "2× nettoyages professionnels des panneaux par an",
+          "1× visite technique d'audit annuelle",
+          "Réponse technique prioritaire sous 24h"
+        ]
+      },
+      {
+        "name": "Plan Intégral",
+        "badge": "Immunité Totale",
+        "features": [
+          "Tout ce qui est inclus dans le Plan Sérénité",
+          "4× nettoyages professionnels des panneaux par an",
+          "Mises à jour logicielles prioritaires",
+          "Réponse sous 4h avec remplacement immédiat en cas de panne"
+        ]
+      }
     ]
   },
   "rede": {
@@ -126,16 +204,40 @@
     "step2HintHome": "Sélectionnez le profil qui décrit le mieux votre logement.",
     "step2HintBusiness": "Sélectionnez le profil de votre espace professionnel.",
     "profilesHome": [
-      { "name": "Appartement", "sub": "Jusqu'à 3 personnes" },
-      { "name": "Maison ou appartement", "sub": "3–5 personnes" },
-      { "name": "Maison avec clim", "sub": "Consommation élevée" },
-      { "name": "Villa / grande maison", "sub": "Plusieurs clims, usage intensif" }
+      {
+        "name": "Appartement",
+        "sub": "Jusqu'à 3 personnes"
+      },
+      {
+        "name": "Maison ou appartement",
+        "sub": "3–5 personnes"
+      },
+      {
+        "name": "Maison avec clim",
+        "sub": "Consommation élevée"
+      },
+      {
+        "name": "Villa / grande maison",
+        "sub": "Plusieurs clims, usage intensif"
+      }
     ],
     "profilesBusiness": [
-      { "name": "Commerce / Bureau", "sub": "Opération simple" },
-      { "name": "Restaurant / Clinique", "sub": "Opération intensive" },
-      { "name": "Hôtel / Grande opération", "sub": "Forte dépendance énergétique" },
-      { "name": "Industrie / Grande entreprise", "sub": "Consommation critique" }
+      {
+        "name": "Commerce / Bureau",
+        "sub": "Opération simple"
+      },
+      {
+        "name": "Restaurant / Clinique",
+        "sub": "Opération intensive"
+      },
+      {
+        "name": "Hôtel / Grande opération",
+        "sub": "Forte dépendance énergétique"
+      },
+      {
+        "name": "Industrie / Grande entreprise",
+        "sub": "Consommation critique"
+      }
     ],
     "step3Title": "Combien payez-vous d'électricité par mois ?",
     "step3Hint": "Bougez le curseur pour voir vos économies en temps réel.",
@@ -183,11 +285,31 @@
       "pleno": "La puissance pour opérer sans limites."
     },
     "benefits": {
-      "tranquila": ["Réfrigérateur et congélateur toujours allumés", "Éclairage garanti dans toute la maison", "Téléphone, routeur et ordinateur chargés"],
-      "autonomia": ["Jusqu'à 20 000 CVE économisés par mois", "Clim toute la journée sans la sentir sur la facture", "Retour sur investissement en 1 à 2 ans"],
-      "plena": ["Indépendance quasi totale du réseau", "Moins de pétrole importé au Cap-Vert", "La maison fonctionne — coupure ou non"],
-      "essencial": ["Portes ouvertes quand les voisins ferment", "Équipements critiques toujours alimentés", "Facture réduite de 60–75%"],
-      "pleno": ["Opération continue — coupure ou non", "Certificat Réseau d'Entreprises Protégées", "Un atout visible pour vos clients"]
+      "tranquila": [
+        "Réfrigérateur et congélateur toujours allumés",
+        "Éclairage garanti dans toute la maison",
+        "Téléphone, routeur et ordinateur chargés"
+      ],
+      "autonomia": [
+        "Jusqu'à 20 000 CVE économisés par mois",
+        "Clim toute la journée sans la sentir sur la facture",
+        "Retour sur investissement en 1 à 2 ans"
+      ],
+      "plena": [
+        "Indépendance quasi totale du réseau",
+        "Moins de pétrole importé au Cap-Vert",
+        "La maison fonctionne — coupure ou non"
+      ],
+      "essencial": [
+        "Portes ouvertes quand les voisins ferment",
+        "Équipements critiques toujours alimentés",
+        "Facture réduite de 60–75%"
+      ],
+      "pleno": [
+        "Opération continue — coupure ou non",
+        "Certificat Réseau d'Entreprises Protégées",
+        "Un atout visible pour vos clients"
+      ]
     }
   },
   "pages": {
@@ -204,10 +326,22 @@
     "overline": "La fin des coupures à la maison",
     "headline": "Ne vivez plus au rythme d'ELECTRA.",
     "items": [
-      { "title": "Nourriture gâchée", "desc": "Quand le courant part, le frigo s'arrête — et les courses de la semaine avec." },
-      { "title": "Nuits sans repos", "desc": "Sans clim ni ventilateur, la chaleur empêche de dormir." },
-      { "title": "Plus d'eau à la maison", "desc": "La pompe s'arrête et vous n'avez plus d'eau au pire moment." },
-      { "title": "Maison vulnérable", "desc": "Alarmes, caméras et lumières s'éteignent. Et les enfants sans lumière pour étudier." }
+      {
+        "title": "Nourriture gâchée",
+        "desc": "Quand le courant part, le frigo s'arrête — et les courses de la semaine avec."
+      },
+      {
+        "title": "Nuits sans repos",
+        "desc": "Sans clim ni ventilateur, la chaleur empêche de dormir."
+      },
+      {
+        "title": "Plus d'eau à la maison",
+        "desc": "La pompe s'arrête et vous n'avez plus d'eau au pire moment."
+      },
+      {
+        "title": "Maison vulnérable",
+        "desc": "Alarmes, caméras et lumières s'éteignent. Et les enfants sans lumière pour étudier."
+      }
     ]
   },
   "casaFatura": {
@@ -227,10 +361,22 @@
     "overline": "Le coût de ne rien faire",
     "headline": "Combien coûte vraiment une coupure à votre entreprise ?",
     "items": [
-      { "title": "Stock gâché", "desc": "Frigos et congélateurs s'arrêtent. Produits frais perdus en quelques heures." },
-      { "title": "Ventes à l'arrêt", "desc": "Pas de caisse, pas de TPE, pas de lumière. Chaque heure fermée, c'est du chiffre perdu." },
-      { "title": "Gazole du générateur", "desc": "Des milliers de CVE par mois en carburant — et le prix ne fait que monter." },
-      { "title": "Équipements endommagés", "desc": "Les pics et coupures grillent des machines coûteuses." }
+      {
+        "title": "Stock gâché",
+        "desc": "Frigos et congélateurs s'arrêtent. Produits frais perdus en quelques heures."
+      },
+      {
+        "title": "Ventes à l'arrêt",
+        "desc": "Pas de caisse, pas de TPE, pas de lumière. Chaque heure fermée, c'est du chiffre perdu."
+      },
+      {
+        "title": "Gazole du générateur",
+        "desc": "Des milliers de CVE par mois en carburant — et le prix ne fait que monter."
+      },
+      {
+        "title": "Équipements endommagés",
+        "desc": "Les pics et coupures grillent des machines coûteuses."
+      }
     ]
   },
   "vsGerador": {
@@ -239,13 +385,33 @@
     "headerGerador": "Générateur diesel",
     "headerSolar": "Cabo Energia · Solaire",
     "rows": [
-      { "label": "Coût mensuel", "gerador": "Gazole constant — monte avec le prix", "solar": "Quasi nul une fois installé" },
-      { "label": "Bruit", "gerador": "Fort, dérange clients et voisins", "solar": "Totalement silencieux" },
-      { "label": "Entretien", "gerador": "Fréquent et coûteux", "solar": "Minimal, avec surveillance à distance" },
-      { "label": "Fiabilité", "gerador": "Tombe en panne au pire moment", "solar": "Énergie stable, jour après jour" },
-      { "label": "Environnement", "gerador": "Fumée et émissions", "solar": "Propre et 100% renouvelable" }
+      {
+        "label": "Coût mensuel",
+        "gerador": "Gazole constant — monte avec le prix",
+        "solar": "Quasi nul une fois installé"
+      },
+      {
+        "label": "Bruit",
+        "gerador": "Fort, dérange clients et voisins",
+        "solar": "Totalement silencieux"
+      },
+      {
+        "label": "Entretien",
+        "gerador": "Fréquent et coûteux",
+        "solar": "Minimal, avec surveillance à distance"
+      },
+      {
+        "label": "Fiabilité",
+        "gerador": "Tombe en panne au pire moment",
+        "solar": "Énergie stable, jour après jour"
+      },
+      {
+        "label": "Environnement",
+        "gerador": "Fumée et émissions",
+        "solar": "Propre et 100% renouvelable"
+      }
     ],
-    "roiTitle": "Retour sur investissement en 3 à 6 ans.",
+    "roiTitle": "Retour sur investissement en 3 à 4 ans.",
     "roiBody": "Ensuite, votre énergie est quasiment gratuite — tandis que le générateur continue de coûter chaque mois."
   },
   "footer": {

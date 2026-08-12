@@ -110,7 +110,12 @@ function CertificateSlot() {
           </div>
         </div>
 
-        {/* Bottom: Serial */}
+        {/* Bottom: Serial
+            Campo por preencher, de propósito. Isto é a AMOSTRA do certificado
+            que o aderente recebe — mostrada a toda a gente que visita o site.
+            Até 12-08-2026 exibia "Nº CE-PT-0001", um número concreto e sempre
+            o mesmo: quem o lesse via um certificado emitido que não existe.
+            Um traço mostra o mesmo desenho sem afirmar um facto falso. */}
         <div className="flex w-full items-end justify-between">
           <div
             style={{
@@ -121,7 +126,7 @@ function CertificateSlot() {
               textTransform: "uppercase",
             }}
           >
-            Nº CE-PT-0001
+            Nº ——————
           </div>
           <div
             style={{

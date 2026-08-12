@@ -25,18 +25,39 @@
   "processo": {
     "title": "From simulation to installation — no surprises.",
     "steps": [
-      { "title": "Simulation & Contact", "copy": "Use the simulator at the top of the page. Our team calls you back in under 24 hours." },
-      { "title": "Technical Survey", "copy": "A precise on-site visit to assess your roof and consumption. Cost of 5,000 CVE (100% deductible from the contract)." },
-      { "title": "Protection Plan", "copy": "You receive a transparent final proposal with the exact calculation of your solar production, savings and payback." },
-      { "title": "Installation & Connection", "copy": "Precise technical assembly by certified professionals with live load testing. Your life doesn't stop." }
+      {
+        "title": "Simulation & Contact",
+        "copy": "Use the simulator at the top of the page. Our team calls you back in under 24 hours."
+      },
+      {
+        "title": "Technical Survey",
+        "copy": "A precise on-site visit to assess your roof and consumption. Cost of 5,000 CVE (100% deductible from the contract)."
+      },
+      {
+        "title": "Protection Plan",
+        "copy": "You receive a transparent final proposal with the exact calculation of your solar production, savings and payback."
+      },
+      {
+        "title": "Installation & Connection",
+        "copy": "Precise technical assembly by certified professionals with live load testing. Your life doesn't stop."
+      }
     ]
   },
   "impactoDia": {
     "title": "The impact on your daily life",
     "items": [
-      { "title": "Don't stop cooking.", "copy": "Fridge and freezer always on. Zero food waste." },
-      { "title": "Don't stop working.", "copy": "Active Wi-Fi, charged computers and lighting to work or study." },
-      { "title": "Air conditioning without guilt.", "copy": "Use cooling during the hottest hours knowing the sun pays the bill." }
+      {
+        "title": "Don't stop cooking.",
+        "copy": "Fridge and freezer always on. Zero food waste."
+      },
+      {
+        "title": "Don't stop working.",
+        "copy": "Active Wi-Fi, charged computers and lighting to work or study."
+      },
+      {
+        "title": "Air conditioning without guilt.",
+        "copy": "Use cooling during the hottest hours knowing the sun pays the bill."
+      }
     ]
   },
   "finalCta": {
@@ -50,15 +71,45 @@
     "toggleNegocio": "Business",
     "poupancaLabel": "Savings",
     "retornoLabel": "Payback",
-    "retornoValue": "1–2 years",
+    "retornoValue": "2–4 years",
     "residencial": [
-      { "badge": "Essential", "promise": "The sun pays your electricity bill, every month.", "poupanca": "10k CVE/mo", "production": "447 kWh/mo", "system": "6 panels · 5 kW inverter · 5 kWh battery" },
-      { "badge": "Popular", "promise": "Plenty of energy for the whole home.", "poupanca": "20k CVE/mo", "production": "894 kWh/mo", "system": "12 panels · 10 kW inverter · 10 kWh battery" },
-      { "badge": "Prestige", "promise": "Total independence — live as if ELECTRA didn't exist.", "poupanca": "50k CVE/mo", "production": "1788 kWh/mo", "system": "24 panels · 15 kW inverter · 15 kWh battery" }
+      {
+        "badge": "Essential",
+        "promise": "The sun pays your electricity bill, every month.",
+        "poupanca": "10k CVE/mo",
+        "production": "447 kWh/mo",
+        "system": "6 panels · 5 kW inverter · 5 kWh battery"
+      },
+      {
+        "badge": "Popular",
+        "promise": "Plenty of energy for the whole home.",
+        "poupanca": "20k CVE/mo",
+        "production": "894 kWh/mo",
+        "system": "12 panels · 10 kW inverter · 10 kWh battery"
+      },
+      {
+        "badge": "Prestige",
+        "promise": "Total independence — live as if ELECTRA didn't exist.",
+        "poupanca": "50k CVE/mo",
+        "production": "1788 kWh/mo",
+        "system": "24 panels · 15 kW inverter · 15 kWh battery"
+      }
     ],
     "negocio": [
-      { "badge": "Efficiency", "promise": "Your business never stops. Your bill drops.", "poupanca": "50k CVE/mo", "production": "1788 kWh/mo", "system": "24 panels · 15 kW inverter · 15 kWh battery" },
-      { "badge": "Corporate", "promise": "Power to operate without limits.", "poupanca": "100k CVE/mo", "production": "3579 kWh/mo", "system": "48 panels · 30 kW inverters · 30 kWh batteries" }
+      {
+        "badge": "Efficiency",
+        "promise": "Your business never stops. Your bill drops.",
+        "poupanca": "50k CVE/mo",
+        "production": "1788 kWh/mo",
+        "system": "24 panels · 15 kW inverter · 15 kWh battery"
+      },
+      {
+        "badge": "Corporate",
+        "promise": "Power to operate without limits.",
+        "poupanca": "100k CVE/mo",
+        "production": "3579 kWh/mo",
+        "system": "48 panels · 30 kW inverters · 30 kWh batteries"
+      }
     ]
   },
   "impactBento": {
@@ -76,9 +127,36 @@
     "title": "Continuous Protection Plans",
     "perMonth": "per month · billed annually",
     "plans": [
-      { "name": "Secure Plan", "badge": "Monitoring", "features": ["24/7 remote system monitoring", "Monthly performance report", "Automatic failure alerts", "Technical response within 48h"] },
-      { "name": "Calm Plan", "badge": "Recommended", "features": ["Everything in the Secure Plan", "2× professional panel cleanings per year", "1× annual technical audit visit", "Priority technical response within 24h"] },
-      { "name": "Full Plan", "badge": "Total Immunity", "features": ["Everything in the Calm Plan", "4× professional panel cleanings per year", "Priority software updates", "Response within 4h with immediate replacement on failure"] }
+      {
+        "name": "Secure Plan",
+        "badge": "Monitoring",
+        "features": [
+          "24/7 remote system monitoring",
+          "Monthly performance report",
+          "Automatic failure alerts",
+          "Technical response within 48h"
+        ]
+      },
+      {
+        "name": "Calm Plan",
+        "badge": "Recommended",
+        "features": [
+          "Everything in the Secure Plan",
+          "2× professional panel cleanings per year",
+          "1× annual technical audit visit",
+          "Priority technical response within 24h"
+        ]
+      },
+      {
+        "name": "Full Plan",
+        "badge": "Total Immunity",
+        "features": [
+          "Everything in the Calm Plan",
+          "4× professional panel cleanings per year",
+          "Priority software updates",
+          "Response within 4h with immediate replacement on failure"
+        ]
+      }
     ]
   },
   "rede": {
@@ -126,16 +204,40 @@
     "step2HintHome": "Select the profile that best describes your home.",
     "step2HintBusiness": "Select your business space profile.",
     "profilesHome": [
-      { "name": "Apartment", "sub": "Up to 3 people" },
-      { "name": "House or apartment", "sub": "3–5 people" },
-      { "name": "House with AC", "sub": "Higher consumption" },
-      { "name": "Villa / large house", "sub": "Multiple ACs, intensive use" }
+      {
+        "name": "Apartment",
+        "sub": "Up to 3 people"
+      },
+      {
+        "name": "House or apartment",
+        "sub": "3–5 people"
+      },
+      {
+        "name": "House with AC",
+        "sub": "Higher consumption"
+      },
+      {
+        "name": "Villa / large house",
+        "sub": "Multiple ACs, intensive use"
+      }
     ],
     "profilesBusiness": [
-      { "name": "Shop / Office", "sub": "Simple operation" },
-      { "name": "Restaurant / Clinic", "sub": "Intensive operation" },
-      { "name": "Hotel / Larger operation", "sub": "High energy dependence" },
-      { "name": "Industry / Large company", "sub": "Critical consumption" }
+      {
+        "name": "Shop / Office",
+        "sub": "Simple operation"
+      },
+      {
+        "name": "Restaurant / Clinic",
+        "sub": "Intensive operation"
+      },
+      {
+        "name": "Hotel / Larger operation",
+        "sub": "High energy dependence"
+      },
+      {
+        "name": "Industry / Large company",
+        "sub": "Critical consumption"
+      }
     ],
     "step3Title": "How much do you pay for electricity per month?",
     "step3Hint": "Move the slider to see your savings in real time.",
@@ -183,11 +285,31 @@
       "pleno": "Power to operate without limits."
     },
     "benefits": {
-      "tranquila": ["Fridge and freezer always on", "Lighting guaranteed throughout the home", "Phone, router and computer charged"],
-      "autonomia": ["Up to 20,000 CVE saved per month", "AC all day without feeling it on the bill", "Payback in 1 to 2 years"],
-      "plena": ["Near-total independence from the grid", "Less imported oil for Cape Verde", "The home runs — blackout or not"],
-      "essencial": ["Doors open when the neighbours close", "Critical equipment always on", "Bill cut by 60–75%"],
-      "pleno": ["Continuous operation — blackout or not", "Protected Businesses Network certificate", "A visible edge for your customers"]
+      "tranquila": [
+        "Fridge and freezer always on",
+        "Lighting guaranteed throughout the home",
+        "Phone, router and computer charged"
+      ],
+      "autonomia": [
+        "Up to 20,000 CVE saved per month",
+        "AC all day without feeling it on the bill",
+        "Payback in 1 to 2 years"
+      ],
+      "plena": [
+        "Near-total independence from the grid",
+        "Less imported oil for Cape Verde",
+        "The home runs — blackout or not"
+      ],
+      "essencial": [
+        "Doors open when the neighbours close",
+        "Critical equipment always on",
+        "Bill cut by 60–75%"
+      ],
+      "pleno": [
+        "Continuous operation — blackout or not",
+        "Protected Businesses Network certificate",
+        "A visible edge for your customers"
+      ]
     }
   },
   "pages": {
@@ -204,10 +326,22 @@
     "overline": "The end of blackouts at home",
     "headline": "Stop living to ELECTRA's rhythm.",
     "items": [
-      { "title": "Spoiled food", "desc": "When the power goes, the fridge stops — and the week's food with it." },
-      { "title": "Sleepless nights", "desc": "With no AC or fan, the heat won't let anyone sleep." },
-      { "title": "No water at home", "desc": "The pump stops and you're left without water right when you need it most." },
-      { "title": "Vulnerable home", "desc": "Alarms, cameras and lights go out. And the kids with no light to study." }
+      {
+        "title": "Spoiled food",
+        "desc": "When the power goes, the fridge stops — and the week's food with it."
+      },
+      {
+        "title": "Sleepless nights",
+        "desc": "With no AC or fan, the heat won't let anyone sleep."
+      },
+      {
+        "title": "No water at home",
+        "desc": "The pump stops and you're left without water right when you need it most."
+      },
+      {
+        "title": "Vulnerable home",
+        "desc": "Alarms, cameras and lights go out. And the kids with no light to study."
+      }
     ]
   },
   "casaFatura": {
@@ -227,10 +361,22 @@
     "overline": "The cost of doing nothing",
     "headline": "How much does a blackout really cost your business?",
     "items": [
-      { "title": "Spoiled stock", "desc": "Fridges and freezers stop. Fresh produce lost in just a few hours." },
-      { "title": "Sales halted", "desc": "No till, no card machine, no light. Every hour closed is revenue that won't come back." },
-      { "title": "Generator diesel", "desc": "Thousands of CVE a month in fuel — and the price only goes up." },
-      { "title": "Damaged equipment", "desc": "Power surges and outages burn out expensive machines." }
+      {
+        "title": "Spoiled stock",
+        "desc": "Fridges and freezers stop. Fresh produce lost in just a few hours."
+      },
+      {
+        "title": "Sales halted",
+        "desc": "No till, no card machine, no light. Every hour closed is revenue that won't come back."
+      },
+      {
+        "title": "Generator diesel",
+        "desc": "Thousands of CVE a month in fuel — and the price only goes up."
+      },
+      {
+        "title": "Damaged equipment",
+        "desc": "Power surges and outages burn out expensive machines."
+      }
     ]
   },
   "vsGerador": {
@@ -239,13 +385,33 @@
     "headerGerador": "Diesel generator",
     "headerSolar": "Cabo Energia · Solar",
     "rows": [
-      { "label": "Monthly cost", "gerador": "Constant diesel — rises with the price", "solar": "Almost zero once installed" },
-      { "label": "Noise", "gerador": "Loud, bothers customers and neighbours", "solar": "Completely silent" },
-      { "label": "Maintenance", "gerador": "Frequent and expensive", "solar": "Minimal, with remote monitoring" },
-      { "label": "Reliability", "gerador": "Breaks down at the worst moment", "solar": "Stable energy, day after day" },
-      { "label": "Environment", "gerador": "Smoke and emissions", "solar": "Clean and 100% renewable" }
+      {
+        "label": "Monthly cost",
+        "gerador": "Constant diesel — rises with the price",
+        "solar": "Almost zero once installed"
+      },
+      {
+        "label": "Noise",
+        "gerador": "Loud, bothers customers and neighbours",
+        "solar": "Completely silent"
+      },
+      {
+        "label": "Maintenance",
+        "gerador": "Frequent and expensive",
+        "solar": "Minimal, with remote monitoring"
+      },
+      {
+        "label": "Reliability",
+        "gerador": "Breaks down at the worst moment",
+        "solar": "Stable energy, day after day"
+      },
+      {
+        "label": "Environment",
+        "gerador": "Smoke and emissions",
+        "solar": "Clean and 100% renewable"
+      }
     ],
-    "roiTitle": "Payback in 3 to 6 years.",
+    "roiTitle": "Payback in 3 to 4 years.",
     "roiBody": "After that, your energy is practically free — while the generator keeps costing every month."
   },
   "footer": {

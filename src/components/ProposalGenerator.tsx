@@ -28,12 +28,30 @@ interface KitInfo {
   componentes: string[];
 }
 
+/*
+ * RETORNO DO INVESTIMENTO — de onde vem cada número
+ *
+ * Cada `payback` abaixo é o preço promocional do kit (tabela enviada pelo
+ * Kevin a 04-08-2026) a dividir pela poupança mensal que este mesmo ficheiro
+ * anuncia. Não é uma estimativa de marketing: é aritmética sobre os dois
+ * números que já estavam aqui.
+ *
+ *   Casa Autonomia       469.926 CVE ÷ 10.000  = 47 meses
+ *   Casa Família         772.028 CVE ÷ 20.000  = 39 meses
+ *   Casa Prestige      1.206.763 CVE ÷ 50.000  = 24 meses
+ *   Negócio Essencial  2.342.895 CVE ÷ 50.000  = 47 meses
+ *   Negócio Corporativo 4.685.790 CVE ÷ 100.000 = 47 meses
+ *
+ * Dizia "1–2 anos" até 12-08-2026. Nenhum kit chega lá, nem com o preço
+ * promocional — o mais rápido é o Prestige, com 2 anos exactos. Se o preço
+ * mudar, este comentário e os valores mudam com ele.
+ */
 const KITS: KitInfo[] = [
   {
     nome: "Casa Autonomia",
     prodDiaria: "14,9 kWh/dia",
     poupancaMensal: "10.000 CVE",
-    payback: "1–2 anos",
+    payback: "~4 anos",
     backup: "~6h",
     componentes: ["6× Painel 585Wp", "Inversor híbrido 5 kW", "Bateria LiFePO4 5 kWh", "Estrutura e cablagem", "Instalação e comissionamento"],
   },
@@ -41,7 +59,7 @@ const KITS: KitInfo[] = [
     nome: "Casa Família",
     prodDiaria: "29,8 kWh/dia",
     poupancaMensal: "20.000 CVE",
-    payback: "1–2 anos",
+    payback: "~3 anos",
     backup: "~12h",
     componentes: ["12× Painel 585Wp", "2× Inversor 5 kW (10 kW)", "Bateria LiFePO4 10 kWh", "Estrutura e cablagem", "Instalação e comissionamento", "Monitorização remota"],
   },
@@ -49,7 +67,7 @@ const KITS: KitInfo[] = [
     nome: "Casa Prestige",
     prodDiaria: "59,6 kWh/dia",
     poupancaMensal: "50.000 CVE",
-    payback: "1–2 anos",
+    payback: "~2 anos",
     backup: "~18h",
     componentes: ["24× Painel 585Wp", "Inversor 15 kW", "Bateria LiFePO4 15 kWh", "Estrutura e cablagem", "Instalação e comissionamento", "Monitorização remota"],
   },
@@ -57,7 +75,7 @@ const KITS: KitInfo[] = [
     nome: "Negócio Essencial",
     prodDiaria: "59,6 kWh/dia",
     poupancaMensal: "50.000 CVE",
-    payback: "1–2 anos",
+    payback: "~4 anos",
     backup: "~6h",
     componentes: ["24× Painel 585Wp", "Inversor 15 kW", "Bateria LiFePO4 15 kWh", "Estrutura industrial", "Instalação e comissionamento", "Monitorização remota"],
   },
@@ -65,7 +83,7 @@ const KITS: KitInfo[] = [
     nome: "Negócio Corporativo",
     prodDiaria: "119,3 kWh/dia",
     poupancaMensal: "100.000 CVE",
-    payback: "1–2 anos",
+    payback: "~4 anos",
     backup: "~12h",
     componentes: ["48× Painel 585Wp", "2× Inversor 15 kW (30 kW)", "Bateria LiFePO4 30 kWh", "Estrutura industrial", "Monitorização remota 24/7", "Contrato de manutenção 1 ano"],
   },
