@@ -44,6 +44,7 @@ scripts/provision-proposals.mjs
 scripts/verify-production.mjs
 scripts/qa-browser.mjs
 scripts/qa-pdf.mjs
+scripts/qa-production.mjs
 
 # macOS custom-icon artifacts (criados pelo iCloud/Finder)
 Icon?
