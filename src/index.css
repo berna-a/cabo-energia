@@ -201,3 +201,10 @@ h1, h2, h3, h4 {
   animation: marquee 30s linear infinite;
   width: max-content;
 }
+/* Keyboard access and reduced motion are first-class paths through the site. */
+:focus-visible { outline: 3px solid #c39b12 !important; outline-offset: 4px; }
+html { scroll-padding-top: 100px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}

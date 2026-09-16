@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { LeadPanelContext, type ClientType } from "./leadPanelContextValue";
 import { submitLead } from "@/lib/leadClient";
+import { validPhone } from '../../../shared/leadValidation';
 import { WHATSAPP_URL } from "@/lib/constants";
 
 const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
@@ -39,7 +40,7 @@ const leadSchema = z.object({
     .trim()
     .min(7, "leadPanel.validPhone")
     .max(20, "leadPanel.validPhone")
-    .regex(/^[0-9 +()-]+$/, "leadPanel.validPhoneChars"),
+    .refine(validPhone, "leadPanel.validPhone"),
   ilha: z
     .string()
     .refine((v) => (ILHAS as readonly string[]).includes(v), {
@@ -77,6 +78,7 @@ function LeadModalForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
     const result = leadSchema.safeParse(form);
     if (!result.success) {
       const next: Record<string, string> = {};
@@ -142,11 +144,13 @@ function LeadModalForm({
           autoComplete="name"
           maxLength={100}
           style={inputStyle}
+          aria-invalid={!!errors.nome}
+          aria-describedby={errors.nome ? "lead-name-error" : undefined}
           value={form.nome}
           onChange={(e) => setForm((f) => ({ ...f, nome: e.target.value }))}
         />
         {errors.nome && (
-          <p style={{ color: "#b91c1c", fontSize: 12, marginTop: 6 }}>{errors.nome}</p>
+          <p id="lead-name-error" role="alert" style={{ color: "#b91c1c", fontSize: 12, marginTop: 6 }}>{errors.nome}</p>
         )}
       </div>
 
@@ -161,11 +165,13 @@ function LeadModalForm({
           autoComplete="tel"
           maxLength={20}
           style={inputStyle}
+          aria-invalid={!!errors.telemovel}
+          aria-describedby={errors.telemovel ? "lead-phone-error" : undefined}
           value={form.telemovel}
           onChange={(e) => setForm((f) => ({ ...f, telemovel: e.target.value }))}
         />
         {errors.telemovel && (
-          <p style={{ color: "#b91c1c", fontSize: 12, marginTop: 6 }}>{errors.telemovel}</p>
+          <p id="lead-phone-error" role="alert" style={{ color: "#b91c1c", fontSize: 12, marginTop: 6 }}>{errors.telemovel}</p>
         )}
       </div>
 
@@ -176,6 +182,7 @@ function LeadModalForm({
         <select
           id="lead-ilha"
           style={inputStyle}
+          aria-invalid={!!errors.ilha}
           value={form.ilha}
           onChange={(e) =>
             setForm((f) => ({ ...f, ilha: e.target.value as FormState["ilha"] }))
@@ -198,7 +205,8 @@ function LeadModalForm({
         <div
           className="inline-flex w-full rounded-full p-1"
           style={{ background: "rgba(13,43,31,0.06)" }}
-          role="tablist"
+          role="group"
+          aria-label={t("leadPanel.solutionType")}
         >
           {(["residencial", "negocio"] as const).map((tipo) => {
             const active = form.tipo === tipo;
@@ -206,6 +214,7 @@ function LeadModalForm({
               <button
                 key={tipo}
                 type="button"
+                aria-pressed={active}
                 onClick={() => setForm((f) => ({ ...f, tipo }))}
                 className="flex-1 rounded-full px-4 py-2 text-sm font-semibold transition-all"
                 style={{
@@ -220,6 +229,7 @@ function LeadModalForm({
         </div>
       </div>
 
+      <a href="/privacidade" className="block text-xs underline underline-offset-4">{t("footer.privacidade")}</a>
       {submitFailed && (
         <div
           style={{
@@ -317,7 +327,7 @@ export function LeadPanelProvider({ children }: { children: React.ReactNode }) {
       {children}
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent
-          className="sm:max-w-md rounded-3xl border-0 p-0 [&>button]:hidden"
+          className="max-h-[90svh] overflow-y-auto sm:max-w-md rounded-3xl border-0 p-0 [&>button]:hidden"
           style={{
             background: "#ffffff",
             boxShadow: "0 30px 80px -20px rgba(13,43,31,0.35)",

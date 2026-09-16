@@ -28,6 +28,22 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+.migration-private/
+supabase/.temp/
+output/
+tmp/
+# Local client records: this repository is public. Never publish the dossier.
+docs/
+.ai/
+ESTADO.md
+AGENTS.md
+CLAUDE.md
+scripts/migrate-cabo.mjs
+scripts/provision-leads.mjs
+scripts/provision-proposals.mjs
+scripts/verify-production.mjs
+scripts/qa-browser.mjs
+scripts/qa-pdf.mjs
 
 # macOS custom-icon artifacts (criados pelo iCloud/Finder)
 Icon?

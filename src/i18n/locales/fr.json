@@ -9,37 +9,37 @@
     "contacto": "Contact"
   },
   "hero": {
-    "badge": "Énergie à l'épreuve des coupures",
+    "badge": "Énergie solaire avec stockage",
     "title1": "Cap-Vert",
     "title2": "Toujours Alimenté.",
-    "subtitle": "Votre maison et votre entreprise ne s'arrêtent plus faute d'électricité."
+    "subtitle": "Protégez les usages essentiels et réduisez la dépendance au réseau. Une solution dimensionnée pour votre logement ou votre entreprise."
   },
   "marquee": {
     "items": [
-      "Installation clé en main",
-      "Logistique inter-îles",
-      "Partenaire certifié Sunwaytech",
-      "Service après-installation inclus"
+      "Logements et entreprises",
+      "Dimensionnement selon vos besoins",
+      "Installation et accompagnement",
+      "Conditions précisées dans le devis"
     ]
   },
   "processo": {
-    "title": "De la simulation à l'installation — sans surprises.",
+    "title": "Du premier contact à l’installation.",
     "steps": [
       {
-        "title": "Simulation & Contact",
-        "copy": "Utilisez le simulateur en haut de la page. Notre équipe vous rappelle en moins de 24 heures."
+        "title": "Première analyse",
+        "copy": "Indiquez votre île et votre consommation. L’équipe vérifie vos besoins et la faisabilité."
       },
       {
-        "title": "Étude technique",
-        "copy": "Une visite précise sur place pour analyser la toiture et les consommations. Coût de 5 000 CVE (100% déductible du contrat)."
+        "title": "Visite technique",
+        "copy": "Accès au toit, charges essentielles et conditions d’installation sont vérifiés. Le coût de la visite est convenu à l’avance."
       },
       {
-        "title": "Plan de Protection",
-        "copy": "Vous recevez une proposition finale transparente avec le calcul exact de votre production solaire, vos économies et votre retour."
+        "title": "Devis personnalisé",
+        "copy": "Équipement, estimations, prix, exclusions, garanties et paiement sont précisés par écrit."
       },
       {
-        "title": "Installation & Raccordement",
-        "copy": "Montage technique précis réalisé par des professionnels certifiés avec tests de charge en direct. Votre vie ne s'arrête pas."
+        "title": "Installation et suivi",
+        "copy": "Calendrier convenu, montage, essais et explication de l’utilisation. Assistance selon le contrat."
       }
     ]
   },
@@ -61,8 +61,8 @@
     ]
   },
   "finalCta": {
-    "title": "Le réseau lâche. Cabo Energia, non.",
-    "subtitle": "Le diagnostic initial est gratuit et sans engagement."
+    "title": "Trouvons la solution adaptée à vos besoins.",
+    "subtitle": "Commencez par une conversation avec Cabo Energia. Sans engagement d’achat."
   },
   "solucoes": {
     "pill": "Solutions",
@@ -115,13 +115,13 @@
   "impactBento": {
     "pill": "Votre Vie avec Cabo Energia",
     "title": "Avant et après.",
-    "card1Title": "Coupure dans le quartier, Lumière chez vous.",
-    "card1Copy": "La cuisine, le Wi-Fi, votre vie — rien ne s'arrête.",
-    "card1Badge": "Toujours Alimenté",
-    "card2Title": "Laissez le Soleil payer la facture.",
-    "card2Badge": "Économisez jusqu'à 80%",
-    "card3Title": "Votre maison, votre propre réseau.",
-    "card3Copy": "Produisez votre énergie et participez à l'avenir durable du Cap-Vert."
+    "card1Title": "Protégez l’essentiel.",
+    "card1Copy": "Dimensionnez la batterie pour les usages essentiels de votre logement.",
+    "card1Badge": "Autonomie dimensionnée",
+    "card2Title": "Utilisez le soleil pour réduire la facture.",
+    "card2Badge": "Économies à évaluer",
+    "card3Title": "Produisez une partie de votre énergie.",
+    "card3Copy": "Une solution adaptée au toit, à la consommation et à vos objectifs."
   },
   "protecao": {
     "title": "Plans de Protection Continue",
@@ -168,8 +168,8 @@
     "certProtected": "Entreprise Protégée contre les Coupures"
   },
   "leadPanel": {
-    "title": "Ligar Cabo",
-    "subtitle": "Laissez vos coordonnées. Nous vous contactons en moins de 24 heures — sans engagement.",
+    "title": "Demander une analyse de consommation",
+    "subtitle": "Indiquez vos coordonnées et votre île. L’équipe vous contacte pour évaluer votre demande, sans engagement d’achat.",
     "name": "Nom complet",
     "phone": "Téléphone",
     "island": "Île",
@@ -180,8 +180,8 @@
     "submit": "Confirmer le Contact",
     "submitting": "Envoi…",
     "error": "Nous n'avons pas pu vous enregistrer pour le moment. Contactez-nous directement :",
-    "successTitle": "Merci.",
-    "successBody": "Notre équipe vous appellera dans les prochaines 24 heures. Le Cap-Vert ne peut pas s'arrêter.",
+    "successTitle": "Demande enregistrée.",
+    "successBody": "Cabo Energia a reçu votre demande et vous contactera pour confirmer vos besoins, la disponibilité et la prochaine étape.",
     "successSr": "Demande envoyée",
     "validName": "Veuillez indiquer votre nom complet.",
     "validMax": "Maximum 100 caractères.",
@@ -278,11 +278,11 @@
     "savingsPerMonth": "CVE / mois",
     "step6Note": "Gardez le numéro +238 995 41 81 pour reconnaître l'appel de Kevin.",
     "promises": {
-      "tranquila": "Le soleil paie votre facture d'électricité, chaque mois.",
-      "autonomia": "De l'énergie en abondance pour toute la maison.",
-      "plena": "Indépendance totale — vivez comme si ELECTRA n'existait pas.",
-      "essencial": "Votre entreprise ne s'arrête jamais. Votre facture baisse.",
-      "pleno": "La puissance pour opérer sans limites."
+      "tranquila": "Une première solution pour les usages essentiels.",
+      "autonomia": "Plus de capacité pour les besoins de la famille.",
+      "plena": "Dimensionnement pour les logements à forte consommation.",
+      "essencial": "Planifiez les charges critiques de votre entreprise.",
+      "pleno": "Une configuration de référence pour les activités de grande taille."
     },
     "benefits": {
       "tranquila": [
@@ -315,16 +315,16 @@
   "pages": {
     "residencialBadge": "Solutions Résidentielles",
     "residencialTitle1": "Votre maison",
-    "residencialTitle2": "toujours alimentée.",
-    "residencialSubtitle": "Énergie solaire avec batterie : confort continu et facture en baisse, même quand le réseau lâche.",
+    "residencialTitle2": "plus autonome.",
+    "residencialSubtitle": "Énergie solaire et stockage dimensionnés pour réduire la facture et protéger les usages essentiels.",
     "empresarialBadge": "Solutions Entreprises",
     "empresarialTitle1": "Votre entreprise",
-    "empresarialTitle2": "ne s'arrête jamais.",
-    "empresarialSubtitle": "Énergie solaire continue pour commerces, services et industrie. Sans coupures, avec une facture en baisse."
+    "empresarialTitle2": "mieux protégée.",
+    "empresarialSubtitle": "Évaluez les charges critiques de votre entreprise et les options pour réduire la dépendance au réseau."
   },
   "casaPreocupacoes": {
-    "overline": "La fin des coupures à la maison",
-    "headline": "Ne vivez plus au rythme d'ELECTRA.",
+    "overline": "Ce qui mérite une protection",
+    "headline": "Commencez par les usages essentiels.",
     "items": [
       {
         "title": "Nourriture gâchée",
@@ -362,20 +362,20 @@
     "headline": "Combien coûte vraiment une coupure à votre entreprise ?",
     "items": [
       {
-        "title": "Stock gâché",
-        "desc": "Frigos et congélateurs s'arrêtent. Produits frais perdus en quelques heures."
+        "title": "Conservation des produits",
+        "desc": "Identifiez les équipements de froid et l’autonomie nécessaire."
       },
       {
-        "title": "Ventes à l'arrêt",
-        "desc": "Pas de caisse, pas de TPE, pas de lumière. Chaque heure fermée, c'est du chiffre perdu."
+        "title": "Service et ventes",
+        "desc": "Pensez à l’éclairage, aux communications, aux caisses et aux terminaux de paiement."
       },
       {
-        "title": "Gazole du générateur",
-        "desc": "Des milliers de CVE par mois en carburant — et le prix ne fait que monter."
+        "title": "Coût d’exploitation",
+        "desc": "Comparez la consommation du réseau, le carburant et l’entretien du groupe."
       },
       {
-        "title": "Équipements endommagés",
-        "desc": "Les pics et coupures grillent des machines coûteuses."
+        "title": "Équipements critiques",
+        "desc": "Évaluez les charges, les démarrages et les protections lors de la visite."
       }
     ]
   },
@@ -415,12 +415,12 @@
     "roiBody": "Ensuite, votre énergie est quasiment gratuite — tandis que le générateur continue de coûter chaque mois."
   },
   "footer": {
-    "tagline": "Énergie à l'épreuve des coupures.",
+    "tagline": "L’énergie solaire adaptée à votre consommation.",
     "solucoes": "Solutions",
     "empresa": "Entreprise",
     "comoFunciona": "Comment ça marche",
-    "planosProtecao": "Plans de Protection",
-    "rede": "Réseau d'Entreprises Protégées",
+    "planosProtecao": "Accompagnement et questions",
+    "rede": "Contacter Kevin",
     "contacto": "Contact",
     "rights": "Tous droits réservés. Site web par",
     "privacidade": "Confidentialité"

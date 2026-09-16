@@ -1,3 +1,5 @@
+import { useCommercialCopy } from '@/lib/commercialCopy';
+import { TrustAndFaqSection } from '@/components/sections/TrustAndFaqSection';
 import { useTranslation } from "react-i18next";
 import { Navbar } from "@/components/brand/Navbar";
 import { Footer } from "@/components/brand/Footer";
@@ -8,9 +10,6 @@ import { useLeadPanel } from "@/components/brand/LeadPanelContext";
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { SolucoesSection } from "@/components/sections/SolucoesSection";
 import { NegocioCustoSection } from "@/components/sections/NegocioCustoSection";
-import { NegocioVsGeradorSection } from "@/components/sections/NegocioVsGeradorSection";
-import { ProtecaoContinuaSection } from "@/components/sections/ProtecaoContinuaSection";
-import { RedeProtegidosSection } from "@/components/sections/RedeProtegidosSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 import heroEmpresarial from "@/assets/hero-bg.webp";
 
@@ -18,6 +17,7 @@ const SOURCE = "website_empresarial";
 
 const Empresarial = () => {
   const { t } = useTranslation();
+  const c = useCommercialCopy();
   const { openLeadPanel } = useLeadPanel();
   const heroRef = useRevealOnScroll<HTMLDivElement>();
 
@@ -32,7 +32,7 @@ const Empresarial = () => {
             alt="Negócio em Cabo Verde com energia solar"
             className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
           />
           <div
             aria-hidden
@@ -58,7 +58,7 @@ const Empresarial = () => {
                   <h1
                     className="font-display text-white"
                     style={{
-                      fontSize: "clamp(3.89rem, 7.2vw, 6.24rem)",
+                      fontSize: "clamp(2.6rem, 7.2vw, 6.24rem)",
                       lineHeight: 1.05,
                       fontWeight: 600,
                       letterSpacing: "0.02em",
@@ -92,7 +92,8 @@ const Empresarial = () => {
               </div>
             </div>
           </div>
-        </section>
+          <span className="absolute bottom-2 right-4 text-[10px] text-white/70">{c.illustrative}</span>
+    </section>
 
         <Marquee />
 
@@ -109,13 +110,10 @@ const Empresarial = () => {
           }}
         >
           <SolucoesSection audience="negocio" showToggle={false} />
-          <ProtecaoContinuaSection />
         </div>
 
         {/* Solar vs Gerador + ROI/payback */}
-        <NegocioVsGeradorSection />
-
-        <RedeProtegidosSection />
+        <TrustAndFaqSection />
         <FinalCtaSection />
       </main>
       <Footer />

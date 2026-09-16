@@ -1,22 +1,18 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { LeadPanelProvider } from "@/components/brand/LeadPanelContext";
 import { useSeo } from "@/seo/useSeo";
 import Index from "./pages/Index.tsx";
-import Residencial from "./pages/Residencial.tsx";
-import Empresarial from "./pages/Empresarial.tsx";
+const Residencial = lazy(() => import("./pages/Residencial.tsx"));
+const Empresarial = lazy(() => import("./pages/Empresarial.tsx"));
 import NotFound from "./pages/NotFound.tsx";
-import Privacidade from "./pages/Privacidade.tsx";
+const Privacidade = lazy(() => import("./pages/Privacidade.tsx"));
 
 // Ferramenta interna: carregada só quando /proposta é aberta, para não pesar
 // no bundle do site público (arrasta jspdf, html2canvas e recharts).
 const PropostasPage = lazy(() => import("./pages/PropostasPage.tsx"));
 
-const queryClient = new QueryClient();
+
 
 /** Sincroniza as meta tags com a rota. Tem de viver dentro do Router. */
 function SeoSync() {
@@ -25,13 +21,10 @@ function SeoSync() {
 }
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
       <BrowserRouter>
         <LeadPanelProvider>
           <SeoSync />
+          <Suspense fallback={<div className="min-h-screen grid place-items-center" role="status">Cabo Energia…</div>}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/residencial" element={<Residencial />} />
@@ -48,10 +41,9 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </LeadPanelProvider>
       </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
 );
 
 export default App;

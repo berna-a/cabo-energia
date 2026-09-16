@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { PillButton } from "./PillButton";
@@ -17,6 +17,7 @@ export function Navbar() {
     { label: t("nav.residencial"), href: "/residencial", description: t("nav.residencialDesc") },
     { label: t("nav.empresarial"), href: "/empresarial", description: t("nav.empresarialDesc") },
   ];
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [openMenu, setOpenMenu] = React.useState<string | null>(null);
 
@@ -46,7 +47,7 @@ export function Navbar() {
             src={scrolled ? logoCor : logoBranco}
             alt="CABO ENERGIA"
             className={cn(
-              "block w-auto transition-all duration-300",
+              "block w-auto max-w-[180px] sm:max-w-none transition-all duration-300",
               scrolled ? "h-6 md:h-7" : "h-[26px] md:h-[31px]"
             )}
           />
@@ -83,6 +84,8 @@ export function Navbar() {
               style={{ padding: "8px 16px" }}
               aria-expanded={openMenu === "solucoes"}
               aria-haspopup="menu"
+              onClick={() => setOpenMenu(openMenu ? null : "solucoes")}
+              onKeyDown={e => { if(e.key === "Escape")setOpenMenu(null); }}
             >
               {t("nav.solucoes")}
               <ChevronDown className="size-3.5 opacity-70" />
@@ -135,10 +138,11 @@ export function Navbar() {
 
         {/* Right: idioma (sempre visível) + CTA (aparece com scroll) */}
         <div className="flex shrink-0 items-center gap-3 md:gap-4">
+          <button type="button" aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={()=>setMobileOpen(!mobileOpen)} className={cn("rounded-lg p-2 md:hidden",scrolled?"text-brand-green-deep":"text-white")}>{mobileOpen?<X/>:<Menu/>}</button>
           <LanguageToggle tone={scrolled ? "dark" : "light"} />
           <div
             className={cn(
-              "transition-all duration-300",
+              "hidden lg:block transition-all duration-300",
               scrolled
                 ? "opacity-100 translate-y-0 pointer-events-auto"
                 : "opacity-0 -translate-y-1 pointer-events-none"
@@ -157,6 +161,9 @@ export function Navbar() {
           </div>
         </div>
       </div>
+      {mobileOpen && <nav id="mobile-navigation" className="border-t bg-white p-5 text-brand-green-deep shadow-lg md:hidden" aria-label="Navegação móvel">
+        {[...solutionsItems,{label:t('nav.comoFunciona'),href:'/#como-funciona'},{label:t('nav.contacto'),href:'/#contacto'}].map(item=><a key={item.href} href={item.href} onClick={()=>setMobileOpen(false)} className="block rounded-lg px-4 py-3 font-medium hover:bg-brand-green/10">{item.label}</a>)}
+      </nav>}
     </header>
   );
 }

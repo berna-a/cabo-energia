@@ -1,288 +1,36 @@
-import { useTranslation } from "react-i18next";
-import { PillButton } from "@/components/brand/PillButton";
-import { LigarCaboLabel } from "@/components/brand/LigarCaboLabel";
-import { useLeadPanel } from "@/components/brand/useLeadPanel";
-import { useAudienceTab, setAudienceTab, type AudienceTab } from "./audienceTab";
+import { useTranslation } from 'react-i18next';
+import { CATALOG } from '@/lib/catalog';
+import { useCommercialCopy } from '@/lib/commercialCopy';
+import { useLeadPanel } from '@/components/brand/useLeadPanel';
+import { useAudienceTab, setAudienceTab, type AudienceTab } from './audienceTab';
 
-const FONT = "'Montserrat', system-ui, -apple-system, sans-serif";
-const DARK = "#0D2B1F";
-const MUTED = "#6b7280";
-const YELLOW = "#F5C842";
-
-type Plan = {
-  badge: string;
-  badgeHighlight?: boolean;
-  name: string;
-  promise: string;
-  image: string;
-  metrics: { value: string; label: string }[];
-  production: string;
-  system: string;
-};
-
-// Nome/imagem/destaque ficam em código; o conteúdo traduzível vem dos locales.
-const RES_META = [
-  { name: "Casa Autonomia", image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600", badgeHighlight: false },
-  { name: "Casa Família", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600", badgeHighlight: true },
-  { name: "Casa Prestige", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600", badgeHighlight: false },
-];
-
-const NEG_META = [
-  { name: "Negócio Essencial", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600", badgeHighlight: false },
-  { name: "Negócio Corporativo", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600", badgeHighlight: true },
-];
-
-type PlanContent = { badge: string; promise: string; poupanca: string; production: string; system: string };
-
-function PlanCard({ plan, onCta }: { plan: Plan; onCta: () => void }) {
-  return (
-    <article
-      className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-md"
-      style={{
-        background: "rgba(255,255,255,0.95)",
-        border: "1px solid rgba(0,0,0,0.06)",
-        borderRadius: 16,
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          height: 160,
-          backgroundImage: `url(${plan.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, transparent 0%, rgba(13,43,31,0.85) 100%)",
-          }}
-        />
-      </div>
-
-      <div className="flex h-full flex-col p-7">
-        <span
-          className="inline-block self-start rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
-          style={
-            plan.badgeHighlight
-              ? { background: YELLOW, color: DARK }
-              : { background: "rgba(13,43,31,0.06)", color: "rgba(13,43,31,0.45)" }
-          }
-        >
-          {plan.badge}
-        </span>
-
-        <h3
-          className="mt-5"
-          style={{
-            color: "#0D2B1F",
-            fontFamily: FONT,
-            fontWeight: 700,
-            fontSize: 24,
-            lineHeight: 1.15,
-            margin: 0,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          {plan.name}
-        </h3>
-
-        <p
-          className="mt-2"
-          style={{
-            fontStyle: "italic",
-            fontSize: 13,
-            color: "rgba(13,43,31,0.55)",
-            margin: 0,
-            lineHeight: 1.45,
-          }}
-        >
-          {plan.promise}
-        </p>
-
-        <div className="mt-6 grid grid-cols-2 gap-3">
-          {plan.metrics.map((m) => (
-            <div key={m.label} className="rounded-xl p-4" style={{ background: "rgba(13,43,31,0.06)", border: "1px solid rgba(0,0,0,0.06)" }}>
-              <div
-                style={{
-                  color: "#0D2B1F",
-                  fontFamily: FONT,
-                  fontWeight: 800,
-                  fontSize: "clamp(16px, 1.6vw, 20px)",
-                  lineHeight: 1.1,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                {m.value}
-              </div>
-              <div
-                style={{
-                  color: "rgba(13,43,31,0.45)",
-                  fontSize: 11,
-                  marginTop: 6,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                {m.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-auto pt-8">
-          <div
-            style={{
-              color: "#0D2B1F",
-              fontFamily: FONT,
-              fontWeight: 800,
-              fontSize: 26,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {plan.production}
-          </div>
-          <div
-            style={{
-              color: "rgba(13,43,31,0.55)",
-              fontSize: 12,
-              marginTop: 6,
-              lineHeight: 1.4,
-            }}
-          >
-            {plan.system}
-          </div>
-
-          <PillButton
-            size="md"
-            variant="power"
-            onClick={onCta}
-            className="mt-5 w-full"
-          >
-            <LigarCaboLabel />
-          </PillButton>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-export function SolucoesSection({
-  showToggle = true,
-  audience,
-}: { showToggle?: boolean; audience?: AudienceTab } = {}) {
+export function SolucoesSection({ showToggle = true, audience }: { showToggle?: boolean; audience?: AudienceTab } = {}) {
+  const c = useCommercialCopy();
   const { t } = useTranslation();
   const globalTab = useAudienceTab();
   const tab = audience ?? globalTab;
   const { openLeadPanel } = useLeadPanel();
-  const meta = tab === "residencial" ? RES_META : NEG_META;
-  const content = t(`solucoes.${tab}`, { returnObjects: true }) as PlanContent[];
-  const plans: Plan[] = content.map((d, i) => ({
-    badge: d.badge,
-    badgeHighlight: meta[i]?.badgeHighlight,
-    name: meta[i]?.name ?? "",
-    promise: d.promise,
-    image: meta[i]?.image ?? "",
-    metrics: [
-      { value: d.poupanca, label: t("solucoes.poupancaLabel") },
-      { value: t("solucoes.retornoValue"), label: t("solucoes.retornoLabel") },
-    ],
-    production: d.production,
-    system: d.system,
-  }));
-
-  return (
-    <section
-      id="solucoes"
-      className="relative overflow-hidden"
-      style={{ background: "transparent", fontFamily: FONT, padding: "96px 24px" }}
-    >
-      <div className="mx-auto w-full max-w-[1200px]">
-        <div className="mb-10 text-center">
-          <span
-            style={{
-              display: "inline-block",
-              border: `1px solid ${YELLOW}`,
-              color: YELLOW,
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              padding: "6px 20px",
-              borderRadius: 50,
-              marginBottom: 20,
-            }}
-          >
-            {t("solucoes.pill")}
-          </span>
-          <h2
-            style={{
-              color: "#ffffff",
-              fontFamily: FONT,
-              fontWeight: 700,
-              fontSize: "clamp(28px, 4vw, 44px)",
-              lineHeight: 1.1,
-              margin: 0,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {t("solucoes.title")}
-          </h2>
-        </div>
-
-        {showToggle && (
-          <div className="mb-10 flex justify-center">
-            <div
-              className="inline-flex rounded-full p-1"
-              style={{ background: "rgba(255,255,255,0.08)" }}
-            >
-              {([
-                { id: "residencial", label: t("solucoes.toggleResidencial") },
-                { id: "negocio", label: t("solucoes.toggleNegocio") },
-              ] as const).map((opt) => {
-                const active = tab === opt.id;
-                return (
-                  <button
-                    key={opt.id}
-                    onClick={() => setAudienceTab(opt.id)}
-                    className="rounded-full px-6 py-2.5 text-sm font-semibold transition-all"
-                    style={{
-                      background: active ? YELLOW : "transparent",
-                      color: active ? DARK : "#ffffff",
-                    }}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        <div
-          key={tab}
-          className={`grid grid-cols-1 gap-6 ${
-            tab === "residencial" ? "md:grid-cols-3" : "md:grid-cols-2"
-          }`}
-          style={{ animation: "fadeUp 300ms ease both" }}
-        >
-          {plans.map((p) => (
-            <PlanCard key={p.name} plan={p} onCta={() => openLeadPanel()} />
-          ))}
-        </div>
+  const kits = CATALOG.filter(k => k.family === (tab === 'residencial' ? 'casa' : 'negocio'));
+  return <section id="solucoes" className="px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-[1200px]">
+      <h2 className="text-center text-3xl font-semibold text-white md:text-4xl">{t('solucoes.title')}</h2>
+      <p className="mx-auto mt-5 max-w-2xl text-center leading-relaxed text-white/75">{c.catalogNote}</p>
+      {showToggle && <div className="my-8 flex justify-center gap-2">{(['residencial','negocio'] as const).map(value =>
+        <button key={value} onClick={() => setAudienceTab(value)} aria-pressed={value === tab} className={`rounded-full px-5 py-3 text-sm font-semibold ${value === tab ? 'bg-brand-yellow text-brand-green-deep' : 'bg-white/10 text-white'}`}>{value === 'residencial' ? c.household : c.business}</button>)}</div>}
+      <div className={`mt-10 grid gap-5 ${kits.length === 3 ? 'lg:grid-cols-3' : 'md:grid-cols-2'}`}>
+        {kits.map((kit,i) => <article key={kit.id} className="flex flex-col rounded-2xl bg-white p-7 text-brand-green-deep">
+          <span className="text-sm font-semibold text-brand-green">0{i+1} / {c.quote}</span>
+          <h3 className="my-5 text-2xl font-bold">{kit.name}</h3>
+          <p className="mb-5 text-ink-soft">{t(`simulador.promises.${kit.id}`)}</p>
+          <dl className="mb-8 space-y-3 text-sm">
+            <div className="flex justify-between gap-3 border-b pb-3"><dt>{c.panels}</dt><dd className="font-semibold">{kit.panels} × {kit.panelWp} Wp</dd></div>
+            <div className="flex justify-between gap-3 border-b pb-3"><dt>{c.inverter}</dt><dd className="font-semibold">{kit.inverterKw} kW</dd></div>
+            <div className="flex justify-between gap-3 border-b pb-3"><dt>{c.battery}</dt><dd className="font-semibold">{kit.batteryKwh} kWh</dd></div>
+          </dl>
+          <button className="mt-auto rounded-full bg-brand-green px-6 py-3 font-semibold text-white" onClick={() => openLeadPanel({clientType:tab === 'residencial' ? 'residencial' : 'empresarial', source:`catalogo_${kit.id}`})}>{c.cta}</button>
+        </article>)}
       </div>
-
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-    </section>
-  );
+    </div>
+  </section>;
 }
-
 export default SolucoesSection;

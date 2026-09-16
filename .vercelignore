@@ -1,0 +1,12 @@
+.migration-private
+.ai
+.claude
+docs
+ESTADO.md
+AGENTS.md
+CLAUDE.md
+supabase
+db
+.env*
+output
+tmp

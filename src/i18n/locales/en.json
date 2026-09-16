@@ -9,37 +9,37 @@
     "contacto": "Contact"
   },
   "hero": {
-    "badge": "Blackout-proof energy",
+    "badge": "Solar energy with storage",
     "title1": "Cape Verde",
     "title2": "Always On.",
-    "subtitle": "Your home and your business never stop for lack of power again."
+    "subtitle": "Protect essential loads and reduce grid dependence. A solution sized for your home or business."
   },
   "marquee": {
     "items": [
-      "Turnkey installation",
-      "Inter-island logistics",
-      "Sunwaytech certified partner",
-      "Post-installation service included"
+      "Home and business solutions",
+      "Sized around consumption",
+      "Installation and support",
+      "Terms confirmed in your proposal"
     ]
   },
   "processo": {
-    "title": "From simulation to installation — no surprises.",
+    "title": "From first contact to installation.",
     "steps": [
       {
-        "title": "Simulation & Contact",
-        "copy": "Use the simulator at the top of the page. Our team calls you back in under 24 hours."
+        "title": "Initial assessment",
+        "copy": "Share your island and approximate consumption. The team checks your needs and feasibility."
       },
       {
-        "title": "Technical Survey",
-        "copy": "A precise on-site visit to assess your roof and consumption. Cost of 5,000 CVE (100% deductible from the contract)."
+        "title": "Technical survey",
+        "copy": "Roof access, essential loads and installation conditions are checked. Visit costs are agreed in advance."
       },
       {
-        "title": "Protection Plan",
-        "copy": "You receive a transparent final proposal with the exact calculation of your solar production, savings and payback."
+        "title": "Personalised proposal",
+        "copy": "Equipment, estimates, price, exclusions, warranties and payment terms are provided in writing."
       },
       {
-        "title": "Installation & Connection",
-        "copy": "Precise technical assembly by certified professionals with live load testing. Your life doesn't stop."
+        "title": "Installation and support",
+        "copy": "Agreed timing, installation, functional tests and a usage handover. Support follows the agreed contract."
       }
     ]
   },
@@ -61,8 +61,8 @@
     ]
   },
   "finalCta": {
-    "title": "The grid fails. Cabo Energia doesn't.",
-    "subtitle": "The initial assessment is free and with no commitment."
+    "title": "Let’s find the right energy solution.",
+    "subtitle": "Start with a conversation with Cabo Energia. No purchase commitment."
   },
   "solucoes": {
     "pill": "Solutions",
@@ -115,13 +115,13 @@
   "impactBento": {
     "pill": "Your Life with Cabo Energia",
     "title": "Before and after.",
-    "card1Title": "Blackout in the area, Light in your Home.",
-    "card1Copy": "The kitchen, the Wi-Fi, your life — it doesn't stop.",
-    "card1Badge": "Always On",
-    "card2Title": "Let the Sun pay the bill.",
-    "card2Badge": "Save up to 80%",
-    "card3Title": "Your home, your own grid.",
-    "card3Copy": "Produce your own energy and be part of Cape Verde's sustainable future."
+    "card1Title": "Protect what matters.",
+    "card1Copy": "Size your battery around essential household loads.",
+    "card1Badge": "Sized for your needs",
+    "card2Title": "Use sunlight to reduce your bill.",
+    "card2Badge": "Savings to assess",
+    "card3Title": "Produce some of your own energy.",
+    "card3Copy": "A solution for your roof, consumption and goals."
   },
   "protecao": {
     "title": "Continuous Protection Plans",
@@ -168,8 +168,8 @@
     "certProtected": "Business Protected Against Blackouts"
   },
   "leadPanel": {
-    "title": "Ligar Cabo",
-    "subtitle": "Leave your details. We'll contact you in under 24 hours — no commitment.",
+    "title": "Request a consumption assessment",
+    "subtitle": "Leave your details and island. The team contacts you to assess your request, with no purchase commitment.",
     "name": "Full name",
     "phone": "Phone",
     "island": "Island",
@@ -180,8 +180,8 @@
     "submit": "Confirm Contact",
     "submitting": "Sending…",
     "error": "We couldn't register you right now. Contact us directly:",
-    "successTitle": "Thank you.",
-    "successBody": "Our team will call you within the next 24 hours. Cape Verde can't stop.",
+    "successTitle": "Request saved.",
+    "successBody": "Cabo Energia has received your request and will contact you to confirm needs, availability and the next step.",
     "successSr": "Request sent",
     "validName": "Please enter your full name.",
     "validMax": "Maximum 100 characters.",
@@ -278,11 +278,11 @@
     "savingsPerMonth": "CVE / month",
     "step6Note": "Save the number +238 995 41 81 to recognise Kevin's call.",
     "promises": {
-      "tranquila": "The sun pays your electricity bill, every month.",
-      "autonomia": "Plenty of energy for the whole home.",
-      "plena": "Total independence — live as if ELECTRA didn't exist.",
-      "essencial": "Your business never stops. Your bill drops.",
-      "pleno": "Power to operate without limits."
+      "tranquila": "A starting point for essential loads.",
+      "autonomia": "More capacity for family needs.",
+      "plena": "Sizing for higher-consumption homes.",
+      "essencial": "Plan your business-critical loads.",
+      "pleno": "A reference configuration for larger operations."
     },
     "benefits": {
       "tranquila": [
@@ -315,16 +315,16 @@
   "pages": {
     "residencialBadge": "Residential Solutions",
     "residencialTitle1": "Your home",
-    "residencialTitle2": "always on.",
-    "residencialSubtitle": "Solar energy with battery: continuous comfort and a falling bill, even when the grid fails.",
+    "residencialTitle2": "more independent.",
+    "residencialSubtitle": "Solar energy and storage sized to reduce bills and protect essential loads.",
     "empresarialBadge": "Business Solutions",
     "empresarialTitle1": "Your business",
-    "empresarialTitle2": "never stops.",
-    "empresarialSubtitle": "Continuous solar energy for shops, services and industry. No blackouts, with a falling bill."
+    "empresarialTitle2": "better protected.",
+    "empresarialSubtitle": "Assess your business-critical loads and options for reducing grid dependence."
   },
   "casaPreocupacoes": {
-    "overline": "The end of blackouts at home",
-    "headline": "Stop living to ELECTRA's rhythm.",
+    "overline": "What matters most",
+    "headline": "Start with essential loads.",
     "items": [
       {
         "title": "Spoiled food",
@@ -362,20 +362,20 @@
     "headline": "How much does a blackout really cost your business?",
     "items": [
       {
-        "title": "Spoiled stock",
-        "desc": "Fridges and freezers stop. Fresh produce lost in just a few hours."
+        "title": "Product preservation",
+        "desc": "Identify refrigeration loads and the backup duration needed."
       },
       {
-        "title": "Sales halted",
-        "desc": "No till, no card machine, no light. Every hour closed is revenue that won't come back."
+        "title": "Service and sales",
+        "desc": "Consider lighting, communications, tills and payment terminals."
       },
       {
-        "title": "Generator diesel",
-        "desc": "Thousands of CVE a month in fuel — and the price only goes up."
+        "title": "Operating costs",
+        "desc": "Compare grid consumption, generator fuel and maintenance."
       },
       {
-        "title": "Damaged equipment",
-        "desc": "Power surges and outages burn out expensive machines."
+        "title": "Critical equipment",
+        "desc": "Assess loads, starting currents and electrical protection during the survey."
       }
     ]
   },
@@ -415,12 +415,12 @@
     "roiBody": "After that, your energy is practically free — while the generator keeps costing every month."
   },
   "footer": {
-    "tagline": "Blackout-proof energy.",
+    "tagline": "Solar energy sized for your consumption.",
     "solucoes": "Solutions",
     "empresa": "Company",
     "comoFunciona": "How it works",
-    "planosProtecao": "Protection Plans",
-    "rede": "Protected Businesses Network",
+    "planosProtecao": "Support and questions",
+    "rede": "Talk to Kevin",
     "contacto": "Contact",
     "rights": "All rights reserved. Website by",
     "privacidade": "Privacy"

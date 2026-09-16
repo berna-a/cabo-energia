@@ -1,3 +1,4 @@
+import { useCommercialCopy } from '@/lib/commercialCopy';
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { PillButton } from "@/components/brand/PillButton";
@@ -7,6 +8,7 @@ import heroImage from "@/assets/hero-bg.webp";
 
 export function HeroSection() {
   const { t } = useTranslation();
+  const c = useCommercialCopy();
   const ref = useRevealOnScroll<HTMLDivElement>();
   const [igniting, setIgniting] = React.useState(false);
 
@@ -28,7 +30,7 @@ export function HeroSection() {
         alt="Família em casa com painéis solares"
         className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
         loading="eager"
-        fetchpriority="high"
+        fetchPriority="high"
       />
 
       {/* Overlay — radial elliptical fade from bottom-left */}
@@ -115,6 +117,7 @@ export function HeroSection() {
           </div>
         </div>
       </div>
+      <span className="absolute bottom-2 right-4 text-[10px] text-white/70">{c.illustrative}</span>
     </section>
   );
 }

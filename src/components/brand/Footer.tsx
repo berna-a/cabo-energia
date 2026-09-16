@@ -157,7 +157,7 @@ export function Footer() {
             { href: "/#como-funciona", text: t("footer.comoFunciona") },
             { href: "/#protecao", text: t("footer.planosProtecao") },
             { href: "/#rede", text: t("footer.rede") },
-            { href: "#contacto", text: t("footer.contacto") },
+            { href: "/#contacto", text: t("footer.contacto") },
           ]}
         />
       </div>
