@@ -25,8 +25,13 @@ export const submit = mutation({
       phone_key, created_at: now, status: "new_lead",
       notification_status: "pending", notification_attempts: 0,
       is_test: lead.name.startsWith("TESTE TÉCNICO ARDO"),
+      aos_sync_status: lead.name.startsWith("TESTE TÉCNICO ARDO") ? "skipped_test" : "pending",
+      aos_sync_attempts: 0,
     });
     await ctx.scheduler.runAfter(0, internal.notifications.send, { id });
+    if (!lead.name.startsWith("TESTE TÉCNICO ARDO")) {
+      await ctx.scheduler.runAfter(0, internal.aosSync.send, { id });
+    }
     return { ok: true, stored: true, id };
   },
 });
@@ -51,6 +56,21 @@ export const recordNotification = internalMutation({
   },
 });
 
+export const recordAosSync = internalMutation({
+  args: {
+    id: v.id("leads"), status: v.string(), attempt: v.number(),
+    error: v.optional(v.string()), syncedAt: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, {
+      aos_sync_status: args.status,
+      aos_sync_attempts: args.attempt,
+      ...(args.error ? { aos_sync_error: args.error.slice(0, 300) } : { aos_sync_error: undefined }),
+      ...(args.syncedAt ? { aos_synced_at: args.syncedAt } : {}),
+    });
+  },
+});
+
 export const verify = internalQuery({
   args: { request_id: v.string() },
   handler: async (ctx, { request_id }) => {
@@ -58,6 +78,8 @@ export const verify = internalQuery({
     return lead ? { id: lead._id, request_id, source: lead.source, fields: lead.fields,
       notification_status: lead.notification_status, notification_id: lead.notification_id,
       notification_attempts: lead.notification_attempts, delivery_status: lead.delivery_status,
-      is_test: lead.is_test, notification_error: lead.notification_error } : null;
+      is_test: lead.is_test, notification_error: lead.notification_error,
+      aos_sync_status: lead.aos_sync_status, aos_sync_attempts: lead.aos_sync_attempts,
+      aos_sync_error: lead.aos_sync_error, aos_synced_at: lead.aos_synced_at } : null;
   },
 });

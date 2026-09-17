@@ -15,9 +15,17 @@ describe("isolated Convex lead storage",()=>{
     const one=await t.mutation(api.leads.submit,args);const two=await t.mutation(api.leads.submit,args);
     expect(one.id).toBe(two.id);
     expect(await t.run(ctx=>ctx.db.query("leads").collect())).toHaveLength(1);
-    expect(await t.run(ctx=>ctx.db.system.query("_scheduled_functions").collect())).toHaveLength(1);
+    expect(await t.run(ctx=>ctx.db.system.query("_scheduled_functions").collect())).toHaveLength(2);
     const saved=await t.query(internal.leads.verify,{request_id:args.request_id});
     expect(saved?.fields).toEqual(args.fields);expect(saved?.notification_status).toBe("pending");
+    expect(saved?.aos_sync_status).toBe("pending");
+  });
+  it("never mirrors synthetic production checks into the AOS CRM",async()=>{
+    const t=convexTest(schema,modules);const args={...input(),name:"TESTE TÉCNICO ARDO — sync"};
+    await t.mutation(api.leads.submit,args);
+    expect(await t.run(ctx=>ctx.db.system.query("_scheduled_functions").collect())).toHaveLength(1);
+    const saved=await t.query(internal.leads.verify,{request_id:args.request_id});
+    expect(saved?.aos_sync_status).toBe("skipped_test");
   });
   it("rejects unauthorised calls and malformed input without storing",async()=>{
     const t=convexTest(schema,modules);

@@ -14,6 +14,8 @@ export default defineSchema({
     notification_status: v.string(), notification_attempts: v.number(),
     notification_id: v.optional(v.string()), notification_error: v.optional(v.string()),
     notified_at: v.optional(v.number()), delivery_status: v.optional(v.string()),
+    aos_sync_status: v.optional(v.string()), aos_sync_attempts: v.optional(v.number()),
+    aos_sync_error: v.optional(v.string()), aos_synced_at: v.optional(v.number()),
     legacy_id: v.optional(v.string()), is_test: v.optional(v.boolean()),
   }).index("by_request", ["request_id"]).index("by_phone_time", ["phone_key", "created_at"])
     .index("by_created", ["created_at"]).index("by_legacy", ["legacy_id"]),

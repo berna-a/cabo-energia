@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as aosSync from "../aosSync.js";
 import type * as leads from "../leads.js";
 import type * as migration from "../migration.js";
 import type * as notifications from "../notifications.js";
@@ -19,6 +20,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  aosSync: typeof aosSync;
   leads: typeof leads;
   migration: typeof migration;
   notifications: typeof notifications;
