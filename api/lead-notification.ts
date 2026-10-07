@@ -26,11 +26,14 @@ export default async function handler(req: any, res: any) {
   if (body?.action !== "send" || !lead?.request_id || !lead?.name || !lead?.phone) return res.status(400).json({ ok: false });
   const rows: [string, unknown][] = [["Nome",lead.name],["Telefone",lead.phone],["Tipo",lead.client_type],["Ilha",lead.ilha],["Origem",lead.source],
     ...(lead.fields || []).map((f: {chave:string;valor:unknown}) => [f.chave, f.valor]), ["Referência",lead.request_id]];
-  const to = process.env.LEAD_NOTIFY_TO || "cabo.energia@ardo.partners";
+  const to = (process.env.LEAD_NOTIFY_TO || "cabo.energia@ardo.partners")
+    .split(",")
+    .map(address => address.trim())
+    .filter(Boolean);
   try {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST", signal: AbortSignal.timeout(10000),
-      headers: { Authorization: `Bearer ${key}`, "Content-Type":"application/json", "Idempotency-Key": `cabo-lead-${lead.request_id}` },
+      headers: { Authorization: `Bearer ${key}`, "Content-Type":"application/json", "Idempotency-Key": `cabo-lead-v2-${lead.request_id}` },
       body: JSON.stringify({ from:process.env.LEAD_NOTIFY_FROM || "CABO ENERGIA <onboarding@resend.dev>",to,
         subject:`${lead.is_test ? "[TESTE — NÃO CONTACTAR] " : ""}Nova lead: ${lead.name} (${lead.client_type})`,
         html:`<div style="font-family:Arial,sans-serif;color:#0D2B1F"><h2>Nova lead — CABO ENERGIA</h2><table>${rows.filter(([,v])=>v!==undefined&&v!=="").map(([k,v])=>`<tr><td><strong>${esc(k)}</strong></td><td>${esc(v)}</td></tr>`).join("")}</table><p><a href="https://wa.me/${String(lead.phone).replace(/\D/g,"")}">Responder por WhatsApp</a></p></div>` }),
