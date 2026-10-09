@@ -104,6 +104,7 @@ function LeadModalForm({
     setSubmitting(false);
     if (capturada) {
       onSubmitted();
+      window.location.assign(`${WHATSAPP_URL}?text=${encodeURIComponent(t("leadPanel.whatsappMessage"))}`);
     } else {
       setSubmitFailed(true);
     }
@@ -291,6 +292,9 @@ function SuccessMessage() {
       >
         {t("leadPanel.successBody")}
       </p>
+      <a href={`${WHATSAPP_URL}?text=${encodeURIComponent(t("leadPanel.whatsappMessage"))}`} className="mt-4 inline-block underline" style={{ color: DARK }}>
+        {t("leadPanel.openWhatsapp")}
+      </a>
     </div>
   );
 }

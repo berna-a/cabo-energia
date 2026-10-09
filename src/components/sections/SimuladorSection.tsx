@@ -33,7 +33,11 @@ export default function SimuladorSection() {
       {chave:'Pacote de referência',valor:kit.name},{chave:'Factura mensal (CVE)',valor:bill},{chave:'Tarifa de cálculo (CVE/kWh)',valor:tariff},
       {chave:'Autoconsumo (%)',valor:selfUse},{chave:'Acesso ao telhado',valor:roof},{chave:'Cenário mínimo (CVE/mês)',valor:savings.low},{chave:'Cenário máximo (CVE/mês)',valor:savings.high},
     ]});
-    setBusy(false);if(stored)setStep(3);else setError(c.failed);
+    setBusy(false);
+    if(stored){
+      setStep(3);
+      window.location.assign(`${WHATSAPP_URL}?text=${encodeURIComponent(c.whatsappLeadMessage)}`);
+    }else setError(c.failed);
   }
   return <section id="simulador" className="px-5 py-16 md:px-8 md:py-24">
     <div className="mx-auto max-w-4xl">
@@ -67,10 +71,10 @@ export default function SimuladorSection() {
         {error && <p role="alert" className="rounded-xl bg-red-50 p-4 text-sm text-red-800">{error} <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="underline">WhatsApp</a></p>}
         <div className="flex flex-col-reverse gap-3 sm:flex-row">
           <button type="button" disabled={busy} onClick={()=>setStep(1)} className="rounded-full border px-6 py-3">{c.back}</button>
-          <button disabled={busy} type="submit" className="flex-1 rounded-full bg-brand-green px-6 py-3 font-semibold text-white disabled:opacity-50">{busy?c.sending:c.cta}</button>
+          <button disabled={busy} type="submit" className="flex-1 rounded-full bg-brand-green px-6 py-3 font-semibold text-white disabled:opacity-50">{busy?c.sending:c.submitWhatsapp}</button>
         </div>
       </form>}
-      {step===3 && <div role="status" className="py-7 text-center"><h3 className="text-3xl font-bold">{c.saved}</h3><p className="mx-auto my-6 max-w-xl leading-relaxed">{c.savedBody}</p><a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="inline-block rounded-full bg-brand-green px-6 py-3 font-semibold text-white">{c.whatsapp}</a></div>}
+      {step===3 && <div role="status" className="py-7 text-center"><h3 className="text-3xl font-bold">{c.saved}</h3><p className="mx-auto my-6 max-w-xl leading-relaxed">{c.savedBody}</p><a href={`${WHATSAPP_URL}?text=${encodeURIComponent(c.whatsappLeadMessage)}`} className="inline-block rounded-full bg-brand-green px-6 py-3 font-semibold text-white">{c.whatsapp}</a></div>}
       </div>
     </div>
   </section>;
