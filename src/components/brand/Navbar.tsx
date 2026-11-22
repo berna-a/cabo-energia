@@ -9,17 +9,51 @@ import { useLeadPanel } from "./LeadPanelContext";
 import { LanguageToggle } from "./LanguageToggle";
 import logoBranco from "@/assets/logo-branco.webp";
 import logoCor from "@/assets/logo-cor.webp";
+import navResidencial from "@/assets/nav/hero-residencial.webp";
+import navEmpresarial from "@/assets/nav/hero-bg.webp";
+import navFatura from "@/assets/nav/impact-fatura.webp";
+import navIndependencia from "@/assets/nav/impact-independencia.webp";
+import navProtecao from "@/assets/nav/impact-protecao.webp";
+import { NavPreviewMenu } from "./NavPreviewMenu";
 
 export function Navbar() {
   const { t } = useTranslation();
   const { openLeadPanel } = useLeadPanel();
   const solutionsItems = [
-    { label: t("nav.residencial"), href: "/residencial", description: t("nav.residencialDesc") },
-    { label: t("nav.empresarial"), href: "/empresarial", description: t("nav.empresarialDesc") },
+    { label: t("nav.residencial"), href: "/residencial", description: t("nav.residencialDesc"), image: navResidencial },
+    { label: t("nav.empresarial"), href: "/empresarial", description: t("nav.empresarialDesc"), image: navEmpresarial },
   ];
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const [openMenu, setOpenMenu] = React.useState<string | null>(null);
+  const closeTimer = React.useRef<number | undefined>(undefined);
+  const openNow = (id: string) => { window.clearTimeout(closeTimer.current); setOpenMenu(id); };
+  const closeSoon = () => { window.clearTimeout(closeTimer.current); closeTimer.current = window.setTimeout(() => setOpenMenu(null), 140); };
+  React.useEffect(() => () => window.clearTimeout(closeTimer.current), []);
+  // Escape fecha o dropdown mesmo quando foi aberto só com o rato (o foco não está dentro dele).
+  React.useEffect(() => {
+    if (!openMenu) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpenMenu(null); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [openMenu]);
+
+  const sectionItems = [
+    { label: t("nav.simulador"), href: "/#simulador", description: t("nav.simuladorDesc"), image: navFatura },
+    { label: t("nav.pacotes"), href: "/#solucoes", description: t("nav.pacotesDesc"), image: navIndependencia },
+    { label: t("nav.processo"), href: "/#como-funciona", description: t("nav.processoDesc"), image: navProtecao },
+  ];
+  const menus = [
+    { id: "solucoes", label: t("nav.solucoes"), href: undefined, items: solutionsItems, cta: t("nav.verPagina") },
+    { id: "como-funciona", label: t("nav.comoFunciona"), href: "/#como-funciona", items: sectionItems, cta: t("nav.verSecao") },
+  ];
+  const triggerClass = (open: boolean) => cn(
+    "inline-flex items-center gap-1 whitespace-nowrap rounded-pill text-sm font-medium transition-colors",
+    scrolled
+      ? cn("text-ink hover:bg-white", open && "bg-white")
+      : cn("text-white hover:bg-white/15", open && "bg-white/15")
+  );
+  const chevronClass = (open: boolean) => cn("size-3.5 opacity-70 transition-transform duration-300", open && "rotate-180");
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -67,62 +101,46 @@ export function Navbar() {
               : { padding: "6px 8px", background: "rgba(255,255,255,0.15)" }
           }
         >
-          {/* Soluções dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setOpenMenu("solucoes")}
-            onMouseLeave={() => setOpenMenu(null)}
-          >
-            <button
-              type="button"
-              className={cn(
-                "inline-flex items-center gap-1 rounded-pill text-sm font-medium transition-colors",
-                scrolled
-                  ? "text-ink hover:bg-white"
-                  : "text-white hover:bg-white/15"
-              )}
-              style={{ padding: "8px 16px" }}
-              aria-expanded={openMenu === "solucoes"}
-              aria-haspopup="menu"
-              onClick={() => setOpenMenu(openMenu ? null : "solucoes")}
-              onKeyDown={e => { if(e.key === "Escape")setOpenMenu(null); }}
+          {menus.map((menu) => (
+            <div
+              key={menu.id}
+              className="relative"
+              onMouseEnter={() => openNow(menu.id)}
+              onMouseLeave={closeSoon}
+              onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeSoon(); }}
             >
-              {t("nav.solucoes")}
-              <ChevronDown className="size-3.5 opacity-70" />
-            </button>
-            {openMenu === "solucoes" && (
-              <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2">
-                <div
-                  role="menu"
-                  className="w-64 overflow-hidden rounded-2xl border border-border bg-white p-2 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.18)]"
+              {menu.href ? (
+                <a
+                  href={menu.href}
+                  className={triggerClass(openMenu === menu.id)}
+                  style={{ padding: "8px 16px" }}
+                  aria-expanded={openMenu === menu.id}
+                  aria-haspopup="menu"
+                  onFocus={() => openNow(menu.id)}
                 >
-                  {solutionsItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      role="menuitem"
-                      className="flex flex-col gap-0.5 rounded-xl px-4 py-3 transition-colors hover:bg-surface-muted"
-                    >
-                      <span className="text-sm font-semibold text-ink">{item.label}</span>
-                      <span className="text-xs text-ink-soft">{item.description}</span>
-                    </Link>
-                  ))}
+                  {menu.label}
+                  <ChevronDown className={chevronClass(openMenu === menu.id)} />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  className={triggerClass(openMenu === menu.id)}
+                  style={{ padding: "8px 16px" }}
+                  aria-expanded={openMenu === menu.id}
+                  aria-haspopup="menu"
+                  onClick={() => setOpenMenu(openMenu === menu.id ? null : menu.id)}
+                >
+                  {menu.label}
+                  <ChevronDown className={chevronClass(openMenu === menu.id)} />
+                </button>
+              )}
+              {openMenu === menu.id && (
+                <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
+                  <NavPreviewMenu items={menu.items} cta={menu.cta} onNavigate={() => setOpenMenu(null)} />
                 </div>
-              </div>
-            )}
-          </div>
-
-          <a
-            href="/#como-funciona"
-            className={cn(
-              "inline-flex items-center gap-1 rounded-pill text-sm font-medium transition-colors",
-              scrolled ? "text-ink hover:bg-white" : "text-white hover:bg-white/15"
-            )}
-            style={{ padding: "8px 16px" }}
-          >
-            {t("nav.comoFunciona")}
-            <ChevronDown className="size-3.5 opacity-70" />
-          </a>
+              )}
+            </div>
+          ))}
 
           <a
             href="/#contacto"
@@ -162,7 +180,7 @@ export function Navbar() {
         </div>
       </div>
       {mobileOpen && <nav id="mobile-navigation" className="border-t bg-white p-5 text-brand-green-deep shadow-lg lg:hidden" aria-label="Navegação móvel">
-        {[...solutionsItems,{label:t('nav.comoFunciona'),href:'/#como-funciona'},{label:t('nav.contacto'),href:'/#contacto'}].map(item=><a key={item.href} href={item.href} onClick={()=>setMobileOpen(false)} className="block rounded-lg px-4 py-3 font-medium hover:bg-brand-green/10">{item.label}</a>)}
+        {[...solutionsItems,...sectionItems,{label:t('nav.contacto'),href:'/#contacto'}].map(item=><a key={item.href} href={item.href} onClick={()=>setMobileOpen(false)} className="block rounded-lg px-4 py-3 font-medium hover:bg-brand-green/10">{item.label}</a>)}
       </nav>}
     </header>
   );

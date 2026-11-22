@@ -6,7 +6,15 @@
     "empresarial": "Entreprises",
     "empresarialDesc": "Pour votre entreprise.",
     "comoFunciona": "Comment ça marche",
-    "contacto": "Contact"
+    "contacto": "Contact",
+    "simulador": "Simulateur",
+    "simuladorDesc": "Calculez vos économies.",
+    "pacotes": "Formules",
+    "pacotesDesc": "Choisissez votre niveau d’énergie.",
+    "processo": "Comment ça marche",
+    "processoDesc": "Du premier contact à l’installation.",
+    "verPagina": "Voir la page",
+    "verSecao": "Aller à la section"
   },
   "hero": {
     "badge": "Énergie solaire avec stockage",

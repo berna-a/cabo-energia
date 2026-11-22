@@ -6,7 +6,15 @@
     "empresarial": "Business",
     "empresarialDesc": "For your business.",
     "comoFunciona": "How it works",
-    "contacto": "Contact"
+    "contacto": "Contact",
+    "simulador": "Simulator",
+    "simuladorDesc": "Calculate your savings.",
+    "pacotes": "Packages",
+    "pacotesDesc": "Choose your energy level.",
+    "processo": "How it works",
+    "processoDesc": "From first contact to installation.",
+    "verPagina": "View page",
+    "verSecao": "Go to section"
   },
   "hero": {
     "badge": "Solar energy with storage",
