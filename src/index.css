@@ -205,6 +205,37 @@ h1, h2, h3, h4 {
   animation: marquee 60s linear infinite;
   width: max-content;
 }
+/* Palco do simulador: gradiente e manchas de luz em movimento lento (param com movimento reduzido). */
+.sim-stage {
+  background: linear-gradient(135deg, hsl(var(--brand-green)) 0%, hsl(var(--brand-green-soft)) 45%, hsl(var(--brand-green)) 100%);
+  background-size: 200% 200%;
+  animation: sim-gradient 14s ease-in-out infinite;
+}
+.sim-blob { position: absolute; z-index: -1; border-radius: 9999px; filter: blur(64px); pointer-events: none; }
+.sim-blob-a { width: 28rem; height: 28rem; top: -10rem; right: -8rem; background: hsl(var(--brand-yellow) / 0.35); animation: sim-drift-a 16s ease-in-out infinite alternate; }
+.sim-blob-b { width: 24rem; height: 24rem; bottom: -10rem; left: -8rem; background: hsl(var(--brand-yellow) / 0.2); animation: sim-drift-b 20s ease-in-out infinite alternate; }
+.sim-blob-c { width: 20rem; height: 20rem; top: 30%; left: 40%; background: hsl(160 60% 45% / 0.25); animation: sim-drift-a 22s ease-in-out infinite alternate-reverse; }
+@keyframes sim-gradient { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes sim-drift-a { to { transform: translate(-6rem, 5rem) scale(1.15); } }
+/* Botão final do simulador: brilho que respira e um reflexo que passa de 4 em 4 s. */
+.sim-cta { animation: sim-cta-glow 3.2s ease-in-out infinite; }
+.sim-cta-sweep { animation: sim-cta-sweep 4s ease-in-out infinite; }
+@keyframes sim-cta-glow {
+  0%, 100% { box-shadow: 0 10px 28px -12px hsl(var(--brand-green-deep) / 0.55); }
+  50% { box-shadow: 0 0 0 5px hsl(var(--brand-yellow) / 0.18), 0 16px 40px -14px hsl(var(--brand-yellow) / 0.5); }
+}
+@keyframes sim-cta-sweep {
+  0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  8% { opacity: 1; }
+  30%, 100% { transform: translateX(320%) skewX(-18deg); opacity: 0; }
+}
+@keyframes sim-drift-b { to { transform: translate(7rem, -4rem) scale(1.1); } }
+/* Com movimento reduzido o palco e o botão ficam parados (a regra geral só encurta a duração e um ciclo infinito tremeria). */
+@media (prefers-reduced-motion: reduce) {
+  .sim-stage, .sim-blob, .sim-cta { animation: none !important; }
+  .sim-cta-sweep { animation: none !important; opacity: 0; }
+}
+
 /* Keyboard access and reduced motion are first-class paths through the site. */
 :focus-visible { outline: 3px solid #c39b12 !important; outline-offset: 4px; }
 html { scroll-padding-top: 100px; }

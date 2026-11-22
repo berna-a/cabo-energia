@@ -42,7 +42,9 @@ export function FinalCtaSection() {
               size="lg"
               variant="power"
               onClick={() => openLeadPanel({ source: "final_cta" })}
+              className="sim-cta"
             >
+              <span aria-hidden className="sim-cta-sweep pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-[linear-gradient(110deg,transparent,hsl(var(--brand-yellow)/0.6),transparent)]" />
               <LigarCaboLabel />
             </PillButton>
           </div>
