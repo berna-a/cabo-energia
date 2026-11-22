@@ -10,7 +10,7 @@ import { LanguageToggle } from "./LanguageToggle";
 import logoBranco from "@/assets/logo-branco.webp";
 import logoCor from "@/assets/logo-cor.webp";
 import navResidencial from "@/assets/nav/hero-residencial.webp";
-import navEmpresarial from "@/assets/nav/hero-bg.webp";
+import navEmpresarial from "@/assets/nav/hero-empresarial.webp";
 import navFatura from "@/assets/nav/impact-fatura.webp";
 import navIndependencia from "@/assets/nav/impact-independencia.webp";
 import navProtecao from "@/assets/nav/impact-protecao.webp";

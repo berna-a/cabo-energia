@@ -30,7 +30,7 @@ const Residencial = () => {
           <img
             src={heroResidencial}
             alt="Casa em Cabo Verde com painéis solares ao pôr do sol"
-            className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-[92%_center] sm:object-[80%_center] md:object-center"
             loading="eager"
             fetchPriority="high"
           />

@@ -11,7 +11,7 @@ import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import { SolucoesSection } from "@/components/sections/SolucoesSection";
 import { NegocioCustoSection } from "@/components/sections/NegocioCustoSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
-import heroEmpresarial from "@/assets/hero-bg.webp";
+import heroEmpresarial from "@/assets/hero-empresarial.webp";
 
 const SOURCE = "website_empresarial";
 
@@ -30,7 +30,7 @@ const Empresarial = () => {
           <img
             src={heroEmpresarial}
             alt="Negócio em Cabo Verde com energia solar"
-            className="absolute inset-0 -z-20 h-full w-full object-cover object-[70%_center] sm:object-[60%_center] md:object-center"
+            className="absolute inset-0 -z-20 h-full w-full object-cover object-[75%_center] sm:object-[70%_center] md:object-center"
             loading="eager"
             fetchPriority="high"
           />
