@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 export function Marquee() {
   const { t } = useTranslation();
   const items = t("marquee.items", { returnObjects: true }) as string[];
-  // Repeat content for a seamless loop
-  const loop = [...items, ...items, ...items, ...items];
+  // 8 cópias: a animação anda 25% (2 cópias), largo o suficiente para ecrãs largos de ponta a ponta.
+  const loop = Array.from({ length: 8 }, () => items).flat();
 
   return (
     <div
@@ -15,7 +15,7 @@ export function Marquee() {
       }}
       aria-hidden
     >
-      <div className="site-container overflow-hidden">
+      <div className="overflow-hidden">
         <div className="flex whitespace-nowrap py-3.5 marquee-track">
           {loop.map((item, i) => (
             <span

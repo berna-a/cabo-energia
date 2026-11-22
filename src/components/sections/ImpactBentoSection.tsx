@@ -260,7 +260,7 @@ export function ImpactBentoSection() {
             <div className="relative z-10 flex h-full w-full items-end p-6 md:p-8">
               <div
                 className="impacto-card impacto-card--slow w-full rounded-2xl px-6 py-5 md:px-8 md:py-6"
-                style={glassPanel}
+                style={{ ...glassPanel, background: "rgba(13, 43, 31, 0.5)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)" }}
               >
                 <LeftCatchLight />
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-8">
@@ -270,7 +270,7 @@ export function ImpactBentoSection() {
                     {t("impactBento.card3Title")}
                   </h3>
                   <p
-                    style={{ color: MUTED, fontSize: 14, lineHeight: 1.55, margin: 0, maxWidth: 460 }}
+                    style={{ color: "rgba(255,255,255,0.92)", fontSize: 15, lineHeight: 1.55, margin: 0, maxWidth: 460 }}
                   >
                     {t("impactBento.card3Copy")}
                   </p>

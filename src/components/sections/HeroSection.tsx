@@ -52,7 +52,7 @@ export function HeroSection() {
 
 
             {/* Esquerda: badge + headline + subtítulo */}
-            <div className="max-w-[90%] md:max-w-[62%]">
+            <div className="max-w-[90%] md:max-w-none md:min-w-0">
 
               {/* Badge */}
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 backdrop-blur-sm">
@@ -62,24 +62,23 @@ export function HeroSection() {
                 </span>
               </div>
 
-              {/* Headline — duas linhas, Montserrat Black 900, all caps */}
+              {/* Headline — «CABO VERDE» / «SEMPRE LIGADO.» em duas linhas a partir do tablet */}
               <h1
-                className="font-display text-white"
+                className="hero-title font-display text-white"
                 style={{
-                  fontSize: "clamp(3.89rem, 7.2vw, 6.24rem)",
                   lineHeight: 1.05,
                   fontWeight: 600,
                   letterSpacing: "0.02em",
                   textTransform: "uppercase",
                 }}
               >
-                {t("hero.title1")}<br />
-                {t("hero.title2")}
+                <span className="md:whitespace-nowrap">{t("hero.title1")}</span><br />
+                <span className="md:whitespace-nowrap">{t("hero.title2")}</span>
               </h1>
 
               {/* Subtítulo */}
               <p
-                className="mt-5 max-w-md leading-relaxed text-white/70"
+                className="mt-5 max-w-md leading-relaxed text-white/70 md:max-w-[34rem]"
                 style={{ fontSize: "1rem", fontWeight: 400 }}
               >
                 {t("hero.subtitle")}

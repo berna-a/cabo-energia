@@ -197,8 +197,12 @@ h1, h2, h3, h4 {
   100% { transform: translateX(-25%); }
 }
 
+/* Título do hero: grande no telemóvel; a partir do tablet cabe em duas linhas ao lado do botão. */
+.hero-title { font-size: clamp(3.89rem, 7.2vw, 6.24rem); }
+@media (min-width: 768px) { .hero-title { font-size: clamp(2.6rem, 5.4vw, 5rem); } }
+
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
   width: max-content;
 }
 /* Keyboard access and reduced motion are first-class paths through the site. */

@@ -37,12 +37,12 @@ export function Navbar() {
     >
       <div
         className={cn(
-          "site-container relative flex items-center justify-between transition-all duration-300",
+          "site-container relative flex items-center justify-between gap-4 transition-all duration-300 lg:grid lg:grid-cols-[auto_1fr_auto] min-[1100px]:grid-cols-[1fr_auto_1fr]",
           scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
         )}
       >
         {/* Left: logo */}
-        <Link to="/" aria-label="CABO ENERGIA" className="flex items-center shrink-0">
+        <Link to="/" aria-label="CABO ENERGIA" className="flex items-center shrink-0 justify-self-start">
           <img
             src={scrolled ? logoCor : logoBranco}
             alt="CABO ENERGIA"
@@ -56,7 +56,7 @@ export function Navbar() {
         {/* Center: pill nav */}
         <nav
           className={cn(
-            "absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex items-center gap-1 rounded-pill transition-all duration-300",
+            "hidden justify-self-center lg:flex items-center gap-1 rounded-pill transition-all duration-300",
             scrolled
               ? "bg-surface-muted border border-border"
               : "border border-white/25 backdrop-blur-md shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)]"
@@ -137,8 +137,8 @@ export function Navbar() {
         </nav>
 
         {/* Right: idioma (sempre visível) + CTA (aparece com scroll) */}
-        <div className="flex shrink-0 items-center gap-3 md:gap-4">
-          <button type="button" aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={()=>setMobileOpen(!mobileOpen)} className={cn("rounded-lg p-2 md:hidden",scrolled?"text-brand-green-deep":"text-white")}>{mobileOpen?<X/>:<Menu/>}</button>
+        <div className="flex shrink-0 items-center justify-self-end gap-3 md:gap-4">
+          <button type="button" aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={mobileOpen} aria-controls="mobile-navigation" onClick={()=>setMobileOpen(!mobileOpen)} className={cn("rounded-lg p-2 lg:hidden",scrolled?"text-brand-green-deep":"text-white")}>{mobileOpen?<X/>:<Menu/>}</button>
           <LanguageToggle tone={scrolled ? "dark" : "light"} />
           <div
             className={cn(
@@ -161,7 +161,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
-      {mobileOpen && <nav id="mobile-navigation" className="border-t bg-white p-5 text-brand-green-deep shadow-lg md:hidden" aria-label="Navegação móvel">
+      {mobileOpen && <nav id="mobile-navigation" className="border-t bg-white p-5 text-brand-green-deep shadow-lg lg:hidden" aria-label="Navegação móvel">
         {[...solutionsItems,{label:t('nav.comoFunciona'),href:'/#como-funciona'},{label:t('nav.contacto'),href:'/#contacto'}].map(item=><a key={item.href} href={item.href} onClick={()=>setMobileOpen(false)} className="block rounded-lg px-4 py-3 font-medium hover:bg-brand-green/10">{item.label}</a>)}
       </nav>}
     </header>

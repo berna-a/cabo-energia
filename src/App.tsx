@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { Suspense, lazy, useLayoutEffect } from "react";
 import { LeadPanelProvider } from "@/components/brand/LeadPanelContext";
 import { useSeo } from "@/seo/useSeo";
 import Index from "./pages/Index.tsx";
@@ -14,6 +14,15 @@ const PropostasPage = lazy(() => import("./pages/PropostasPage.tsx"));
 
 
 
+/** Cada página nova abre no topo; links com âncora (/#contacto) são tratados pela própria página. */
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  useLayoutEffect(() => {
+    if (!hash) window.scrollTo(0, 0);
+  }, [pathname, hash]);
+  return null;
+}
+
 /** Sincroniza as meta tags com a rota. Tem de viver dentro do Router. */
 function SeoSync() {
   useSeo();
@@ -24,6 +33,7 @@ const App = () => (
       <BrowserRouter>
         <LeadPanelProvider>
           <SeoSync />
+          <ScrollToTop />
           <Suspense fallback={<div className="min-h-screen grid place-items-center" role="status">Cabo Energia…</div>}>
           <Routes>
             <Route path="/" element={<Index />} />
