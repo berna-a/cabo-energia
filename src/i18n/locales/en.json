@@ -12,9 +12,7 @@
     "pacotes": "Packages",
     "pacotesDesc": "Choose your energy level.",
     "processo": "How it works",
-    "processoDesc": "From first contact to installation.",
-    "verPagina": "View page",
-    "verSecao": "Go to section"
+    "processoDesc": "From first contact to installation."
   },
   "hero": {
     "badge": "Solar energy with storage",

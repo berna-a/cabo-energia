@@ -16,11 +16,9 @@ export type NavPreviewItem = {
  */
 export function NavPreviewMenu({
   items,
-  cta,
   onNavigate,
 }: {
   items: NavPreviewItem[];
-  cta: string;
   onNavigate: () => void;
 }) {
   const [active, setActive] = React.useState(0);
@@ -79,7 +77,13 @@ export function NavPreviewMenu({
         })}
       </ul>
 
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[22px] bg-brand-green-deep" aria-hidden>
+      {/* A imagem também leva à página do item activo. Fica fora da ordem de tabulação
+          (o mesmo destino já está na lista), por isso não conta para leitores de ecrã. */}
+      <PreviewLink
+        href={current.href}
+        onClick={onNavigate}
+        className="group/preview relative block min-h-[220px] overflow-hidden rounded-[22px] bg-brand-green-deep"
+      >
         {items.map((item, i) => (
           <img
             key={item.href}
@@ -89,20 +93,22 @@ export function NavPreviewMenu({
             decoding="async"
             className={cn(
               "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-500 ease-out",
-              i === active ? "opacity-100 scale-105" : "opacity-0 scale-100"
+              i === active ? "opacity-100 scale-105 group-hover/preview:scale-110" : "opacity-0 scale-100"
             )}
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-green-deep/80 via-brand-green-deep/10 to-transparent" />
-        <div className="absolute inset-x-3 bottom-3 flex items-end justify-between gap-2">
+        <div className="absolute inset-x-3 bottom-3">
           <span key={current.href} className="nav-preview-caption text-base font-semibold text-white drop-shadow">
             {current.label}
           </span>
-          <span className="shrink-0 rounded-pill border border-white/30 bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur-md">
-            {cta}
-          </span>
         </div>
-      </div>
+      </PreviewLink>
     </div>
   );
+}
+
+function PreviewLink({ href, onClick, className, children }: { href: string; onClick: () => void; className: string; children: React.ReactNode }) {
+  const common = { onClick, className, tabIndex: -1, "aria-hidden": true as const };
+  return href.startsWith("/#") ? <a href={href} {...common}>{children}</a> : <Link to={href} {...common}>{children}</Link>;
 }

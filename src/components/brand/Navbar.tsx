@@ -44,8 +44,8 @@ export function Navbar() {
     { label: t("nav.processo"), href: "/#como-funciona", description: t("nav.processoDesc"), image: navProtecao },
   ];
   const menus = [
-    { id: "solucoes", label: t("nav.solucoes"), href: undefined, items: solutionsItems, cta: t("nav.verPagina") },
-    { id: "como-funciona", label: t("nav.comoFunciona"), href: "/#como-funciona", items: sectionItems, cta: t("nav.verSecao") },
+    { id: "solucoes", label: t("nav.solucoes"), href: undefined, items: solutionsItems },
+    { id: "como-funciona", label: t("nav.comoFunciona"), href: "/#como-funciona", items: sectionItems },
   ];
   const triggerClass = (open: boolean) => cn(
     "inline-flex items-center gap-1 whitespace-nowrap rounded-pill text-sm font-medium transition-colors",
@@ -136,7 +136,7 @@ export function Navbar() {
               )}
               {openMenu === menu.id && (
                 <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-                  <NavPreviewMenu items={menu.items} cta={menu.cta} onNavigate={() => setOpenMenu(null)} />
+                  <NavPreviewMenu items={menu.items} onNavigate={() => setOpenMenu(null)} />
                 </div>
               )}
             </div>
