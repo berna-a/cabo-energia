@@ -167,7 +167,7 @@ export function Footer() {
           <span className="inline-flex items-center" style={{ fontSize: 12 }}>
             © {new Date().getFullYear()} CABO ENERGIA. {t("footer.rights")}
             <a
-              href="https://ardo.media"
+              href="https://ardo.vc"
               target="_blank"
               rel="noreferrer"
               aria-label="ARDO"
